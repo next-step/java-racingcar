@@ -7,7 +7,16 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] result = value.split("[,:]");
+        String pattern = ",|:";
+
+        if (value.startsWith("//")) {
+            int delimiterEndIndex = value.indexOf("\n");
+            String customDelimiter = value.substring(2, delimiterEndIndex);
+            pattern = pattern + "|" + customDelimiter;
+            value = value.substring(delimiterEndIndex + 1);
+        }
+
+        String[] result = value.split(pattern);
         
         int sum = 0;
 

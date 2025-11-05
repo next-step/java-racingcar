@@ -36,4 +36,11 @@ class StringCalculatorTest {
 
     assertThat(result).isEqualTo(3);
   }
+
+  @Test
+  void splitAndSum_커스텀_구분자() {
+    int result = StringCalculator.splitAndSum("//@\n1@2");
+
+    assertThat(result).isEqualTo(3);
+  }
 }
