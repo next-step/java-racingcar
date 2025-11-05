@@ -43,4 +43,15 @@ public class CalculatorTest{
 
         assertThat(sumResult).isEqualTo(6);
     }
+
+    @Test
+    void 커스텀_구분자_split_sum() {
+        String[] customSplitResult = stringCalculator.searchCustom("//;\n1;2;3");
+
+        assertThat(customSplitResult).containsExactly("1","2","3");
+
+        int sumResult = stringCalculator.sum(customSplitResult);
+
+        assertThat(sumResult).isEqualTo(6);
+    }
 }
