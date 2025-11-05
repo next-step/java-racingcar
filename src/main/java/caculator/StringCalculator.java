@@ -9,7 +9,7 @@ public class StringCalculator {
 
         String delimiterPattern = ",|:";
 
-        if (input.startsWith("//")) {
+        if (hasCustomDelimiter(input)) {
             int newLineIndex = input.indexOf("\n");
             String customDelimiter = input.substring(2, newLineIndex);
             delimiterPattern = delimiterPattern + "|" + customDelimiter;
@@ -33,5 +33,9 @@ public class StringCalculator {
 
     private static boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
+    }
+
+    private static boolean hasCustomDelimiter(String input) {
+        return input.startsWith("//");
     }
 }
