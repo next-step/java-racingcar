@@ -10,9 +10,16 @@ import org.junit.jupiter.api.Test;
 class StringCalculatorTest {
 
   @Test
-  void 빈_문자열_또는_null_값을_입력할_경우_0을_반환한다() {
+  void splitAndSum_null_또는_빈_문자열() {
     int result = StringCalculator.splitAndSum("");
 
     assertThat(result).isEqualTo(0);
+  }
+
+  @Test
+  void splitAndSum_숫자하나() {
+    int result = StringCalculator.splitAndSum("1");
+
+    assertThat(result).isEqualTo(1);
   }
 }
