@@ -37,10 +37,7 @@ public class StringTest {
   @Test
   @DisplayName("charAt으로 특정 인덱스의 문자를 반환한다")
   void returnsCharacterAtSpecificIndex() {
-    String input = "abc";
-    int targetIndex = 2;
-
-    char result = input.charAt(targetIndex);
+    char result = "abc".charAt(2);
 
     assertThat(result).isEqualTo('c');
   }
@@ -48,14 +45,11 @@ public class StringTest {
   @Test
   @DisplayName("charAt에 범위를 벗어난 인덱스를 전달하면 StringIndexOutOfBoundsException이 발생한다")
   void throwsExceptionWhenIndexOutOfBounds() {
-    String input = "abc";
-    int outOfBoundIndex = 10;
-
     assertThatThrownBy(
             () -> {
-              input.charAt(outOfBoundIndex);
+              "abc".charAt(3);
             })
         .isInstanceOf(StringIndexOutOfBoundsException.class)
-        .hasMessageContaining("Index 10 out of bounds for length 3");
+        .hasMessageContaining("Index 3 out of bounds for length 3");
   }
 }
