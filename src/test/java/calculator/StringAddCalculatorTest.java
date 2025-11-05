@@ -23,4 +23,28 @@ class StringAddCalculatorTest {
         int result = StringAddCalculator.splitAndSum("2");
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    void splitAndSum_두개의값() {
+        int result = StringAddCalculator.splitAndSum("1,2");
+        assertThat(result).isEqualTo(3);
+
+        result = StringAddCalculator.splitAndSum("2:3");
+        assertThat(result).isEqualTo(5);
+    }
+
+    @Test
+    void splitAndSum_세개의값() {
+        int result = StringAddCalculator.splitAndSum("1,2,3");
+        assertThat(result).isEqualTo(6);
+
+        result = StringAddCalculator.splitAndSum("2:3:1");
+        assertThat(result).isEqualTo(6);
+
+        result = StringAddCalculator.splitAndSum("1,2:3");
+        assertThat(result).isEqualTo(6);
+
+        result = StringAddCalculator.splitAndSum("1:3,4");
+        assertThat(result).isEqualTo(8);
+    }
 }
