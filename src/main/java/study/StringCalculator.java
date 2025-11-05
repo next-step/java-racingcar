@@ -1,5 +1,8 @@
 package study;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
 
@@ -17,5 +20,16 @@ public class StringCalculator {
             sum += Integer.parseInt(s);
         }
         return sum;
+    }
+
+    public String[] searchCustom(String s) {
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(s);
+        if (m.find()) {
+            String delimiter = m.group(1);
+            String str = m.group(2);
+
+            return str.split(delimiter);
+        }
+        return null;
     }
 }
