@@ -1,0 +1,16 @@
+#!/bin/bash
+# Git pre-commit hook: Java 파일이 변경된 경우에만 Spotless 검사 실행
+
+if git diff --cached --name-only | grep -E '\.java$' > /dev/null; then
+  echo "🧪 Java 파일 변경 감지됨 → 스타일 검사 실행"
+
+  ./gradlew spotlessCheck || {
+    echo ""
+    echo "❌ 코드 스타일 검사 실패!"
+    echo "💡 자동 수정하려면 './gradlew spotlessApply' 를 실행하세요."
+    ./gradlew spotlessDiagnose
+    exit 1
+  }
+else
+  echo "✅ Java 파일 변경 없음 → 스타일 검사 건너뜀"
+fi
