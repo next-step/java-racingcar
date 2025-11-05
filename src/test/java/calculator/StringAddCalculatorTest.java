@@ -16,4 +16,11 @@ class StringAddCalculatorTest {
         result = StringAddCalculator.splitAndSum(null);
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("값을 하나 입력하면 그 값이 그대로 리턴된다")
+    void splitAndSum_값하나() {
+        int result = StringAddCalculator.splitAndSum("2");
+        assertThat(result).isEqualTo(2);
+    }
 }
