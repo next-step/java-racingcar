@@ -56,24 +56,9 @@ public class StringCalculator {
 
     private static int[] toPositive(String[] tokens) {
         return Arrays.stream(tokens)
-                .mapToInt(StringCalculator::parsePositiveNumber)
+                .map(Token::of)
+                .mapToInt(Token::toPositive)
                 .toArray();
-    }
-
-    private static int parsePositiveNumber(String token) {
-        int number = Integer.parseInt(token);
-        validatePositive(number);
-        return number;
-    }
-
-    private static void validatePositive(int number) {
-        if (isNegative(number)) {
-            throw new RuntimeException("음수를 입력할 수 없습니다: " + number);
-        }
-    }
-
-    private static boolean isNegative(int number) {
-        return number < 0;
     }
 
     private static int sum(int[] numbers) {
