@@ -1,7 +1,6 @@
 package study;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.internal.Integers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,9 +30,7 @@ public class SetTest {
     @DisplayName("numbers Collection 사이즈 확인")
     @Test
     void checkSize() {
-        int expectedSize = 3;
-
-        assertEquals(expectedSize, numbers.size());
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("입력 값이 numbers Collection에 모두 존재하는지 확인")
