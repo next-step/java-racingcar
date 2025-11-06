@@ -12,10 +12,7 @@ public class StringCalculator {
             return 0;
         }
 
-        String delimiterPattern = determineDelimiterPattern(input);
-        String numbersPart = extractNumbersPart(input);
-        String[] tokens = numbersPart.split(delimiterPattern);
-
+        String[] tokens = parseToTokens(input);
         return sumTokens(tokens);
     }
 
@@ -23,17 +20,23 @@ public class StringCalculator {
         return input == null || input.isEmpty();
     }
 
-    private static String determineDelimiterPattern(String input) {
+    private static String[] parseToTokens(String input) {
         if (!hasCustomDelimiter(input)) {
-            return DEFAULT_DELIMITER_PATTERN;
+            return input.split(DEFAULT_DELIMITER_PATTERN);
         }
 
-        String customDelimiter = extractCustomDelimiter(input);
-        return addCustomDelimiter(customDelimiter);
+        String delimiterPattern = buildCustomDelimiterPattern(input);
+        String numbersPart = extractNumbersPart(input);
+        return numbersPart.split(delimiterPattern);
     }
 
     private static boolean hasCustomDelimiter(String input) {
         return input.startsWith(CUSTOM_DELIMITER_PREFIX);
+    }
+
+    private static String buildCustomDelimiterPattern(String input) {
+        String customDelimiter = extractCustomDelimiter(input);
+        return addCustomDelimiter(customDelimiter);
     }
 
     private static String extractCustomDelimiter(String input) {
@@ -45,9 +48,6 @@ public class StringCalculator {
     }
 
     private static String extractNumbersPart(String input) {
-        if (!hasCustomDelimiter(input)) {
-            return input;
-        }
         return input.substring(getDelimiterEndPosition(input) + 1);
     }
 
