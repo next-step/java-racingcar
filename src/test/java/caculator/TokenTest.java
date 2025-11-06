@@ -12,6 +12,33 @@ import org.junit.jupiter.params.provider.ValueSource;
 class TokenTest {
 
   @Test
+  void 생성자_숫자_문자열() {
+    assertThat(new Token("1").value()).isEqualTo("1");
+  }
+
+  @Test
+  void 생성자_null() {
+    assertThatThrownBy(() -> new Token(null))
+        .isInstanceOf(NullPointerException.class)
+        .hasMessageContaining("값이 null입니다.");
+  }
+
+  @ParameterizedTest(name = "생성자_공백_문자열({0})")
+  @ValueSource(strings = {"", " "})
+  void 생성자_공백_문자열(String input) {
+    assertThatThrownBy(() -> new Token(input))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("값이 비어있거나 공백입니다.");
+  }
+
+  @Test
+  void 생성자_숫자가_아닌_문자열() {
+    assertThatThrownBy(() -> new Token("a"))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("숫자가 아닙니다: a");
+  }
+
+  @Test
   void of_숫자_문자열() {
     assertThat(Token.of("1").value()).isEqualTo("1");
   }
