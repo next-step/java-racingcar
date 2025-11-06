@@ -1,0 +1,38 @@
+package caculator;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+public record Tokens(List<Token> values) {
+
+    public Tokens {
+        validate(values);
+    }
+    private static void validate(List<Token> inputs) {
+        Objects.requireNonNull(inputs, "토큰 리스트가 null입니다.");
+        validateNotEmpty(inputs);
+    }
+
+    private static void validateNotEmpty(List<Token> inputs) {
+        if (inputs.isEmpty()) {
+            throw new IllegalArgumentException("토큰 리스트가 비어있습니다.");
+        }
+    }
+
+    public static Tokens from(String[] tokens) {
+        Objects.requireNonNull(tokens, "토큰 리스트가 null입니다.");
+
+        return new Tokens(
+                Arrays.stream(tokens)
+                        .map(Token::of)
+                        .toList()
+        );
+    }
+
+    public int[] toPositive() {
+        return values.stream()
+                .mapToInt(Token::toPositive)
+                .toArray();
+    }
+}

@@ -55,10 +55,7 @@ public class StringCalculator {
     }
 
     private static int[] toPositive(String[] tokens) {
-        return Arrays.stream(tokens)
-                .map(Token::of)
-                .mapToInt(Token::toPositive)
-                .toArray();
+        return Tokens.from(tokens).toPositive();
     }
 
     private static int sum(int[] numbers) {
