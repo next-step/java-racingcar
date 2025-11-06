@@ -11,20 +11,6 @@ import org.junit.jupiter.api.Test;
 class TokensTest {
 
   @Test
-  void from_정상_문자열_배열() {
-    Tokens tokens = Tokens.from(new String[] {"1", "2", "3"});
-
-    assertThat(tokens.values()).extracting(Token::value).containsExactly("1", "2", "3");
-  }
-
-  @Test
-  void from_null() {
-    assertThatThrownBy(() -> Tokens.from(null))
-        .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("토큰 리스트가 null입니다.");
-  }
-
-  @Test
   void 생성자_null() {
     assertThatThrownBy(() -> new Tokens(null))
         .isInstanceOf(NullPointerException.class)
@@ -39,10 +25,32 @@ class TokensTest {
   }
 
   @Test
+  void from_정상_문자열_배열() {
+    Tokens tokens = Tokens.from(new String[] {"1", "2", "3"});
+
+    assertThat(tokens.values()).extracting(Token::value).containsExactly("1", "2", "3");
+  }
+
+  @Test
+  void from_null() {
+    assertThatThrownBy(() -> Tokens.from(null))
+        .isInstanceOf(NullPointerException.class)
+        .hasMessageContaining("토큰 배열이 null입니다.");
+  }
+
+  @Test
   void from_빈_문자열_배열이면_IllegalArgumentException_발생() {
     assertThatThrownBy(() -> Tokens.from(new String[0]))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("토큰 리스트가 비어있습니다.");
+  }
+
+  @Test
+  void values_불변성_보장() {
+    Tokens tokens = Tokens.from(new String[] {"1", "2", "3"});
+
+    assertThatThrownBy(() -> tokens.values().add(Token.of("1")))
+        .isInstanceOf(UnsupportedOperationException.class);
   }
 
   @Test

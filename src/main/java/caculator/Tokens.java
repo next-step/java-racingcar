@@ -8,6 +8,7 @@ public record Tokens(List<Token> values) {
 
     public Tokens {
         validate(values);
+        values = List.copyOf(values);
     }
     private static void validate(List<Token> inputs) {
         Objects.requireNonNull(inputs, "토큰 리스트가 null입니다.");
@@ -21,7 +22,7 @@ public record Tokens(List<Token> values) {
     }
 
     public static Tokens from(String[] tokens) {
-        Objects.requireNonNull(tokens, "토큰 리스트가 null입니다.");
+        Objects.requireNonNull(tokens, "토큰 배열이 null입니다.");
 
         return new Tokens(
                 Arrays.stream(tokens)
