@@ -45,5 +45,11 @@ class StringCalculatorTest {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
+    @DisplayName("숫자 문자열과 특수문자인 커스텀 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
+    @ParameterizedTest
+    @CsvSource(value = {"'//.\n1.2.3'|6", "'//|\n0|1'|1", "'//?\n10?20'|30"}, delimiter = '|')
+    void customDelimiterSpecialCharStringReturnsSum(String input, int expected) {
+        assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
 
 }
