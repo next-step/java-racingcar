@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,4 +24,10 @@ class StringCalculatorTest {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(Integer.parseInt(input));
     }
 
+    @DisplayName("숫자 문자열과 쉼표 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
+    @ParameterizedTest
+    @CsvSource(value = {"'1,2'|3", "'0,1'|1", "'1,2,3'|6", "'1,10'|11"}, delimiter = '|')
+    void defaultDelimiterStringReturnsSum(String input, int expected) {
+        assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
 }
