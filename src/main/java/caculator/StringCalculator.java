@@ -10,10 +10,9 @@ public class StringCalculator {
         String delimiterPattern = ",|:";
 
         if (hasCustomDelimiter(input)) {
-            int newLineIndex = input.indexOf("\n");
-            String customDelimiter = input.substring(2, newLineIndex);
+            String customDelimiter = extractCustomDelimiter(input);
             delimiterPattern = delimiterPattern + "|" + customDelimiter;
-            input = input.substring(newLineIndex + 1);
+            input = extractNumbersPart(input);
         }
 
         String[] tokens = input.split(delimiterPattern);
@@ -37,5 +36,17 @@ public class StringCalculator {
 
     private static boolean hasCustomDelimiter(String input) {
         return input.startsWith("//");
+    }
+
+    private static String extractCustomDelimiter(String input) {
+        return input.substring(2, getDelimiterEndPosition(input));
+    }
+
+    private static String extractNumbersPart(String input) {
+        return input.substring(getDelimiterEndPosition(input) + 1);
+    }
+
+    private static int getDelimiterEndPosition(String input) {
+        return input.indexOf("\n");
     }
 }
