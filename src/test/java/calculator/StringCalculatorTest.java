@@ -69,4 +69,20 @@ class StringCalculatorTest {
                 .isInstanceOf(RuntimeException.class);
     }
 
+    @DisplayName("음수를 입력하면 RuntimeException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1", "1,-1"})
+    void negativeNumberThrowsException(String input) {
+        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("음수를 입력하면 RuntimeException 발생 - 커스텀 구분자")
+    @ParameterizedTest
+    @ValueSource(strings = {"//;\n-1;2;3", "//|\n1|-2|3"})
+    void negativeNumberCustomDelimiterThrows(String input) {
+        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
+    }
+
 }
