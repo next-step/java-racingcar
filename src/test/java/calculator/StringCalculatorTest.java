@@ -53,6 +53,13 @@ class StringCalculatorTest {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
+    @DisplayName("커스텀 구분자와 기본 구분자(쉼표, 콜론)를 함께 사용할 수 있다")
+    @ParameterizedTest
+    @CsvSource(value = {"'//;\n1;2:3'|6", "'//|\n1|2,3'|6"}, delimiter = '|')
+    void customAndDefaultDelimitersCanBeUsedTogether(String input, int expected) {
+        assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
+
     @DisplayName("숫자가 아닌 값을 입력하면 RuntimeException 발생")
     @ParameterizedTest
     @ValueSource(strings = {"a", "1,b", "10:@", " "})
