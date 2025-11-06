@@ -59,7 +59,6 @@ public class StringCalculator {
     }
 
     private static int sum(int[] numbers) {
-        return Arrays.stream(numbers)
-                .sum();
+        return Numbers.from(numbers).sum();
     }
 }
