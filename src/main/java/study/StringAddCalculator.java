@@ -7,13 +7,14 @@ public class StringAddCalculator {
 
     public static int splitAndSum(String text) {
         int result = 0;
-        if(text == null || text.isEmpty()) {
-            return result;
-        }
-        for (String s : splitText(text)) {
+        for (String s : splitText(isExist(text))) {
             result += parseToInt(s);
         }
         return result;
+    }
+
+    private static String isExist(String text) {
+        return (text == null || text.isEmpty()) == true ? "0" : text;
     }
 
     private static String[] splitText(String text) {
