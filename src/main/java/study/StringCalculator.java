@@ -1,42 +1,48 @@
 package study;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
 
 
-    public int isEmptyOrNull(String value) {
-        return value == null || value.isEmpty() ? 0:-1;
-    }
-
-    public String[] split(String s) {
-        return s.split("[,:]");
-    }
-
-    public int sum(String[] splitResult) {
-        int sum = 0;
-        for(String s: splitResult) {
-            if (checkNoNum(s)) {
-                throw new RuntimeException("숫자가 아닌 문자입니다.");
-            }
-
-            int num = Integer.parseInt(s);
-            if(checkMinusNum(num)){
-                throw new RuntimeException("음수일 수 없습니다.");
-            }
-            sum += num;
+    public static int splitAndSum(String text){
+        if(isEmptyOrNull(text)){
+            return 0;
         }
-        return sum;
+
+        return sum(toInt(split(text)));
     }
-    public boolean checkNoNum(String str) {
-        return !str.matches("-?\\d+");
-    }
-    public boolean checkMinusNum(int num) {
-        return num < 0;
+    private static boolean isEmptyOrNull(String text) {
+        return text == null || text.isEmpty();
     }
 
-    public String[] searchCustom(String s) {
+    private static int sum(int[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
+    private static int[] toInt(String[] strings) {
+        int[] ints = new int[strings.length];
+        for(int i = 0; i < strings.length; i++){
+            checkNoNum(strings[i]);
+
+            ints[i] = checkMinusNum(Integer.parseInt(strings[i]));
+        }
+        return ints;
+    }
+    private static void checkNoNum(String str) {
+        if(!str.matches("-?\\d+")){
+            throw new RuntimeException("숫자가 아닌 문자입니다.");
+        }
+    }
+    private static int checkMinusNum(int num) {
+        if (num < 0){
+            throw new RuntimeException("음수일 수 없습니다.");
+        }
+        return num;
+    }
+
+    private static String[] split(String s) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(s);
         if (m.find()) {
             String delimiter = m.group(1);
@@ -44,6 +50,6 @@ public class StringCalculator {
 
             return str.split(delimiter);
         }
-        return null;
+        return s.split(",|:");
     }
 }
