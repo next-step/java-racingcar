@@ -29,12 +29,14 @@ public class SetTest {
         int size = numbers.size();
 
         assertThat(size).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
     void contains(int value) {
         assertThat(numbers.contains(value)).isTrue();
+        assertThat(numbers).contains(value);
     }
 
     @ParameterizedTest
