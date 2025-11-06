@@ -20,7 +20,7 @@ class TokenTest {
   void 생성자_null() {
     assertThatThrownBy(() -> new Token(null))
         .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("값이 null입니다.");
+        .hasMessageContaining("값은 null일 수 없습니다.");
   }
 
   @ParameterizedTest(name = "생성자_공백_문자열({0})")
@@ -28,14 +28,14 @@ class TokenTest {
   void 생성자_공백_문자열(String input) {
     assertThatThrownBy(() -> new Token(input))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("값이 비어있거나 공백입니다.");
+        .hasMessageContaining("값은 비어있거나 공백일 수 없습니다.");
   }
 
   @Test
   void 생성자_숫자가_아닌_문자열() {
     assertThatThrownBy(() -> new Token("a"))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("숫자가 아닙니다: a");
+        .hasMessageContaining("숫자 형식이 아닙니다: a");
   }
 
   @Test
@@ -53,14 +53,14 @@ class TokenTest {
   void of_공백_문자열(String input) {
     assertThatThrownBy(() -> Token.of(input))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("값이 비어있거나 공백입니다.");
+        .hasMessageContaining("값은 비어있거나 공백일 수 없습니다.");
   }
 
   @Test
   void of_숫자가아닌_문자열() {
     assertThatThrownBy(() -> Token.of("a"))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("숫자가 아닙니다: a");
+        .hasMessageContaining("숫자 형식이 아닙니다: a");
   }
 
   @Test
@@ -81,6 +81,6 @@ class TokenTest {
   void toPositive_음수_문자열() {
     assertThatThrownBy(Token.of("-1")::toPositive)
         .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("음수를 입력할 수 없습니다: -1");
+        .hasMessageContaining("음수는 입력할 수 없습니다: -1");
   }
 }

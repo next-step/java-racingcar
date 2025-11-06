@@ -9,14 +9,14 @@ public record Token(String value) {
     }
 
     private static void validate(String input) {
-        Objects.requireNonNull(input, "값이 null입니다.");
+        Objects.requireNonNull(input, "값은 null일 수 없습니다.");
         validateNotBlank(input);
         validateNumeric(input);
     }
 
     private static void validateNotBlank(String input) {
         if (input.isBlank()) {
-            throw new IllegalArgumentException("값이 비어있거나 공백입니다.");
+            throw new IllegalArgumentException("값은 비어있거나 공백일 수 없습니다.");
         }
     }
 
@@ -24,7 +24,7 @@ public record Token(String value) {
         try {
             Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닙니다: " + value);
+            throw new IllegalArgumentException("숫자 형식이 아닙니다: " + value);
         }
     }
 
@@ -35,7 +35,7 @@ public record Token(String value) {
     public int toPositive() {
         int number = Integer.parseInt(value);
         if (isNegative(number)) {
-            throw new RuntimeException("음수를 입력할 수 없습니다: " + number);
+            throw new RuntimeException("음수는 입력할 수 없습니다: " + number);
         }
         return number;
     }

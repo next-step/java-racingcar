@@ -14,14 +14,14 @@ class NumbersTest {
   void 생성자_null() {
     assertThatThrownBy(() -> new Numbers(null))
         .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("숫자 리스트가 null입니다.");
+        .hasMessageContaining("숫자 목록은 null일 수 없습니다.");
   }
 
   @Test
   void 생성자_빈리스트() {
     assertThatThrownBy(() -> new Numbers(List.of()))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("숫자 리스트가 비어있습니다.");
+        .hasMessageContaining("숫자 목록은 비어있을 수 없습니다.");
   }
 
   @Test
@@ -35,7 +35,14 @@ class NumbersTest {
   void from_null() {
     assertThatThrownBy(() -> Numbers.from(null))
         .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("숫자 배열이 null입니다.");
+        .hasMessageContaining("숫자 배열은 null일 수 없습니다.");
+  }
+
+  @Test
+  void from_빈_배열() {
+    assertThatThrownBy(() -> Numbers.from(new int[0]))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("숫자 목록은 비어있을 수 없습니다.");
   }
 
   @Test

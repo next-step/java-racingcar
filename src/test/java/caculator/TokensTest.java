@@ -14,14 +14,14 @@ class TokensTest {
   void 생성자_null() {
     assertThatThrownBy(() -> new Tokens(null))
         .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("토큰 리스트가 null입니다.");
+        .hasMessageContaining("토큰 목록은 null일 수 없습니다.");
   }
 
   @Test
   void 생성자_빈_리스트() {
     assertThatThrownBy(() -> new Tokens(List.of()))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("토큰 리스트가 비어있습니다.");
+        .hasMessageContaining("토큰 목록은 비어있을 수 없습니다.");
   }
 
   @Test
@@ -35,14 +35,14 @@ class TokensTest {
   void from_null() {
     assertThatThrownBy(() -> Tokens.from(null))
         .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("토큰 배열이 null입니다.");
+        .hasMessageContaining("토큰 배열은 null일 수 없습니다.");
   }
 
   @Test
-  void from_빈_문자열_배열이면_IllegalArgumentException_발생() {
+  void from_빈_배열() {
     assertThatThrownBy(() -> Tokens.from(new String[0]))
         .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("토큰 리스트가 비어있습니다.");
+        .hasMessageContaining("토큰 목록은 비어있을 수 없습니다.");
   }
 
   @Test
@@ -66,6 +66,6 @@ class TokensTest {
 
     assertThatThrownBy(tokens::toPositive)
         .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("음수를 입력할 수 없습니다: -2");
+        .hasMessageContaining("음수는 입력할 수 없습니다: -2");
   }
 }

@@ -11,17 +11,17 @@ public record Numbers(List<Integer> values) {
     }
 
     private static void validate(List<Integer> inputs) {
-        Objects.requireNonNull(inputs, "숫자 리스트가 null입니다.");
+        Objects.requireNonNull(inputs, "숫자 목록은 null일 수 없습니다.");
         validateNotEmpty(inputs);
     }
     private static void validateNotEmpty(List<Integer> inputs) {
         if (inputs.isEmpty()) {
-            throw new IllegalArgumentException("숫자 리스트가 비어있습니다.");
+            throw new IllegalArgumentException("숫자 목록은 비어있을 수 없습니다.");
         }
     }
 
     public static Numbers from(int[] values) {
-        Objects.requireNonNull(values, "숫자 배열이 null입니다.");
+        Objects.requireNonNull(values, "숫자 배열은 null일 수 없습니다.");
 
         return new Numbers(
                 Arrays.stream(values)
