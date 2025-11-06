@@ -1,5 +1,6 @@
 package study.step2;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,16 +15,16 @@ public class StringCalculator {
         }
 
         String[] numbers = split(input);
+        int[] parseNumbers = parseStringToInteger(numbers);
 
-        int sum = sum(numbers);
-        return sum;
+        return sum(parseNumbers);
     }
 
-    public static boolean checkNullOrEmpty(String input) {
+    private static boolean checkNullOrEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
-    public static String[] split(String input) {
+    private static String[] split(String input) {
         Matcher matcher = Pattern.compile(CUSTOM_SEPARATOR).matcher(input);
 
         if (matcher.find()) {
@@ -33,21 +34,30 @@ public class StringCalculator {
         return input.split(SEPARATOR);
     }
 
-    public static int sum(String[] numbers) {
-        int sum = 0;
-
-        for (String number : numbers) {
-            checkNegativeNumber(number);
-            sum += Integer.parseInt(number);
-        }
-
-        return sum;
+    private static int[] parseStringToInteger(String[] numbers) {
+        return Arrays.stream(numbers)
+                .mapToInt(StringCalculator::parseStringToInt)
+                .toArray();
     }
 
-    private static void checkNegativeNumber(String number) {
-        if (Integer.parseInt(number) < 0) {
+    private static int sum(int[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
+
+    private static int parseStringToInt(String value) {
+        int number = Integer.parseInt(value);
+        validatePositive(number);
+        return number;
+    }
+
+    private static void validatePositive(int number) {
+        if (checkNegativeNumber(number)) {
             throw new RuntimeException("0보다 작은 수는 입력할 수 없습니다.");
         }
+    }
+
+    private static boolean checkNegativeNumber(int number) {
+        return number < 0;
     }
 
 
