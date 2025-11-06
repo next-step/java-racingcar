@@ -1,6 +1,7 @@
 package calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -50,6 +51,22 @@ class StringCalculatorTest {
     @CsvSource(value = {"'//.\n1.2.3'|6", "'//|\n0|1'|1", "'//?\n10?20'|30"}, delimiter = '|')
     void customDelimiterSpecialCharStringReturnsSum(String input, int expected) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
+
+    @DisplayName("숫자가 아닌 값을 입력하면 RuntimeException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "1,b", "10:@", " "})
+    void nonNumericInputThrowsException(String input) {
+        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("숫자가 아닌 값을 입력하면 RuntimeException 발생 - 커스텀 구분자")
+    @ParameterizedTest
+    @ValueSource(strings = {"//;\na;1", "//|\n1|b", "// \n1 b"})
+    void nonNumericInputCustomDelimiterThrowsException(String input) {
+        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class);
     }
 
 }
