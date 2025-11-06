@@ -1,5 +1,7 @@
 package caculator;
 
+import java.util.Arrays;
+
 public class StringCalculator {
 
     public static int splitAndSum(String input) {
@@ -16,18 +18,10 @@ public class StringCalculator {
         }
 
         String[] tokens = input.split(delimiterPattern);
-        
-        int sum = 0;
 
-        for (String token : tokens) {
-            int number = Integer.parseInt(token);
-            if (number < 0) {
-                throw new RuntimeException("음수를 입력할 수 없습니다: " + number);
-            }
-            sum += number;
-        }
-
-        return sum;
+        return Arrays.stream(tokens)
+                .mapToInt(StringCalculator::parsePositiveNumber)
+                .sum();
     }
 
     private static boolean isNullOrEmpty(String input) {
@@ -48,5 +42,13 @@ public class StringCalculator {
 
     private static int getDelimiterEndPosition(String input) {
         return input.indexOf("\n");
+    }
+
+    private static int parsePositiveNumber(String token) {
+        int number = Integer.parseInt(token);
+        if (number < 0) {
+            throw new RuntimeException("음수를 입력할 수 없습니다: " + number);
+        }
+        return number;
     }
 }
