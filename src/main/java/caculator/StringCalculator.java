@@ -56,9 +56,14 @@ public class StringCalculator {
     }
 
     private static int sumTokens(String[] tokens) {
+        int[] numbers = toPositiveNumbers(tokens);
+        return sum(numbers);
+    }
+
+    private static int[] toPositiveNumbers(String[] tokens) {
         return Arrays.stream(tokens)
                 .mapToInt(StringCalculator::parsePositiveNumber)
-                .sum();
+                .toArray();
     }
 
     private static int parsePositiveNumber(String token) {
@@ -75,5 +80,10 @@ public class StringCalculator {
 
     private static boolean isNegative(int number) {
         return number < 0;
+    }
+
+    private static int sum(int[] numbers) {
+        return Arrays.stream(numbers)
+                .sum();
     }
 }
