@@ -1,4 +1,4 @@
-package study.step2;
+package study.calculator;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
