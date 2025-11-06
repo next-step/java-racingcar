@@ -30,4 +30,12 @@ class StringCalculatorTest {
     void defaultDelimiterStringReturnsSum(String input, int expected) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
+
+    @DisplayName("숫자 문자열과 쉼표, 콜론 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
+    @ParameterizedTest
+    @CsvSource(value = {"'1,2:3'|6", "'0:1'|1", "'1:2:3'|6", "'1:10'|11"}, delimiter = '|')
+    void defaultDelimitersStringReturnsSum(String input, int expected) {
+        assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
+    }
+
 }
