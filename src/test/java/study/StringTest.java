@@ -10,11 +10,8 @@ public class StringTest {
 
     @Test
     void split() {
-        String[] result = "1,2".split(",");
-        assertThat(result).containsExactly("1", "2");
-
-        String[] result2 = "1".split(",");
-        assertThat(result2).containsExactly("1");
+        assertThat("1,2".split(",")).containsExactly("1", "2");
+        assertThat("1".split(",")).containsExactly("1");
     }
 
     @Test
@@ -34,9 +31,7 @@ public class StringTest {
     @DisplayName("charAt()에서 문자열 범위 밖 인덱스 접근 시 StringIndexOutOfBoundsException 발생")
     @Test
     void charAt_stringIndexOutOfBoundsException() {
-        String str = "abc";
-
-        assertThatThrownBy(() -> str.charAt(5))
+        assertThatThrownBy(() -> "abc".charAt(3))
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("out of bounds for");
     }
