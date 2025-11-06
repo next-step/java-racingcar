@@ -10,35 +10,28 @@ public class StringAddCalculator {
         if(text == null || text.isEmpty()) {
             return result;
         }
-
-        if (text.length() == 1) {
-            return Integer.parseInt(text);
-        }
-
-        if (text.contains(",") || (text.contains(":"))) {
-            String[] split = text.split(",|:");
-            for (String s : split) {
-                int anInt = Integer.parseInt(s);
-                if (anInt < 0) {
-                    throw new RuntimeException();
-                }
-                result += anInt;
-            }
-        }
-
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens= m.group(2).split(customDelimiter);
-            for (String token : tokens) {
-                int anInt = Integer.parseInt(token);
-                if (anInt < 0) {
-                    throw new RuntimeException();
-                }
-                result += anInt;
-            }
+        for (String s : splitText(text)) {
+            result += parseToInt(s);
         }
         return result;
     }
 
+    private static String[] splitText(String text) {
+        if (text.contains(",") || (text.contains(":"))) {
+            return text.split(",|:");
+        }
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            return m.group(2).split(m.group(1));
+        }
+        return new String[]{text};
+    }
+
+    private static int parseToInt(String token) {
+        int anInt = Integer.parseInt(token);
+        if (anInt < 0) {
+            throw new RuntimeException();
+        }
+        return anInt;
+    }
 }
