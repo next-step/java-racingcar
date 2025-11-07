@@ -11,9 +11,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class PositiveOrZeroTest {
 
-  @Test
-  void 생성자_양수() {
-    assertThat(new PositiveOrZero(1).value()).isEqualTo(1);
+  @ParameterizedTest(name = "입력값: {0}")
+  @ValueSource(ints = {1, 0})
+  void 생성자_양수_또는_0(int input) {
+    assertThat(new PositiveOrZero(input).value()).isEqualTo(input);
   }
 
   @Test
@@ -23,37 +24,27 @@ class PositiveOrZeroTest {
         .hasMessageContaining("음수는 입력할 수 없습니다: -1");
   }
 
-  @Test
-  void from_양수_문자열() {
-    assertThat(PositiveOrZero.from("1").value()).isEqualTo(1);
+  @ParameterizedTest(name = "입력값: {0}")
+  @ValueSource(strings = {"1", "0"})
+  void 생성자_양수_또는_0_문자열(String input) {
+    assertThat(new PositiveOrZero(input).value()).isEqualTo(Integer.parseInt(input));
   }
 
   @Test
-  void from_음수_문자열() {
-    assertThatThrownBy(() -> PositiveOrZero.from("-1"))
+  void 생성자_null() {
+    assertThatThrownBy(() -> new PositiveOrZero(null)).isInstanceOf(NumberFormatException.class);
+  }
+
+  @ParameterizedTest(name = "입력값: [{0}]")
+  @ValueSource(strings = {"a", " ", "", "1a", "a1"})
+  void 생성자_숫자가_아닌_문자열(String input) {
+    assertThatThrownBy(() -> new PositiveOrZero(input)).isInstanceOf(NumberFormatException.class);
+  }
+
+  @Test
+  void 생성자_음수_문자열() {
+    assertThatThrownBy(() -> new PositiveOrZero("-1"))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("음수는 입력할 수 없습니다: -1");
-  }
-
-  @Test
-  void from_null() {
-    assertThatThrownBy(() -> PositiveOrZero.from(null))
-        .isInstanceOf(NullPointerException.class)
-        .hasMessageContaining("값은 null일 수 없습니다.");
-  }
-
-  @ParameterizedTest(name = "생성자_공백_또는_빈_문자열({0})")
-  @ValueSource(strings = {"", " "})
-  void from_공백_또는_빈_문자열(String input) {
-    assertThatThrownBy(() -> PositiveOrZero.from(input))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("값은 비어있거나 공백일 수 없습니다.");
-  }
-
-  @Test
-  void from_숫자가_아닌_문자열() {
-    assertThatThrownBy(() -> PositiveOrZero.from("a"))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("숫자 형식이 아닙니다: a");
   }
 }

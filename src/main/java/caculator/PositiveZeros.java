@@ -27,7 +27,7 @@ public record PositiveZeros(List<PositiveOrZero> values) {
 
         return new PositiveZeros(
                 Arrays.stream(stringArray)
-                        .map(PositiveOrZero::from)
+                        .map(PositiveOrZero::new)
                         .toList()
         );
     }

@@ -56,7 +56,7 @@ class PositiveZerosTest {
   void values_불변성_보장() {
     PositiveZeros positiveZeros = PositiveZeros.from(new String[] {"1", "2", "3"});
 
-    assertThatThrownBy(() -> positiveZeros.values().add(PositiveOrZero.from("1")))
+    assertThatThrownBy(() -> positiveZeros.values().add(new PositiveOrZero("1")))
         .isInstanceOf(UnsupportedOperationException.class);
   }
 
