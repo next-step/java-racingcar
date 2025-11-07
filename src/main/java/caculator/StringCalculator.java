@@ -53,7 +53,7 @@ public class StringCalculator {
     }
 
     private static int[] toPositive(String[] tokens) {
-        return Tokens.from(tokens).toPositive();
+        return Tokens.from(tokens).toIntArray();
     }
 
     private static int sum(int[] numbers) {

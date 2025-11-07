@@ -28,7 +28,7 @@ class TokensTest {
   void from_정상_문자열_배열() {
     Tokens tokens = Tokens.from(new String[] {"1", "2", "3"});
 
-    assertThat(tokens.values()).extracting(Token::value).containsExactly("1", "2", "3");
+    assertThat(tokens.values()).extracting(Positive::value).containsExactly(1, 2, 3);
   }
 
   @Test
@@ -49,23 +49,21 @@ class TokensTest {
   void values_불변성_보장() {
     Tokens tokens = Tokens.from(new String[] {"1", "2", "3"});
 
-    assertThatThrownBy(() -> tokens.values().add(new Token("1")))
+    assertThatThrownBy(() -> tokens.values().add(Positive.from("1")))
         .isInstanceOf(UnsupportedOperationException.class);
   }
 
   @Test
-  void toPositive_모든_요소가_양수() {
-    int[] result = Tokens.from(new String[] {"1", "2", "3"}).toPositive();
+  void toIntArray_모든_요소가_양수() {
+    int[] result = Tokens.from(new String[] {"1", "2", "3"}).toIntArray();
 
     assertThat(result).containsExactly(1, 2, 3);
   }
 
   @Test
-  void toPositive_음수가_포함() {
-    Tokens tokens = Tokens.from(new String[] {"1", "-2", "3"});
-
-    assertThatThrownBy(tokens::toPositive)
-        .isInstanceOf(RuntimeException.class)
+  void toIntArray_음수가_포함() {
+    assertThatThrownBy(() -> Tokens.from(new String[] {"1", "-2", "3"}))
+        .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("음수는 입력할 수 없습니다: -2");
   }
 }

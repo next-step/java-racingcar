@@ -4,18 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public record Tokens(List<Token> values) {
+public record Tokens(List<Positive> values) {
 
     public Tokens {
         validate(values);
         values = List.copyOf(values);
     }
-    private static void validate(List<Token> inputs) {
+
+    private static void validate(List<Positive> inputs) {
         Objects.requireNonNull(inputs, "토큰 목록은 null일 수 없습니다.");
         validateNotEmpty(inputs);
     }
 
-    private static void validateNotEmpty(List<Token> inputs) {
+    private static void validateNotEmpty(List<Positive> inputs) {
         if (inputs.isEmpty()) {
             throw new IllegalArgumentException("토큰 목록은 비어있을 수 없습니다.");
         }
@@ -26,14 +27,14 @@ public record Tokens(List<Token> values) {
 
         return new Tokens(
                 Arrays.stream(tokens)
-                        .map(Token::new)
+                        .map(Positive::from)
                         .toList()
         );
     }
 
-    public int[] toPositive() {
+    public int[] toIntArray() {
         return values.stream()
-                .mapToInt(Token::toPositive)
+                .mapToInt(Positive::value)
                 .toArray();
     }
 }
