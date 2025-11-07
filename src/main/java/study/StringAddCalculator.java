@@ -1,5 +1,6 @@
 package study;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,11 +31,15 @@ public class StringAddCalculator {
         int[] ints = new int[length];
         for(int i = 0; i < length; i++) {
             ints[i] = Integer.parseInt(texts[i]);
-            if(ints[i] < 0) {
-                throw new RuntimeException("음수 불가");
-            }
+            negativeNumberCheck(ints[i]);
         }
         return ints;
+    }
+    
+    private static void negativeNumberCheck(int num) {
+        if(num < 0) {
+            throw new RuntimeException("음수 불가");
+        }
     }
     
     private static boolean isNullOrEmpty(String text) {
