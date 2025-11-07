@@ -11,4 +11,10 @@ public class Car {
     public int position() {
         return position;
     }
+
+    public void moveIfPossible(int number) {
+        if (number >= 4) {
+            move();
+        }
+    }
 }
