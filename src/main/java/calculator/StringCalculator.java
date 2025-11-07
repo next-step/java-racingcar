@@ -7,34 +7,49 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     private static final String DEFAULT_DELIMITER = ",|:";
+    private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
     public static int splitAndSum(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isNullOrEmpty(input)) {
             return 0;
         }
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(Pattern.quote(customDelimiter) + "|" + DEFAULT_DELIMITER);
-            return sumTokens(tokens);
-        }
-        String[] tokens = input.split(DEFAULT_DELIMITER);
-        return sumTokens(tokens);
+        return sum(toInts(split(input)));
     }
 
-    private static int sumTokens(String[] tokens) {
-        return Arrays.stream(tokens)
-                .mapToInt(token -> {
-                    try {
-                        int num = Integer.parseInt(token);
-                        if (num < 0) {
-                            throw new RuntimeException("음수는 입력 불가합니다.");
-                        }
-                        return num;
-                    } catch (NumberFormatException e) {
-                        throw new RuntimeException("숫자 이외의 값은 입력 불가합니다.");
-                    }
-                })
-                .sum();
+    private static boolean isNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
+    }
+
+    private static String[] split(String input) {
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(Pattern.quote(customDelimiter) + "|" + DEFAULT_DELIMITER);
+        }
+        return input.split(DEFAULT_DELIMITER);
+    }
+
+    private static int[] toInts(String[] tokens) {
+        int[] numbers = new int[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+            numbers[i] = toInt(tokens[i]);
+        }
+        return numbers;
+    }
+
+    private static int toInt(String token) {
+        int number = Integer.parseInt(token);
+        validateNonNegative(number);
+        return number;
+    }
+
+    private static int sum(int[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
+
+    private static void validateNonNegative(int num) {
+        if (num < 0) {
+            throw new RuntimeException("음수는 입력 불가합니다.");
+        }
     }
 }
