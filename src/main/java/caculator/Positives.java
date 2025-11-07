@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public record Tokens(List<Positive> values) {
+public record Positives(List<Positive> values) {
 
-    public Tokens {
+    public Positives {
         validate(values);
         values = List.copyOf(values);
     }
@@ -22,10 +22,10 @@ public record Tokens(List<Positive> values) {
         }
     }
 
-    public static Tokens from(String[] tokens) {
+    public static Positives from(String[] tokens) {
         Objects.requireNonNull(tokens, "토큰 배열은 null일 수 없습니다.");
 
-        return new Tokens(
+        return new Positives(
                 Arrays.stream(tokens)
                         .map(Positive::from)
                         .toList()
