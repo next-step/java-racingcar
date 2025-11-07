@@ -1,9 +1,11 @@
 package caculator;
 
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
     private static final String DEFAULT_DELIMITER_PATTERN = ",|:";
-    private static final String CUSTOM_DELIMITER_PREFIX = "//";
+    private static final Pattern CUSTOM_DELIMITER_PREFIX = Pattern.compile("^//");
 
     public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
@@ -28,7 +30,7 @@ public class StringCalculator {
     }
 
     private static boolean hasCustomDelimiter(String input) {
-        return input.startsWith(CUSTOM_DELIMITER_PREFIX);
+        return CUSTOM_DELIMITER_PREFIX.matcher(input).find();
     }
 
     private static String buildCustomDelimiterPattern(String input) {
