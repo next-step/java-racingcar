@@ -3,6 +3,10 @@ package study;
 public class StringAddCalculator {
     
     public static int splitAndSum(String text) {
-        return -1;
+        int result = 0;
+        if(text == null || text.isEmpty()) {
+            return result;
+        }
+        return result;
     }
 }
