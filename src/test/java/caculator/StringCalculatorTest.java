@@ -5,13 +5,16 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StringCalculatorTest {
 
-  @Test
-  void splitAndSum_null_또는_빈_문자열() {
-    int result = StringCalculator.splitAndSum("");
+  @ParameterizedTest
+  @NullAndEmptySource
+  void splitAndSum_null_또는_빈_문자열(String input) {
+    int result = StringCalculator.splitAndSum(input);
 
     assertThat(result).isEqualTo(0);
   }
@@ -48,6 +51,6 @@ class StringCalculatorTest {
   void splitAndSum_음수() {
     assertThatThrownBy(() -> StringCalculator.splitAndSum("-1,2"))
         .isInstanceOf(RuntimeException.class)
-        .hasMessageContaining("음수를 입력할 수 없습니다: -1");
+        .hasMessageContaining("음수는 입력할 수 없습니다: -1");
   }
 }
