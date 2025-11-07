@@ -1,11 +1,12 @@
 package caculator;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
 
     private static final String DEFAULT_DELIMITER_PATTERN = ",|:";
-    private static final Pattern CUSTOM_DELIMITER_PREFIX = Pattern.compile("^//");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("^//(.)\\n(.*)");
 
     public static int splitAndSum(String input) {
         if (isNullOrEmpty(input)) {
@@ -20,37 +21,27 @@ public class StringCalculator {
     }
 
     private static String[] split(String input) {
-        if (!hasCustomDelimiter(input)) {
+        Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
+
+        if (!matcher.find()) {
             return input.split(DEFAULT_DELIMITER_PATTERN);
         }
 
-        String delimiterPattern = buildCustomDelimiterPattern(input);
-        String numbersPart = extractNumbersPart(input);
-        return numbersPart.split(delimiterPattern);
+        String customDelimiterPattern = buildCustomDelimiterPattern(matcher);
+        String numbersPart = extractNumbersPart(matcher);
+        return numbersPart.split(customDelimiterPattern);
     }
 
-    private static boolean hasCustomDelimiter(String input) {
-        return CUSTOM_DELIMITER_PREFIX.matcher(input).find();
-    }
-
-    private static String buildCustomDelimiterPattern(String input) {
-        String customDelimiter = extractCustomDelimiter(input);
+    private static String buildCustomDelimiterPattern(Matcher matcher) {
+        String customDelimiter = matcher.group(1);
         return addCustomDelimiter(customDelimiter);
     }
-
-    private static String extractCustomDelimiter(String input) {
-        return input.substring(2, getDelimiterEndPosition(input));
-    }
-
+    
     private static String addCustomDelimiter(String customDelimiter) {
         return DEFAULT_DELIMITER_PATTERN + "|" + customDelimiter;
     }
 
-    private static String extractNumbersPart(String input) {
-        return input.substring(getDelimiterEndPosition(input) + 1);
-    }
-
-    private static int getDelimiterEndPosition(String input) {
-        return input.indexOf("\n");
+    private static String extractNumbersPart(Matcher matcher) {
+        return matcher.group(2);
     }
 }
