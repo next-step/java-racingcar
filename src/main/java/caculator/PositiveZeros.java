@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public record Positives(List<PositiveOrZero> values) {
+public record PositiveZeros(List<PositiveOrZero> values) {
 
-    public Positives {
+    public PositiveZeros {
         validate(values);
         values = List.copyOf(values);
     }
@@ -22,10 +22,10 @@ public record Positives(List<PositiveOrZero> values) {
         }
     }
 
-    public static Positives from(String[] stringArray) {
+    public static PositiveZeros from(String[] stringArray) {
         Objects.requireNonNull(stringArray, "문자열 배열은 null일 수 없습니다.");
 
-        return new Positives(
+        return new PositiveZeros(
                 Arrays.stream(stringArray)
                         .map(PositiveOrZero::from)
                         .toList()
