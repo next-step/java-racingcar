@@ -1,5 +1,8 @@
 package study;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringAddCalculator {
     
     public static final String COMMA_AND_COLONS = ",|:";
@@ -17,7 +20,14 @@ public class StringAddCalculator {
     }
     
     private static String[] splitText(String text) {
-        return text.split(COMMA_AND_COLONS);
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            return m.group(2).split(m.group(1));
+        }
+        if(text.contains(",") || text.contains(":")) {
+            return text.split(COMMA_AND_COLONS);
+        }
+        return new String[]{text};
     }
     
     private static int[] stringsToInts(String[] texts) {
