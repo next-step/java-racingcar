@@ -13,35 +13,39 @@ public class StringCalculator {
             return 0;
         }
 
-        return new PositiveOrZeros(split(input)).sum();
+        return new PositiveOrZeros(parse(input)).sum();
     }
 
     private static boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
-    private static String[] split(String input) {
+    private static String[] parse(String input) {
         Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(input);
 
-        if (!matcher.find()) {
-            return input.split(DEFAULT_DELIMITER_PATTERN);
+        if (!hasCustomDelimiter(matcher)) {
+            return splitWithDefaultDelimiter(input);
         }
 
-        String customDelimiterPattern = buildCustomDelimiterPattern(matcher);
-        String numbersPart = extractNumbersPart(matcher);
-        return numbersPart.split(customDelimiterPattern);
-    }
-
-    private static String buildCustomDelimiterPattern(Matcher matcher) {
         String customDelimiter = matcher.group(1);
-        return addCustomDelimiter(customDelimiter);
-    }
-    
-    private static String addCustomDelimiter(String customDelimiter) {
-        return DEFAULT_DELIMITER_PATTERN + "|" + customDelimiter;
+        String numbersPart = matcher.group(2);
+
+        return numbersPart.split(buildCombinedPattern(customDelimiter));
     }
 
-    private static String extractNumbersPart(Matcher matcher) {
-        return matcher.group(2);
+    private static boolean hasCustomDelimiter(Matcher matcher) {
+        return matcher.find();
+    }
+
+    private static String[] splitWithDefaultDelimiter(String input) {
+        return input.split(DEFAULT_DELIMITER_PATTERN);
+    }
+
+    private static String buildCombinedPattern(String customDelimiter) {
+        return DEFAULT_DELIMITER_PATTERN + "|" + escapeDelimiter(customDelimiter);
+    }
+
+    private static String escapeDelimiter(String customDelimiter) {
+        return Pattern.quote(customDelimiter);
     }
 }
