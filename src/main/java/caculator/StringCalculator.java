@@ -10,7 +10,7 @@ public class StringCalculator {
             return 0;
         }
 
-        return PositiveZeros.from(split(input)).sum();
+        return PositiveOrZeros.from(split(input)).sum();
     }
 
     private static boolean isNullOrEmpty(String input) {
