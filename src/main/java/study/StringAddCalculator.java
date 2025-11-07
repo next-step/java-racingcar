@@ -3,9 +3,10 @@ package study;
 public class StringAddCalculator {
     
     public static int splitAndSum(String text) {
-        if(isNullOrEmpty(text)) {
-            return 0;
-        }
+        return isNullOrEmpty(text) ? 0 : toInt(text);
+    }
+    
+    private static int toInt(String text) {
         return Integer.parseInt(text);
     }
     
