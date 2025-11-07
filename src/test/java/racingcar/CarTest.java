@@ -13,4 +13,12 @@ public class CarTest {
         Car car = new Car();
         assertThat(car).isNotNull();
     }
+
+    @DisplayName("자동차가 이동한다")
+    @Test
+    void moveCar() {
+        Car car = new Car();
+        car.move();
+        assertThat(car.position()).isOne();
+    }
 }
