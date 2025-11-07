@@ -30,6 +30,9 @@ public class StringAddCalculator {
         int[] ints = new int[length];
         for(int i = 0; i < length; i++) {
             ints[i] = Integer.parseInt(texts[i]);
+            if(ints[i] < 0) {
+                throw new RuntimeException("음수 불가");
+            }
         }
         return ints;
     }
