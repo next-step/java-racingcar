@@ -2,6 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,5 +21,16 @@ public class RaceGameTest {
             cars.add(new Car());
         }
         assertThat(cars).hasSize(count);
+    }
+
+    @DisplayName("시도 횟수만큼 자동차가 이동한다")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2})
+    void moveCarAsGameCount(int gameCount) {
+        Car car = new Car();
+        for (int i = 0; i < gameCount; i++) {
+            car.moveIfPossible(4);
+        }
+        assertThat(car.position()).isEqualTo(gameCount);
     }
 }
