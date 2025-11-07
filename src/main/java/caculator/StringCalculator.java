@@ -10,14 +10,14 @@ public class StringCalculator {
             return 0;
         }
 
-        return sum(toPositive(parse(input)));
+        return Positives.from(split(input)).sum();
     }
 
     private static boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
-    private static String[] parse(String input) {
+    private static String[] split(String input) {
         if (!hasCustomDelimiter(input)) {
             return input.split(DEFAULT_DELIMITER_PATTERN);
         }
@@ -50,13 +50,5 @@ public class StringCalculator {
 
     private static int getDelimiterEndPosition(String input) {
         return input.indexOf("\n");
-    }
-
-    private static int[] toPositive(String[] tokens) {
-        return Positives.from(tokens).toIntArray();
-    }
-
-    private static int sum(int[] numbers) {
-        return Numbers.from(numbers).sum();
     }
 }

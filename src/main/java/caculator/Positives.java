@@ -12,27 +12,31 @@ public record Positives(List<Positive> values) {
     }
 
     private static void validate(List<Positive> inputs) {
-        Objects.requireNonNull(inputs, "토큰 목록은 null일 수 없습니다.");
+        Objects.requireNonNull(inputs, "양수 목록은 null일 수 없습니다.");
         validateNotEmpty(inputs);
     }
 
     private static void validateNotEmpty(List<Positive> inputs) {
         if (inputs.isEmpty()) {
-            throw new IllegalArgumentException("토큰 목록은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException("양수 목록은 비어있을 수 없습니다.");
         }
     }
 
-    public static Positives from(String[] tokens) {
-        Objects.requireNonNull(tokens, "토큰 배열은 null일 수 없습니다.");
+    public static Positives from(String[] stringArray) {
+        Objects.requireNonNull(stringArray, "문자열 배열은 null일 수 없습니다.");
 
         return new Positives(
-                Arrays.stream(tokens)
+                Arrays.stream(stringArray)
                         .map(Positive::from)
                         .toList()
         );
     }
 
-    public int[] toIntArray() {
+    public int sum() {
+        return Arrays.stream(toIntArray()).sum();
+    }
+
+    private int[] toIntArray() {
         return values.stream()
                 .mapToInt(Positive::value)
                 .toArray();
