@@ -26,7 +26,7 @@ public record Tokens(List<Token> values) {
 
         return new Tokens(
                 Arrays.stream(tokens)
-                        .map(Token::of)
+                        .map(Token::new)
                         .toList()
         );
     }

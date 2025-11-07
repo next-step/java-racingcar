@@ -17,15 +17,15 @@ class TokenTest {
   }
 
   @Test
-  void 생성자_null() {
+  void 생성자_null_빈문자열() {
     assertThatThrownBy(() -> new Token(null))
         .isInstanceOf(NullPointerException.class)
         .hasMessageContaining("값은 null일 수 없습니다.");
   }
 
-  @ParameterizedTest(name = "생성자_공백_문자열({0})")
+  @ParameterizedTest(name = "생성자_공백_또는_빈_문자열({0})")
   @ValueSource(strings = {"", " "})
-  void 생성자_공백_문자열(String input) {
+  void 생성자_공백_또는_빈_문자열(String input) {
     assertThatThrownBy(() -> new Token(input))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("값은 비어있거나 공백일 수 없습니다.");
@@ -39,47 +39,22 @@ class TokenTest {
   }
 
   @Test
-  void of_숫자_문자열() {
-    assertThat(Token.of("1").value()).isEqualTo("1");
-  }
-
-  @Test
-  void of_Null() {
-    assertThatThrownBy(() -> Token.of(null)).isInstanceOf(NullPointerException.class);
-  }
-
-  @ParameterizedTest(name = "공백 입력({0})일 때 예외 발생")
-  @ValueSource(strings = {"", " "})
-  void of_공백_문자열(String input) {
-    assertThatThrownBy(() -> Token.of(input))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("값은 비어있거나 공백일 수 없습니다.");
-  }
-
-  @Test
-  void of_숫자가아닌_문자열() {
-    assertThatThrownBy(() -> Token.of("a"))
-        .isInstanceOf(IllegalArgumentException.class)
-        .hasMessageContaining("숫자 형식이 아닙니다: a");
-  }
-
-  @Test
   void toPositive_양수_문자열() {
-    int result = Token.of("1").toPositive();
+    int result = new Token("1").toPositive();
 
     assertThat(result).isEqualTo(1);
   }
 
   @Test
   void toPositive_영_문자열() {
-    int result = Token.of("0").toPositive();
+    int result = new Token("0").toPositive();
 
     assertThat(result).isEqualTo(0);
   }
 
   @Test
   void toPositive_음수_문자열() {
-    assertThatThrownBy(Token.of("-1")::toPositive)
+    assertThatThrownBy(new Token("-1")::toPositive)
         .isInstanceOf(RuntimeException.class)
         .hasMessageContaining("음수는 입력할 수 없습니다: -1");
   }

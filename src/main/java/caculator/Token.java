@@ -28,10 +28,6 @@ public record Token(String value) {
         }
     }
 
-    public static Token of(String value) {
-        return new Token(value);
-    }
-
     public int toPositive() {
         int number = Integer.parseInt(value);
         if (isNegative(number)) {

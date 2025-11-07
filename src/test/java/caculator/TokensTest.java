@@ -49,7 +49,7 @@ class TokensTest {
   void values_불변성_보장() {
     Tokens tokens = Tokens.from(new String[] {"1", "2", "3"});
 
-    assertThatThrownBy(() -> tokens.values().add(Token.of("1")))
+    assertThatThrownBy(() -> tokens.values().add(new Token("1")))
         .isInstanceOf(UnsupportedOperationException.class);
   }
 
