@@ -5,7 +5,8 @@ import java.util.regex.Pattern;
 
 public class StringAddCalculator {
     
-    public static final String COMMA_AND_COLONS = ",|:";
+    public static final String COMMA_AND_COLON_REGEX = ",|:";
+    public static final String CUSTOM_REGEX = "//(.)\n(.*)";
     
     public static int splitAndSum(String text) {
         return isNullOrEmpty(text) ? 0 : adder(stringsToInts(splitText(text)));
@@ -20,14 +21,8 @@ public class StringAddCalculator {
     }
     
     private static String[] splitText(String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-        if (m.find()) {
-            return m.group(2).split(m.group(1));
-        }
-        if(text.contains(",") || text.contains(":")) {
-            return text.split(COMMA_AND_COLONS);
-        }
-        return new String[]{text};
+        Matcher m = Pattern.compile(CUSTOM_REGEX).matcher(text);
+        return m.find() ? m.group(2).split(m.group(1)) : text.split(COMMA_AND_COLON_REGEX);
     }
     
     private static int[] stringsToInts(String[] texts) {
