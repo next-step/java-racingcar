@@ -2,6 +2,8 @@ package study;
 
 public class StringAddCalculator {
     
+    public static final String COMMA_AND_COLONS = ",|:";
+    
     public static int splitAndSum(String text) {
         return isNullOrEmpty(text) ? 0 : adder(stringsToInts(splitText(text)));
     }
@@ -15,7 +17,7 @@ public class StringAddCalculator {
     }
     
     private static String[] splitText(String text) {
-        return text.split(",|:");
+        return text.split(COMMA_AND_COLONS);
     }
     
     private static int[] stringsToInts(String[] texts) {
