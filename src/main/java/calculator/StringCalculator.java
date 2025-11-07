@@ -10,21 +10,15 @@ public class StringCalculator {
     private static final String DEFAULT_DELIMITER_REGEX = ",|:";
     private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
-
-    // 1. 빈 문자열 또는 null 값을 입력할 경우 0을 반환해야 한다.(예 : “” => 0, null => 0) -> 처리
-    // 2. 숫자 하나를 문자열로 입력할 경우 해당 숫자를 반환한다.(예 : “1”)
-    // 3. 숫자 두개를 컴마(,) 구분자로 입력할 경우 두 숫자의 합을 반환한다.(예 : “1,2”)
-    // 4. 구분자를 컴마(,) 이외에 콜론(:)을 사용할 수 있다. (예 : “1,2:3” => 6)
-    // 5. “//”와 “\n” 문자 사이에 커스텀 구분자를 지정할 수 있다. (예 : “//;\n1;2;3” => 6)
-    // 6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
-
-    public int sum(String input) {
+    public int splitAndSum(String input) {
         if (isNotExist(input)) {
             return 0;
         }
 
+        // 숫자가 하나인 경우에도 커스텀 관련 인풋은 인입될 수 있다는 가정하에
+        // 계산 대상 숫자목록 추출작업후 1개 여부 관련 요구사항을 처리했습니다
         String[] targetNumbers = getNumbers(input);
-        if (hasJustOneNum(input)) {
+        if (hasJustOneNum(targetNumbers)) {
             return processOneNumber(targetNumbers[0]);
         }
 
@@ -71,8 +65,8 @@ public class StringCalculator {
         return matcherResult.group(2);
     }
 
-    private boolean hasJustOneNum(String input) {
-        return input.length() == 1;
+    private boolean hasJustOneNum(String[] targetNumbers) {
+        return targetNumbers.length == 1;
     }
 
     private boolean isNotExist(String input) {
