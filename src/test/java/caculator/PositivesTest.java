@@ -28,7 +28,7 @@ class PositivesTest {
   void from_정상_문자열_배열() {
     Positives positives = Positives.from(new String[] {"1", "2", "3"});
 
-    assertThat(positives.values()).extracting(Positive::value).containsExactly(1, 2, 3);
+    assertThat(positives.values()).extracting(PositiveOrZero::value).containsExactly(1, 2, 3);
   }
 
   @Test
@@ -56,7 +56,7 @@ class PositivesTest {
   void values_불변성_보장() {
     Positives positives = Positives.from(new String[] {"1", "2", "3"});
 
-    assertThatThrownBy(() -> positives.values().add(Positive.from("1")))
+    assertThatThrownBy(() -> positives.values().add(PositiveOrZero.from("1")))
         .isInstanceOf(UnsupportedOperationException.class);
   }
 

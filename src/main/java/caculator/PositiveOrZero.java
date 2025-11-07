@@ -2,9 +2,9 @@ package caculator;
 
 import java.util.Objects;
 
-public record Positive(int value) {
+public record PositiveOrZero(int value) {
 
-    public Positive {
+    public PositiveOrZero {
         validate(value);
     }
 
@@ -18,11 +18,11 @@ public record Positive(int value) {
         return number < 0;
     }
 
-    public static Positive from(String text) {
+    public static PositiveOrZero from(String text) {
         Objects.requireNonNull(text, "값은 null일 수 없습니다.");
         validateNotBlank(text);
 
-        return new Positive(parseToInt(text));
+        return new PositiveOrZero(parseToInt(text));
     }
 
     private static void validateNotBlank(String input) {

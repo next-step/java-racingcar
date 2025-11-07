@@ -4,19 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public record Positives(List<Positive> values) {
+public record Positives(List<PositiveOrZero> values) {
 
     public Positives {
         validate(values);
         values = List.copyOf(values);
     }
 
-    private static void validate(List<Positive> inputs) {
+    private static void validate(List<PositiveOrZero> inputs) {
         Objects.requireNonNull(inputs, "양수 목록은 null일 수 없습니다.");
         validateNotEmpty(inputs);
     }
 
-    private static void validateNotEmpty(List<Positive> inputs) {
+    private static void validateNotEmpty(List<PositiveOrZero> inputs) {
         if (inputs.isEmpty()) {
             throw new IllegalArgumentException("양수 목록은 비어있을 수 없습니다.");
         }
@@ -27,7 +27,7 @@ public record Positives(List<Positive> values) {
 
         return new Positives(
                 Arrays.stream(stringArray)
-                        .map(Positive::from)
+                        .map(PositiveOrZero::from)
                         .toList()
         );
     }
@@ -38,7 +38,7 @@ public record Positives(List<Positive> values) {
 
     private int[] toIntArray() {
         return values.stream()
-                .mapToInt(Positive::value)
+                .mapToInt(PositiveOrZero::value)
                 .toArray();
     }
 }
