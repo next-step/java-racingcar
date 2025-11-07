@@ -11,85 +11,62 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class StringCalculatorTest {
 
-    @DisplayName("빈 문자열 또는 null 입력 시 0을 반환한다")
+    @DisplayName("빈 문자열 또는 null 입력 시 0 반환")
     @ParameterizedTest
     @NullAndEmptySource
     void emptyOrNullStringReturnsZero(String input) {
         assertThat(StringCalculator.splitAndSum(input)).isZero();
     }
 
-    @DisplayName("숫자 하나를 문자열로 입력 시 해당 숫자를 반환한다")
+    @DisplayName("숫자 문자열만 입력 시 해당 숫자 반환")
     @ParameterizedTest
     @ValueSource(strings = {"0", "1", "10"})
-    void singleNumberStringReturnsSameNumber(String input) {
+    void singleNumberStringReturnsItself(String input) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(Integer.parseInt(input));
     }
 
-    @DisplayName("숫자 문자열과 쉼표 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
+    @DisplayName("쉼표 구분자 합 계산")
     @ParameterizedTest
     @CsvSource(value = {"'1,2'|3", "'0,1'|1", "'1,2,3'|6", "'1,10'|11"}, delimiter = '|')
-    void defaultDelimiterStringReturnsSum(String input, int expected) {
+    void sumWithDefaultDelimiter(String input, int expected) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
-    @DisplayName("숫자 문자열과 쉼표, 콜론 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
+    @DisplayName("쉼표, 콜론 구분자 합 계산")
     @ParameterizedTest
     @CsvSource(value = {"'1,2:3'|6", "'0:1'|1", "'1:2:3'|6", "'1:10'|11"}, delimiter = '|')
-    void defaultDelimitersStringReturnsSum(String input, int expected) {
+    void sumWithDefaultDelimiters(String input, int expected) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
-    @DisplayName("숫자 문자열과 커스텀 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
+    @DisplayName("커스텀 구분자 합 계산")
     @ParameterizedTest
-    @CsvSource(value = {"'//;\n1;2;3'|6", "'//;\n0;1'|1", "'//;\n10;20'|30"}, delimiter = '|')
-    void customDelimiterStringReturnsSum(String input, int expected) {
+    @CsvSource(value = {"'//;\n1;2;3'|6", "'//;\n0;1'|1", "'//;\n10;20'|30", "'//.\n1.2.3'|6", "'//|\n0|1'|1",
+            "'//?\n10?20'|30"}, delimiter = '|')
+    void sumWithCustomDelimiter(String input, int expected) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
-    @DisplayName("숫자 문자열과 특수문자인 커스텀 구분자로 이루어진 문자열 입력 시 숫자의 합을 반환한다")
-    @ParameterizedTest
-    @CsvSource(value = {"'//.\n1.2.3'|6", "'//|\n0|1'|1", "'//?\n10?20'|30"}, delimiter = '|')
-    void customDelimiterSpecialCharStringReturnsSum(String input, int expected) {
-        assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
-    }
-
-    @DisplayName("커스텀 구분자와 기본 구분자(쉼표, 콜론)를 함께 사용할 수 있다")
+    @DisplayName("커스텀 구분자와 기본 구분자(쉼표, 콜론) 합 계산")
     @ParameterizedTest
     @CsvSource(value = {"'//;\n1;2:3'|6", "'//|\n1|2,3'|6"}, delimiter = '|')
-    void customAndDefaultDelimitersCanBeUsedTogether(String input, int expected) {
+    void sumWithDefaultAndCustomDelimiters(String input, int expected) {
         assertThat(StringCalculator.splitAndSum(input)).isEqualTo(expected);
     }
 
-    @DisplayName("숫자가 아닌 값을 입력하면 RuntimeException 발생")
+    @DisplayName("숫자 아닌 값 입력 시 RuntimeException 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"a", "1,b", "10:@", " "})
-    void nonNumericInputThrowsException(String input) {
+    @ValueSource(strings = {"a", "1,b", "10:@", " ", "//;\na;1", "//|\n1|b", "// \n1 b"})
+    void nonNumericThrows(String input) {
         assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
                 .isInstanceOf(RuntimeException.class);
     }
 
-    @DisplayName("숫자가 아닌 값을 입력하면 RuntimeException 발생 - 커스텀 구분자")
+    @DisplayName("음수 입력 시 RuntimeException 발생")
     @ParameterizedTest
-    @ValueSource(strings = {"//;\na;1", "//|\n1|b", "// \n1 b"})
-    void nonNumericInputCustomDelimiterThrowsException(String input) {
+    @ValueSource(strings = {"-1", "1,-1", "//;\n-1;2;3", "//|\n1|-2|3"})
+    void negativeNumberThrows(String input) {
         assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
                 .isInstanceOf(RuntimeException.class);
     }
-
-    @DisplayName("음수를 입력하면 RuntimeException 발생")
-    @ParameterizedTest
-    @ValueSource(strings = {"-1", "1,-1"})
-    void negativeNumberThrowsException(String input) {
-        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
-                .isInstanceOf(RuntimeException.class);
-    }
-
-    @DisplayName("음수를 입력하면 RuntimeException 발생 - 커스텀 구분자")
-    @ParameterizedTest
-    @ValueSource(strings = {"//;\n-1;2;3", "//|\n1|-2|3"})
-    void negativeNumberCustomDelimiterThrows(String input) {
-        assertThatThrownBy(() -> StringCalculator.splitAndSum(input))
-                .isInstanceOf(RuntimeException.class);
-    }
-
 }
