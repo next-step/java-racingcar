@@ -12,9 +12,7 @@ public class StringAddCalculator {
         if (isNullOrEmpty(text)) {
             return 0;
         }
-        String separator = getSeparator(text);
-        String numberString = getNumberText(text, separator);
-        String[] stringNumbers = splitNumbers(numberString, separator);
+        String[] stringNumbers = splitText(text);
         int[] numbers = convertToIntegers(stringNumbers);
         return sumNumbers(numbers);
     }
@@ -23,30 +21,16 @@ public class StringAddCalculator {
         return text == null || text.isEmpty();
     }
 
-    private static String getSeparator(String text) {
+    private static String[] splitText(String text) {
         Matcher m = Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
         if (m.find()) {
-            return m.group(1);
+            String separator = m.group(1);
+            String numberText = m.group(2);
+            return numberText.split(separator);
         }
-        return DEFAULT_SEPARATOR;
+        return text.split(DEFAULT_SEPARATOR);
     }
 
-    private static String getNumberText(String text, String separator) {
-        if (separator.equals(DEFAULT_SEPARATOR)) {
-            return text;
-        }
-
-        Matcher m = Pattern.compile(CUSTOM_SEPARATOR_REGEX).matcher(text);
-        if (m.find()) {
-            return m.group(2);
-        }
-
-        return text;
-    }
-
-    private static String[] splitNumbers(String numberText, String separator) {
-        return numberText.split(separator);
-    }
 
     private static int[] convertToIntegers(String[] stringNumbers) {
         return Arrays.stream(stringNumbers)
@@ -65,14 +49,10 @@ public class StringAddCalculator {
     }
 
     private static int parseAndValidateNumber(String number) {
-        try {
             int value = Integer.parseInt(number);
             if (value < 0) {
                 throw new RuntimeException("음수는 입력할 수 없습니다: ");
             }
             return value;
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자가 아닌 값은 입력할 수 없습니다.");
-        }
     }
 }
