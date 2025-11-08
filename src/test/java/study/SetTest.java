@@ -25,26 +25,18 @@ public class SetTest {
 	}
 
 	@Test
-	@DisplayName("size()를 통해 Set의 크기를 확인할 수 있다")
+	@DisplayName("Set의 크기를 확인할 수 있다")
 	void size() {
-		// Act
-		int size = numbers.size();
-
-		// Assert
-		assertThat(size).isEqualTo(3);
+		assertThat(numbers).hasSize(3);
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
-	@DisplayName("contains()를 통해 1, 2, 3의 값이 존재하는지를 확인할 수 있다")
+	@DisplayName("Set에 값이 존재하는지를 확인할 수 있다")
 	void contains(
 		int value
 	) {
-		// Act
-		boolean contains = numbers.contains(value);
-
-		// Assert
-		assertThat(contains).isTrue();
+		assertThat(numbers).contains(value);
 	}
 
 	@ParameterizedTest
@@ -55,15 +47,11 @@ public class SetTest {
 		"4, false",
 		"5, false"
 	})
-	@DisplayName("contains()를 통해 존재하는 값과 존재하지 않는 값을 확인할 수 있다")
+	@DisplayName("Set에 존재하는 값과 존재하지 않는 값을 확인할 수 있다")
 	void containsVariousValues(
 		int value,
 		boolean expected
 	) {
-		// Act
-		boolean contains = numbers.contains(value);
-
-		// Assert
-		assertThat(contains).isEqualTo(expected);
+		assertThat(numbers.contains(value)).isEqualTo(expected);
 	}
 }
