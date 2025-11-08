@@ -2,6 +2,7 @@ package racingGame.Business;
 
 import java.util.ArrayList;
 import racingGame.model.Car;
+import racingGame.util.RandomUtil;
 
 public class Process {
     
@@ -10,6 +11,25 @@ public class Process {
     
     public void run(int cars, int moves){
         init(cars, moves);
+        proceed();
+    }
+    
+    private void proceed() {
+        for(int i = 0; i < moves; i++) {
+            nextMove();
+        }
+    }
+    
+    private void nextMove() {
+        for(Car car: cars) {
+            forward(car);
+        }
+    }
+    
+    private void forward(Car car) {
+        if(RandomUtil.generateInt() > 3) {
+            car.move();
+        }
     }
     
     public ArrayList<Car> joinCars() {
