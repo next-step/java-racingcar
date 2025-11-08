@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingGame.model.Car;
 
 class ProcessTest {
     
@@ -59,13 +60,12 @@ class ProcessTest {
  void carsForwardTest() {
      gp.run(3, 10);
      while(true) {
-         gp.nextTurn();
-         if(gp.joinCars.get(0).loaction > 2) {
+         if(gp.joinCars().getFirst().findLocation() > 2) {
              break;
          }
      }
-     for(Car car : gp.joinCars){
-         assertThat(car.loaction).isNotEqual(0);
+     for(Car car : gp.joinCars()){
+         assertThat(car.findLocation()).isNotEqualTo(0);
      }
  }
 }

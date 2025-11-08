@@ -6,15 +6,12 @@ import racingGame.util.RandomUtil;
 
 public class Process {
     
+    public static final int CAR_FORWARD_CRITERIA = 3;
     private final ArrayList<Car> cars = new ArrayList<>();
     private int moves = 0;
     
     public void run(int cars, int moves){
         init(cars, moves);
-        proceed();
-    }
-    
-    private void proceed() {
         for(int i = 0; i < moves; i++) {
             nextMove();
         }
@@ -22,13 +19,9 @@ public class Process {
     
     private void nextMove() {
         for(Car car: cars) {
-            forward(car);
-        }
-    }
-    
-    private void forward(Car car) {
-        if(RandomUtil.generateInt() > 3) {
-            car.move();
+            if(RandomUtil.generateInt() > CAR_FORWARD_CRITERIA) {
+                car.move();
+            }
         }
     }
     
