@@ -7,7 +7,7 @@ public class StringCalculator {
     private static List<String> delimeter = new ArrayList<>(List.of(":", ","));
 
     public static int calculate(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isBlank(input)) {
             return 0;
         }
 
@@ -19,6 +19,10 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    private static boolean isBlank(String input) {
+        return input == null || input.isEmpty();
     }
 
     private static int[] parseInput(String input) {
