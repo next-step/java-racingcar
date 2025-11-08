@@ -11,8 +11,11 @@ repositories {
 
 spotless {
     java {
-        googleJavaFormat('1.17.0')
-        target 'src/test/java/**/*.java'
+        palantirJavaFormat()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+        target 'src/**/*.java'
     }
 }
 

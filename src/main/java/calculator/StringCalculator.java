@@ -9,7 +9,7 @@ public class StringCalculator {
     private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("^//(.)\\n(.*)");
 
     public static int splitAndSum(String input) {
-        if (isNullOrEmpty(input))  return 0;
+        if (isNullOrEmpty(input)) return 0;
         return new PositiveOrZeros(parse(input)).sum();
     }
 
