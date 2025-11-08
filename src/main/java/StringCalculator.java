@@ -34,6 +34,10 @@ public class StringCalculator {
         String regex = String.join("|", delimeter);
         String[] strNumbers =  expression.split(regex);
 
+        return convertToIntArray(strNumbers);
+    }
+
+    private static int[] convertToIntArray(String[] strNumbers) {
         int[] numbers = new int[strNumbers.length];
         for (int i = 0; i < strNumbers.length; i++) {
             numbers[i] = Integer.parseInt(strNumbers[i]);
