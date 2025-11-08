@@ -40,33 +40,33 @@ class ProcessTest {
    @Test
    void gameNextTurnTest() {
        gp.run(1,2);
-       assertThat(gp.nowTurn()).isEqual(2);
+       assertThat(gp.nowMove()).isEqualTo(2);
    }
 
-   @Test
-   void carForwardTest() {
-       gp.run(1, 10);
-       while(true) {
-           gp.nextTurn();
-           if(gp.joinCars.get(0).loaction > 0) {
-               break;
-           }
-       }
+  @Test
+  void carForwardTest() {
+      gp.run(1, 10);
+      while(true) {
+          gp.nextTurn();
+          if(gp.joinCars.get(0).loaction > 0) {
+              break;
+          }
+      }
 
-       assertThat(gp.joinCars.get(0).loaction).isNotEqual(0);
-   }
+      assertThat(gp.joinCars.get(0).loaction).isNotEqual(0);
+  }
 
-   @Test
-   void carsForwardTest() {
-       gp.run(3, 10);
-       while(true) {
-           gp.nextTurn();
-           if(gp.joinCars.get(0).loaction > 2) {
-               break;
-           }
-       }
-       for(Car car : gp.joinCars){
-           assertThat(car.loaction).isNotEqual(0);
-       }
-   }
+  @Test
+  void carsForwardTest() {
+      gp.run(3, 10);
+      while(true) {
+          gp.nextTurn();
+          if(gp.joinCars.get(0).loaction > 2) {
+              break;
+          }
+      }
+      for(Car car : gp.joinCars){
+          assertThat(car.loaction).isNotEqual(0);
+      }
+  }
 }

@@ -6,13 +6,18 @@ import racingGame.model.Car;
 public class Process {
     
     private final ArrayList<Car> cars = new ArrayList<>();
+    private int moves = 0;
     
     public void run(int cars, int moves){
         init(cars, moves);
     }
     
     public ArrayList<Car> joinCars() {
-        return cars;
+        return this.cars;
+    }
+    
+    public int nowMove() {
+        return this.moves;
     }
     
     private void init(int cars, int moves) {
@@ -35,5 +40,6 @@ public class Process {
         if(moves < 1) {
             throw new IllegalArgumentException("이동횟수에 입력이 생략되거나, 0이하");
         }
+        this.moves = moves;
     }
 }
