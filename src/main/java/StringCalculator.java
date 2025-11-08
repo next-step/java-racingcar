@@ -41,13 +41,16 @@ public class StringCalculator {
         int[] numbers = new int[strNumbers.length];
         for (int i = 0; i < strNumbers.length; i++) {
             numbers[i] = Integer.parseInt(strNumbers[i]);
-
-            if (numbers[i] < 0) {
-                throw new RuntimeException("음수 값이 전달되었습니다.");
-            }
+            validateNumber(numbers[i]);
         }
 
         return numbers;
+    }
+
+    private static void validateNumber(int num) {
+        if (num < 0) {
+            throw new RuntimeException("음수 값이 전달되었습니다.");
+        }
     }
 
     private static String extractCustomDelimiter(String input) {
