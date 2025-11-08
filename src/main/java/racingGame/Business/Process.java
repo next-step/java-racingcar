@@ -1,5 +1,8 @@
 package racingGame.Business;
 
+import static racingGame.ResultView.forwardCarTrace;
+import static racingGame.ResultView.moveDone;
+
 import java.util.ArrayList;
 import racingGame.model.Car;
 import racingGame.util.RandomUtil;
@@ -12,13 +15,17 @@ public class Process {
     
     public void run(int cars, int moves){
         init(cars, moves);
+        
+        System.out.print("\n실행결과");
         for(int i = 0; i < moves; i++) {
             nextMove();
+            moveDone();
         }
     }
     
     private void nextMove() {
         for(Car car: cars) {
+            forwardCarTrace(car.findLocation());
             if(RandomUtil.generateInt() > CAR_FORWARD_CRITERIA) {
                 car.move();
             }
