@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -46,5 +47,17 @@ class PositiveOrZeroTest {
     assertThatThrownBy(() -> new PositiveOrZero("-1"))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessageContaining("음수는 입력할 수 없습니다: -1");
+  }
+
+  @ParameterizedTest(name = "{0} + {1} = {2}")
+  @CsvSource({"1, 2, 3", "0, 1, 1", "0, 0, 0"})
+  void add_양수_또는_0(int a, int b, int expected) {
+    assertThat(new PositiveOrZero(a).add(new PositiveOrZero(b)).value()).isEqualTo(expected);
+  }
+
+  @Test
+  void add_null() {
+    assertThatThrownBy(() -> new PositiveOrZero(1).add(null))
+        .isInstanceOf(NullPointerException.class);
   }
 }

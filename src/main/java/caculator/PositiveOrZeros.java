@@ -24,7 +24,7 @@ public record PositiveOrZeros(List<PositiveOrZero> values) {
 
     public int sum() {
         return values.stream()
-                .mapToInt(PositiveOrZero::value)
-                .sum();
+                .reduce(new PositiveOrZero(0), PositiveOrZero::add)
+                .value();
     }
 }

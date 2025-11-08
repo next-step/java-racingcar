@@ -1,5 +1,7 @@
 package caculator;
 
+import java.util.Objects;
+
 public record PositiveOrZero(int value) {
 
     public PositiveOrZero {
@@ -18,5 +20,10 @@ public record PositiveOrZero(int value) {
 
     private boolean isNegative(int number) {
         return number < 0;
+    }
+
+    public PositiveOrZero add(PositiveOrZero other) {
+        Objects.requireNonNull(other);
+        return new PositiveOrZero(this.value + other.value);
     }
 }
