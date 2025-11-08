@@ -13,16 +13,20 @@ public class StringCalculator {
 
         int[] numbers = parseInput(input);
 
+        return sum(numbers);
+    }
+
+    private static boolean isBlank(String input) {
+        return input == null || input.isEmpty();
+    }
+
+    private static int sum(int[] numbers) {
         int sum = 0;
         for (int number : numbers) {
             sum += number;
         }
 
         return sum;
-    }
-
-    private static boolean isBlank(String input) {
-        return input == null || input.isEmpty();
     }
 
     private static int[] parseInput(String input) {
