@@ -5,11 +5,14 @@ import racingGame.model.Car;
 
 public class Process {
     
-    private ArrayList<Car> cars;
+    private final ArrayList<Car> cars = new ArrayList<>();
     
     public void run(int cars, int moves){
         init(cars, moves);
-        
+    }
+    
+    public ArrayList<Car> joinCars() {
+        return cars;
     }
     
     private void init(int cars, int moves) {
@@ -20,6 +23,11 @@ public class Process {
     private void generateCar(int num){
         if(num < 1) {
             throw new IllegalArgumentException("참가시킬 자동차 수 입력이 생략되거나, 0이하");
+        }
+        for(int i = 0; i < num; i++) {
+            Car car = new Car();
+            car.init();
+            cars.add(car);
         }
     }
     
