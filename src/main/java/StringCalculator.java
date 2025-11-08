@@ -1,10 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    private static List<String> delimeter = new ArrayList<>(List.of(":", ","));
+
+    static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    static final String DEFAULT_DELIMITER = ":|,";
 
     public static int calculate(String input) {
         if (isBlank(input)) {
@@ -28,10 +28,14 @@ public class StringCalculator {
     }
 
     private static String[] split(String input) {
-        String expression = extractCustomDelimiter(input);
-        String regex = String.join("|", delimeter);
+        Matcher matcher = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
 
-        return expression.split(regex);
+        if (matcher.find()) {
+            String customDelimiter = matcher.group(1);
+            return matcher.group(2).split(DEFAULT_DELIMITER + "|" + Pattern.quote(customDelimiter));
+        }
+
+        return input.split(DEFAULT_DELIMITER);
     }
 
     private static int[] toInts(String[] strNumbers) {
@@ -54,14 +58,4 @@ public class StringCalculator {
         return number;
     }
 
-    private static String extractCustomDelimiter(String input) {
-        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
-
-        if (matcher.find()) {
-            delimeter.add(matcher.group(1));
-            return matcher.group(2);
-        }
-
-        return input;
-    }
 }
