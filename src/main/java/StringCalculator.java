@@ -11,9 +11,7 @@ public class StringCalculator {
             return 0;
         }
 
-        int[] numbers = parseInput(input);
-
-        return sum(numbers);
+        return sum(parseInput(input));
     }
 
     private static boolean isBlank(String input) {
