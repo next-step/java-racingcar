@@ -20,7 +20,7 @@ class ProcessTest {
         assertThatThrownBy(() -> {
             gp.run(-1,1);
         }).isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("%s","참가시킬 자동차 수가 음수");
+            .hasMessage("%s","참가시킬 자동차 수 입력이 생략되거나, 0이하");
     }
 
     @Test
@@ -28,7 +28,7 @@ class ProcessTest {
         assertThatThrownBy(() -> {
             gp.run(1,-1);
         }).isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("몇번의 게임을 할지 값을 입력해주세요 ");
+            .hasMessage("%s","이동횟수에 입력이 생략되거나, 0이하");
     }
 
     @Test
