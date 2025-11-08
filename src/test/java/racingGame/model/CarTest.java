@@ -16,7 +16,7 @@ class CarTest {
     void carGenerateAndInitTest() {
         Car car = new Car();
         car.init();
-        assertThat(car.findLocation()).isEqualTo(0);
+        assertThat(car.findLocation()).isEqualTo(1);
     }
 
     @Test

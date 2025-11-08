@@ -8,11 +8,11 @@ public class Car {
     }
     
     public void init() {
-        this.location = 0;
+        this.location = 1;
     }
     
     public void move() {
-        location++;
+        location ++;
     }
     
     public int findLocation() {
