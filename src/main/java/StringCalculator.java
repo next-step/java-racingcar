@@ -11,7 +11,7 @@ public class StringCalculator {
             return 0;
         }
 
-        return sum(parseInput(input));
+        return sum(toInts(split(input)));
     }
 
     private static boolean isBlank(String input) {
@@ -27,28 +27,31 @@ public class StringCalculator {
         return sum;
     }
 
-    private static int[] parseInput(String input) {
+    private static String[] split(String input) {
         String expression = extractCustomDelimiter(input);
         String regex = String.join("|", delimeter);
-        String[] strNumbers =  expression.split(regex);
 
-        return convertToIntArray(strNumbers);
+        return expression.split(regex);
     }
 
-    private static int[] convertToIntArray(String[] strNumbers) {
+    private static int[] toInts(String[] strNumbers) {
         int[] numbers = new int[strNumbers.length];
+
         for (int i = 0; i < strNumbers.length; i++) {
-            numbers[i] = Integer.parseInt(strNumbers[i]);
-            validateNumber(numbers[i]);
+            numbers[i] = toInt(strNumbers[i]);
         }
 
         return numbers;
     }
 
-    private static void validateNumber(int num) {
-        if (num < 0) {
+    private static int toInt(String value) {
+        int number = Integer.parseInt(value);
+
+        if (number < 0) {
             throw new RuntimeException("음수 값이 전달되었습니다.");
         }
+
+        return number;
     }
 
     private static String extractCustomDelimiter(String input) {
