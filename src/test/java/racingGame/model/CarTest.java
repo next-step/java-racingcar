@@ -14,17 +14,18 @@ class CarTest {
     
     @Test
     void carGenerateAndInitTest() {
-        Car car = new Car(0);
-        assertThat(car.location).isEqualTo(0);
+        Car car = new Car();
+        car.init();
+        assertThat(car.findLocation()).isEqualTo(0);
     }
-    
+
     @Test
     void carMoveTest() {
-        Car car = new Car(0);
+        Car car = new Car();
         car.move();
         car.move();
         car.move();
-        assertThat(car.location).isEqualTo(3);
+        assertThat(car.findLocation()).isEqualTo(3);
     }
 
 }
