@@ -2,6 +2,11 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 문자열로 된 숫자들을 특정 구분자로 분리하여 합산하는 기능을 제공합니다.
+ * 기본 구분자는 컴마(,)와 콜론(:)이며, 커스텀 구분자도 지원합니다.
+ * 음수 입력값에 대해서는 예외를 발생시킵니다.
+ */
 public class StringAddCalculator {
     private static final String CUSTOM_DELIMITERS_EXTRACT_REGEX = "//(.)\n(.*)";
     private static final String DEFAULT_DELIMITERS = ",|:";
