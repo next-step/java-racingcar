@@ -1,6 +1,6 @@
 package study.racing.view;
 
-import study.racing.dto.RaceInput;
+import study.racing.domain.RaceInput;
 
 import java.io.InputStream;
 import java.util.InputMismatchException;
@@ -23,11 +23,12 @@ public class InputView {
         int numberOfCar = input();
         System.out.println("시도할 횟수는 몇 회 인가요?");
         int numberOfAttempt = input();
+        System.out.println();
 
         return new RaceInput(numberOfCar, numberOfAttempt);
     }
 
-    public int input() {
+    private int input() {
         while (true) {
             try {
                 int number = scanner.nextInt();
@@ -49,10 +50,4 @@ public class InputView {
             throw new RuntimeException();
         }
     }
-
-    public static void main(String[] args) {
-        InputView inputView = new InputView();
-        inputView.race();
-    }
-
 }

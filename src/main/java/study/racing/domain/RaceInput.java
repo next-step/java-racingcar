@@ -1,4 +1,4 @@
-package study.racing.dto;
+package study.racing.domain;
 
 
 public class RaceInput{
