@@ -1,4 +1,4 @@
-package study;
+package study.step1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,8 +27,7 @@ public class SetTest {
     @Test
     @DisplayName("size()로 Set의 크기를 확인한다.")
     void size() {
-        assertThat(numbers.size()).isNotEqualTo(4);
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
         assertThat(numbers).containsExactly(1, 2, 3);
     }
 
@@ -36,7 +35,7 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("contains()로 요소가 존재하는지 확인한다.")
     void contains(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
