@@ -1,13 +1,13 @@
 package racingcar;
 
 public class Car {
+    private int distance;
+
     private static final int DEFAULT_DISTANCE = 0;
     private static final int MIN_RANDOM_VALUE = 0;
     private static final int MAX_RANDOM_VALUE = 9;
     private static final int FORWARD_THRESHOLD = 4;
     private static final int MOVE_DISTANCE = 1;
-
-    private int distance;
 
     public Car() {
         this.distance = DEFAULT_DISTANCE;
