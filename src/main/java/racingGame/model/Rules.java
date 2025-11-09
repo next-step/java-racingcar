@@ -28,10 +28,7 @@ public class Rules {
     }
     
     public boolean isProceedByRandom(int randomNum) {
-        if(randomNum > CAR_FORWARD_CRITERIA) {
-            return true;
-        }
-        return false;
+        return randomNum > CAR_FORWARD_CRITERIA;
     }
     
     private static void validate(int moves, int cars) {
