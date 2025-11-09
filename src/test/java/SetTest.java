@@ -32,6 +32,6 @@ public class SetTest {
 
   @Test
   void check_set_size(){
-    assertThat(numbers.size()).isEqualTo(3);
+    assertThat(numbers).hasSize(3);
   }
 }
