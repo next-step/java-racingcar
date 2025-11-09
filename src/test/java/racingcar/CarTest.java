@@ -4,26 +4,39 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarTest {
 
-    @Test
-    void 전진_조건_미만이면_정지() {
+    @ParameterizedTest(name = "입력값: {0}")
+    @ValueSource(ints = {0, 3})
+    void move_랜덤값이_0_이상_또는_3_이하이면_정지한다(int input) {
         Car car = new Car();
 
-        car.move(3);
+        car.move(input);
 
         assertThat(car.getDistance()).isEqualTo(0);
     }
 
-    @Test
-    void 전진_조건_이상이면_1칸_전진() {
+    @ParameterizedTest(name = "입력값: {0}")
+    @ValueSource(ints = {4, 9})
+    void move_랜덤값이_4_이상_또는_9_이하이면_1_칸_전진한다(int input) {
         Car car = new Car();
 
-        car.move(4);
+        car.move(input);
 
         assertThat(car.getDistance()).isEqualTo(1);
+    }
+
+    @ParameterizedTest(name = "입력값: {0}")
+    @ValueSource(ints = {-1, 10})
+    void move_랜덤값이_0_미만_또는_9_초과면_예외가_발생한다(int input) {
+        Car car = new Car();
+
+        assertThatThrownBy(() -> car.move(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
     }
 }
