@@ -6,18 +6,32 @@ import java.util.List;
 public class Cars {
     private final List<Car> values;
 
+    private static final int MIN_CAR_COUNT = 1;
+
     public Cars(int count) {
-        if (count < 1) {
+        validateCount(count);
+
+        this.values = createCars(count);
+    }
+
+    private void validateCount(int count) {
+        if (isInvalidCount(count)) {
             throw new IllegalArgumentException("자동차 대수는 1이상이어야 합니다.");
         }
+    }
 
+    private boolean isInvalidCount(int count) {
+        return count < MIN_CAR_COUNT;
+    }
+
+    private List<Car> createCars(int count) {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             cars.add(new Car());
         }
 
-        this.values = cars;
+        return cars;
     }
 
     public void moveAll(RandomNumber randomNumber) {
@@ -28,10 +42,6 @@ public class Cars {
 
     public int size() {
         return this.values.size();
-    }
-
-    public List<Car> getValues() {
-        return List.copyOf(this.values);
     }
 
     public List<Integer> getDistances() {
