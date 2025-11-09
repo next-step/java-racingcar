@@ -19,11 +19,11 @@ public class Rules {
     }
     
     public boolean isLimitMove(int currentMoves) {
-        return this.moves >= currentMoves;
+        return this.moves > currentMoves;
     }
     
     public boolean isLimitCars(int currentCars) {
-        return this.cars >= currentCars;
+        return this.cars > currentCars;
     }
     
     private static void validate(int moves, int cars) {

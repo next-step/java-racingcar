@@ -22,12 +22,6 @@ class ProcessTest {
         assertThat(gp.joinCars().size()).isEqualTo(3);
     }
 
-   @Test
-   void gameNextTurnTest() {
-       gp.run(1,2);
-       assertThat(gp.nowMove()).isEqualTo(2);
-   }
-
   @Test
   void carForwardTest() {
       gp.run(1, 10);

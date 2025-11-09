@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import racingGame.ResultView;
 import racingGame.model.Car;
+import racingGame.model.Rules;
 import racingGame.util.RandomUtil;
 
 public class Process {
     
     public static final int CAR_FORWARD_CRITERIA = 3;
-    private final List<Car> cars = new ArrayList<>();
-    private int moves;
+    private Rules rules;
+    private final List<Car> joinCars = new ArrayList<>();
+    private int nowMoves;
     
     public void run(int cars, int moves){
         init(cars, moves);
+        participateCar();
+        
         for(int i = 0; i < moves; i++) {
             nextMove();
             ResultView.moveDonePrint();
@@ -21,7 +25,7 @@ public class Process {
     }
     
     private void nextMove() {
-        for(Car car: cars) {
+        for(Car car: joinCars) {
             ResultView.forwardCarPrint(car.findLocation());
             if(RandomUtil.generateInt() > CAR_FORWARD_CRITERIA) {
                 car.move();
@@ -30,33 +34,16 @@ public class Process {
     }
     
     public List<Car> joinCars() {
-        return this.cars;
-    }
-    
-    public int nowMove() {
-        return this.moves;
+        return this.joinCars;
     }
     
     private void init(int cars, int moves) {
-        ResultView.startPrint();
-        generateCar(cars);
-        setMoveCount(moves);
+        rules = Rules.of(cars, moves);
     }
     
-    private void generateCar(int num){
-        if(num < 1) {
-            throw new IllegalArgumentException("참가시킬 자동차 수 입력이 생략되거나, 0이하");
+    private void participateCar() {
+        while(rules.isLimitCars(this.joinCars.size())){
+            this.joinCars.add(new Car());
         }
-        for(int i = 0; i < num; i++) {
-            Car car = new Car();
-            cars.add(car);
-        }
-    }
-    
-    private void setMoveCount(int moves) {
-        if(moves < 1) {
-            throw new IllegalArgumentException("이동횟수에 입력이 생략되거나, 0이하");
-        }
-        this.moves = moves;
     }
 }
