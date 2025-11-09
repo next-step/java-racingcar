@@ -49,4 +49,15 @@ class CarTest {
 
         assertThat(car.getDistance()).isEqualTo(1);
     }
+
+    @Test
+    void 여러번_전진_시_이동거리가_누적된다() {
+        Car car = new Car();
+
+        car.move(4);
+        car.move(6);
+        car.move(9);
+
+        assertThat(car.getDistance()).isEqualTo(3);
+    }
 }
