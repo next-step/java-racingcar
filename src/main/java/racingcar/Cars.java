@@ -7,6 +7,10 @@ public class Cars {
     private final List<Car> values;
 
     public Cars(int count) {
+        if (count < 1) {
+            throw new IllegalArgumentException("자동차 대수는 1이상이어야 합니다.");
+        }
+
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
@@ -20,6 +24,10 @@ public class Cars {
         for (Car car : values) {
             car.move(randomNumber.generate());
         }
+    }
+
+    public int size() {
+        return this.values.size();
     }
 
     public List<Car> getValues() {
