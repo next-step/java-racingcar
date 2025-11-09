@@ -8,14 +8,14 @@ class RacingGameRulesTest {
     
     @Test
     void getGameRules() {
-        RacingGameRules rule = new RacingGameRules(2, 2);
-        assertThat(rule.getRules()).isNotNull();
+        RacingGameRules rules = RacingGameRules.of(2, 2);
+        assertThat(rules.getRules()).isNotNull();
     }
     
     @Test
     void carGenerateResultNullTest() {
         assertThatThrownBy(() -> {
-            new RacingGameRules(-1, 1);
+            RacingGameRules.of(1, -1);
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("%s","참가시킬 자동차 수 입력이 생략되거나, 0이하");
     }
@@ -23,7 +23,7 @@ class RacingGameRulesTest {
     @Test
     void gameTurnSetNullTest() {
         assertThatThrownBy(() -> {
-            new RacingGameRules(1, -1);
+            RacingGameRules.of(-1, 1);
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("%s","이동횟수에 입력이 생략되거나, 0이하");
     }
