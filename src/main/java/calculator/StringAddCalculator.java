@@ -6,9 +6,9 @@ public class StringAddCalculator {
     if(validate(input)) {
       return 0;
     }
-    InputContext inputContext = InputContext.parse(input);
+    InputContext inputContext = new InputContext(input);
     String[] tokens = inputContext.split();
-    Numbers numbers = Numbers.from(tokens);
+    Numbers numbers = new Numbers(tokens);
     return numbers.sum();
   }
 

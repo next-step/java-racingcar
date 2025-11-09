@@ -10,19 +10,15 @@ class InputContext {
   private final String delimiter;
   private final String content;
 
-  private InputContext(String delimiter, String content){
-    this.delimiter = delimiter;
-    this.content = content;
-  }
-
-  static InputContext parse(String input){
+  InputContext(String input){
     Matcher m = Pattern.compile(DELIMITER_REGEX).matcher(input);
     if (m.find()) {
-      String customDelimiter = m.group(1);
-      String content = m.group(2);
-      return new InputContext(customDelimiter, content);
+      this.delimiter = m.group(1);
+      this.content = m.group(2);
+      return;
     }
-    return new InputContext(DEFAULT_DELIMITER, input);
+    this.delimiter = DEFAULT_DELIMITER;
+    this.content = input;
   }
 
   String[] split(){

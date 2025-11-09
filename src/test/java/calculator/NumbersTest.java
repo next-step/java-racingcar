@@ -15,7 +15,7 @@ class NumbersTest {
   @ParameterizedTest
   @MethodSource("sumTestCases")
   void numbersTest(String[] inputs, int expected) {
-    Numbers numbers = Numbers.from(inputs);
+    Numbers numbers = new Numbers(inputs);
     assertThat(numbers.sum()).isEqualTo(expected);
   }
 
@@ -30,7 +30,7 @@ class NumbersTest {
   public void numbersTest_음수() throws Exception {
     String[] inputs = new String[]{"-1", "2", "3"};
 
-    assertThatThrownBy(() -> Numbers.from(inputs))
+    assertThatThrownBy(() -> new Numbers(inputs))
         .isInstanceOf(RuntimeException.class);
   }
 

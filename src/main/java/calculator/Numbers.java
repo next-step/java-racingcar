@@ -6,16 +6,11 @@ import java.util.List;
 class Numbers {
   private final List<Integer> values;
 
-  private Numbers(List<Integer> values) {
-    this.values = values;
-  }
-
-  static Numbers from(String[] tokens){
-    List<Integer> numbers = Arrays.stream(tokens)
+  Numbers(String[] tokens) {
+    this.values = Arrays.stream(tokens)
         .map(Integer::parseInt)
         .toList();
-    validatePositive(numbers);
-    return new Numbers(numbers);
+    validatePositive(this.values);
   }
 
   private static void validatePositive(List<Integer> numbers) {
