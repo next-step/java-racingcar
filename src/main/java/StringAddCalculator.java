@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,49 +17,45 @@ public class StringAddCalculator {
             return 0;
         }
 
-        return calcWithDelimiter(input);
+        return sum(toPositiveInts(split(input)));
     }
 
     private static boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
     }
 
-    private static int calcWithDefaultDelimiters(String input) {
-        String[] tokens = input.split(DEFAULT_DELIMITERS);
-        return sum(tokens);
-    }
-
-    private static int calcWithCustomDelimiters(String input) {
-        Matcher m = Pattern.compile(CUSTOM_DELIMITERS_EXTRACT_REGEX).matcher(input);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            String[] tokens = m.group(2).split(customDelimiter);
-            return sum(tokens);
-        }
-        throw new IllegalArgumentException("입력 형식이 올바르지 않습니다.");
-    }
-
-    private static int calcWithDelimiter(String input) {
+    private static String[] split(String input) {
         if (hasCustomDelimiter(input)) {
-            return calcWithCustomDelimiters(input);
+            return splitWithCustomDelimiters(input);
         }
-        return calcWithDefaultDelimiters(input);
+        return input.split(DEFAULT_DELIMITERS);
     }
 
     private static boolean hasCustomDelimiter(String input) {
         return input.startsWith("//");
     }
 
-    private static int sum(String[] tokens) {
-        return Arrays.stream(tokens)
-                .mapToInt(Integer::parseInt)
-                .map(StringAddCalculator::validateInt)
-                .sum();
+    private static String[] splitWithCustomDelimiters(String input) {
+        Matcher m = Pattern.compile(CUSTOM_DELIMITERS_EXTRACT_REGEX).matcher(input);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(customDelimiter);
+        }
+        throw new IllegalArgumentException("입력 형식이 올바르지 않습니다.");
     }
 
-    private static int validateInt(int number) {
+    private static int sum(List<Integer> numbers) {
+        return numbers.stream().mapToInt(Integer::intValue).sum();
+    }
+
+    private static List<Integer> toPositiveInts(String[] tokens) {
+        return Arrays.stream(tokens).map(StringAddCalculator::toPositive).toList();
+    }
+
+    private static int toPositive(String value) {
+        int number = Integer.parseInt(value);
         if (number < 0) {
-            throw new IllegalArgumentException("음수 입력값은 허용되지 않습니다.");
+            throw new RuntimeException("음수를 입력할 수 없습니다.");
         }
         return number;
     }
