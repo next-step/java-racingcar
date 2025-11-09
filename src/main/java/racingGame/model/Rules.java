@@ -1,21 +1,29 @@
 package racingGame.model;
 
-public class RacingGameRules {
+public class Rules {
     
     private int moves;
     private int cars;
     
-    public RacingGameRules() {
+    public Rules() {
     }
     
-    private RacingGameRules(int moves, int cars) {
+    private Rules(int moves, int cars) {
         this.moves = moves;
         this.cars = cars;
     }
     
-    public static RacingGameRules of(int moves, int cars) {
+    public static Rules of(int moves, int cars) {
         validate(moves, cars);
-        return new RacingGameRules(moves, cars);
+        return new Rules(moves, cars);
+    }
+    
+    public boolean isLimitMove(int currentMoves) {
+        return this.moves >= currentMoves;
+    }
+    
+    public boolean isLimitCars(int currentCars) {
+        return this.cars >= currentCars;
     }
     
     private static void validate(int moves, int cars) {
@@ -35,7 +43,4 @@ public class RacingGameRules {
         }
     }
     
-    public RacingGameRules getRules() {
-        return this;
-    }
 }
