@@ -7,7 +7,7 @@ public class RoundResult {
 
     public RoundResult(List<Integer> positions) {
         validate(positions);
-        this.positions = positions;
+        this.positions = List.copyOf(positions);
     }
 
     private void validate(List<Integer> positions) {
@@ -18,5 +18,9 @@ public class RoundResult {
         if (positions.isEmpty()) {
             throw new IllegalArgumentException("위치 정보는 비어있을 수 없습니다.");
         }
+    }
+
+    public List<Integer> positions() {
+        return this.positions;
     }
 }

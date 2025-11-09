@@ -1,8 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RacingGame {
     private final Cars cars;
     private final RandomNumber randomNumber;
@@ -14,14 +11,14 @@ public class RacingGame {
         this.randomNumber = randomNumber;
     }
 
-    public List<RoundResult> race(int roundCount) {
+    public RaceHistory race(int roundCount) {
         validateRoundCount(roundCount);
 
-        List<RoundResult> raceHistory = new ArrayList<>();
+        RaceHistory raceHistory = new RaceHistory();
 
         for (int round = 0; round < roundCount; round++) {
             executeRound();
-            raceHistory.add(getRoundResult());
+            raceHistory.record(getRoundResult());
         }
 
         return raceHistory;

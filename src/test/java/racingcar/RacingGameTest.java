@@ -15,11 +15,11 @@ class RacingGameTest {
         RandomNumber randomNumber = () -> 4;
         RacingGame game = new RacingGame(cars, randomNumber);
 
-        var result = game.race(2);
+        RaceHistory history = game.race(2);
 
-        assertThat(result).hasSize(2);
-        assertThat(result.get(0)).containsExactly(1, 1);
-        assertThat(result.get(1)).containsExactly(2, 2);
+        assertThat(history.size()).isEqualTo(2);
+        assertThat(history.getRound(0).positions()).containsExactly(1, 1);
+        assertThat(history.getRound(1).positions()).containsExactly(2, 2);
     }
 
     @Test
