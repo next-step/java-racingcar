@@ -34,9 +34,7 @@ class CarTest {
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(ints = {-1, 10})
     void move_랜덤값이_0_미만_또는_9_초과면_예외가_발생한다(int input) {
-        Car car = new Car();
-
-        assertThatThrownBy(() -> car.move(input))
+        assertThatThrownBy(() -> new Car().move(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
     }
