@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.domain;
 
 public class Car {
     private int position;

@@ -1,4 +1,4 @@
-package study.racing;
+package study.racing.domain;
 
 import org.junit.jupiter.api.Test;
 

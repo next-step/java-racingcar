@@ -1,4 +1,6 @@
-package study.racing;
+package study.racing.domain;
+
+import study.racing.view.GameOutput;
 
 import java.util.ArrayList;
 import java.util.List;
