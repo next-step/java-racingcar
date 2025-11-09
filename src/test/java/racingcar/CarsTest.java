@@ -33,4 +33,16 @@ class CarsTest {
 
         assertThat(cars.getDistances()).containsExactly(1, 1, 1);
     }
+
+    @Test
+    void moveAll_각_자동차는_서로_다른_랜덤값을_받는다() {
+        Cars cars = new Cars(4);
+        int[] values = {0, 3, 4, 9};
+        int[] index = {0};
+        RandomNumber randomNumber = () -> values[index[0]++];
+
+        cars.moveAll(randomNumber);
+
+        assertThat(cars.getDistances()).containsExactly(0, 0, 1, 1);
+    }
 }
