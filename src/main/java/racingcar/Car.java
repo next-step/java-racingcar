@@ -9,7 +9,9 @@ public class Car {
         this.distance = DEFAULT_DISTANCE;
     }
 
-    public void move() {}
+    public void move(int value) {
+        if (value >= 4) distance++;
+    }
 
     public int getDistance() {
         return this.distance;

@@ -13,8 +13,17 @@ class CarTest {
     void 전진_조건_미만이면_정지() {
         Car car = new Car();
 
-        car.move();
+        car.move(3);
 
         assertThat(car.getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    void 전진_조건_이상이면_1칸_전진() {
+        Car car = new Car();
+
+        car.move(4);
+
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
