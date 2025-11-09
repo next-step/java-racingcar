@@ -1,53 +1,27 @@
 package racingcar;
 
-import java.util.Scanner;
 import racingcar.domain.Cars;
 import racingcar.domain.RaceHistory;
 import racingcar.domain.RacingGame;
-import racingcar.domain.RoundResult;
 import racingcar.random.SimpleRandomNumber;
+import racingcar.view.InputView;
+import racingcar.view.RaceGameInput;
+import racingcar.view.ResultView;
 
 public class Application {
     public static void main(String[] args) {
-        int carCount;
-        int roundCount;
+        RaceGameInput input = InputView.readRaceGameInput();
 
-        try (Scanner sc = new Scanner(System.in)) {
-            carCount = readCarCount(sc);
-            roundCount = readRoundCount(sc);
-        }
+        RaceHistory history = executeRaceGame(input);
 
-        RaceHistory history = executeGame(carCount, roundCount);
-
-        printResult(history);
+        ResultView.printRaceHistory(history);
     }
 
-    private static int readCarCount(Scanner sc) {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return sc.nextInt();
-    }
-
-    private static int readRoundCount(Scanner sc) {
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        return sc.nextInt();
-    }
-
-    private static RaceHistory executeGame(int carCount, int roundCount) {
-        Cars cars = new Cars(carCount);
+    private static RaceHistory executeRaceGame(RaceGameInput input) {
+        Cars cars = new Cars(input.carCount());
         SimpleRandomNumber randomNumber = new SimpleRandomNumber();
         RacingGame game = new RacingGame(cars, randomNumber);
 
-        return game.race(roundCount);
-    }
-
-    private static void printResult(RaceHistory history) {
-        System.out.println("실행 결과");
-
-        for (RoundResult roundResult : history.getRounds()) {
-            for (int position : roundResult.positions()) {
-                System.out.println("-".repeat(Math.max(0, position)));
-            }
-            System.out.println();
-        }
+        return game.race(input.roundCount());
     }
 }
