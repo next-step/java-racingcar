@@ -2,6 +2,7 @@ package racingGame.model;
 
 public class Rules {
     
+    public static final int CAR_FORWARD_CRITERIA = 3;
     private int cars;
     private int moves;
     
@@ -24,6 +25,13 @@ public class Rules {
     
     public boolean isLimitCars(int currentCars) {
         return this.cars > currentCars;
+    }
+    
+    public boolean isProceedByRandom(int randomNum) {
+        if(randomNum > CAR_FORWARD_CRITERIA) {
+            return true;
+        }
+        return false;
     }
     
     private static void validate(int moves, int cars) {

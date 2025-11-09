@@ -1,7 +1,6 @@
 package racingGame.model;
 
 import static org.assertj.core.api.Assertions.*;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -44,6 +43,20 @@ class RulesTest {
     void checkLimitCarsTest(int cars) {
         Rules rules = Rules.of(1, cars);
         assertThat(rules.isLimitCars(cars + 1)).isFalse();
+    }
+    
+    @ParameterizedTest
+    @ValueSource(ints = {4, 6, 8})
+    void carIsProceed(int num) {
+        Rules of = Rules.of(1, 1);
+        assertThat(of.isProceedByRandom(num)).isTrue();
+    }
+    
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 3})
+    void carIsNotProceed(int num) {
+        Rules of = Rules.of(1, 1);
+        assertThat(of.isProceedByRandom(num)).isFalse();
     }
     
 }

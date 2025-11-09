@@ -9,7 +9,6 @@ import racingGame.util.RandomUtil;
 
 public class Process {
     
-    public static final int CAR_FORWARD_CRITERIA = 3;
     private Rules rules;
     private final List<Car> joinCars = new ArrayList<>();
     private final List<ProgressRecord> progressRecords = new ArrayList<>();
@@ -39,7 +38,7 @@ public class Process {
     
     private void nextMove() {
         for(Car car: this.joinCars) {
-            if(RandomUtil.generateInt() > CAR_FORWARD_CRITERIA) {
+            if(rules.isProceedByRandom(RandomUtil.generateInt())) {
                 car.move();
             }
         }
