@@ -4,33 +4,51 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
+
+    public static final String DEFAULT_DELIMITER = ",|:";
+    public static final String CUSTOM_DELIMITER_REGEXP = "//(.)\n(.*)";
+
     public static int splitAndSum(String text) {
-        int result;
-        if (text == null || text.isEmpty()) {
-            result = 0;
-        } else {
-            Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-            if (m.find()) {
-                String customDelimiter = m.group(1);
-                String[] values = m.group(2).split(customDelimiter);
-                result = sum(values);
-            } else {
-                String[] values = text.split(",|:");
-                result = sum(values);
-            }
+        if (isBlank(text)) {
+            return 0;
         }
-        return result;
+        return sum(toInts(split(text)));
     }
 
-    private static int sum(String[] values) {
+    private static boolean isBlank(String text) {
+        return text == null || text.isEmpty();
+    }
+
+    private static String[] split(String text) {
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEXP).matcher(text);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(customDelimiter);
+        }
+        return text.split(DEFAULT_DELIMITER);
+    }
+
+    private static int sum(int[] numbers) {
         int total = 0;
-        for (String value : values) {
-            int number = Integer.parseInt(value);
-            if (number < 0) {
-                throw new RuntimeException("음수를 입력할 수 없습니다.");
-            }
+        for (int number : numbers) {
             total += number;
         }
         return total;
+    }
+
+    private static int[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = toInt(values[i]);
+        }
+        return numbers;
+    }
+
+    private static int toInt(String value) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
+            throw new RuntimeException("음수를 입력할 수 없습니다.");
+        }
+        return number;
     }
 }
