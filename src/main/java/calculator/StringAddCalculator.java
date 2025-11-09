@@ -6,8 +6,8 @@ public class StringAddCalculator {
     if(validate(input)) {
       return 0;
     }
-    Delimiter delimiter = Delimiter.parse(input);
-    String[] tokens = delimiter.split();
+    InputContext inputContext = InputContext.parse(input);
+    String[] tokens = inputContext.split();
     Numbers numbers = Numbers.from(tokens);
     return numbers.sum();
   }
