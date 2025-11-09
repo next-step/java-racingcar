@@ -1,7 +1,8 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.random.RandomNumber;
 
 public class Cars {
     private final List<Car> values;

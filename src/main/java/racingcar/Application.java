@@ -1,6 +1,11 @@
 package racingcar;
 
 import java.util.Scanner;
+import racingcar.domain.Cars;
+import racingcar.domain.RaceHistory;
+import racingcar.domain.RacingGame;
+import racingcar.domain.RoundResult;
+import racingcar.random.SimpleRandomNumber;
 
 public class Application {
     public static void main(String[] args) {

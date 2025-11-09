@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.random.RandomNumber;
 
 public class RacingGame {
     private final Cars cars;

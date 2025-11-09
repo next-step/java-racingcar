@@ -1,10 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import racingcar.random.RandomNumber;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class RacingGameTest {
