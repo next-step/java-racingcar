@@ -2,20 +2,20 @@ package racingGame.model;
 
 public class Rules {
     
-    private int moves;
     private int cars;
+    private int moves;
     
     public Rules() {
     }
     
-    private Rules(int moves, int cars) {
-        this.moves = moves;
+    private Rules(int cars, int moves) {
         this.cars = cars;
+        this.moves = moves;
     }
     
-    public static Rules of(int moves, int cars) {
-        validate(moves, cars);
-        return new Rules(moves, cars);
+    public static Rules of(int cars, int moves) {
+        validate(cars, moves);
+        return new Rules(cars, moves);
     }
     
     public boolean isLimitMove(int currentMoves) {
