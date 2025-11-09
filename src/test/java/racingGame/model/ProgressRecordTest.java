@@ -2,6 +2,8 @@ package racingGame.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,15 +23,20 @@ class ProgressRecordTest {
     
     @Test
     void gameRecordTest() {
-        progressRecord.gameRecord(new Car());
-        progressRecord.gameRecord(new Car());
-        assertThat(progressRecord.gameRecord(new Car()).size()).isEqualTo(3);
+        List<Car> joinCarsRecord = new ArrayList<>();
+        joinCarsRecord.add(new Car());
+        joinCarsRecord.add(new Car());
+        joinCarsRecord.add(new Car());
+        
+        assertThat(progressRecord.gameRecord(joinCarsRecord).size()).isEqualTo(3);
     }
     
     @Test
     void showGameResultTest() {
-        progressRecord.gameRecord(new Car());
-        progressRecord.gameRecord(new Car());
+        List<Car> joinCarsRecord = new ArrayList<>();
+        joinCarsRecord.add(new Car());
+        joinCarsRecord.add(new Car());
+        progressRecord.gameRecord(joinCarsRecord);
         assertThat(progressRecord.gameResult()).isNotEmpty();
     }
 }
