@@ -1,4 +1,4 @@
-package caculator;
+package calculator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,14 +17,12 @@ public record PositiveOrZeros(List<PositiveOrZero> values) {
 
     private static List<PositiveOrZero> toValidatedList(String[] inputs) {
         Objects.requireNonNull(inputs, "문자열 배열은 null일 수 없습니다.");
-        return Arrays.stream(inputs)
-                .map(PositiveOrZero::new)
-                .toList();
+        return Arrays.stream(inputs).map(PositiveOrZero::new).toList();
     }
 
     public int sum() {
         return values.stream()
-                .mapToInt(PositiveOrZero::value)
-                .sum();
+                .reduce(new PositiveOrZero(0), PositiveOrZero::add)
+                .value();
     }
 }
