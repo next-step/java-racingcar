@@ -5,9 +5,6 @@ public class Car {
     private int location;
     
     public Car() {
-    }
-    
-    public void init() {
         this.location = 1;
     }
     

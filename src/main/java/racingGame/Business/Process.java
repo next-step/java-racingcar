@@ -48,7 +48,6 @@ public class Process {
         }
         for(int i = 0; i < num; i++) {
             Car car = new Car();
-            car.init();
             cars.add(car);
         }
     }
