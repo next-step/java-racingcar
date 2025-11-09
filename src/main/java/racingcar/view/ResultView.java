@@ -8,11 +8,12 @@ public class ResultView {
     private static final String RESULT_HEADER = "실행 결과";
 
     public static void printRaceHistory(RaceHistory raceHistory) {
+        printBlankLine();
         print(RESULT_HEADER);
 
         for (RoundResult roundResult : raceHistory.getRounds()) {
             printRound(roundResult);
-            print();
+            printBlankLine();
         }
     }
 
@@ -26,7 +27,7 @@ public class ResultView {
         System.out.println(message);
     }
 
-    private static void print() {
+    private static void printBlankLine() {
         System.out.println();
     }
 }
