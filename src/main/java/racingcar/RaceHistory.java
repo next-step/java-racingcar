@@ -18,6 +18,10 @@ public class RaceHistory {
         return this.rounds.size();
     }
 
+    public List<RoundResult> getRounds() {
+        return this.rounds;
+    }
+
     public RoundResult getRound(int index) {
         return this.rounds.get(index);
     }
