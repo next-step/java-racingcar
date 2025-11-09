@@ -2,28 +2,48 @@ package study.racing;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingGame {
     private final List<Car> cars;
-    private final Random random;
+    private final int roundCount;
+    private final RandomNumber randomNumber;
+    private final GameOutput gameOutput;
 
-    public RacingGame(int carCount) {
+    public RacingGame(int carCount, int roundCount, RandomNumber randomNumber) {
         this.cars = new ArrayList<>();
         for (int i = 0; i < carCount; i++) {
             this.cars.add(new Car());
         }
-        this.random = new Random();
+        this.roundCount = roundCount;
+        this.randomNumber = randomNumber;
+        this.gameOutput = new GameOutput();
     }
 
     public List<Car> getCars() {
         return cars;
     }
 
+    public void play() {
+        gameOutput.printResult();
+        for (int i = 0; i < roundCount; i++) {
+            playRound();
+            printCurrentPosition();
+            System.out.println("");
+        }
+    }
+
     public void playRound() {
         for (Car car : cars) {
-            car.move(random.nextInt(10));
+            car.move(randomNumber.generate());
         }
+    }
+
+    public void printCurrentPosition() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.getPosition());
+        }
+        gameOutput.printRound(positions);
     }
 
 
