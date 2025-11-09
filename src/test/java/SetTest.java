@@ -35,7 +35,7 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     @DisplayName("요구사항2 - Set의 contains 메서드 학습 테스트 - ValueSource를 이용한 ParameterizedTest")
     void containsTest(int number) {
-        assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @ParameterizedTest
