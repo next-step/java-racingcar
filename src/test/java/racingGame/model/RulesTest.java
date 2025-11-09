@@ -27,8 +27,8 @@ class RulesTest {
     
     @ParameterizedTest
     @CsvSource(value = {"1:1", "2:2", "3:3", "3:5", "5:3"}, delimiter = ':')
-    void ruesSetTest(int move, int cars) {
-        assertThat(Rules.of(move, cars)).isNotNull();
+    void ruesSetTest(int cars, int move) {
+        assertThat(Rules.of(cars, move)).isNotNull();
     }
     
     @ParameterizedTest

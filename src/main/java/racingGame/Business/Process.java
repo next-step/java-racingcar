@@ -20,6 +20,16 @@ public class Process {
         return showResult();
     }
     
+    private void init(int cars, int moves) {
+        rules = Rules.of(cars, moves);
+    }
+    
+    private void participateCar() {
+        while(rules.isLimitCars(this.joinCars.size())) {
+            this.joinCars.add(new Car());
+        }
+    }
+    
     private void moveCar() {
         while(rules.isLimitMove(this.progressRecords.size())) {
             nextMove();
@@ -52,15 +62,5 @@ public class Process {
     
     public List<Car> joinCars() {
         return this.joinCars;
-    }
-    
-    private void init(int cars, int moves) {
-        rules = Rules.of(cars, moves);
-    }
-    
-    private void participateCar() {
-        while(rules.isLimitCars(this.joinCars.size())) {
-            this.joinCars.add(new Car());
-        }
     }
 }
