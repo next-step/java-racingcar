@@ -16,4 +16,14 @@ public class RaceGameTest {
         assertThat(raceGame.cars()).hasSize(carCount);
         assertThat(raceGame.gameCount()).isEqualTo(gameCount);
     }
+
+    @DisplayName("경기가 실행된다")
+    @Test
+    void playRaceGame() {
+        RaceGame raceGame = new RaceGame(2, 3);
+        raceGame.playGame();
+        for (Car car : raceGame.cars()) {
+            assertThat(car.position()).isBetween(0, 3);
+        }
+    }
 }

@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RaceGame {
 
@@ -27,5 +28,18 @@ public class RaceGame {
 
     public int gameCount() {
         return gameCount;
+    }
+
+    public void playGame() {
+        for (int i = 0; i < gameCount; i++) {
+            playRound();
+        }
+    }
+
+    private void playRound() {
+        Random random = new Random();
+        for (Car car : cars) {
+            car.moveIfPossible(random.nextInt(10));
+        }
     }
 }
