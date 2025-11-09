@@ -1,6 +1,7 @@
 package racingGame.Business;
 
 import java.util.ArrayList;
+import java.util.List;
 import racingGame.ResultView;
 import racingGame.model.Car;
 import racingGame.util.RandomUtil;
@@ -8,7 +9,7 @@ import racingGame.util.RandomUtil;
 public class Process {
     
     public static final int CAR_FORWARD_CRITERIA = 3;
-    private final ArrayList<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     private int moves;
     
     public void run(int cars, int moves){
@@ -28,7 +29,7 @@ public class Process {
         }
     }
     
-    public ArrayList<Car> joinCars() {
+    public List<Car> joinCars() {
         return this.cars;
     }
     
