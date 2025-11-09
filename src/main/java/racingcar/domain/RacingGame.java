@@ -4,22 +4,20 @@ import racingcar.random.RandomNumber;
 
 public class RacingGame {
     private final Cars cars;
-    private final RandomNumber randomNumber;
 
     private static final int MIN_ROUND = 1;
 
-    public RacingGame(Cars cars, RandomNumber randomNumber) {
+    public RacingGame(Cars cars) {
         this.cars = cars;
-        this.randomNumber = randomNumber;
     }
 
-    public RaceHistory race(int roundCount) {
+    public RaceHistory race(int roundCount, RandomNumber randomNumber) {
         validateRoundCount(roundCount);
 
         RaceHistory raceHistory = new RaceHistory();
 
         for (int round = 0; round < roundCount; round++) {
-            executeRound();
+            executeRound(randomNumber);
             raceHistory.record(getRoundResult());
         }
 
@@ -40,7 +38,7 @@ public class RacingGame {
         return new RoundResult(cars.getDistances());
     }
 
-    private void executeRound() {
+    private void executeRound(RandomNumber randomNumber) {
         cars.moveAll(randomNumber);
     }
 }

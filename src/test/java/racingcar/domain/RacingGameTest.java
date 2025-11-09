@@ -14,9 +14,9 @@ class RacingGameTest {
     void race_지정된_라운드만큼_경주를_진행한다() {
         Cars cars = new Cars(2);
         RandomNumber randomNumber = () -> 4;
-        RacingGame game = new RacingGame(cars, randomNumber);
+        RacingGame game = new RacingGame(cars);
 
-        RaceHistory history = game.race(2);
+        RaceHistory history = game.race(2, randomNumber);
 
         assertThat(history.size()).isEqualTo(2);
         assertThat(history.getRound(0).positions()).containsExactly(1, 1);
@@ -27,9 +27,9 @@ class RacingGameTest {
     void race_입력된_라운드_수가_1미만이면_예외발생() {
         Cars cars = new Cars(2);
         RandomNumber randomNumber = () -> 4;
-        RacingGame game = new RacingGame(cars, randomNumber);
+        RacingGame game = new RacingGame(cars);
 
-        assertThatThrownBy(() -> game.race(0))
+        assertThatThrownBy(() -> game.race(0, randomNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("라운드 수는 1이상이어야 합니다.");
     }
