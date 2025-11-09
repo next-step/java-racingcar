@@ -14,15 +14,27 @@ public class Process {
     private final List<Car> joinCars = new ArrayList<>();
     private final List<ProgressRecord> progressRecords = new ArrayList<>();
     
-    public List<ProgressRecord> run(int cars, int moves) {
+    public List<List<Integer>> run(int cars, int moves) {
         init(cars, moves);
         participateCar();
-        
+        moveCar();
+        return showResult();
+    }
+    
+    private void moveCar() {
         while(rules.isLimitMove(this.progressRecords.size())) {
             nextMove();
             recordCarsMove();
         }
-        return progressRecords;
+    }
+    
+    private List<List<Integer>> showResult() {
+        List<List<Integer>> results = new ArrayList<>();
+        for(ProgressRecord pr: progressRecords) {
+            List<Integer> result = pr.gameSimpleResult();
+            results.add(result);
+        }
+        return results;
     }
     
     private void nextMove() {

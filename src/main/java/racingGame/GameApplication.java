@@ -8,6 +8,6 @@ public class GameApplication {
     
     public static void main(String[] args) {
         Process process = new Process();
-        List<ProgressRecord> result = process.run(InputView.inputCarNum(), InputView.inputMoveNum());
+        ResultView.printAllResult(process.run(InputView.inputCarNum(), InputView.inputMoveNum()));
     }
 }

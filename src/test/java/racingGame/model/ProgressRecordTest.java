@@ -39,4 +39,13 @@ class ProgressRecordTest {
         progressRecord.gameRecord(joinCarsRecord);
         assertThat(progressRecord.gameResult()).isNotEmpty();
     }
+    
+    @Test
+    void showSimpleResultTest() {
+        List<Car> joinCarsRecord = new ArrayList<>();
+        joinCarsRecord.add(new Car());
+        joinCarsRecord.add(new Car());
+        progressRecord.gameRecord(joinCarsRecord);
+        assertThat(progressRecord.gameSimpleResult()).isNotEmpty();
+    }
 }
