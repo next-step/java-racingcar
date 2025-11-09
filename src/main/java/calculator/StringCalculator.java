@@ -15,11 +15,25 @@ public class StringCalculator {
             return 0;
         }
 
-        // 숫자가 하나인 경우에도 커스텀 관련 인풋은 인입될 수 있다는 가정하에
-        // 계산 대상 숫자목록 추출작업후 1개 여부 관련 요구사항을 처리했습니다
-        String[] targetNumbers = getNumbers(input);
+        String[] targetNumbers = splitNumbers(input);
+        return sum(targetNumbers);
+    }
+
+    private String[] splitNumbers(String input) {
+        Matcher matcherResult = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
+        if (matcherResult.find()) {
+            String delimiter = matcherResult.group(1);
+            String numbers = matcherResult.group(2);
+
+            return numbers.split(delimiter);
+        }
+
+        return input.split(DEFAULT_DELIMITER_REGEX);
+    }
+
+    private int sum(String[] targetNumbers) {
         if (hasJustOneNum(targetNumbers)) {
-            return processOneNumber(targetNumbers[0]);
+            return toInt(targetNumbers[0]);
         }
 
         return stream(targetNumbers)
@@ -41,28 +55,8 @@ public class StringCalculator {
         return number;
     }
 
-    private String[] getNumbers(String input) {
-        Matcher matcherResult = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(input);
-        if (matcherResult.find()) {
-            String delimiter = getCustomDelimiter(matcherResult);
-            String numbers = polishInput(matcherResult);
-
-            return numbers.split(delimiter);
-        }
-
-        return input.split(DEFAULT_DELIMITER_REGEX);
-    }
-
     private int toInt(String input) {
         return Integer.parseInt(input);
-    }
-
-    private String getCustomDelimiter(Matcher matcherResult) {
-        return matcherResult.group(1);
-    }
-
-    private String polishInput(Matcher matcherResult) {
-        return matcherResult.group(2);
     }
 
     private boolean hasJustOneNum(String[] targetNumbers) {
