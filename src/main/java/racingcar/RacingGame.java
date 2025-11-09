@@ -14,14 +14,14 @@ public class RacingGame {
         this.randomNumber = randomNumber;
     }
 
-    public List<List<Integer>> race(int roundCount) {
+    public List<RoundResult> race(int roundCount) {
         validateRoundCount(roundCount);
 
-        List<List<Integer>> raceHistory = new ArrayList<>();
+        List<RoundResult> raceHistory = new ArrayList<>();
 
         for (int round = 0; round < roundCount; round++) {
             executeRound();
-            raceHistory.add(getCurrentPositions());
+            raceHistory.add(getRoundResult());
         }
 
         return raceHistory;
@@ -37,8 +37,8 @@ public class RacingGame {
         return roundCount < MIN_ROUND;
     }
 
-    private List<Integer> getCurrentPositions() {
-        return cars.getDistances();
+    private RoundResult getRoundResult() {
+        return new RoundResult(cars.getDistances());
     }
 
     private void executeRound() {
