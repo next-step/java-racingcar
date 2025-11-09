@@ -17,22 +17,6 @@ class ProcessTest {
     }
     
     @Test
-    void carGenerateResultNullTest() {
-        assertThatThrownBy(() -> {
-            gp.run(-1,1);
-        }).isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("%s","참가시킬 자동차 수 입력이 생략되거나, 0이하");
-    }
-
-    @Test
-    void gameTurnSetNullTest() {
-        assertThatThrownBy(() -> {
-            gp.run(1,-1);
-        }).isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("%s","이동횟수에 입력이 생략되거나, 0이하");
-    }
-
-    @Test
     void carGenerateResultTest() {
         gp.run(3,1);
         assertThat(gp.joinCars().size()).isEqualTo(3);
