@@ -24,6 +24,6 @@ public class Main {
             gameOutput.printRound(racingGame.getCars());
             gameOutput.printEmptyLine();
         }
-        gameOutput.printWinners(racingGame.getWinners());
+        gameOutput.printWinners(racingGame.getWinners().getNames());
     }
 }

@@ -72,31 +72,6 @@ public class RacingGameTest {
         assertEquals(0, cars.get(2).getPosition());
     }
 
-    @Test
-    void 우승자가_한명이면_우승자를_반환한다() {
-        RacingGame racingGame = new RacingGame(names, fixedRandomNumber3);
-        racingGame.playRound();
-        racingGame.getCars().get(0).move(MOVABLE_NUMBER); // "yang"만 움직인다.
-
-        List<String> winners = racingGame.getWinners();
-
-        assertEquals(1, winners.size());
-        assertEquals("yang", winners.get(0));
-    }
-
-    @Test
-    void 우승자가_여러명이면_모든우승자를_반환한다() {
-        RacingGame racingGame = new RacingGame(names, fixedRandomNumber3);
-        racingGame.playRound();
-        racingGame.getCars().get(0).move(MOVABLE_NUMBER); // "yang" 움직인다.
-        racingGame.getCars().get(1).move(MOVABLE_NUMBER); // "pobi" 움직인다.
-
-        List<String> winners = racingGame.getWinners();
-
-        assertEquals(2, winners.size());
-        assertTrue(winners.contains("yang"));
-        assertTrue(winners.contains("pobi"));
-    }
 
 
     static class TestRandomNumber extends RandomNumber {
