@@ -32,6 +32,13 @@ class CarTest {
                 .hasMessageContaining("자동차 이름은 비어있을 수 없습니다.");
     }
 
+    @Test
+    void 생성자_이름_5자_초과_예외발생() {
+        assertThatThrownBy(() -> new Car("일이삼사오육"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 5자를 초과할 수 없습니다.");
+    }
+
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(ints = {0, 3})
     void move_랜덤값이_0_이상_또는_3_이하이면_정지한다(int input) {
