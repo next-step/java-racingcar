@@ -25,14 +25,9 @@ public class CalculatorTest {
 	void add_isSingleNumberForNullOrEmptyStrings(
 		String input
 	) {
-		// Arrange
 		int parseOrZero = calculator.parseOrZero(input);
 
-		// Act
-		StringBuilder actual = calculator.formatResult(input, parseOrZero);
-
-		// Assert
-		assertThat(actual.toString()).isEqualTo(input + "=> " + 0);
+		assertThat(parseOrZero).isEqualTo(0);
 	}
 
 	@ParameterizedTest
@@ -44,27 +39,20 @@ public class CalculatorTest {
 		// Arrange
 		int singleDigit = calculator.parseIfSingleDigit(input);
 
-		// Act
-		StringBuilder actual = calculator.formatResult(input, singleDigit);
-
 		// Assert
-		assertThat(actual.toString()).isEqualTo(input + "=> " + singleDigit);
+		assertThat(singleDigit).isEqualTo(Integer.parseInt(input));
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"1,2", "3,4", "5,6", "7:8", "9:10"})
+	@MethodSource("sumTestCases")
 	@DisplayName("숫자 두개를 컴마(,) 또는 콜론(:) 구분자로 입력할 경우 두 숫자의 합을 반환한다")
 	void add_ShouldReturnSumForTwoNumbers(
-		String input
+		String input,
+		int expected
 	) {
-		// Arrange
 		int sum = calculator.calculate(input);
 
-		// Act
-		StringBuilder actual = calculator.formatResult(input, sum);
-
-		// Assert
-		assertThat(actual.toString()).isEqualTo(input + "=> " + sum);
+		assertThat(sum).isEqualTo(expected);
 	}
 
 	@ParameterizedTest
@@ -105,6 +93,16 @@ public class CalculatorTest {
 		assertThatThrownBy(() -> {
 			calculator.checkedNegativeNumber(input);
 		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	static Stream<Arguments> sumTestCases() {
+		return Stream.of(
+			Arguments.of("1,2", 3),
+			Arguments.of("3,4", 7),
+			Arguments.of("5,6", 11),
+			Arguments.of("7:8", 15),
+			Arguments.of("9:10", 19)
+		);
 	}
 
 	static Stream<Arguments> customDelimiterTestCases() {

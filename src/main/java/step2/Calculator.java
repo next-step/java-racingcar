@@ -50,9 +50,4 @@ public class Calculator {
 			throw new IllegalArgumentException("허용되지 않은 구분자가 포함되어 있습니다.");
 		}
 	}
-
-	public StringBuilder formatResult(String input, int sum) {
-		var builder = new StringBuilder();
-		return builder.append(input).append("=> ").append(sum);
-	}
 }
