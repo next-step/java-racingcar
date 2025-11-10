@@ -36,10 +36,8 @@ public class CalculatorTest {
 	void add_ShouldReturnNumberForSingleNumberString(
 		String input
 	) {
-		// Arrange
 		int singleDigit = calculator.parseIfSingleDigit(input);
 
-		// Assert
 		assertThat(singleDigit).isEqualTo(Integer.parseInt(input));
 	}
 
