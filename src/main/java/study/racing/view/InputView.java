@@ -8,15 +8,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private static Scanner scanner;
-
-    public InputView() {
-        this(System.in);
-    }
-
-    public InputView(InputStream inputStream) {
-        this.scanner = new Scanner(inputStream);
-    }
+    private static Scanner scanner = new Scanner(System.in);
 
     public static RaceInput race() {
         System.out.println("자동차 대수는 몇대인가요?");
