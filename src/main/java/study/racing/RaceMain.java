@@ -5,15 +5,15 @@ import study.racing.domain.RaceInput;
 import study.racing.view.InputView;
 import study.racing.view.ResultView;
 
+import static study.racing.view.InputView.*;
+
 public class RaceMain {
 
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        RaceInput raceInput = inputView.race();
+        RaceInput raceInput = race();
 
         RaceAttempt raceAttempt = new RaceAttempt(raceInput.getNumberOfCars());
 
-        ResultView resultView = new ResultView();
-        resultView.result(raceInput, raceAttempt.getResults());
+        ResultView.result(raceInput, raceAttempt.getResults());
     }
 }

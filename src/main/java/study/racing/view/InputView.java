@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    private Scanner scanner;
+    private static Scanner scanner;
 
     public InputView() {
         this(System.in);
@@ -18,7 +18,7 @@ public class InputView {
         this.scanner = new Scanner(inputStream);
     }
 
-    public RaceInput race() {
+    public static RaceInput race() {
         System.out.println("자동차 대수는 몇대인가요?");
         int numberOfCar = input();
         System.out.println("시도할 횟수는 몇 회 인가요?");
@@ -28,7 +28,7 @@ public class InputView {
         return new RaceInput(numberOfCar, numberOfAttempt);
     }
 
-    private int input() {
+    public static int input() {
         while (true) {
             try {
                 int number = scanner.nextInt();
@@ -45,7 +45,7 @@ public class InputView {
         }
     }
 
-    private void checkNumber(int number) {
+    private static void checkNumber(int number) {
         if (number < 1) {
             throw new RuntimeException();
         }

@@ -9,7 +9,7 @@ public class ResultView {
 
     private static final String MARK = "-";
 
-    public void result(RaceInput raceInput, List<String> attempts) {
+    public static void result(RaceInput raceInput, List<String> attempts) {
         System.out.println("실행 결과");
 
         for (int i = 0; i < raceInput.getNumberOfAttempt(); i++) {
