@@ -1,25 +1,24 @@
 package racingCar;
 
-import java.util.Random;
-
 public class Car {
-    private int position;
+    private int distance;
+    private static final int LIMIT_NUM = 4;
 
     public Car() {
-        this.position = 0;
+        this.distance = 0;
     }
 
-    public int getPosition() {
-        return this.position;
+    public int getDistance() {
+        return this.distance;
     }
 
     public void move(int dis) {
         if (checkDis(dis)) {
-            this.position += dis;
+            this.distance++;
         }
     }
 
     private boolean checkDis(int dis) {
-        return dis >= 4;
+        return dis >= LIMIT_NUM;
     }
 }

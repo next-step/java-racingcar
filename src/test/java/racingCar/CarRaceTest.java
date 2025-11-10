@@ -1,11 +1,11 @@
 package racingCar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarRaceTest {
     @Test
@@ -21,8 +21,8 @@ public class CarRaceTest {
 
         List<Car> cars = carRace.getCars();
 
-        assertThat(cars.get(0).getPosition()).isBetween(0,10);
-        assertThat(cars.get(1).getPosition()).isBetween(0,10);
-        assertThat(cars.get(2).getPosition()).isBetween(0,10);
+        assertTrue(cars.get(0).getDistance() == 0 || cars.get(0).getDistance() == 1);
+        assertTrue(cars.get(1).getDistance() == 0 || cars.get(1).getDistance() == 1);
+        assertTrue(cars.get(2).getDistance() == 0 || cars.get(2).getDistance() == 1);
     }
 }
