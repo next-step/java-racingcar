@@ -32,4 +32,9 @@ public class GameOutput {
     public void printEmptyLine() {
         System.out.println("");
     }
+
+    public void printWinners(List<String> winners) {
+        String winnerNames = String.join(", ", winners);
+        System.out.println(winnerNames+"가 최종 우승했습니다..");
+    }
 }

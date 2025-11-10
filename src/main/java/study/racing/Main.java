@@ -23,7 +23,7 @@ public class Main {
             racingGame.playRound();
             gameOutput.printRound(racingGame.getCars());
             gameOutput.printEmptyLine();
-
         }
+        gameOutput.printWinners(racingGame.getWinners());
     }
 }
