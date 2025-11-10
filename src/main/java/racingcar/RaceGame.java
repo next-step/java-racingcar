@@ -36,7 +36,7 @@ public class RaceGame {
         }
     }
 
-    private void playRound() {
+    public void playRound() {
         Random random = new Random();
         for (Car car : cars) {
             car.moveIfPossible(random.nextInt(10));
