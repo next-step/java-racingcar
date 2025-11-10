@@ -6,7 +6,7 @@ public class RacingCar {
     private int position;
 
     public int getPosition() {
-        return position;GIT
+        return position;
     }
 
     private void movePosition() {
@@ -18,5 +18,4 @@ public class RacingCar {
             movePosition();
         }
     }
-
 }
