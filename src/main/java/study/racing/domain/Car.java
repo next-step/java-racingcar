@@ -1,5 +1,7 @@
 package study.racing.domain;
 
+import java.util.Objects;
+
 public class Car {
     private static final int DEFAULT_POSITION = 0;
     private static final int MOVE_CONDITION = 4;
@@ -17,5 +19,22 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(position);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{position=" + position + "}";
     }
 }
