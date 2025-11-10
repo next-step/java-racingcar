@@ -12,9 +12,7 @@ public class StringAddCalculator {
         if (isNullOrEmpty(text)) {
             return 0;
         }
-        String[] stringNumbers = splitText(text);
-        int[] numbers = convertToIntegers(stringNumbers);
-        return sumNumbers(numbers);
+        return sumNumbers(convertToIntegers(splitText(text)));
     }
 
     private static boolean isNullOrEmpty(String text) {
@@ -49,10 +47,10 @@ public class StringAddCalculator {
     }
 
     private static int parseAndValidateNumber(String number) {
-            int value = Integer.parseInt(number);
-            if (value < 0) {
-                throw new RuntimeException("음수는 입력할 수 없습니다: ");
-            }
-            return value;
+        int value = Integer.parseInt(number);
+        if (value < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다: ");
+        }
+        return value;
     }
 }
