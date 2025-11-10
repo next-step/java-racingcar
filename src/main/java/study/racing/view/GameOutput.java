@@ -22,4 +22,8 @@ public class GameOutput {
         }
         System.out.println();
     }
+
+    public void printEmptyLine() {
+        System.out.println("");
+    }
 }
