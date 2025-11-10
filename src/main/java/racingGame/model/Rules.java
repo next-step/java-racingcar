@@ -8,14 +8,10 @@ public class Rules {
     public Rules() {
     }
     
-    private Rules(int cars, int moves) {
+    public Rules(int cars, int moves) {
+        validate(cars, moves);
         this.cars = cars;
         this.moves = moves;
-    }
-    
-    public static Rules of(int cars, int moves) {
-        validate(cars, moves);
-        return new Rules(cars, moves);
     }
     
     public boolean isLimitMove(int currentMoves) {

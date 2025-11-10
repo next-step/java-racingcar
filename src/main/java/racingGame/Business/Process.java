@@ -22,7 +22,7 @@ public class Process {
     }
     
     private void init(int cars, int moves) {
-        rules = Rules.of(cars, moves);
+        this.rules = new Rules(cars, moves);
     }
     
     private void participateCar() {
