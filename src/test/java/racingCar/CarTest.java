@@ -26,4 +26,14 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(dis);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0,1,2,3})
+    void 자동차_3이하일_경우_움직이지_않는다(int dis) {
+        Car car = new Car();
+
+        car.move(dis);
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
