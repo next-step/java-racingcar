@@ -7,8 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RacingGameTest {
+    private static final int IMMOVABLE_NUMBER = 3;
+    private static final int MOVABLE_NUMBER = 5;
     private List<String> names;
     private RandomNumber randomNumber;
     private TestRandomNumber fixedRandomNumber3;
@@ -18,8 +21,8 @@ public class RacingGameTest {
     void setUp() {
         names = Arrays.asList("yang", "pobi", "jason");
         randomNumber = new RandomNumber();
-        fixedRandomNumber3 = new TestRandomNumber(3);
-        fixedRandomNumber5 = new TestRandomNumber(5);
+        fixedRandomNumber3 = new TestRandomNumber(IMMOVABLE_NUMBER);
+        fixedRandomNumber5 = new TestRandomNumber(MOVABLE_NUMBER);
     }
 
     @Test
@@ -67,6 +70,32 @@ public class RacingGameTest {
         assertEquals(0, cars.get(0).getPosition());
         assertEquals(0, cars.get(1).getPosition());
         assertEquals(0, cars.get(2).getPosition());
+    }
+
+    @Test
+    void 우승자가_한명이면_우승자를_반환한다() {
+        RacingGame racingGame = new RacingGame(names, fixedRandomNumber3);
+        racingGame.playRound();
+        racingGame.getCars().get(0).move(MOVABLE_NUMBER); // "yang"만 움직인다.
+
+        List<String> winners = racingGame.getWinners();
+
+        assertEquals(1, winners.size());
+        assertEquals("yang", winners.get(0));
+    }
+
+    @Test
+    void 우승자가_여러명이면_모든우승자를_반환한다() {
+        RacingGame racingGame = new RacingGame(names, fixedRandomNumber3);
+        racingGame.playRound();
+        racingGame.getCars().get(0).move(MOVABLE_NUMBER); // "yang" 움직인다.
+        racingGame.getCars().get(1).move(MOVABLE_NUMBER); // "pobi" 움직인다.
+
+        List<String> winners = racingGame.getWinners();
+
+        assertEquals(2, winners.size());
+        assertTrue(winners.contains("yang"));
+        assertTrue(winners.contains("pobi"));
     }
 
 

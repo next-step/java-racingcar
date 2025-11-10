@@ -25,4 +25,29 @@ public class RacingGame {
         }
     }
 
+    public List<String> getWinners() {
+        int maxPosition = findMaxPosition();
+        return findWinnersNames(maxPosition);
+    }
+
+    private int findMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (car.getPosition() > maxPosition) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
+    }
+
+    private List<String> findWinnersNames(int maxPosition) {
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.getName());
+            }
+        }
+        return winners;
+    }
+
 }
