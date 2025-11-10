@@ -26,9 +26,8 @@ public class Process {
     }
     
     private void participateCar() {
-        while(rules.isLimitCars(this.joinCars.size())) {
-            this.joinCars.add(new Car());
-        }
+        CarFactory carFactory = new CarFactory(this.rules);
+        joinCars.addAll(carFactory.createCars());
     }
     
     private void moveCar() {

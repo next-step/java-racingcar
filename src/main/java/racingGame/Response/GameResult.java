@@ -15,5 +15,5 @@ public record GameResult(List<ProgressRecord> progressRecords) {
     public List<ProgressRecord> progressRecords() {
         return List.copyOf(progressRecords);
     }
-    
+
 }
