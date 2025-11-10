@@ -40,7 +40,7 @@ public class Process {
     private List<List<Integer>> showResult() {
         List<List<Integer>> results = new ArrayList<>();
         for(ProgressRecord pr: progressRecords) {
-            List<Integer> result = pr.gameSimpleResult();
+            List<Integer> result = pr.getRecord();
             results.add(result);
         }
         return results;
@@ -56,7 +56,7 @@ public class Process {
     
     private void recordCarsMove() {
         ProgressRecord pr = new ProgressRecord();
-        pr.gameRecord(this.joinCars);
+        pr.recordGame(this.joinCars);
         progressRecords.add(pr);
     }
     
