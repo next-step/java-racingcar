@@ -7,11 +7,8 @@ import java.util.List;
 public class CarRace {
     private final List<Car> cars;
 
-    public  CarRace() {
+    public  CarRace(int cnt) {
         this.cars = new ArrayList<>();
-    }
-
-    public void readyCar(int cnt) {
         for (int i = 0; i < cnt; i++) {
             this.cars.add(new Car());
         }
