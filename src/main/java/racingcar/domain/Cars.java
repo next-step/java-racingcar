@@ -1,7 +1,9 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import racingcar.random.RandomNumber;
 
 public class Cars {
@@ -11,6 +13,7 @@ public class Cars {
 
     public Cars(List<String> names) {
         validateCount(names.size());
+        validateUnique(names);
 
         this.values = createCars(names);
     }
@@ -23,6 +26,14 @@ public class Cars {
 
     private boolean isInvalidCount(int count) {
         return count < MIN_CAR_COUNT;
+    }
+
+    private void validateUnique(List<String> names) {
+        Set<String> uniqueNames = new HashSet<>(names);
+
+        if (names.size() != uniqueNames.size()) {
+            throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
+        }
     }
 
     private List<Car> createCars(List<String> names) {

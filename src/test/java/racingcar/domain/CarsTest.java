@@ -12,15 +12,22 @@ import racingcar.random.RandomNumber;
 class CarsTest {
 
     @Test
-    void 생성자_입력한_자동차_이름_개수만큼_자동차를_생성한다() {
+    void 생성자__자동차_이름_크기만큼_자동차를_생성한다() {
         assertThat(new Cars(List.of("자동차하나", "자동차둘")).size()).isEqualTo(2);
     }
 
     @Test
-    void 생성자_입력한_대수가_1_미만이면_예외발생() {
+    void 생성자_자동차_이름_목록_크기가_1_미만이면_예외발생() {
         assertThatThrownBy(() -> new Cars(List.of()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 대수는 1이상이어야 합니다.");
+    }
+
+    @Test
+    void 생성자_자동차_이름_목록에_중복이_있다면_예외발생() {
+        assertThatThrownBy(() -> new Cars(List.of("중복", "중복")))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("자동차 이름은 중복될 수 없습니다.");
     }
 
     @Test
