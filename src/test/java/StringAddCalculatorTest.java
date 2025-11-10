@@ -20,4 +20,10 @@ public class StringAddCalculatorTest {
     void 숫자_하나를_문자열로_입력한_경우에는_해당_숫자를_반환한다(String input, int sum) throws Exception {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3", "2,5:7", "20,30:50"}, delimiter = ':')
+    void 숫자_두개를_콤마로_구분해서_입력할_경우_두_숫자의_합을_반환한다(String input, int sum) {
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
+    }
 }
