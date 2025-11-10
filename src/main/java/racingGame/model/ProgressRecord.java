@@ -13,7 +13,7 @@ public class ProgressRecord {
         return this.joinCarsRecord;
     }
     
-    public List<Integer> getRecord() {
+    public List<Integer> carRecord() {
         return this.joinCarsRecord;
     }
 }

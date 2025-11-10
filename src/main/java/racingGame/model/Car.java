@@ -11,7 +11,7 @@ public class Car {
     }
     
     public int forward() {
-        return ++ location;
+        return location++;
     }
     
     public int findLocation() {

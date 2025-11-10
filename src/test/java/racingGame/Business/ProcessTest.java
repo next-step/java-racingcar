@@ -20,7 +20,10 @@ class ProcessTest {
     @ParameterizedTest
     @ValueSource(ints = {3, 4, 5, 6})
     void carGenerateResultTest(int cars) {
-        assertThat(gp.run(cars,1).getFirst().size()).isEqualTo(cars);
+        assertThat(gp.run(cars,1)
+            .getFirst().getProgressRecords()
+            .getFirst().carRecord().size())
+            .isEqualTo(cars);
     }
     
     @ParameterizedTest

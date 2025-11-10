@@ -18,7 +18,7 @@ class ProgressRecordTest {
     
     @Test
     void recordIsEmptyTest() {
-        assertThat(progressRecord.gameResult()).isEmpty();
+        assertThat(progressRecord.carRecord()).isEmpty();
     }
     
     @Test
@@ -37,6 +37,6 @@ class ProgressRecordTest {
         joinCarsRecord.add(new Car());
         joinCarsRecord.add(new Car());
         progressRecord.recordGame(joinCarsRecord);
-        assertThat(progressRecord.gameResult()).isNotEmpty();
+        assertThat(progressRecord.carRecord()).isNotEmpty();
     }
 }

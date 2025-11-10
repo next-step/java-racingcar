@@ -2,6 +2,7 @@ package racingGame.Business;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingGame.Response.GameResult;
 import racingGame.model.Car;
 import racingGame.model.ProgressRecord;
 import racingGame.model.Rules;
@@ -13,7 +14,7 @@ public class Process {
     private final List<Car> joinCars = new ArrayList<>();
     private final List<ProgressRecord> progressRecords = new ArrayList<>();
     
-    public List<List<Integer>> run(int cars, int moves) {
+    public List<GameResult> run(int cars, int moves) {
         init(cars, moves);
         participateCar();
         moveCar();
@@ -37,13 +38,10 @@ public class Process {
         }
     }
     
-    private List<List<Integer>> showResult() {
-        List<List<Integer>> results = new ArrayList<>();
-        for(ProgressRecord pr: progressRecords) {
-            List<Integer> result = pr.getRecord();
-            results.add(result);
-        }
-        return results;
+    private List<GameResult> showResult() {
+        List<GameResult> gameResults = new ArrayList<>();
+        gameResults.add(new GameResult(this.progressRecords));
+        return gameResults;
     }
     
     private void nextMove() {

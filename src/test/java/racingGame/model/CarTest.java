@@ -30,7 +30,7 @@ class CarTest {
     void carForwardTest() {
         car.forward();
         car.forward();
-        assertThat(car.forward()).isEqualTo(4);
+        assertThat(car.forward() + 1).isEqualTo(4);
     }
     
     @ParameterizedTest
