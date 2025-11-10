@@ -21,7 +21,7 @@ class ProcessTest {
     @ValueSource(ints = {3, 4, 5, 6})
     void carGenerateResultTest(int cars) {
         assertThat(gp.run(cars,1)
-            .getFirst().getProgressRecords()
+            .getFirst().progressRecords()
             .getFirst().carRecord().size())
             .isEqualTo(cars);
     }

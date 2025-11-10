@@ -21,6 +21,6 @@ class GameResultTest {
     
     @Test
     void getGameResultTest() {
-        assertThat(gameResult.getProgressRecords().size()).isEqualTo(1);
+        assertThat(gameResult.progressRecords().size()).isEqualTo(1);
     }
 }
