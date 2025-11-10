@@ -25,13 +25,4 @@ public class RacingGame {
         }
     }
 
-    public List<Integer> getPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
-    }
-
-
 }

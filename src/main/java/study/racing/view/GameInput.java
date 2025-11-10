@@ -1,5 +1,7 @@
 package study.racing.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameInput {
@@ -9,9 +11,9 @@ public class GameInput {
         this.scanner = scanner;
     }
 
-    public int readCarCount() {
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        return scanner.nextInt();
+    public List<String> readCarCount() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        return Arrays.asList(scanner.nextLine().split(","));
     }
 
     public int readRoundCount() {
