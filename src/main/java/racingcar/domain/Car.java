@@ -7,9 +7,11 @@ public class Car {
     private static final int FORWARD_THRESHOLD = 4;
     private static final int MOVE_DISTANCE = 1;
 
+    private CarName name;
     private int distance;
 
-    public Car() {
+    public Car(String name) {
+        this.name = new CarName(name);
         this.distance = DEFAULT_DISTANCE;
     }
 
@@ -33,6 +35,10 @@ public class Car {
 
     private boolean shouldMoveForward(int randomValue) {
         return randomValue >= FORWARD_THRESHOLD;
+    }
+
+    public String getName() {
+        return this.name.value();
     }
 
     public int getDistance() {

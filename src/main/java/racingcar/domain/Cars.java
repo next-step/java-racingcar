@@ -29,7 +29,7 @@ public class Cars {
         List<Car> cars = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            cars.add(new Car());
+            cars.add(new Car("자동차이름"));
         }
 
         return cars;
