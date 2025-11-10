@@ -5,9 +5,9 @@ import java.util.List;
 import racingcar.random.RandomNumber;
 
 public class Cars {
-    private final List<Car> values;
-
     private static final int MIN_CAR_COUNT = 1;
+
+    private final List<Car> values;
 
     public Cars(int count) {
         validateCount(count);
