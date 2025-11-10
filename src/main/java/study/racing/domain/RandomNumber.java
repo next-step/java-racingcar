@@ -3,6 +3,8 @@ package study.racing.domain;
 import java.util.Random;
 
 public class RandomNumber {
+    private static final int RANDOM_RANGE = 10;
+
     private final Random random;
 
     public RandomNumber() {
@@ -10,7 +12,7 @@ public class RandomNumber {
     }
 
     public int generate() {
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_RANGE);
     }
 
 }
