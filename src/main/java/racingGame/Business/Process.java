@@ -48,8 +48,8 @@ public class Process {
     
     private void nextMove() {
         for(Car car: this.joinCars) {
-            if(rules.isProceedByRandom(RandomUtil.generateInt())) {
-                car.move();
+            if(car.isForwardByRandom(RandomUtil.generateInt())) {
+                car.forward();
             }
         }
     }

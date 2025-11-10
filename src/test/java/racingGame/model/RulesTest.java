@@ -45,18 +45,4 @@ class RulesTest {
         assertThat(rules.isLimitCars(cars + 1)).isFalse();
     }
     
-    @ParameterizedTest
-    @ValueSource(ints = {4, 6, 8})
-    void carIsProceed(int num) {
-        Rules of = Rules.of(1, 1);
-        assertThat(of.isProceedByRandom(num)).isTrue();
-    }
-    
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
-    void carIsNotProceed(int num) {
-        Rules of = Rules.of(1, 1);
-        assertThat(of.isProceedByRandom(num)).isFalse();
-    }
-    
 }
