@@ -1,3 +1,5 @@
 package racingcar.view;
 
-public record RaceGameInput(int carCount, int roundCount) {}
+import java.util.List;
+
+public record RaceGameInput(List<String> carNames, int roundCount) {}

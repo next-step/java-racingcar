@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -14,7 +15,7 @@ public class InputView {
         try (Scanner scanner = new Scanner(System.in)) {
             int carCount = readCarCount(scanner);
             int roundCount = readRoundCount(scanner);
-            return new RaceGameInput(carCount, roundCount);
+            return new RaceGameInput(List.of(), roundCount); // TODO: 입력값 로직 수정예정
         }
     }
 

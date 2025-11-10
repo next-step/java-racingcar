@@ -18,7 +18,7 @@ public class Application {
     }
 
     private static RaceHistory executeRaceGame(RaceGameInput input) {
-        Cars cars = new Cars(input.carCount());
+        Cars cars = new Cars(input.carNames());
         RacingGame game = new RacingGame(cars);
 
         return game.race(input.roundCount(), new SimpleRandomNumber());

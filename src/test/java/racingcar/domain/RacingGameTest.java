@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ class RacingGameTest {
 
     @Test
     void race_지정된_라운드만큼_경주를_진행한다() {
-        Cars cars = new Cars(2);
+        Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
         RandomNumber randomNumber = () -> 4;
         RacingGame game = new RacingGame(cars);
 
@@ -25,7 +26,7 @@ class RacingGameTest {
 
     @Test
     void race_입력된_라운드_수가_1미만이면_예외발생() {
-        Cars cars = new Cars(2);
+        Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
         RandomNumber randomNumber = () -> 4;
         RacingGame game = new RacingGame(cars);
 

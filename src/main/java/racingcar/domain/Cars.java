@@ -9,10 +9,10 @@ public class Cars {
 
     private final List<Car> values;
 
-    public Cars(int count) {
-        validateCount(count);
+    public Cars(List<String> names) {
+        validateCount(names.size());
 
-        this.values = createCars(count);
+        this.values = createCars(names);
     }
 
     private void validateCount(int count) {
@@ -25,11 +25,11 @@ public class Cars {
         return count < MIN_CAR_COUNT;
     }
 
-    private List<Car> createCars(int count) {
+    private List<Car> createCars(List<String> names) {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < count; i++) {
-            cars.add(new Car("자동차이름"));
+        for (String name : names) {
+            cars.add(new Car(name));
         }
 
         return cars;
