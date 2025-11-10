@@ -7,10 +7,10 @@ public class RacingGame {
     private final List<Car> cars;
     private final RandomNumber randomNumber;
 
-    public RacingGame(int carCount, RandomNumber randomNumber) {
+    public RacingGame(List<String> carNames, RandomNumber randomNumber) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+        for (String carName : carNames) {
+            this.cars.add(new Car(carName));
         }
         this.randomNumber = randomNumber;
     }

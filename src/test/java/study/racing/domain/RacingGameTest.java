@@ -3,32 +3,35 @@ package study.racing.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingGameTest {
+    private List<String> names;
     private RandomNumber randomNumber;
     private TestRandomNumber fixedRandomNumber3;
     private TestRandomNumber fixedRandomNumber5;
 
     @BeforeEach
     void setUp() {
+        names = Arrays.asList("yang", "pobi", "jason");
         randomNumber = new RandomNumber();
         fixedRandomNumber3 = new TestRandomNumber(3);
         fixedRandomNumber5 = new TestRandomNumber(5);
     }
 
     @Test
-    void 게임생성시_자동차_수만큼_자동차가_생성된다() {
-        RacingGame racingGame = new RacingGame(3, randomNumber);
+    void 게임생성시_이름의_수만큼_자동차가_생성된다() {
+        RacingGame racingGame = new RacingGame(names, randomNumber);
         List<Car> cars = racingGame.getCars();
         assertEquals(3, cars.size());
     }
 
     @Test
     void 게임생성시_생성된_자동차의_초기위치는_모두0이다() {
-        RacingGame racingGame = new RacingGame(3, randomNumber);
+        RacingGame racingGame = new RacingGame(names, randomNumber);
         List<Car> cars = racingGame.getCars();
         assertEquals(0, cars.get(0).getPosition());
         assertEquals(0, cars.get(1).getPosition());
@@ -36,8 +39,17 @@ public class RacingGameTest {
     }
 
     @Test
+    void 게임생성시_자동차는_전달받은_이름을_가진다() {
+        RacingGame racingGame = new RacingGame(names, randomNumber);
+        List<Car> cars = racingGame.getCars();
+        assertEquals("yang", cars.get(0).getName());
+        assertEquals("pobi", cars.get(1).getName());
+        assertEquals("jason", cars.get(2).getName());
+    }
+
+    @Test
     void 랜덤숫자가_4이상이면_모든자동차가_이동을_시도한다() {
-        RacingGame racingGame = new RacingGame(3, fixedRandomNumber5);
+        RacingGame racingGame = new RacingGame(names, fixedRandomNumber5);
         racingGame.playRound();
 
         List<Car> cars = racingGame.getCars();
@@ -48,7 +60,7 @@ public class RacingGameTest {
 
     @Test
     void 랜덤숫자가_4미만이면_모든자동차가_정지한다() {
-        RacingGame racingGame = new RacingGame(3, fixedRandomNumber3);
+        RacingGame racingGame = new RacingGame(names, fixedRandomNumber3);
         racingGame.playRound();
 
         List<Car> cars = racingGame.getCars();

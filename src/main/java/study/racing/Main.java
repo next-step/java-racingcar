@@ -5,6 +5,8 @@ import study.racing.domain.RandomNumber;
 import study.racing.view.GameInput;
 import study.racing.view.GameOutput;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +17,9 @@ public class Main {
 
         int carCount = gameInput.readCarCount();
         int roundCount = gameInput.readRoundCount();
-        RacingGame racingGame = new RacingGame(carCount, new RandomNumber());
+        //TODO 추후에 변경 임시값
+        List<String> names = Arrays.asList("123", "432");
+        RacingGame racingGame = new RacingGame(names, new RandomNumber());
         gameOutput.printResult();
 
         for (int i = 0; i < roundCount; i++) {
