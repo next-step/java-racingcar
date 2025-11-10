@@ -13,6 +13,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 class CarNameTest {
 
     @ParameterizedTest(name = "입력값: {0}")
+    @ValueSource(strings = {"일", "일이삼사오"})
+    void 생성자_올바른_값_정상적으로_생성(String input) {
+        assertThat(new CarName(input).value()).isEqualTo(input);
+    }
+
+    @ParameterizedTest(name = "입력값: {0}")
     @NullAndEmptySource
     @ValueSource(strings = {"", " "})
     void 생성자_비어있는_이름_예외발생(String input) {
