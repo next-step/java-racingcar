@@ -20,8 +20,10 @@ class RacingGameTest {
         RaceHistory history = game.race(2, randomNumber);
 
         assertThat(history.size()).isEqualTo(2);
-        assertThat(history.getRound(0).positions()).containsExactly(1, 1);
-        assertThat(history.getRound(1).positions()).containsExactly(2, 2);
+        assertThat(history.getRound(0).snapshots())
+                .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1));
+        assertThat(history.getRound(1).snapshots())
+                .containsExactly(new CarSnapshot("자동차하나", 2), new CarSnapshot("자동차둘", 2));
     }
 
     @Test

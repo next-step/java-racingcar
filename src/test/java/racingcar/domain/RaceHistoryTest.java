@@ -12,11 +12,12 @@ class RaceHistoryTest {
 
     @Test
     void record_라운드_결과를_기록한다() {
-        RoundResult result = new RoundResult(List.of(1, 0));
+        RoundResult result = new RoundResult(List.of(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 0)));
         RaceHistory history = new RaceHistory();
 
         history.record(result);
 
-        assertThat(history.getRound(0).positions()).containsExactly(1, 0);
+        assertThat(history.getRound(0).snapshots())
+                .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 0));
     }
 }

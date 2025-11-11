@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.CarSnapshot;
 import racingcar.domain.RaceHistory;
 import racingcar.domain.RoundResult;
 
@@ -18,8 +19,8 @@ public class ResultView {
     }
 
     private static void printRound(RoundResult roundResult) {
-        for (int position : roundResult.positions()) {
-            print(POSITION_SYMBOL.repeat(Math.max(0, position)));
+        for (CarSnapshot snapshot : roundResult.snapshots()) {
+            print(POSITION_SYMBOL.repeat(Math.max(0, snapshot.distance())));
         }
     }
 

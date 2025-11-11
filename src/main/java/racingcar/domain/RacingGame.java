@@ -35,7 +35,7 @@ public class RacingGame {
     }
 
     private RoundResult getRoundResult() {
-        return new RoundResult(cars.getDistances());
+        return new RoundResult(cars.toSnapshots());
     }
 
     private void executeRound(RandomNumber randomNumber) {

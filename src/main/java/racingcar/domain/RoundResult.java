@@ -3,24 +3,20 @@ package racingcar.domain;
 import java.util.List;
 
 public class RoundResult {
-    private final List<Integer> positions;
+    private final List<CarSnapshot> snapshots;
 
-    public RoundResult(List<Integer> positions) {
-        validate(positions);
-        this.positions = List.copyOf(positions);
+    public RoundResult(List<CarSnapshot> snapshots) {
+        validate(snapshots);
+        this.snapshots = List.copyOf(snapshots);
     }
 
-    private void validate(List<Integer> positions) {
-        if (positions == null) {
-            throw new IllegalArgumentException("위치 정보는 null일 수 없습니다.");
-        }
-
-        if (positions.isEmpty()) {
-            throw new IllegalArgumentException("위치 정보는 비어있을 수 없습니다.");
+    private void validate(List<CarSnapshot> positions) {
+        if (positions == null || positions.isEmpty()) {
+            throw new IllegalArgumentException("스냅샷 목록은 비어있을 수 없습니다.");
         }
     }
 
-    public List<Integer> positions() {
-        return this.positions;
+    public List<CarSnapshot> snapshots() {
+        return this.snapshots;
     }
 }
