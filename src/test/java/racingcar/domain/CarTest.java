@@ -86,4 +86,14 @@ class CarTest {
 
         assertThat(car.getDistance()).isEqualTo(3);
     }
+
+    @Test
+    void 현재_상태_정보를_기록_후_반환한다() {
+        Car car = new Car("자동차이름");
+
+        CarSnapshot snapShot = car.toSnapshot();
+
+        assertThat(snapShot.name()).isEqualTo("자동차이름");
+        assertThat(snapShot.distance()).isEqualTo(0);
+    }
 }

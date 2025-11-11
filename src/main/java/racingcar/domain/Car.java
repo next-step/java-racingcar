@@ -7,7 +7,7 @@ public class Car {
     private static final int FORWARD_THRESHOLD = 4;
     private static final int MOVE_DISTANCE = 1;
 
-    private CarName name;
+    private final CarName name;
     private int distance;
 
     public Car(String name) {
@@ -35,6 +35,10 @@ public class Car {
 
     private boolean shouldMoveForward(int randomValue) {
         return randomValue >= FORWARD_THRESHOLD;
+    }
+
+    public CarSnapshot toSnapshot() {
+        return new CarSnapshot(name.value(), distance);
     }
 
     public String getName() {
