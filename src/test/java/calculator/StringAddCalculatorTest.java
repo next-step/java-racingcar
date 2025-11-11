@@ -66,10 +66,18 @@ public class StringAddCalculatorTest {
     }
 
     @ParameterizedTest
+    @ValueSource(strings = {"넥스트스텝,tdd,화이팅", "문자열,덧셈,계산기", "미션,화이팅"})
+    void 문자가_포함되어_있다면_예외가_발생한다(String input) throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자가 아닌 값이 포함되어 있습니다.");
+    }
+
+    @ParameterizedTest
     @ValueSource(strings = {"-1,1,3", "2,-1,10", "3,4,-100"})
     void 음수가_포함되어_있다면_예외가_발생한다(String input) throws Exception {
         assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
                 .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("음수가 포함되었습니다.");
+                .hasMessageContaining("음수가 포함되어 있습니다.");
     }
 }
