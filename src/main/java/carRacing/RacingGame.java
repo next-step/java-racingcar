@@ -7,9 +7,10 @@ public class RacingGame {
 
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingGame(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar(""));
+    public RacingGame(String[] names) {
+        checkNameSize(names);
+        for (int i = 0; i < names.length; i++) {
+            racingCars.add(new RacingCar(names[i]));
         }
     }
 
@@ -21,5 +22,17 @@ public class RacingGame {
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    public void checkNameSize(String[] names) {
+        for (String name : names) {
+            carNameSizeCheck(name);
+        }
+    }
+
+    private void carNameSizeCheck(String name) {
+        if (name.length() > 5) {
+            throw new RuntimeException();
+        }
     }
 }

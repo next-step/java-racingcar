@@ -3,8 +3,8 @@ package carRacing;
 public class Main {
 
     public static void main(String[] args) {
-        int carCount = InputView.initCarCount();
-        RacingGame racingGame = new RacingGame(carCount);
+        String nameStr = InputView.initCarInfo();
+        RacingGame racingGame = new RacingGame(nameStr.split(","));
 
         int tryCount = InputView.initTryCount();
         for (int i = 0; i < tryCount; i++) {

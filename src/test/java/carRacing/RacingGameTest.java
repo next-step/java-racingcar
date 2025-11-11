@@ -4,7 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingGameTest {
 
@@ -12,7 +15,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(2);
+        racingGame = new RacingGame(new String[]{"kim", "lee"});
     }
 
     @Test
@@ -28,5 +31,21 @@ class RacingGameTest {
         for (RacingCar racingCar : racingGame.getRacingCars()) {
             assertThat(racingCar.getPosition()).isBetween(0, 1);
         }
+    }
+
+    @Test
+    @DisplayName("생성된 리스트에는 이름이 존재한다")
+    void initCarList_add_name() {
+        List<RacingCar> racingCars = racingGame.getRacingCars();
+        for (RacingCar racingCar : racingCars) {
+            assertThat(racingCar.getName()).isNotBlank();
+        }
+    }
+
+    @Test
+    @DisplayName("5자를 넘어가는 이름은 에러가 발생한다")
+    void name_size() {
+        assertThatThrownBy(() -> new RacingGame(new String[]{"doubleKim", "lee"}))
+                .isInstanceOf(RuntimeException.class);
     }
 }
