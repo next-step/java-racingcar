@@ -12,8 +12,8 @@ public class RaceMain {
     public static void main(String[] args) {
         RaceInput raceInput = race();
 
-        RaceAttempt raceAttempt = new RaceAttempt(raceInput.getNumberOfCars());
+        RaceAttempt raceAttempt = new RaceAttempt(raceInput);
 
-        ResultView.result(raceInput, raceAttempt.getResults());
+        // ResultView.result(raceInput, raceAttempt);
     }
 }
