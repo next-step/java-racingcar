@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoundResult {
@@ -18,5 +19,31 @@ public class RoundResult {
 
     public List<CarSnapshot> snapshots() {
         return this.snapshots;
+    }
+
+    public List<String> findLeaders() {
+        List<String> leaders = new ArrayList<>();
+
+        for (CarSnapshot snapshot : snapshots) {
+            if (snapshot.distance() == maxDistance()) {
+                leaders.add(snapshot.name());
+            }
+        }
+
+        return leaders;
+    }
+
+    private int maxDistance() {
+        int maxDistance = 0;
+
+        for (CarSnapshot snapshot : snapshots) {
+            int distance = snapshot.distance();
+
+            if (distance > maxDistance) {
+                maxDistance = distance;
+            }
+        }
+
+        return maxDistance;
     }
 }

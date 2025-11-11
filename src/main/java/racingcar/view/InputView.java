@@ -9,7 +9,9 @@ public class InputView {
     private static final String INVALID_INPUT_MESSAGE = "%s은(는) 1 이상의 숫자여야 합니다.";
     private static final String NOT_NUMBER_MESSAGE = "숫자를 입력해주세요.";
 
-    public InputView() {}
+    private InputView() {
+        throw new AssertionError("인스턴스화를 지원하지 않습니다.");
+    }
 
     public static RaceGameInput readRaceGameInput() {
         try (Scanner scanner = new Scanner(System.in)) {

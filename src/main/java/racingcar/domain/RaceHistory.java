@@ -25,4 +25,14 @@ public class RaceHistory {
     public RoundResult getRound(int index) {
         return this.rounds.get(index);
     }
+
+    public List<String> winners() {
+        if (rounds.isEmpty()) return List.of();
+
+        return lastRound().findLeaders();
+    }
+
+    private RoundResult lastRound() {
+        return rounds.getLast();
+    }
 }
