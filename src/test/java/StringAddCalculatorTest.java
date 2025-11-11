@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class StringAddCalculatorTest {
 
@@ -60,5 +62,13 @@ public class StringAddCalculatorTest {
                 Arguments.of("//@\n5@6:7", 18),
                 Arguments.of("//&\n20&30:40,50", 140)
         );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,1,3", "2,-1,10", "3,4,-100"})
+    void 음수가_포함되어_있다면_예외가_발생한다(String input) throws Exception {
+        assertThatThrownBy(() -> StringAddCalculator.splitAndSum(input))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수가 포함되었습니다.");
     }
 }

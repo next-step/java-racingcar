@@ -7,7 +7,7 @@ public class StringAddCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        return sum(toInteger(split(input)));
+        return sum(toInts(split(input)));
     }
 
     private static boolean isBlank(String input) {
@@ -24,13 +24,22 @@ public class StringAddCalculator {
         return input.split(defaultDelimiter);
     }
 
-    private static int[] toInteger(String[] inputs) {
+    private static int[] toInts(String[] inputs) {
         int[] numbers = new int[inputs.length];
 
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(inputs[i]);
+            numbers[i] = toInt(inputs[i]);
         }
         return numbers;
+    }
+
+    private static int toInt(String input) {
+        int number = Integer.parseInt(input);
+
+        if (number < 0) {
+            throw new RuntimeException("음수가 포함되었습니다.");
+        }
+        return number;
     }
 
     private static int sum(int[] numbers) {
