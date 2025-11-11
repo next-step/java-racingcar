@@ -7,17 +7,21 @@ public class StringAddCalculator {
         if (isBlank(input)) {
             return 0;
         }
-
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return sum(toInteger(m.group(2).split(customDelimiter)));
-        }
-        return sum(toInteger(input.split(",|:")));
+        return sum(toInteger(split(input)));
     }
 
     private static boolean isBlank(String input) {
         return input == null || input.isEmpty();
+    }
+
+    private static String[] split(String input) {
+        String defaultDelimiter = ",|:";
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+        if (m.find()) {
+            String customDelimiter = m.group(1);
+            return m.group(2).split(defaultDelimiter + "|" + Pattern.quote(customDelimiter));
+        }
+        return input.split(defaultDelimiter);
     }
 
     private static int[] toInteger(String[] inputs) {

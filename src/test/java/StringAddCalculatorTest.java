@@ -47,4 +47,18 @@ public class StringAddCalculatorTest {
                 Arguments.of("//&\n20&30&40", 90)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("커스텀_구분자와_기본_구분자가_같이_존재하는_경우")
+    void 커스텀_구분자와_기본_구분자가_같이_존재할_때_문자열의_합을_반환한다(String input, int sum) throws Exception {
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
+    }
+
+    private static Stream<Arguments> 커스텀_구분자와_기본_구분자가_같이_존재하는_경우() {
+        return Stream.of(
+                Arguments.of("//[\n1[2,3", 6),
+                Arguments.of("//@\n5@6:7", 18),
+                Arguments.of("//&\n20&30:40,50", 140)
+        );
+    }
 }
