@@ -7,11 +7,10 @@ public class RacingGame {
 
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    public List<RacingCar> initRacingCars(int carCount) {
+    public RacingGame(int carCount) {
         for (int i = 0; i < carCount; i++) {
             racingCars.add(new RacingCar());
         }
-        return racingCars;
     }
 
     public void playGame() {

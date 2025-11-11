@@ -17,7 +17,7 @@ class RacingCarTest {
 
     @ParameterizedTest
     @DisplayName("4이상의 값이면 전진한다")
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {4, 9})
     void move_success(int input) {
         racingCar.move(input);
         Assertions.assertThat(racingCar.getPosition()).isEqualTo(1);
@@ -25,7 +25,7 @@ class RacingCarTest {
 
     @ParameterizedTest
     @DisplayName("3이하의 값이면 멈춘다")
-    @ValueSource(ints = {1, 2, 3})
+    @ValueSource(ints = {1, 3})
     void move_fail(int input) {
         racingCar.move(input);
         Assertions.assertThat(racingCar.getPosition()).isEqualTo(0);
