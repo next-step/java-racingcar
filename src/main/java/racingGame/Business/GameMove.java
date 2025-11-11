@@ -1,5 +1,6 @@
 package racingGame.Business;
 
+import racingGame.Response.GameFinalResult;
 import racingGame.model.Car;
 import racingGame.model.ProgressRecord;
 import racingGame.util.RandomUtil;
@@ -16,13 +17,23 @@ public class GameMove {
         this.moves = moves;
     }
 
-    public List<ProgressRecord> moveCar(List<Car> joinCars) {
+    public GameFinalResult moveCar(List<Car> joinCars) {
         List<ProgressRecord> progressRecords = new ArrayList<>();
         for (int i = 0; i < this.moves; i++) {
             progressRecords.add(recordCarsMove(joinCars));
             nextMove(joinCars);
         }
-        return progressRecords;
+        return new GameFinalResult(progressRecords, findWinners(progressRecords.getLast()));
+    }
+
+    private List<String> findWinners(ProgressRecord progressRecords) {
+        for (int i = 0; i < progressRecords.carRecord().size(); i++) {
+
+
+        }
+
+        return null;
+
     }
 
     private void nextMove(List<Car> joinCars) {
