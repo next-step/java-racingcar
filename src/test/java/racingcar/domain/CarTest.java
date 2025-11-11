@@ -68,7 +68,7 @@ class CarTest {
     }
 
     @Test
-    void 전진할_때_1_칸씩_이동한다() {
+    void move_전진할_때_1_칸씩_이동한다() {
         Car car = new Car("자동차이름");
 
         car.move(4);
@@ -77,7 +77,7 @@ class CarTest {
     }
 
     @Test
-    void 여러번_전진_시_이동거리가_누적된다() {
+    void move_여러번_전진_시_이동거리가_누적된다() {
         Car car = new Car("자동차이름");
 
         car.move(4);
@@ -88,7 +88,7 @@ class CarTest {
     }
 
     @Test
-    void 현재_상태_정보를_기록_후_반환한다() {
+    void toSnapshot_현재_상태_정보를_기록_후_반환한다() {
         Car car = new Car("자동차이름");
 
         CarSnapshot snapShot = car.toSnapshot();
