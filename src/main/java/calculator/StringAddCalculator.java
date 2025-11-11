@@ -1,5 +1,4 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+package calculator;
 
 public class StringAddCalculator {
 
@@ -7,21 +6,19 @@ public class StringAddCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        return sum(toInts(split(input)));
+
+        InputParser inputParser = new InputParser(input);
+        ParsedInput parsedInput = inputParser.parse();
+
+        return sum(toInts(split(parsedInput)));
     }
 
     private static boolean isBlank(String input) {
         return input == null || input.isEmpty();
     }
 
-    private static String[] split(String input) {
-        String defaultDelimiter = ",|:";
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
-        if (m.find()) {
-            String customDelimiter = m.group(1);
-            return m.group(2).split(defaultDelimiter + "|" + Pattern.quote(customDelimiter));
-        }
-        return input.split(defaultDelimiter);
+    private static String[] split(ParsedInput parsedInput) {
+        return parsedInput.getContent().split(parsedInput.getDelimiter());
     }
 
     private static int[] toInts(String[] inputs) {
