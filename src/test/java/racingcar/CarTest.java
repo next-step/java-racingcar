@@ -18,7 +18,7 @@ public class CarTest {
 
     @DisplayName("값이 4 이상일 때 자돋차가 이동한다")
     @ParameterizedTest
-    @CsvSource({"0,0", "3,0", "4,1", "5,1"})
+    @CsvSource({"0,0", "3,0", "4,1", "9,1"})
     void canMoveWhenAtLeast(int number, int expected) {
         Car car = new Car();
         car.moveIfPossible(number);
