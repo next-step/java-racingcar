@@ -48,4 +48,18 @@ class RacingGameTest {
         assertThatThrownBy(() -> new RacingGame(new String[]{"doubleKim", "lee"}))
                 .isInstanceOf(RuntimeException.class);
     }
+
+    @Test
+    @DisplayName("게임이 끝나면 승자가 나온다")
+    void selectWinner_greaterThan_0() {
+        racingGame.playGame();
+        assertThat(racingGame.selectWinner(racingGame.getRacingCars())).hasSizeGreaterThan(0);
+    }
+
+    @Test
+    @DisplayName("승자는 최소 1명, 최대 참가자수이다")
+    void selectWinner_winner_count() {
+        racingGame.playGame();
+        assertThat(racingGame.selectWinner(racingGame.getRacingCars())).hasSizeBetween(1, 2);
+    }
 }

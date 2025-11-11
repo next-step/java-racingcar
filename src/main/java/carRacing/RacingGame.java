@@ -35,4 +35,34 @@ public class RacingGame {
             throw new RuntimeException();
         }
     }
+
+    public List<String> selectWinner(List<RacingCar> racingCars) {
+        List<String> winners = new ArrayList<>();
+        int maxPosition = getMaxPosition(racingCars);
+        for (RacingCar racingCar : racingCars) {
+            addWinner(racingCar, maxPosition, winners);
+        }
+        return winners;
+    }
+
+    private void addWinner(RacingCar racingCar, int maxPosition, List<String> winners) {
+        if (racingCar.getPosition() >= maxPosition) {
+            winners.add(racingCar.getName());
+        }
+    }
+
+    private int getMaxPosition(List<RacingCar> racingCars) {
+        int maxPosition = 0;
+        for (RacingCar racingCar : racingCars) {
+            maxPosition = updateMaxPosition(racingCar, maxPosition);
+        }
+        return maxPosition;
+    }
+
+    private int updateMaxPosition(RacingCar racingCar, int maxPosition) {
+        if (racingCar.getPosition() >= maxPosition) {
+            maxPosition = racingCar.getPosition();
+        }
+        return maxPosition;
+    }
 }
