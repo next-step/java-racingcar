@@ -28,8 +28,9 @@ class ProgressRecordTest {
         joinCarsRecord.add(new Car("pobi"));
         joinCarsRecord.add(new Car("crong"));
         joinCarsRecord.add(new Car("honux"));
-        
-        assertThat(progressRecord.recordGame(joinCarsRecord).size()).isEqualTo(3);
+        progressRecord.recordGame(joinCarsRecord);
+
+        assertThat(progressRecord.carRecord().size()).isEqualTo(3);
     }
     
     @Test
@@ -39,5 +40,23 @@ class ProgressRecordTest {
         joinCarsRecord.add(new Car("crong"));
         progressRecord.recordGame(joinCarsRecord);
         assertThat(progressRecord.carRecord()).isNotEmpty();
+    }
+
+    @Test
+    void carNameTest() {
+        String pobi = "pobi";
+        String crong = "crong";
+        String honux = "honux";
+
+        List<Car> joinCarsRecord = new ArrayList<>();
+        joinCarsRecord.add(new Car(pobi));
+        joinCarsRecord.add(new Car(crong));
+        joinCarsRecord.add(new Car(honux));
+        progressRecord.recordGame(joinCarsRecord);
+
+        assertThat(progressRecord.carRecord().size()).isEqualTo(3);
+        progressRecord.carName().get(0).equals(pobi);
+        progressRecord.carName().get(1).equals(crong);
+        progressRecord.carName().get(2).equals(honux);
     }
 }

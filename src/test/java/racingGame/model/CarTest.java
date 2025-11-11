@@ -45,6 +45,11 @@ class CarTest {
     }
 
     @Test
+    void carShowNameTest() {
+        assertThat(car.showName()).isEqualTo("mo");
+    }
+
+    @Test
     void carForwardTest() {
         int num = 5;
         car.forward(num);
