@@ -11,23 +11,14 @@ import racingGame.util.RandomUtil;
 public class Process {
     
     private Rules rules;
-    private final List<Car> joinCars = new ArrayList<>();
+    private List<Car> joinCars;
     private final List<ProgressRecord> progressRecords = new ArrayList<>();
     
     public List<GameResult> run(int cars, int moves) {
-        init(cars, moves);
-        participateCar();
+        this.rules = new Rules(cars, moves);
+        this.joinCars = new CarFactory(this.rules).createCars();
         moveCar();
         return showResult();
-    }
-    
-    private void init(int cars, int moves) {
-        this.rules = new Rules(cars, moves);
-    }
-    
-    private void participateCar() {
-        CarFactory carFactory = new CarFactory(this.rules);
-        joinCars.addAll(carFactory.createCars());
     }
     
     private void moveCar() {

@@ -8,7 +8,7 @@ import racingGame.model.Rules;
 public class CarFactory {
     
     private final List<Car> cars = new ArrayList<>();
-    private Rules rules;
+    private final Rules rules;
     
     public CarFactory(Rules rules) {
         this.rules = rules;
