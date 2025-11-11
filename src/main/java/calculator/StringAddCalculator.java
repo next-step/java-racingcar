@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringAddCalculator {
 
     public static int splitAndSum(String input) {
@@ -10,22 +13,18 @@ public class StringAddCalculator {
         InputParser inputParser = new InputParser(input);
         ParsedInput parsedInput = inputParser.parse();
 
-        return sum(toInts(split(parsedInput)));
+        return sum(toInts(parsedInput.split()));
     }
 
     private static boolean isBlank(String input) {
         return input == null || input.isEmpty();
     }
 
-    private static String[] split(ParsedInput parsedInput) {
-        return parsedInput.getContent().split(parsedInput.getDelimiter());
-    }
+    private static List<Integer> toInts(List<String> contents) {
+        List<Integer> numbers = new ArrayList<>();
 
-    private static int[] toInts(String[] inputs) {
-        int[] numbers = new int[inputs.length];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = toInt(inputs[i]);
+        for (String content : contents) {
+            numbers.add(toInt(content));
         }
         return numbers;
     }
@@ -39,7 +38,7 @@ public class StringAddCalculator {
         return number;
     }
 
-    private static int sum(int[] numbers) {
+    private static int sum(List<Integer> numbers) {
         int sum = 0;
 
         for (int number : numbers) {

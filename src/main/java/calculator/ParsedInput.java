@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ParsedInput {
@@ -10,6 +11,11 @@ public class ParsedInput {
     public ParsedInput(String delimiter, String content) {
         this.delimiter = delimiter;
         this.content = content;
+    }
+
+    public List<String> split() {
+        return Arrays.stream(content.split(delimiter))
+                .toList();
     }
 
     public String getDelimiter() {
