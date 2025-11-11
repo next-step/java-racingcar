@@ -10,6 +10,7 @@ public class ResultView {
     private static final String POSITION_MARK = "-";
 
     public static void printResultMessage() {
+        System.out.println();
         System.out.println(RESULT_MESSAGE);
     }
 
