@@ -36,9 +36,7 @@ public class Process {
     
     private void nextMove() {
         for(Car car: this.joinCars) {
-            if(car.isForwardByRandom(RandomUtil.generateInt())) {
-                car.forward();
-            }
+            car.forward(RandomUtil.generateInt());
         }
     }
     

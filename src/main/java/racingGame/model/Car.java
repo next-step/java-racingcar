@@ -10,15 +10,14 @@ public class Car {
         this.location = INIT_LOCATION;
     }
     
-    public int forward() {
-        return location++;
+    public int forward(int randomNum) {
+        if (randomNum > CAR_FORWARD_CRITERIA) {
+            location += 1;
+        }
+        return location;
     }
     
     public int findLocation() {
         return location;
-    }
-    
-    public boolean isForwardByRandom(int randomNum) {
-        return randomNum > CAR_FORWARD_CRITERIA;
     }
 }

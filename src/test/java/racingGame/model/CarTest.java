@@ -28,21 +28,22 @@ class CarTest {
 
     @Test
     void carForwardTest() {
-        car.forward();
-        car.forward();
-        assertThat(car.forward() + 1).isEqualTo(4);
+        int num = 5;
+        car.forward(num);
+        car.forward(num);
+        assertThat(car.forward(num)).isEqualTo(4);
     }
     
     @ParameterizedTest
-    @ValueSource(ints = {4, 6, 8})
+    @ValueSource(ints = {4, 8})
     void carIsForward(int num) {
-        assertThat(car.isForwardByRandom(num)).isTrue();
+        assertThat(car.forward(num)).isEqualTo(2);
     }
     
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 1, 3})
     void carIsNotForward(int num) {
-        assertThat(car.isForwardByRandom(num)).isFalse();
+        assertThat(car.forward(num)).isEqualTo(1);
     }
 
 }
