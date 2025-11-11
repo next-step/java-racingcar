@@ -11,8 +11,9 @@ public class ResultView {
 
         for (GameResult result : results) { // 한 게임 단위
             for (ProgressRecord record : result.progressRecords()) { // 각 라운드
-                for (int location : record.carRecord()) { // 각 자동차의 위치
-                    System.out.println(makeTrack(location));
+                for (int i = 0; i < record.carRecord().size() ; i++) {
+                    System.out.print(record.carName().get(i) + " : ");
+                    System.out.println(makeTrack(record.carRecord().get(i)));
                 }
                 System.out.println();
             }
