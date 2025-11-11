@@ -8,11 +8,13 @@ import java.util.List;
  * - 자동차 수, 시도 횟수 관리
  * */
 public class Game {
+  private final MovementStrategy random;
   private final List<Car> cars;
   private final int tryCnt;
 
-  public Game(int carCnt, int tryCnt){
-    cars = new ArrayList<>();
+  public Game(MovementStrategy random, int carCnt, int tryCnt){
+    this.random = random;
+    this.cars = new ArrayList<>();
     for(int i = 0; i < carCnt; i++){
       cars.add(new Car(0));
     }
@@ -20,7 +22,9 @@ public class Game {
   }
 
   public void play() {
-    //TODO
+    for(Car car : cars){
+      car.move(random.generate());
+    }
   }
 
   public List<Car> getCars() {

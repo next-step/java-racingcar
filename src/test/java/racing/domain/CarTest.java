@@ -22,7 +22,8 @@ public class CarTest {
   @ParameterizedTest
   @CsvSource({"4,true", "5,true", "0,false", "3,false"})
   void carGoIfMoreThan4(int randomValue, boolean expected){
-    boolean result = car.isMove(randomValue);
+    boolean result = car.move(randomValue);
     assertThat(result).isEqualTo(expected);
+    assertThat(car.getPosition()).isEqualTo(randomValue >= 4 ? randomValue : 0);
   }
 }

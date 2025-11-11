@@ -10,16 +10,19 @@ public class Car {
     this.position = position;
   }
 
-  public void move(int value){
-    position += value;
+  public boolean move(int value){
+    if(!isMove(value)){
+      return false;
+    }
+    position += 1;
+    return true;
   }
 
   public int getPosition() {
     return position;
   }
 
-  public boolean isMove(int value) {
-    // TODO
-    return true;
+  private boolean isMove(int value) {
+    return value >= 4;
   }
 }

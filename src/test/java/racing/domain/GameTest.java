@@ -12,7 +12,7 @@ public class GameTest {
 
   @BeforeEach
   void init(){
-    game = new Game(CAR_CNT, TRY_CNT);
+    game = new Game(new MovementStrategy(0, 9), CAR_CNT, TRY_CNT);
   }
 
   @Test
