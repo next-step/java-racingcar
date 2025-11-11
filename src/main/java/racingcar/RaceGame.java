@@ -6,6 +6,12 @@ import java.util.Random;
 
 public class RaceGame {
 
+    private static final int MIN_CAR_COUNT = 1;
+    private static final int MIN_GAME_COUNT = 1;
+    private static final int MAX_RANDOM_VALUE = 10;
+    private static final String ERROR_CAR_COUNT = "자동차 대수는 최소 " + MIN_CAR_COUNT + "대 이상이어야 합니다.";
+    private static final String ERROR_GAME_COUNT = "게임 횟수는 최소 " + MIN_GAME_COUNT + "회 이상이어야 합니다.";
+
     private final List<Car> cars;
     private final int gameCount;
 
@@ -33,7 +39,7 @@ public class RaceGame {
     public void playRound() {
         Random random = new Random();
         for (Car car : cars) {
-            car.moveIfPossible(random.nextInt(10));
+            car.moveIfPossible(random.nextInt(MAX_RANDOM_VALUE));
         }
     }
 
@@ -46,14 +52,14 @@ public class RaceGame {
     }
 
     private void validateCarCount(int carCount) {
-        if (carCount < 1) {
-            throw new IllegalArgumentException("자동차 대수는 1대 이상이어야 합니다.");
+        if (carCount < MIN_CAR_COUNT) {
+            throw new IllegalArgumentException(ERROR_CAR_COUNT);
         }
     }
 
     private void validateGameCount(int gameCount) {
-        if (gameCount < 1) {
-            throw new IllegalArgumentException("게임 횟수는 1회 이상이어야 합니다.");
+        if (gameCount < MIN_GAME_COUNT) {
+            throw new IllegalArgumentException(ERROR_GAME_COUNT);
         }
     }
 }
