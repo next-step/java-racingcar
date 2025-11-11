@@ -20,14 +20,15 @@ class ProcessTest {
     void setUp() {
         gp = new Process();
     }
-    
+
     @ParameterizedTest
-    @CsvSource(value = {"3:5", "4:6"}, delimiter = ':')
-    void carsForwardTest(int cars, int moves) {
-        List<ProgressRecord> progressRecords = gp.run(cars, moves);
+    @CsvSource(value = {"pobi,crong:5", "pobi,crong:6"}, delimiter = ':')
+    void carsForwardTest(String names, int moves) {
+        String[] carsNames = names.split(",");
+        List<ProgressRecord> progressRecords = gp.run(carsNames, moves);
         assertThat(progressRecords).hasSize(moves);
         assertThat(progressRecords)
                 .allSatisfy(progressRecord ->
-                        assertThat(progressRecord.carRecord()).hasSize(cars));
+                        assertThat(progressRecord.carRecord()).hasSize(carsNames.length));
     }
 }

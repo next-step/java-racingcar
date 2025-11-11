@@ -23,10 +23,11 @@ class ProgressRecordTest {
     
     @Test
     void gameRecordTest() {
+
         List<Car> joinCarsRecord = new ArrayList<>();
-        joinCarsRecord.add(new Car());
-        joinCarsRecord.add(new Car());
-        joinCarsRecord.add(new Car());
+        joinCarsRecord.add(new Car("pobi"));
+        joinCarsRecord.add(new Car("crong"));
+        joinCarsRecord.add(new Car("honux"));
         
         assertThat(progressRecord.recordGame(joinCarsRecord).size()).isEqualTo(3);
     }
@@ -34,8 +35,8 @@ class ProgressRecordTest {
     @Test
     void showGameResultTest() {
         List<Car> joinCarsRecord = new ArrayList<>();
-        joinCarsRecord.add(new Car());
-        joinCarsRecord.add(new Car());
+        joinCarsRecord.add(new Car("pobi"));
+        joinCarsRecord.add(new Car("crong"));
         progressRecord.recordGame(joinCarsRecord);
         assertThat(progressRecord.carRecord()).isNotEmpty();
     }

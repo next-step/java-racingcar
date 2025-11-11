@@ -10,7 +10,7 @@ public class GameApplication {
     
     public static void main(String[] args) {
         Process process = new Process();
-        ResultView.printAllResult(showResult(process.run(InputView.inputCarNum(), InputView.inputMoveNum())));
+        ResultView.printAllResult(showResult(process.run(InputView.inputCarName(), InputView.inputMoveNum())));
     }
 
     private static List<GameResult> showResult(List<ProgressRecord> progressRecords) {

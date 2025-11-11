@@ -17,18 +17,19 @@ class CarFactoryTest {
         carFactory = new CarFactory();
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, -1})
-    void carSetTest(int num) {
+    @Test
+    void carSetTest() {
+        String[] strings = {};
         assertThatThrownBy(() -> {
-            carFactory.createCars(num);
+            carFactory.createCars(strings);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("%s", "참가시킬 자동차 수 입력이 생략되거나, 0이하");
     }
     @Test
     void carMakeTest() {
+        String[] strings = {"pobi", "crong","honux"};
         carFactory = new CarFactory();
-        assertThat(carFactory.createCars(3).size()).isEqualTo(3);
+        assertThat(carFactory.createCars(strings).size()).isEqualTo(3);
     }
 
 }

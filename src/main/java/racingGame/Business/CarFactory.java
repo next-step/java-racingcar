@@ -8,10 +8,10 @@ public class CarFactory {
     
     private final List<Car> cars = new ArrayList<>();
 
-    public List<Car> createCars(int carNumber) {
-        validateCar(carNumber);
-        for (int i = 0; i < carNumber; i++) {
-            cars.add(new Car());
+    public List<Car> createCars(String[] names) {
+        validateCar(names.length);
+        for (String name : names) {
+            cars.add(new Car(name));
         }
         return cars;
     }

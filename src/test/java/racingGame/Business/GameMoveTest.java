@@ -28,15 +28,15 @@ class GameMoveTest {
     @Test
     void moveCarTest() {
         int moveCount = 5;
-        int carCount = 3;
+        String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove(moveCount);
-        List<Car> cars = new CarFactory().createCars(carCount);
+        List<Car> cars = new CarFactory().createCars(strings);
         List<ProgressRecord> progressRecords = gameMove.moveCar(cars);
 
         assertThat(progressRecords).hasSize(moveCount);
         assertThat(progressRecords)
                 .allSatisfy(progressRecord ->
-                        assertThat(progressRecord.carRecord()).hasSize(carCount));
+                        assertThat(progressRecord.carRecord()).hasSize(strings.length));
     }
 
 }

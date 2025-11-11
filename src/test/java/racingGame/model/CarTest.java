@@ -1,6 +1,7 @@
 package racingGame.model;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,12 +14,29 @@ class CarTest {
     
     @BeforeEach
     void setUp() {
-        car = new Car();
+        String name = "mo";
+        car = new Car(name);
     }
     
     @Test
     void carGenerateTest() {
         assertThat(car);
+    }
+
+    @Test
+    void carsNameBlankValidateTest() {
+        assertThatThrownBy(() -> {
+            new Car("");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("%s", "자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
+    }
+
+    @Test
+    void carsNameOverLetterValidateTest() {
+        assertThatThrownBy(() -> {
+            new Car("123456");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("%s", "자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
     }
     
     @Test

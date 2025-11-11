@@ -4,9 +4,12 @@ public class Car {
     
     public static final int INIT_LOCATION = 1;
     public static final int CAR_FORWARD_CRITERIA = 3;
+    private String name;
     private int location;
     
-    public Car() {
+    public Car(String name) {
+        validate(name);
+        this.name = name;
         this.location = INIT_LOCATION;
     }
     
@@ -19,5 +22,11 @@ public class Car {
     
     public int findLocation() {
         return location;
+    }
+
+    private void validate(String name) {
+        if (name.equals("") || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
+        }
     }
 }

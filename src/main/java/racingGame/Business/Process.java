@@ -6,8 +6,8 @@ import racingGame.model.ProgressRecord;
 
 public class Process {
     
-    public List<ProgressRecord> run(int cars, int moves) {
-        List<Car> joinCars = new CarFactory().createCars(cars);
+    public List<ProgressRecord> run(String[] names, int moves) {
+        List<Car> joinCars = new CarFactory().createCars(names);
         List<ProgressRecord> progressRecords = new GameMove(moves).moveCar(joinCars);
         return progressRecords;
     }
