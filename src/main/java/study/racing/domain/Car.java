@@ -3,19 +3,18 @@ package study.racing.domain;
 import java.util.Objects;
 
 public class Car {
-    private static final int DEFAULT_POSITION = 0;
     private static final int MOVE_CONDITION = 4;
     private final CarName name;
-    private int position;
+    private CarPosition position;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.position = DEFAULT_POSITION;
+        this.position = new CarPosition();
     }
 
     public void move(int randonValue) {
         if (randonValue >= MOVE_CONDITION) {
-            this.position++;
+            this.position = position.increase();
         }
     }
 
@@ -24,14 +23,14 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
@@ -41,6 +40,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{name= " + name.getValue() + ", position=" + position + "}";
+        return "Car{name= " + name.getValue() + ", position= " + position.getValue() + "}";
     }
 }
