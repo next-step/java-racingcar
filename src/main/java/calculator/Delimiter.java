@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 public class Delimiter {
 	private static final String DEFAULT_DELIMITERS = ":,";

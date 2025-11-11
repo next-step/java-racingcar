@@ -1,4 +1,4 @@
-package step2;
+package calculator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -25,9 +25,7 @@ public class CalculatorTest {
 	void add_isSingleNumberForNullOrEmptyStrings(
 		String input
 	) {
-		int parseOrZero = calculator.parseOrZero(input);
-
-		assertThat(parseOrZero).isEqualTo(0);
+		assertThat(calculator.calculate(input)).isEqualTo(0);
 	}
 
 	@ParameterizedTest
@@ -36,9 +34,9 @@ public class CalculatorTest {
 	void add_ShouldReturnNumberForSingleNumberString(
 		String input
 	) {
-		int singleDigit = calculator.parseIfSingleDigit(input);
+		int result = calculator.calculate(input);
 
-		assertThat(singleDigit).isEqualTo(Integer.parseInt(input));
+		assertThat(result).isEqualTo(Integer.parseInt(input));
 	}
 
 	@ParameterizedTest
@@ -60,7 +58,7 @@ public class CalculatorTest {
 		String input
 	) {
 		assertThatCode(() -> {
-			calculator.validateDelimiters(input);
+			calculator.calculate(input);
 		}).doesNotThrowAnyException();
 	}
 
@@ -89,7 +87,7 @@ public class CalculatorTest {
 		String input
 	) {
 		assertThatThrownBy(() -> {
-			calculator.checkedNegativeNumber(input);
+			calculator.calculate(input);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
