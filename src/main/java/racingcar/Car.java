@@ -6,10 +6,6 @@ public class Car {
 
     private int position = 0;
 
-    public void move() {
-        position++;
-    }
-
     public int position() {
         return position;
     }
@@ -18,5 +14,9 @@ public class Car {
         if (number >= MOVE_THRESHOLD) {
             move();
         }
+    }
+
+    private void move() {
+        position++;
     }
 }
