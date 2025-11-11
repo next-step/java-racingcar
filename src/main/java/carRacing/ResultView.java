@@ -18,4 +18,10 @@ public class ResultView {
         }
         System.out.println();
     }
+
+    public static void printWinner(RacingGame racingGame) {
+        System.out.println(String.join(", ", racingGame.selectWinner()) + "가 최종 우승했습니다.");
+    }
+
+
 }
