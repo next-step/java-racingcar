@@ -51,4 +51,13 @@ class CarsTest {
 
         assertThat(cars.getDistances()).containsExactly(0, 0, 1, 1);
     }
+
+    @Test
+    void toSnapShots_자동차_상태_스냅샷_목록을_반환한다() {
+        Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
+        RandomNumber randomNumber = () -> 4;
+        cars.moveAll(randomNumber);
+
+        assertThat(cars.toSnapshots()).containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1));
+    }
 }

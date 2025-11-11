@@ -56,6 +56,16 @@ public class Cars {
         return this.values.size();
     }
 
+    public List<CarSnapshot> toSnapshots() {
+        List<CarSnapshot> snapshots = new ArrayList<>();
+
+        for (Car car : values) {
+            snapshots.add(car.toSnapshot());
+        }
+
+        return snapshots;
+    }
+
     public List<Integer> getDistances() {
         List<Integer> distances = new ArrayList<>();
 
