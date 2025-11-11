@@ -2,7 +2,6 @@ package study.racing.view;
 
 import study.racing.domain.RaceInput;
 
-import java.io.InputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,13 +12,11 @@ public class InputView {
     public static RaceInput race() {
         System.out.println("경주할 자동자 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String names = namesInput();
-        System.out.println("자동차 대수는 몇대인가요?");
-        int numberOfCar = input();
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        int numberOfAttempt = input();
+        int numberOfAttempt = numberinput();
         System.out.println();
 
-        return new RaceInput(names, numberOfCar, numberOfAttempt);
+        return new RaceInput(names, numberOfAttempt);
     }
 
     private static String namesInput() {
@@ -33,7 +30,7 @@ public class InputView {
         }
     }
 
-    public static int input() {
+    public static int numberinput() {
         while (true) {
             try {
                 int number = scanner.nextInt();

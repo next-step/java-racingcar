@@ -8,32 +8,19 @@ public class RaceInput {
     private static final String SEPARATOR = ",";
 
     private final List<String> names;
-    private final int numberOfCars;
     private final int numberOfAttempt;
 
-    public RaceInput(String names, int numberOfCars, int numberOfAttempts) {
+    public RaceInput(String names, int numberOfAttempts) {
         validateString(names);
         List<String> splitNames = List.of(names.split(SEPARATOR));
         validateNames(splitNames);
-        validateNameAndCarCountMatch(splitNames, numberOfCars);
         this.names = splitNames;
 
-        validateNumber(numberOfCars, numberOfAttempts);
-        this.numberOfCars = numberOfCars;
+        validateNumber(numberOfAttempts);
         this.numberOfAttempt = numberOfAttempts;
     }
 
-    private void validateNameAndCarCountMatch(List<String> names, int numberOfCars) {
-        if(names.size() != numberOfCars){
-            throw new RuntimeException("차량 이름 수와 참가 차량 수가 일치하지 않습니다.");
-        }
-    }
-
-    private static void validateNumber(int numberOfCars, int numberOfAttempts) {
-        if (numberOfCars < 1) {
-            throw new RuntimeException("레이스 참가 차량 수는 1대 이상이어야 합니다.");
-        }
-
+    private static void validateNumber(int numberOfAttempts) {
         if (numberOfAttempts < 1) {
             throw new RuntimeException("레이스 횟수는 1회 이상이어야 합니다.");
         }
@@ -59,10 +46,6 @@ public class RaceInput {
 
     public List<String> getNames() {
         return names;
-    }
-
-    public int getNumberOfCars() {
-        return numberOfCars;
     }
 
     public int getNumberOfAttempt() {

@@ -20,7 +20,7 @@ public class Car {
         return position;
     }
 
-    public void forwardPosition(){
+    public void forwardPosition() {
         this.position += MARK;
     }
 

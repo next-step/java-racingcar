@@ -24,7 +24,7 @@ public class ResultView {
     }
 
     private static void playRacing(RaceInput raceInput, RaceAttempt attempts) {
-        for (int j = 0; j < raceInput.getNumberOfCars(); j++) {
+        for (int j = 0; j < raceInput.getNames().size(); j++) {
             if (RandomMoveRule.isRandomNumber()) {
                 attempts.getCars().get(j).forwardPosition();
             }
