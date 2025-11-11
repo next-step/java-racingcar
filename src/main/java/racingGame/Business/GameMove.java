@@ -19,8 +19,8 @@ public class GameMove {
     public List<ProgressRecord> moveCar(List<Car> joinCars) {
         List<ProgressRecord> progressRecords = new ArrayList<>();
         for (int i = 0; i < this.moves; i++) {
-            nextMove(joinCars);
             progressRecords.add(recordCarsMove(joinCars));
+            nextMove(joinCars);
         }
         return progressRecords;
     }
