@@ -65,14 +65,4 @@ public class Cars {
 
         return snapshots;
     }
-
-    public List<Integer> getDistances() {
-        List<Integer> distances = new ArrayList<>();
-
-        for (Car car : values) {
-            distances.add(car.getDistance());
-        }
-
-        return distances;
-    }
 }

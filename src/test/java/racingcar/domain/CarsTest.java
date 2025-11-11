@@ -37,7 +37,8 @@ class CarsTest {
 
         cars.moveAll(randomNumber);
 
-        assertThat(cars.getDistances()).containsExactly(1, 1, 1);
+        assertThat(cars.toSnapshots())
+                .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1), new CarSnapshot("자동차셋", 1));
     }
 
     @Test
@@ -49,7 +50,12 @@ class CarsTest {
 
         cars.moveAll(randomNumber);
 
-        assertThat(cars.getDistances()).containsExactly(0, 0, 1, 1);
+        assertThat(cars.toSnapshots())
+                .containsExactly(
+                        new CarSnapshot("자동차하나", 0),
+                        new CarSnapshot("자동차둘", 0),
+                        new CarSnapshot("자동차셋", 1),
+                        new CarSnapshot("자동차넷", 1));
     }
 
     @Test
