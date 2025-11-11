@@ -12,6 +12,7 @@ public class ResultView {
     }
 
     private static void printPosition(RacingCar racingCar) {
+        System.out.print(racingCar.getName() + " : ");
         for (int i = 0; i < racingCar.getPosition(); i++) {
             System.out.print("-");
         }
