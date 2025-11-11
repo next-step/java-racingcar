@@ -6,24 +6,19 @@ import study.racing.view.GameInput;
 import study.racing.view.GameOutput;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        GameInput gameInput = new GameInput(scanner);
-        GameOutput gameOutput = new GameOutput();
-
-        List<String> carNames = gameInput.readCarCount();
-        int roundCount = gameInput.readRoundCount();
+        List<String> carNames = GameInput.readCarCount();
+        int roundCount = GameInput.readRoundCount();
         RacingGame racingGame = new RacingGame(carNames, new RandomNumber());
-        gameOutput.printResult();
+        GameOutput.printResult();
 
         for (int i = 0; i < roundCount; i++) {
             racingGame.playRound();
-            gameOutput.printRound(racingGame.getCars());
-            gameOutput.printEmptyLine();
+            GameOutput.printRound(racingGame.getCars());
+            GameOutput.printEmptyLine();
         }
-        gameOutput.printWinners(racingGame.getWinners().getNames());
+        GameOutput.printWinners(racingGame.getWinners().getNames());
     }
 }
