@@ -1,0 +1,34 @@
+package racing.domain;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+/**
+ * 게임
+ * - 자동차 수, 시도 횟수 관리
+ * */
+public class Game {
+  private final List<Car> cars;
+  private final int tryCnt;
+
+  public Game(int carCnt, int tryCnt){
+    cars = new ArrayList<>();
+    for(int i = 0; i < carCnt; i++){
+      cars.add(new Car(0));
+    }
+    this.tryCnt = tryCnt;
+  }
+
+  public void play() {
+    //TODO
+  }
+
+  public List<Car> getCars() {
+    return Collections.unmodifiableList(cars);
+  }
+
+  public int getTryCnt() {
+    return this.tryCnt;
+  }
+
+}
