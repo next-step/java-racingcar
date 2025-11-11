@@ -11,8 +11,8 @@ public class RoundResult {
         this.snapshots = List.copyOf(snapshots);
     }
 
-    private void validate(List<CarSnapshot> positions) {
-        if (positions == null || positions.isEmpty()) {
+    private void validate(List<CarSnapshot> snapshots) {
+        if (snapshots == null || snapshots.isEmpty()) {
             throw new IllegalArgumentException("스냅샷 목록은 비어있을 수 없습니다.");
         }
     }
@@ -24,26 +24,30 @@ public class RoundResult {
     public List<String> findLeaders() {
         List<String> leaders = new ArrayList<>();
 
-        for (CarSnapshot snapshot : snapshots) {
-            if (snapshot.distance() == maxDistance()) {
-                leaders.add(snapshot.name());
-            }
+        for (CarSnapshot snapshot : this.snapshots) {
+            addIfLeader(snapshot, leaders);
         }
 
         return leaders;
     }
 
+    private void addIfLeader(CarSnapshot snapshot, List<String> leaders) {
+        if (snapshot.distance() == maxDistance()) {
+            leaders.add(snapshot.name());
+        }
+    }
+
     private int maxDistance() {
-        int maxDistance = 0;
+        int max = 0;
 
         for (CarSnapshot snapshot : snapshots) {
-            int distance = snapshot.distance();
-
-            if (distance > maxDistance) {
-                maxDistance = distance;
-            }
+            max = largerDistance(max, snapshot.distance());
         }
 
-        return maxDistance;
+        return max;
+    }
+
+    private int largerDistance(int currentMax, int candidate) {
+        return Math.max(candidate, currentMax);
     }
 }

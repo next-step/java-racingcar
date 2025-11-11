@@ -3,9 +3,9 @@ package racingcar.domain;
 import racingcar.random.RandomNumber;
 
 public class RacingGame {
-    private final Cars cars;
-
     private static final int MIN_ROUND = 1;
+
+    private final Cars cars;
 
     public RacingGame(Cars cars) {
         this.cars = cars;
@@ -13,15 +13,7 @@ public class RacingGame {
 
     public RaceHistory race(int roundCount, RandomNumber randomNumber) {
         validateRoundCount(roundCount);
-
-        RaceHistory raceHistory = new RaceHistory();
-
-        for (int round = 0; round < roundCount; round++) {
-            executeRound(randomNumber);
-            raceHistory.record(getRoundResult());
-        }
-
-        return raceHistory;
+        return executeRounds(roundCount, randomNumber);
     }
 
     private void validateRoundCount(int roundCount) {
@@ -34,11 +26,22 @@ public class RacingGame {
         return roundCount < MIN_ROUND;
     }
 
-    private RoundResult getRoundResult() {
-        return new RoundResult(cars.toSnapshots());
+    private RaceHistory executeRounds(int roundCount, RandomNumber randomNumber) {
+        RaceHistory raceHistory = new RaceHistory();
+
+        for (int round = 0; round < roundCount; round++) {
+            executeRound(randomNumber);
+            raceHistory.record(getRoundResult());
+        }
+
+        return raceHistory;
     }
 
     private void executeRound(RandomNumber randomNumber) {
         cars.moveAll(randomNumber);
+    }
+
+    private RoundResult getRoundResult() {
+        return new RoundResult(cars.toSnapshots());
     }
 }

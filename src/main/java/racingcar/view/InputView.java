@@ -45,11 +45,15 @@ public class InputView {
         String[] tokens = input.split(DELIMITER);
 
         for (String token : tokens) {
-            String name = token.trim();
-            if (!name.isEmpty()) names.add(name);
+            addName(token, names);
         }
 
         return names;
+    }
+
+    private static void addName(String token, List<String> names) {
+        String name = token.trim();
+        if (!name.isEmpty()) names.add(name);
     }
 
     private static int readRoundCount(Scanner scanner) {
