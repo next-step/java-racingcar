@@ -23,7 +23,13 @@ public class StringAddCalculatorTest {
 
     @ParameterizedTest
     @CsvSource(value = {"1,2:3", "2,5:7", "20,30:50"}, delimiter = ':')
-    void 숫자_두개를_콤마로_구분해서_입력할_경우_두_숫자의_합을_반환한다(String input, int sum) {
+    void 숫자_두개를_콤마로_구분해서_입력할_경우_두_숫자의_합을_반환한다(String input, int sum) throws Exception {
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"1,2:3;6", "2:5;7", "20,30:40;90"}, delimiter = ';')
+    void 콤마와_콜론을_구분자로_사용한_문자열의_합을_반환한다(String input, int sum) throws Exception {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
     }
 }

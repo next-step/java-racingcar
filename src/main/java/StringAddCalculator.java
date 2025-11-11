@@ -1,13 +1,10 @@
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 public class StringAddCalculator {
 
     public static int splitAndSum(String input) {
         if (isBlank(input)) {
             return 0;
         }
-        int[] numbers = toInteger(input.split(","));
+        int[] numbers = toInteger(input.split(",|:"));
         return sum(numbers);
     }
 
