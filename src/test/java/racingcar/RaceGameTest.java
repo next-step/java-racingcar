@@ -3,6 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -34,13 +36,19 @@ public class RaceGameTest {
                 .hasMessageContaining("게임 횟수");
     }
 
-    @DisplayName("경기가 실행된다")
+    @DisplayName("한 라운드에서 자동차가 고정값으로 이동한다")
     @Test
     void playRaceGame() {
-        RaceGame raceGame = new RaceGame(2, 3);
-        raceGame.playGame();
+        Random fixedRandom = new Random() {
+            @Override
+            public int nextInt(int bound) {
+                return 5;
+            }
+        };
+        RaceGame raceGame = new RaceGame(2, 3, fixedRandom);
+        raceGame.playRound();
         for (Car car : raceGame.cars()) {
-            assertThat(car.position()).isBetween(0, 3);
+            assertThat(car.position()).isEqualTo(1);
         }
     }
 }

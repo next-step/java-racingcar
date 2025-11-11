@@ -14,12 +14,18 @@ public class RaceGame {
 
     private final List<Car> cars;
     private final int gameCount;
+    private final Random random;
 
     public RaceGame(int carCount, int gameCount) {
+        this(carCount, gameCount, new Random());
+    }
+
+    public RaceGame(int carCount, int gameCount, Random random) {
         validateCarCount(carCount);
         validateGameCount(gameCount);
         this.cars = createCars(carCount);
         this.gameCount = gameCount;
+        this.random = random;
     }
 
     public List<Car> cars() {
@@ -30,14 +36,7 @@ public class RaceGame {
         return gameCount;
     }
 
-    public void playGame() {
-        for (int i = 0; i < gameCount; i++) {
-            playRound();
-        }
-    }
-
     public void playRound() {
-        Random random = new Random();
         for (Car car : cars) {
             car.moveIfPossible(random.nextInt(MAX_RANDOM_VALUE));
         }
