@@ -36,7 +36,7 @@ public class RacingGame {
         }
     }
 
-    public List<String> selectWinner(List<RacingCar> racingCars) {
+    public List<String> selectWinner() {
         List<String> winners = new ArrayList<>();
         int maxPosition = getMaxPosition(racingCars);
         for (RacingCar racingCar : racingCars) {
