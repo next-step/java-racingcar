@@ -26,4 +26,28 @@ public class RaceAttempt {
             cars.add(new Car(name));
         }
     }
+
+    public List<Car> topRankCars() {
+        int topRankPoint = topRankPoint();
+        return findTopRankCars(topRankPoint);
+    }
+
+    private int topRankPoint() {
+        int maxPoint = 0;
+        for (int i = 0; i < cars.size(); i++) {
+            maxPoint = Math.max(maxPoint, cars.get(i).getPosition().length());
+        }
+        return maxPoint;
+    }
+
+    private List<Car> findTopRankCars(int topRankPoint) {
+        List<Car> findTopCars = new ArrayList<>();
+        for (Car car : cars) {
+            if (topRankPoint == car.getPosition().length()) {
+                findTopCars.add(car);
+            }
+        }
+        return findTopCars;
+    }
+
 }

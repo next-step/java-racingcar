@@ -5,6 +5,7 @@ import study.racing.domain.RaceAttempt;
 import study.racing.domain.RaceInput;
 import study.racing.domain.RandomMoveRule;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ResultView {
@@ -15,6 +16,11 @@ public class ResultView {
         for (int i = 0; i < raceInput.getNumberOfAttempt(); i++) {
             playRacing(raceInput, attempts);
             System.out.println();
+        }
+
+        List<Car> topRankCars = attempts.topRankCars();
+        for (Car topRankCar : topRankCars) {
+            System.out.println(topRankCar.getName());
         }
     }
 
