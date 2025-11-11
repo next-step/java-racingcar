@@ -14,8 +14,8 @@ class RaceInputTest {
     @Test
     @DisplayName("정상 입력으로 RaceInput 객체를 생성한다.")
     void createSuccess() {
-        RaceInput race = new RaceInput("car1,car2,car3", 1, 2);
-        assertThat(race.getNumberOfCars()).isEqualTo(1);
+        RaceInput race = new RaceInput("car1,car2,car3", 3, 2);
+        assertThat(race.getNumberOfCars()).isEqualTo(3);
         assertThat(race.getNumberOfAttempt()).isEqualTo(2);
     }
 
@@ -31,7 +31,7 @@ class RaceInputTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void throwExceptionAttemptNumber(int numberOfAttempt) {
-        assertThatThrownBy(() -> new RaceInput("car1,car2", 1, numberOfAttempt))
+        assertThatThrownBy(() -> new RaceInput("car1,car2", 2, numberOfAttempt))
                 .isInstanceOf(RuntimeException.class);
     }
 
@@ -39,6 +39,12 @@ class RaceInputTest {
     @ParameterizedTest
     void 이름이_null_또는_빈값이면_예외발생(String name){
         assertThatThrownBy(() ->  new RaceInput(name, 3, 2))
+                .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    void 차량명_수와_입력한_차량수와_일치하지_않으면_예외발생(){
+        assertThatThrownBy(() ->  new RaceInput("car1,car2", 3, 2))
                 .isInstanceOf(RuntimeException.class);
     }
 }

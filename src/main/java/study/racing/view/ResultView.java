@@ -1,5 +1,7 @@
 package study.racing.view;
 
+import study.racing.domain.Car;
+import study.racing.domain.RaceAttempt;
 import study.racing.domain.RaceInput;
 import study.racing.domain.RandomMoveRule;
 
@@ -7,9 +9,7 @@ import java.util.List;
 
 public class ResultView {
 
-    private static final String MARK = "-";
-
-    public static void result(RaceInput raceInput, List<String> attempts) {
+    public static void result(RaceInput raceInput, RaceAttempt attempts) {
         System.out.println("실행 결과");
 
         for (int i = 0; i < raceInput.getNumberOfAttempt(); i++) {
@@ -18,12 +18,13 @@ public class ResultView {
         }
     }
 
-    private static void playRacing(RaceInput raceInput, List<String> attempts) {
+    private static void playRacing(RaceInput raceInput, RaceAttempt attempts) {
         for (int j = 0; j < raceInput.getNumberOfCars(); j++) {
             if (RandomMoveRule.isRandomNumber()) {
-                attempts.set(j, attempts.get(j) + MARK);
+                attempts.getCars().get(j).forwardPosition();
             }
-            System.out.println((j + 1) + "번 차량 : " + attempts.get(j));
+            Car currrentCar = attempts.getCars().get(j);
+            System.out.println(currrentCar.getName() + " : " + currrentCar.getPosition());
         }
     }
 }

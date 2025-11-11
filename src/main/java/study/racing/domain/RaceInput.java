@@ -15,11 +15,18 @@ public class RaceInput {
         validateString(names);
         List<String> splitNames = List.of(names.split(SEPARATOR));
         validateNames(splitNames);
+        validateNameAndCarCountMatch(splitNames, numberOfCars);
         this.names = splitNames;
 
         validateNumber(numberOfCars, numberOfAttempts);
         this.numberOfCars = numberOfCars;
         this.numberOfAttempt = numberOfAttempts;
+    }
+
+    private void validateNameAndCarCountMatch(List<String> names, int numberOfCars) {
+        if(names.size() != numberOfCars){
+            throw new RuntimeException("차량 이름 수와 참가 차량 수가 일치하지 않습니다.");
+        }
     }
 
     private static void validateNumber(int numberOfCars, int numberOfAttempts) {
