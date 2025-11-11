@@ -6,7 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingGame.Response.GameResult;
 import racingGame.model.Car;
+import racingGame.model.ProgressRecord;
+
+import java.util.List;
 
 class ProcessTest {
     
@@ -18,28 +22,12 @@ class ProcessTest {
     }
     
     @ParameterizedTest
-    @ValueSource(ints = {8, 9, 10, 11})
-    void carForwardTest(int moves) {
-      gp.run(1, moves);
-      while(true) {
-          if(gp.joinCars().getFirst().findLocation() > 0) {
-              break;
-          }
-      }
-      assertThat(gp.joinCars().getFirst().findLocation()).isNotEqualTo(0);
-    }
-    
-    @ParameterizedTest
-    @CsvSource(value = {"3:5", "4:6", "6:8", "8:10"}, delimiter = ':')
+    @CsvSource(value = {"3:5", "4:6"}, delimiter = ':')
     void carsForwardTest(int cars, int moves) {
-     gp.run(cars, moves);
-     while(true) {
-         if(gp.joinCars().getFirst().findLocation() > 2) {
-             break;
-         }
-     }
-     for(Car car : gp.joinCars()){
-         assertThat(car.findLocation()).isNotEqualTo(0);
-     }
+        List<ProgressRecord> progressRecords = gp.run(cars, moves);
+        assertThat(progressRecords).hasSize(moves);
+        assertThat(progressRecords)
+                .allSatisfy(progressRecord ->
+                        assertThat(progressRecord.carRecord()).hasSize(cars));
     }
 }

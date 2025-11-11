@@ -1,13 +1,12 @@
 package racingGame.Business;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingGame.model.Car;
+import racingGame.model.ProgressRecord;
 
 import java.util.List;
 
@@ -28,10 +27,16 @@ class GameMoveTest {
 
     @Test
     void moveCarTest() {
-        GameMove gameMove = new GameMove(5);
-        List<Car> cars = new CarFactory().createCars(3);
-        List<Car> carResult = gameMove.moveCar(cars);
-        assertThat(carResult.getFirst().findLocation()).isNotEqualTo(0);
+        int moveCount = 5;
+        int carCount = 3;
+        GameMove gameMove = new GameMove(moveCount);
+        List<Car> cars = new CarFactory().createCars(carCount);
+        List<ProgressRecord> progressRecords = gameMove.moveCar(cars);
+
+        assertThat(progressRecords).hasSize(moveCount);
+        assertThat(progressRecords)
+                .allSatisfy(progressRecord ->
+                        assertThat(progressRecord.carRecord()).hasSize(carCount));
     }
 
 }

@@ -4,6 +4,7 @@ import racingGame.model.Car;
 import racingGame.model.ProgressRecord;
 import racingGame.util.RandomUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameMove {
@@ -15,26 +16,26 @@ public class GameMove {
         this.moves = moves;
     }
 
-    public List<Car> moveCar(List<Car> joinCars) {
-        List<Car> cars = null;
+    public List<ProgressRecord> moveCar(List<Car> joinCars) {
+        List<ProgressRecord> progressRecords = new ArrayList<>();
         for (int i = 0; i < this.moves; i++) {
-            cars = nextMove(joinCars);
+            nextMove(joinCars);
+            progressRecords.add(recordCarsMove(joinCars));
         }
-        return cars;
+        return progressRecords;
     }
 
-    private List<Car> nextMove(List<Car> joinCars) {
+    private void nextMove(List<Car> joinCars) {
         for(Car car: joinCars) {
             car.forward(RandomUtil.generateInt());
         }
-        return joinCars;
     }
 
-//    private void recordCarsMove() {
-//        ProgressRecord pr = new ProgressRecord();
-//        pr.recordGame(this.joinCars);
-//        progressRecords.add(pr);
-//    }
+    private ProgressRecord recordCarsMove(List<Car> joinCars) {
+        ProgressRecord pr = new ProgressRecord();
+        pr.recordGame(joinCars);
+        return pr;
+    }
 
     private void validate(int moves) {
         if(moves < 1) {
