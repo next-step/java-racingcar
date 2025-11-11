@@ -1,41 +1,28 @@
-import javax.xml.stream.Location;
+import java.util.Random;
 
 public class Car {
-    int currentLocation;
+    private static final int MOVE_THRESHOLD = 4;
+    private int currentLocation;
 
     Car() {
         this.currentLocation = 0;
     }
 
-    void moveForward() {
+    int currentLocation() {
+        return currentLocation;
+    }
+
+    void makeMove(int number) {
+        if (isMovable(number)) {
+            moveForward();
+        }
+    }
+
+    private boolean isMovable(int number) {
+        return number >= MOVE_THRESHOLD;
+    }
+
+    private void moveForward() {
         currentLocation++;
-    }
-
-    void play() {
-        final boolean madeFirstMove = makeFirstMove();
-        if (madeFirstMove) {
-            return;
-        }
-        makeMove();
-    }
-
-    private boolean makeFirstMove() {
-        if (isFirstMove()) {
-            moveForward();
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isFirstMove() {
-        return currentLocation == 0;
-    }
-
-    private void makeMove() {
-        final int random = CarRacingRules.randomRange();
-        final boolean moveForward = CarRacingRules.determineToGoForwardOrStop(random);
-        if (moveForward) {
-            moveForward();
-        }
     }
 }
