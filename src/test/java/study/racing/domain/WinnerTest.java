@@ -18,7 +18,7 @@ public class WinnerTest {
         car1.move(MOVABLE_NUMBER);
 
         List<Car> cars = Arrays.asList(car1, car2);
-        Winners winners = new Winners(cars);
+        Winners winners = Winners.from(cars);
         List<String> names = winners.getNames();
 
         assertEquals(1, names.size());
@@ -33,7 +33,7 @@ public class WinnerTest {
         car2.move(MOVABLE_NUMBER);
 
         List<Car> cars = Arrays.asList(car1, car2);
-        Winners winners = new Winners(cars);
+        Winners winners = Winners.from(cars);
         List<String> names = winners.getNames();
 
         assertEquals(2, names.size());

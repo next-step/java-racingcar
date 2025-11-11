@@ -5,14 +5,17 @@ import java.util.List;
 
 public class Winners {
     private final List<Car> winners;
-    private final int maxPosition;
 
-    public Winners(List<Car> cars) {
-        this.maxPosition = findMaxPosition(cars);
-        this.winners = findWinners(cars, maxPosition);
+    public Winners(List<Car> winners) {
+        this.winners = winners;
     }
 
-    private int findMaxPosition(List<Car> cars) {
+    public static Winners from(List<Car> cars) {
+        int maxPosition = findMaxPosition(cars);
+        return new Winners(findWinners(cars, maxPosition));
+    }
+
+    private static int findMaxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
             if (car.getPosition() > maxPosition) {
@@ -22,7 +25,7 @@ public class Winners {
         return maxPosition;
     }
 
-    private List<Car> findWinners(List<Car> cars, int maxPosition) {
+    private static List<Car> findWinners(List<Car> cars, int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
@@ -38,9 +41,5 @@ public class Winners {
             names.add(car.getName());
         }
         return names;
-    }
-
-    public int getMaxPosition() {
-        return maxPosition;
     }
 }
