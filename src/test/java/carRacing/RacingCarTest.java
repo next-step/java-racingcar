@@ -3,8 +3,11 @@ package carRacing;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.assertj.core.api.Assertions.*;
 
 class RacingCarTest {
 
@@ -12,7 +15,13 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar();
+        racingCar = new RacingCar("kim");
+    }
+
+    @Test
+    @DisplayName("racingCar 생성 시 이름이 필요하다")
+    void racingCarName() {
+        assertThat(racingCar.getName()).isEqualTo("kim");
     }
 
     @ParameterizedTest
@@ -20,7 +29,7 @@ class RacingCarTest {
     @ValueSource(ints = {4, 9})
     void move_success(int input) {
         racingCar.move(input);
-        Assertions.assertThat(racingCar.getPosition()).isEqualTo(1);
+        assertThat(racingCar.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -28,6 +37,6 @@ class RacingCarTest {
     @ValueSource(ints = {1, 3})
     void move_fail(int input) {
         racingCar.move(input);
-        Assertions.assertThat(racingCar.getPosition()).isEqualTo(0);
+        assertThat(racingCar.getPosition()).isEqualTo(0);
     }
 }

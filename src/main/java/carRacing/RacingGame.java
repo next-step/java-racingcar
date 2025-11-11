@@ -9,7 +9,7 @@ public class RacingGame {
 
     public RacingGame(int carCount) {
         for (int i = 0; i < carCount; i++) {
-            racingCars.add(new RacingCar());
+            racingCars.add(new RacingCar(""));
         }
     }
 
