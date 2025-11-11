@@ -1,8 +1,11 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 public class StringAddCalculatorTest {
@@ -29,5 +32,19 @@ public class StringAddCalculatorTest {
     @CsvSource(value = {"1,2:3;6", "2:5;7", "20,30:40;90"}, delimiter = ';')
     void 콤마와_콜론을_구분자로_사용한_문자열의_합을_반환한다(String input, int sum) throws Exception {
         assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
+    }
+
+    @ParameterizedTest
+    @MethodSource("커스텀_구분자가_존재하는_경우")
+    void 커스텀_구분자가_존재할_때_문자열의_합을_반환한다(String input, int sum) throws Exception {
+        assertThat(StringAddCalculator.splitAndSum(input)).isEqualTo(sum);
+    }
+
+    private static Stream<Arguments> 커스텀_구분자가_존재하는_경우() {
+        return Stream.of(
+                Arguments.of("//!\n1!2!3", 6),
+                Arguments.of("//@\n5@6@7", 18),
+                Arguments.of("//&\n20&30&40", 90)
+        );
     }
 }
