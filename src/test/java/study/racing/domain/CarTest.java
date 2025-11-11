@@ -13,20 +13,27 @@ class CarTest {
     @NullAndEmptySource
     @ParameterizedTest
     void 이름이_null_또는_빈값이면_예외발생(String name){
-        assertThatThrownBy(() -> new Car(name, ""))
+        assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     void car_생성_성공(){
-        Car car = new Car("car1", "");
+        Car car = new Car("car1");
         assertThat(car.getName()).isEqualTo("car1");
         assertThat(car.getPosition()).isEqualTo("");
     }
 
     @Test
     void 이름이_5자_초과하면_예외발생(){
-        assertThatThrownBy(() -> new Car("car12345", ""));
+        assertThatThrownBy(() -> new Car("car12345"));
+    }
+
+    @Test
+    void 앞으로_1칸_전진(){
+        Car car = new Car("car1");
+        car.forwardPosition();
+        assertThat(car.getPosition()).isEqualTo("-");
     }
 
 }
