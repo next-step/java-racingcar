@@ -10,16 +10,10 @@ public class RaceGame {
     private final int gameCount;
 
     public RaceGame(int carCount, int gameCount) {
+        validateCarCount(carCount);
+        validateGameCount(gameCount);
         this.cars = createCars(carCount);
         this.gameCount = gameCount;
-    }
-
-    private List<Car> createCars(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-        return cars;
     }
 
     public List<Car> cars() {
@@ -40,6 +34,26 @@ public class RaceGame {
         Random random = new Random();
         for (Car car : cars) {
             car.moveIfPossible(random.nextInt(10));
+        }
+    }
+
+    private List<Car> createCars(int carCount) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
+        return cars;
+    }
+
+    private void validateCarCount(int carCount) {
+        if (carCount < 1) {
+            throw new IllegalArgumentException("자동차 대수는 1대 이상이어야 합니다.");
+        }
+    }
+
+    private void validateGameCount(int gameCount) {
+        if (gameCount < 1) {
+            throw new IllegalArgumentException("게임 횟수는 1회 이상이어야 합니다.");
         }
     }
 }

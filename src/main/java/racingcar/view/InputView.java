@@ -17,6 +17,22 @@ public class InputView {
     }
 
     private static int readInput() {
-        return scanner.nextInt();
+        String input = scanner.nextLine().trim();
+        validateNumber(input);
+        int number = Integer.parseInt(input);
+        validatePositive(number);
+        return number;
+    }
+
+    private static void validateNumber(String input) {
+        if (!input.matches("\\d+")) {
+            throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+    }
+
+    private static void validatePositive(int number) {
+        if (number < 1) {
+            throw new IllegalArgumentException("1 이상 입력해야 합니다.");
+        }
     }
 }
