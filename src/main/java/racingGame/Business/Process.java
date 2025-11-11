@@ -15,8 +15,8 @@ public class Process {
     private final List<ProgressRecord> progressRecords = new ArrayList<>();
     
     public List<GameResult> run(int cars, int moves) {
-        this.rules = new Rules(cars, moves);
-        this.joinCars = new CarFactory(this.rules).createCars();
+        this.rules = new Rules(moves);
+        this.joinCars = new CarFactory().createCars(cars);
         moveCar();
         return showResult();
     }
