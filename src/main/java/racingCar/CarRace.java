@@ -11,7 +11,11 @@ public class CarRace {
 
     public  CarRace(int cnt) {
         random = new Random();
-        this.cars = new ArrayList<>();
+        cars = new ArrayList<>();
+        allocateCars(cnt);
+    }
+
+    private void allocateCars(int cnt) {
         for (int i = 0; i < cnt; i++) {
             this.cars.add(new Car());
         }
@@ -26,7 +30,7 @@ public class CarRace {
             car.move(getRandomNum());
         }
     }
-
+    
     private int getRandomNum() {
         return random.nextInt(10);
     }

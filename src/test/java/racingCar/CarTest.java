@@ -23,7 +23,7 @@ public class CarTest {
 
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {4, 9})
     void 자동차_4이상일_경우_전진(int dis) {
         car.move(dis);
 

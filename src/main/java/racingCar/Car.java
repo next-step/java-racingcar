@@ -1,8 +1,8 @@
 package racingCar;
 
 public class Car {
-    private int distance;
     private static final int LIMIT_NUM = 4;
+    private int distance;
 
     public Car() {
         this.distance = 0;
@@ -13,12 +13,12 @@ public class Car {
     }
 
     public void move(int dis) {
-        if (checkDis(dis)) {
+        if (isMoveable(dis)) {
             this.distance++;
         }
     }
 
-    private boolean checkDis(int dis) {
+    private boolean isMoveable(int dis) {
         return dis >= LIMIT_NUM;
     }
 }
