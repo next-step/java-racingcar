@@ -5,20 +5,12 @@ import java.util.Objects;
 public class Car {
     private static final int DEFAULT_POSITION = 0;
     private static final int MOVE_CONDITION = 4;
-    private static final int MAX_NAME_LENGTH = 5;
-    private final String name;
+    private final CarName name;
     private int position;
 
     public Car(String name) {
-        validate(name);
-        this.name = name;
+        this.name = new CarName(name);
         this.position = DEFAULT_POSITION;
-    }
-
-    private void validate(String name) {
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("이름은 최대 5글자를 초과할 수 없습니다.");
-        }
     }
 
     public void move(int randonValue) {
@@ -28,7 +20,7 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public int getPosition() {
@@ -49,6 +41,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{name= " + name + ", position=" + position + "}";
+        return "Car{name= " + name.getValue() + ", position=" + position + "}";
     }
 }
