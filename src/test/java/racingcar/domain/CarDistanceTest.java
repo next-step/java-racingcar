@@ -13,4 +13,13 @@ class CarDistanceTest {
     void 생성자_거리_기본값은_0() {
         assertThat(new CarDistance().getValue()).isZero();
     }
+
+    @Test
+    void increase_거리는_1씩_증가() {
+        CarDistance distance = new CarDistance();
+
+        distance.increase();
+
+        assertThat(distance.getValue()).isOne();
+    }
 }
