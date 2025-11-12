@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingGame.Business.GameMove;
 
 class ProgressRecordTest {
     
@@ -31,6 +32,19 @@ class ProgressRecordTest {
         progressRecord.recordGame(joinCarsRecord);
 
         assertThat(progressRecord.carRecord().size()).isEqualTo(3);
+    }
+    
+    @Test
+    void findWinnersTest() {
+        List<Car> joinCars = new ArrayList<>();
+        joinCars.add(new Car("pobi"));
+        joinCars.add(new Car("crong"));
+        joinCars.add(new Car("mo"));
+        joinCars.add(new Car("jae"));
+        new GameMove(5).moveCar(joinCars);
+        progressRecord.recordGame(joinCars);
+        
+        assertThat(progressRecord.findWinners().size()).isGreaterThanOrEqualTo(1);
     }
     
     @Test
