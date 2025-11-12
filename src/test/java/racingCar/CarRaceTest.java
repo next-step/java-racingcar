@@ -42,4 +42,19 @@ public class CarRaceTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("이름이 5글자 초과되면 안됩니다.");
     }
+
+    @Test
+    void 우승자_출력() {
+        CarRace carRace = new CarRace("pobi,crong,honux");
+
+        carRace.play();
+        carRace.play();
+        carRace.play();
+        
+        List<Car> winner = carRace.getWinner();
+
+        assertThat(winner)
+                .extracting(Car::getName)
+                .anyMatch(name -> List.of("pobi", "crong", "honux").contains(name));
+    }
 }
