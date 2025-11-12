@@ -11,5 +11,7 @@ public class Main {
             carRace.play();
             ResultView.show(carRace.getCars());
         }
+
+        ResultView.showWinner(carRace.getWinner());
     }
 }
