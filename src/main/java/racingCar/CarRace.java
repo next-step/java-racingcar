@@ -14,6 +14,21 @@ public class CarRace {
         cars = new ArrayList<>();
         allocateCars(cnt);
     }
+    public CarRace(String names) {
+        random = new Random();
+        cars = new ArrayList<>();
+
+        allocateCars(split(names));
+    }
+    private String[] split(String names) {
+        return names.split(",");
+    }
+
+    private void allocateCars(String[] names) {
+        for (String name : names) {
+            this.cars.add(new Car(name));
+        }
+    }
 
     private void allocateCars(int cnt) {
         for (int i = 0; i < cnt; i++) {
