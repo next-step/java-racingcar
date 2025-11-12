@@ -27,7 +27,9 @@ public class RaceHistory {
     }
 
     public List<String> winners() {
-        if (rounds.isEmpty()) return List.of();
+        if (rounds.isEmpty()) {
+            throw new IllegalStateException("경주 기록이 존재하지 않습니다.");
+        }
 
         return lastRound().findLeaders();
     }

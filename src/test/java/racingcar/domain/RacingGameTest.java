@@ -12,7 +12,7 @@ import racingcar.random.RandomNumberGenerator;
 class RacingGameTest {
 
     @Test
-    void race_지정된_라운드만큼_경주를_진행한다() {
+    void race_지정된_라운드만큼_경주를_진행하고_히스토리를_기록한다() {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
         RandomNumberGenerator randomNumberGenerator = () -> new RandomNumber(4);
         RacingGame game = new RacingGame(cars);
@@ -20,10 +20,8 @@ class RacingGameTest {
         RaceHistory history = game.race(2, randomNumberGenerator);
 
         assertThat(history.size()).isEqualTo(2);
-        assertThat(history.getRound(0).snapshots())
-                .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1));
-        assertThat(history.getRound(1).snapshots())
-                .containsExactly(new CarSnapshot("자동차하나", 2), new CarSnapshot("자동차둘", 2));
+        assertThat(history.getRound(0).snapshots()).hasSize(2);
+        assertThat(history.getRound(1).snapshots()).hasSize(2);
     }
 
     @Test

@@ -3,8 +3,6 @@ package racingcar.domain;
 import racingcar.random.RandomNumberGenerator;
 
 public class RacingGame {
-    private static final int MIN_ROUND = 1;
-
     private final Cars cars;
 
     public RacingGame(Cars cars) {

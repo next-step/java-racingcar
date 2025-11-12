@@ -22,16 +22,26 @@ class RaceHistoryTest {
     }
 
     @Test
-    void winners_우승자_목록을_반환한다() {
-        CarSnapshot apple = new CarSnapshot("apple", 3);
-        CarSnapshot banana = new CarSnapshot("banana", 5);
-        CarSnapshot orange = new CarSnapshot("orange", 5);
-        RoundResult result = new RoundResult(List.of(apple, banana, orange));
+    void winners_경주_기록이_존재하지않으면_예외발생() {
         RaceHistory history = new RaceHistory();
-        history.record(result);
+
+        assertThatThrownBy(history::winners)
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("경주 기록이 존재하지 않습니다.");
+    }
+
+    @Test
+    void winners_여러_라운드_중_마지막_라운드의_우승자만_반환한다() {
+        RaceHistory history = new RaceHistory();
+
+        history.record(new RoundResult(
+                List.of(new CarSnapshot("apple", 0), new CarSnapshot("banana", 0), new CarSnapshot("orange", 0))));
+
+        history.record(new RoundResult(
+                List.of(new CarSnapshot("apple", 0), new CarSnapshot("banana", 1), new CarSnapshot("orange", 0))));
 
         List<String> winners = history.winners();
 
-        assertThat(winners).containsExactlyInAnyOrder("banana", "orange").hasSize(2);
+        assertThat(winners).containsExactly("banana");
     }
 }

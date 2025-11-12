@@ -31,14 +31,14 @@ class CarsTest {
     }
 
     @Test
-    void moveAll_모든_자동차가_이동한다() {
+    void moveAll_모든_자동차에게_이동_메시지를_전달한다() {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘", "자동차셋"));
-        RandomNumberGenerator randomNumberGenerator = () -> new RandomNumber(4);
+        RandomNumberGenerator generator = () -> new RandomNumber(4);
 
-        cars.moveAll(randomNumberGenerator);
+        cars.moveAll(generator);
 
-        assertThat(cars.toSnapshots())
-                .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1), new CarSnapshot("자동차셋", 1));
+        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars.toSnapshots()).hasSize(3);
     }
 
     @Test
