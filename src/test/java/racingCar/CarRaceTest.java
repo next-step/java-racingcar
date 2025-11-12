@@ -25,4 +25,13 @@ public class CarRaceTest {
         assertTrue(cars.get(1).getDistance() == 0 || cars.get(1).getDistance() == 1);
         assertTrue(cars.get(2).getDistance() == 0 || cars.get(2).getDistance() == 1);
     }
+
+    @Test
+    void 자동차_이름_부여() {
+        CarRace carRace = new CarRace("pobi,crong,honux");
+
+        assertThat(carRace.getCars())
+                .extracting(Car::getName)
+                .containsExactly("pobi", "crong", "honux");
+    }
 }
