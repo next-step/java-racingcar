@@ -34,4 +34,11 @@ public class CarRaceTest {
                 .extracting(Car::getName)
                 .containsExactly("pobi", "crong", "honux");
     }
+
+    @Test
+    void 자동차_이름_5초과_실패() {
+        assertThatThrownBy(() -> new CarRace("janghojun"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("이름이 5글자 초과되면 안됩니다.");
+    }
 }
