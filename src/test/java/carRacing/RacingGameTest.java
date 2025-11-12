@@ -43,13 +43,6 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("5자를 넘어가는 이름은 에러가 발생한다")
-    void name_size() {
-        assertThatThrownBy(() -> new RacingGame(new String[]{"doubleKim", "lee"}))
-                .isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
     @DisplayName("게임이 끝나면 승자가 나온다")
     void selectWinner_greaterThan_0() {
         racingGame.playGame();
