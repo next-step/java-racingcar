@@ -9,13 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarRaceTest {
     @Test
-    void 입력받은_대수만큼_할당() {
-        assertThat(new CarRace(3).getCars().size()).isEqualTo(3);
+    void 입력받은_차량_대수() {
+        CarRace carRace = new CarRace("pobi,crong,honux");
+        assertThat(carRace.getCars().size()).isEqualTo(3);
     }
 
     @Test
     void 자동차들_이동_시도() {
-        CarRace carRace = new CarRace(3);
+        CarRace carRace = new CarRace("pobi,crong,honux");
 
         carRace.play();
 

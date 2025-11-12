@@ -9,11 +9,6 @@ public class CarRace {
     private final List<Car> cars;
     private final Random random;
 
-    public  CarRace(int cnt) {
-        random = new Random();
-        cars = new ArrayList<>();
-        allocateCars(cnt);
-    }
     public CarRace(String names) {
         random = new Random();
         cars = new ArrayList<>();
@@ -27,12 +22,6 @@ public class CarRace {
     private void allocateCars(String[] names) {
         for (String name : names) {
             this.cars.add(new Car(name));
-        }
-    }
-
-    private void allocateCars(int cnt) {
-        for (int i = 0; i < cnt; i++) {
-            this.cars.add(new Car());
         }
     }
 
