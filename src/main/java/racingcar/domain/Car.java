@@ -1,25 +1,23 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int DEFAULT_DISTANCE = 0;
     private static final int MIN_RANDOM_VALUE = 0;
     private static final int MAX_RANDOM_VALUE = 9;
     private static final int FORWARD_THRESHOLD = 4;
-    private static final int MOVE_DISTANCE = 1;
 
     private final CarName name;
-    private int distance;
+    private final CarDistance distance;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.distance = DEFAULT_DISTANCE;
+        this.distance = new CarDistance();
     }
 
     public void move(int randomValue) {
         validateRandomValue(randomValue);
 
         if (shouldMoveForward(randomValue)) {
-            this.distance += MOVE_DISTANCE;
+            this.distance.increase();
         }
     }
 
@@ -38,7 +36,7 @@ public class Car {
     }
 
     public CarSnapshot toSnapshot() {
-        return new CarSnapshot(name.value(), distance);
+        return new CarSnapshot(name.value(), distance.getValue());
     }
 
     public String getName() {
@@ -46,6 +44,6 @@ public class Car {
     }
 
     public int getDistance() {
-        return this.distance;
+        return this.distance.getValue();
     }
 }
