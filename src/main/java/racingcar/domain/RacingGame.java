@@ -11,9 +11,9 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public RaceHistory race(int roundCount, RandomNumberGenerator randomNumberGenerator) {
+    public RaceHistory race(int roundCount, RandomNumberGenerator generator) {
         validateRoundCount(roundCount);
-        return executeRounds(roundCount, randomNumberGenerator);
+        return executeRounds(roundCount, generator);
     }
 
     private void validateRoundCount(int roundCount) {
@@ -26,19 +26,19 @@ public class RacingGame {
         return roundCount < MIN_ROUND;
     }
 
-    private RaceHistory executeRounds(int roundCount, RandomNumberGenerator randomNumberGenerator) {
+    private RaceHistory executeRounds(int roundCount, RandomNumberGenerator generator) {
         RaceHistory raceHistory = new RaceHistory();
 
         for (int round = 0; round < roundCount; round++) {
-            executeRound(randomNumberGenerator);
+            executeRound(generator);
             raceHistory.record(getRoundResult());
         }
 
         return raceHistory;
     }
 
-    private void executeRound(RandomNumberGenerator randomNumberGenerator) {
-        cars.moveAll(randomNumberGenerator);
+    private void executeRound(RandomNumberGenerator generator) {
+        cars.moveAll(generator);
     }
 
     private RoundResult getRoundResult() {
