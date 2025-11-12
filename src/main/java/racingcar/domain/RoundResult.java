@@ -32,7 +32,7 @@ public class RoundResult {
     }
 
     private void addIfLeader(CarSnapshot snapshot, List<String> leaders) {
-        if (snapshot.distance() == maxDistance()) {
+        if (snapshot.hasSameDistance(maxDistance())) {
             leaders.add(snapshot.name());
         }
     }

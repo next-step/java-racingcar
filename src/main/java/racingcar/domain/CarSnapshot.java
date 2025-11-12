@@ -17,4 +17,8 @@ public record CarSnapshot(String name, int distance) {
             throw new IllegalArgumentException("이동 거리는 음수일 수 없습니다.");
         }
     }
+
+    public boolean hasSameDistance(int otherDistance) {
+        return this.distance == otherDistance;
+    }
 }
