@@ -15,7 +15,7 @@ class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame(new String[]{"kim", "lee"});
+        racingGame = new RacingGame("kim,lee");
     }
 
     @Test

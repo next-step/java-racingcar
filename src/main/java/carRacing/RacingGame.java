@@ -5,12 +5,10 @@ import java.util.List;
 
 public class RacingGame {
 
-    private List<RacingCar> racingCars = new ArrayList<>();
+    private List<RacingCar> racingCars;
 
-    public RacingGame(String[] names) {
-        for (int i = 0; i < names.length; i++) {
-            racingCars.add(new RacingCar(names[i]));
-        }
+    public RacingGame(String name) {
+        racingCars = CarFactory.initRacingCars(name);
     }
 
     public void playGame() {
