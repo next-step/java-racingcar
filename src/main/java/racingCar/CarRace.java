@@ -34,8 +34,27 @@ public class CarRace {
             car.move(getRandomNum());
         }
     }
-    
+
+    public List<Car> getWinner() {
+        List<Car> winners = new ArrayList<>();
+        int max = getMaxDistance();
+
+        for(Car car : cars) {
+            if(car.getDistance() == max) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
     private int getRandomNum() {
         return random.nextInt(10);
+    }
+    private int getMaxDistance() {
+        int max = 0;
+        for(Car car : cars) {
+            max = Math.max(car.getDistance(), max);
+        }
+        return max;
     }
 }
