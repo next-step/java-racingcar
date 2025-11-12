@@ -27,14 +27,9 @@ public class Car {
         return "-".repeat(position);
     }
 
-
     private boolean isKeep(int randomNum) {
         return randomNum < 4;
     }
-
-//    private boolean isAdvance(int randomNum) {
-//        return randomNum >= 4;
-//    }
 
     public int getPosition() {
         return position;

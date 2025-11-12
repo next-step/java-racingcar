@@ -14,7 +14,6 @@ public class RacingGame {
 
         Cars cars = Cars.of(carCount);
         startRacing(tryCount, cars);
-
     }
 
     private void startRacing(int tryCount, Cars cars) {
