@@ -1,13 +1,13 @@
 package carRacing;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class RacingCarTest {
 
@@ -38,5 +38,12 @@ class RacingCarTest {
     void move_fail(int input) {
         racingCar.move(input);
         assertThat(racingCar.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("이름이 5자리를 넘어가면 오류가 발생한다")
+    void carName_length() {
+        assertThatThrownBy(() -> racingCar = new RacingCar("bigKim"))
+                .isInstanceOf(RuntimeException.class);
     }
 }

@@ -4,14 +4,14 @@ public class RacingCar {
 
     public static final int MOVE_CONDITION = 4;
     private int position;
-    private String name;
+    private CarName name;
 
     public RacingCar(String name) {
-        this.name = name;
+            this.name = new CarName(name);
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public int getPosition() {
