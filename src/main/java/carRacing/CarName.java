@@ -1,6 +1,7 @@
 package carRacing;
 
 public class CarName {
+    public static final int MAX_NAME_SIZE = 5;
     private String value;
 
     public CarName(String value) {
@@ -9,7 +10,7 @@ public class CarName {
     }
 
     private void carNameLengthCheck(String value) {
-        if (value.length() > 5) {
+        if (value.length() > MAX_NAME_SIZE) {
             throw new RuntimeException();
         }
     }
