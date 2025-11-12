@@ -2,15 +2,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RaceGameTest {
     private RaceGame game;
 
     @BeforeEach
     void setUp() {
-        game = new RaceGame(3, 5);
+        game = new RaceGame(List.of("pobi", "crong", "honux"));
     }
 
     @Test
@@ -18,4 +19,5 @@ class RaceGameTest {
     void createCarTest() {
         assertThat(game.cars()).hasSize(3);
     }
+
 }

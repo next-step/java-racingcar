@@ -1,11 +1,15 @@
-import java.util.Random;
-
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
+    private final String name;
     private int currentLocation;
 
-    Car() {
+    Car(String name) {
+        this.name = name;
         this.currentLocation = 0;
+    }
+
+    String name() {
+        return name;
     }
 
     int currentLocation() {

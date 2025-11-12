@@ -11,7 +11,7 @@ class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("testCar");
     }
 
     @ParameterizedTest
@@ -20,5 +20,11 @@ class CarTest {
     void moveTest(int number, int expectedLocation) {
         car.makeMove(number);
         assertThat(car.currentLocation()).isEqualTo(expectedLocation);
+    }
+
+    @Test
+    @DisplayName("자동차에 이름을 저장할 수 있다.")
+    void carWithNameTest() {
+        assertThat(new Car("pobi").name()).isEqualTo("pobi");
     }
 }
