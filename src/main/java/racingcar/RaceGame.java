@@ -42,6 +42,21 @@ public class RaceGame {
         }
     }
 
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxPos = getMaxPosition(cars);
+        for (Car car : cars) {
+            addWinnerIfMaxPosition(winners, car, maxPos);
+        }
+        return winners;
+    }
+
+    private static void addWinnerIfMaxPosition(List<String> winners, Car car, int maxPos) {
+        if (car.position() == maxPos) {
+            winners.add(car.name());
+        }
+    }
+
     private List<Car> createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
@@ -60,5 +75,13 @@ public class RaceGame {
         if (gameCount < MIN_GAME_COUNT) {
             throw new IllegalArgumentException(ERROR_GAME_COUNT);
         }
+    }
+
+    private int getMaxPosition(List<Car> cars) {
+        int maxPosition = Integer.MIN_VALUE;
+        for (Car car : cars) {
+            maxPosition = Math.max(car.position(), maxPosition);
+        }
+        return maxPosition;
     }
 }

@@ -55,4 +55,23 @@ public class RaceGameTest {
             assertThat(car.position()).isEqualTo(1);
         }
     }
+
+    @DisplayName("우승자를 구한다")
+    @Test
+    void getSingleWinner() {
+        RaceGame raceGame = new RaceGame(Arrays.asList("car1", "car2"), 3);
+        raceGame.cars().getFirst().moveIfPossible(4);
+        List<String> winners = raceGame.getWinners();
+        assertThat(winners).hasSize(1);
+        assertThat(winners).containsExactly("car1");
+    }
+
+    @DisplayName("공동 우승자를 구한다")
+    @Test
+    void getMultipleWinners() {
+        RaceGame raceGame = new RaceGame(Arrays.asList("car1", "car2"), 3);
+        List<String> winners = raceGame.getWinners();
+        assertThat(winners).hasSize(2)
+                .containsExactly("car1", "car2");
+    }
 }

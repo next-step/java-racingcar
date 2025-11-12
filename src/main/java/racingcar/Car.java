@@ -17,6 +17,10 @@ public class Car {
         this.name = name;
     }
 
+    public String name() {
+        return name;
+    }
+
     public int position() {
         return position;
     }
