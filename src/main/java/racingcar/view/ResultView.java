@@ -9,7 +9,7 @@ public class ResultView {
     private static final String RESULT_MESSAGE = "실행 결과";
     private static final String POSITION_SEPARATOR = " : ";
     private static final String POSITION_MARK = "-";
-    private static final String WINNER_DELIMITER = ",";
+    private static final String WINNER_DELIMITER = ", ";
     public static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
     public static void printResultMessage() {
