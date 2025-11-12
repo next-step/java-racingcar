@@ -23,10 +23,19 @@ class RoundTest {
 
     @Test
     void next_현재_라운드_1_증가() {
-        Round round = new Round(2);
+        Round round = new Round(3);
 
         round.next();
 
         assertThat(round.getCurrentRound()).isEqualTo(2);
+    }
+
+    @Test
+    void isFinished_라운드가_종료되었는지_상태반환() {
+        Round round = new Round(2);
+
+        round.next();
+
+        assertThat(round.isFinished()).isTrue();
     }
 }

@@ -20,11 +20,15 @@ public class Round {
         }
     }
 
-    public int getCurrentRound() {
-        return this.currentRound;
-    }
-
     public void next() {
         this.currentRound += ROUND_STEP;
+    }
+
+    public boolean isFinished() {
+        return this.currentRound >= maxRound;
+    }
+
+    public int getCurrentRound() {
+        return this.currentRound;
     }
 }
