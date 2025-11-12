@@ -27,4 +27,8 @@ public class RacingCar {
             movePosition();
         }
     }
+
+    public boolean isGreaterThanPosition(int position) {
+        return this.position >= position;
+    }
 }
