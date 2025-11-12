@@ -9,10 +9,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("자동차가 생성된다")
+    @DisplayName("이름을 가진 자동차가 생성된다")
     @Test
     void createCar() {
-        Car car = new Car();
+        Car car = new Car("car1");
         assertThat(car).isNotNull();
     }
 
@@ -20,7 +20,7 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"0,0", "3,0", "4,1", "9,1"})
     void canMoveWhenAtLeast(int number, int expected) {
-        Car car = new Car();
+        Car car = new Car("car1");
         car.moveIfPossible(number);
         assertThat(car.position()).isEqualTo(expected);
     }

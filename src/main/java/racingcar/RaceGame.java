@@ -16,14 +16,14 @@ public class RaceGame {
     private final int gameCount;
     private final Random random;
 
-    public RaceGame(int carCount, int gameCount) {
-        this(carCount, gameCount, new Random());
+    public RaceGame(List<String> carNames, int gameCount) {
+        this(carNames, gameCount, new Random());
     }
 
-    public RaceGame(int carCount, int gameCount, Random random) {
-        validateCarCount(carCount);
+    public RaceGame(List<String> carNames, int gameCount, Random random) {
+        validateCarNames(carNames);
         validateGameCount(gameCount);
-        this.cars = createCars(carCount);
+        this.cars = createCars(carNames);
         this.gameCount = gameCount;
         this.random = random;
     }
@@ -42,16 +42,16 @@ public class RaceGame {
         }
     }
 
-    private List<Car> createCars(int carCount) {
+    private List<Car> createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }
 
-    private void validateCarCount(int carCount) {
-        if (carCount < MIN_CAR_COUNT) {
+    private void validateCarNames(List<String> carNames) {
+        if (carNames.isEmpty()) {
             throw new IllegalArgumentException(ERROR_CAR_COUNT);
         }
     }
