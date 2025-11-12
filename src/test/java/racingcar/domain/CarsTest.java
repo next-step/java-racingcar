@@ -57,13 +57,4 @@ class CarsTest {
                         new CarSnapshot("자동차셋", 1),
                         new CarSnapshot("자동차넷", 1));
     }
-
-    @Test
-    void toSnapShots_자동차_상태_스냅샷_목록을_반환한다() {
-        Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
-        RandomNumberGenerator randomNumberGenerator = () -> new RandomNumber(4);
-        cars.moveAll(randomNumberGenerator);
-
-        assertThat(cars.toSnapshots()).containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1));
-    }
 }

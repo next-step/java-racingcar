@@ -22,4 +22,15 @@ class CarDistanceTest {
 
         assertThat(distance.getValue()).isOne();
     }
+
+    @Test
+    void increase_여러번_호출_시_거리가_누적된다() {
+        CarDistance distance = new CarDistance();
+
+        distance.increase();
+        distance.increase();
+        distance.increase();
+
+        assertThat(distance.getValue()).isEqualTo(3);
+    }
 }
