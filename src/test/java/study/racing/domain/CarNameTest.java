@@ -20,6 +20,11 @@ public class CarNameTest {
     }
 
     @Test
+    void 자동차의_이름은_null이_예외가_발생한다() {
+        assertThrows(IllegalArgumentException.class, () -> new CarName(null));
+    }
+
+    @Test
     void 자동차의_이름은_5자를_초과할수없다() {
         assertThrows(IllegalArgumentException.class, () -> new CarName("yang555"));
     }

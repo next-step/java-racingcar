@@ -12,6 +12,10 @@ public class CarName {
     }
 
     private void validate(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("이름은 null일 수 없습니다.");
+        }
+
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("이름은 최대 5글자를 초과할 수 없습니다.");
         }
