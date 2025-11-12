@@ -25,7 +25,7 @@ public class Round {
     }
 
     public boolean isFinished() {
-        return this.currentRound >= maxRound;
+        return this.currentRound > maxRound;
     }
 
     public int getCurrentRound() {

@@ -12,26 +12,18 @@ public class RacingGame {
     }
 
     public RaceHistory race(int roundCount, RandomNumberGenerator generator) {
-        validateRoundCount(roundCount);
-        return executeRounds(roundCount, generator);
+        Round round = new Round(roundCount);
+        return executeRounds(round, generator);
     }
 
-    private void validateRoundCount(int roundCount) {
-        if (isInvalidRoundCount(roundCount)) {
-            throw new IllegalArgumentException("라운드 수는 1이상이어야 합니다.");
-        }
-    }
-
-    private boolean isInvalidRoundCount(int roundCount) {
-        return roundCount < MIN_ROUND;
-    }
-
-    private RaceHistory executeRounds(int roundCount, RandomNumberGenerator generator) {
+    private RaceHistory executeRounds(Round round, RandomNumberGenerator generator) {
         RaceHistory raceHistory = new RaceHistory();
 
-        for (int round = 0; round < roundCount; round++) {
+        while (!round.isFinished()) {
             executeRound(generator);
             raceHistory.record(getRoundResult());
+
+            round.next();
         }
 
         return raceHistory;

@@ -31,8 +31,8 @@ class RoundTest {
     }
 
     @Test
-    void isFinished_라운드가_종료되었는지_상태반환() {
-        Round round = new Round(2);
+    void isFinished_현재_라운드_수가_최대_라운드_수보다_크다면_종료() {
+        Round round = new Round(1);
 
         round.next();
 
