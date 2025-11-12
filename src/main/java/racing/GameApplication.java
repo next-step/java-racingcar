@@ -2,12 +2,13 @@ package racing;
 
 import racing.domain.Game;
 import racing.domain.MovementStrategy;
-import racing.ui.Message;
 import racing.ui.InputView;
+import racing.ui.Message;
 import racing.ui.ResultView;
 
 public class GameApplication {
-  public static void main(String[] args){
+
+  public static void main(String[] args) {
     InputView input = new InputView();
     int carCnt = input.input(Message.INPUT_CAR_COUNT);
     int tryCnt = input.input(Message.INPUT_TRY_COUNT);

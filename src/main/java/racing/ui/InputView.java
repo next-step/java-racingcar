@@ -3,6 +3,7 @@ package racing.ui;
 import java.util.Scanner;
 
 public class InputView {
+
   private final Scanner scanner;
 
   public InputView() {
@@ -11,11 +12,11 @@ public class InputView {
 
   public int input(Message message) {
     System.out.println(message.getMessage());
-    while(true){
+    while (true) {
       try {
         int value = scanner.nextInt();
         return value;
-      } catch (Exception e){
+      } catch (Exception e) {
         System.out.println("올바른 숫자를 입력해주세요:");
         scanner.nextLine();
       }
