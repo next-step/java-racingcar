@@ -4,7 +4,7 @@ public class Car {
     private int position;
 
     private Car() {
-        this.position = 0;
+        this.position = 1;
     }
 
     public static Car of() {
@@ -36,4 +36,7 @@ public class Car {
 //        return randomNum >= 4;
 //    }
 
+    public int getPosition() {
+        return position;
+    }
 }

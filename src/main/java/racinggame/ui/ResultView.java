@@ -24,4 +24,7 @@ public class ResultView {
         System.out.println(positionMark);
     }
 
+    public static void printLineBreaker() {
+        System.out.println();
+    }
 }
