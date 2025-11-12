@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,25 +14,25 @@ public class RaceGameTest {
     @DisplayName("경주 게임 객체를 생성한다")
     @Test
     void createRaceGame() {
-        int carCount = 3;
+        List<String> carNames = List.of("car1", "car2", "car3");
         int gameCount = 3;
-        RaceGame raceGame = new RaceGame(carCount, gameCount);
-        assertThat(raceGame.cars()).hasSize(carCount);
+        RaceGame raceGame = new RaceGame(carNames, gameCount);
+        assertThat(raceGame.cars()).hasSize(carNames.size());
         assertThat(raceGame.gameCount()).isEqualTo(gameCount);
     }
 
-    @DisplayName("자동차 수가 1 미만이면 예외 발생")
+    @DisplayName("자동차 수가 1 미만이면 예외 발생한다")
     @Test
     void carCountValidation() {
-        assertThatThrownBy(() -> new RaceGame(0, 3))
+        assertThatThrownBy(() -> new RaceGame(List.of(), 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("자동차 대수");
     }
 
-    @DisplayName("게임 횟수가 1 미만이면 예외 발생")
+    @DisplayName("게임 횟수가 1 미만이면 예외 발생한다")
     @Test
     void gameCountValidation() {
-        assertThatThrownBy(() -> new RaceGame(3, 0))
+        assertThatThrownBy(() -> new RaceGame(List.of("car1", "car2", "car3"), 0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("게임 횟수");
     }
@@ -45,10 +46,29 @@ public class RaceGameTest {
                 return 5;
             }
         };
-        RaceGame raceGame = new RaceGame(2, 3, fixedRandom);
+        RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3, fixedRandom);
         raceGame.playRound();
         for (Car car : raceGame.cars()) {
             assertThat(car.position()).isEqualTo(1);
         }
+    }
+
+    @DisplayName("우승자를 구한다")
+    @Test
+    void getSingleWinner() {
+        RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3);
+        raceGame.cars().getFirst().moveIfPossible(4);
+        List<String> winners = raceGame.getWinners();
+        assertThat(winners).hasSize(1);
+        assertThat(winners).containsExactly("car1");
+    }
+
+    @DisplayName("공동 우승자를 구한다")
+    @Test
+    void getMultipleWinners() {
+        RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3);
+        List<String> winners = raceGame.getWinners();
+        assertThat(winners).hasSize(2)
+                .containsExactly("car1", "car2");
     }
 }
