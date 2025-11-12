@@ -10,10 +10,8 @@ public class Car {
         this.position = position;
     }
 
-    public void move(Position policy) {
-        if (policy.canMove()) {
-            this.position++;
-        }
+    public Car move(Position position) {
+        return new Car(this.name, position.canMove() ? this.position + 1 : this.position);
     }
 
     public String getName() { return name; }
