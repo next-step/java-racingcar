@@ -13,8 +13,8 @@ public class WinnerTest {
 
     @Test
     void 우승자가_한명이면_우승자를_반환한다() {
-        Car car1 = createCarWithPosition("yang", 1);
-        Car car2 = createCarWithPosition("pobi", 0);
+        Car car1 = Car.of("yang", 1);
+        Car car2 = Car.of("pobi", 0);
 
         List<Car> cars = Arrays.asList(car1, car2);
         Winners winners = Winners.from(cars);
@@ -26,8 +26,8 @@ public class WinnerTest {
 
     @Test
     void 우승자가_여러명이면_모든우승자를_반환한다() {
-        Car car1 = createCarWithPosition("yang", 1);
-        Car car2 = createCarWithPosition("pobi", 1);
+        Car car1 = Car.of("yang", 1);
+        Car car2 = Car.of("pobi", 1);
 
         List<Car> cars = Arrays.asList(car1, car2);
         Winners winners = Winners.from(cars);
@@ -38,12 +38,4 @@ public class WinnerTest {
         assertTrue(winners.getNames().contains("pobi"));
     }
 
-
-    private Car createCarWithPosition(String name, int position) {
-        Car car = new Car(name);
-        for (int i = 1; i <= position; i++) {
-            car.move(new Torque(MOVABLE_NUMBER));
-        }
-        return car;
-    }
 }
