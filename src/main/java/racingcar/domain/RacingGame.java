@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.random.RandomNumber;
+import racingcar.random.RandomNumberGenerator;
 
 public class RacingGame {
     private static final int MIN_ROUND = 1;
@@ -11,9 +11,9 @@ public class RacingGame {
         this.cars = cars;
     }
 
-    public RaceHistory race(int roundCount, RandomNumber randomNumber) {
+    public RaceHistory race(int roundCount, RandomNumberGenerator randomNumberGenerator) {
         validateRoundCount(roundCount);
-        return executeRounds(roundCount, randomNumber);
+        return executeRounds(roundCount, randomNumberGenerator);
     }
 
     private void validateRoundCount(int roundCount) {
@@ -26,19 +26,19 @@ public class RacingGame {
         return roundCount < MIN_ROUND;
     }
 
-    private RaceHistory executeRounds(int roundCount, RandomNumber randomNumber) {
+    private RaceHistory executeRounds(int roundCount, RandomNumberGenerator randomNumberGenerator) {
         RaceHistory raceHistory = new RaceHistory();
 
         for (int round = 0; round < roundCount; round++) {
-            executeRound(randomNumber);
+            executeRound(randomNumberGenerator);
             raceHistory.record(getRoundResult());
         }
 
         return raceHistory;
     }
 
-    private void executeRound(RandomNumber randomNumber) {
-        cars.moveAll(randomNumber);
+    private void executeRound(RandomNumberGenerator randomNumberGenerator) {
+        cars.moveAll(randomNumberGenerator);
     }
 
     private RoundResult getRoundResult() {

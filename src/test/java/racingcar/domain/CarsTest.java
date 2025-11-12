@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import racingcar.random.RandomNumber;
+import racingcar.random.RandomNumberGenerator;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarsTest {
@@ -33,9 +33,9 @@ class CarsTest {
     @Test
     void moveAll_모든_자동차가_이동한다() {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘", "자동차셋"));
-        RandomNumber randomNumber = () -> 4;
+        RandomNumberGenerator randomNumberGenerator = () -> 4;
 
-        cars.moveAll(randomNumber);
+        cars.moveAll(randomNumberGenerator);
 
         assertThat(cars.toSnapshots())
                 .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1), new CarSnapshot("자동차셋", 1));
@@ -46,9 +46,9 @@ class CarsTest {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘", "자동차셋", "자동차넷"));
         int[] values = {0, 3, 4, 9};
         int[] index = {0};
-        RandomNumber randomNumber = () -> values[index[0]++];
+        RandomNumberGenerator randomNumberGenerator = () -> values[index[0]++];
 
-        cars.moveAll(randomNumber);
+        cars.moveAll(randomNumberGenerator);
 
         assertThat(cars.toSnapshots())
                 .containsExactly(
@@ -61,8 +61,8 @@ class CarsTest {
     @Test
     void toSnapShots_자동차_상태_스냅샷_목록을_반환한다() {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
-        RandomNumber randomNumber = () -> 4;
-        cars.moveAll(randomNumber);
+        RandomNumberGenerator randomNumberGenerator = () -> 4;
+        cars.moveAll(randomNumberGenerator);
 
         assertThat(cars.toSnapshots()).containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 1));
     }

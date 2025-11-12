@@ -2,12 +2,12 @@ package racingcar.random;
 
 import java.util.Random;
 
-public class SimpleRandomNumber implements RandomNumber {
+public class SimpleRandomNumberGenerator implements RandomNumberGenerator {
     private final Random random;
 
     private static final int MAX_VALUE = 10;
 
-    public SimpleRandomNumber() {
+    public SimpleRandomNumberGenerator() {
         this.random = new Random();
     }
 
