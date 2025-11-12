@@ -1,31 +1,25 @@
 package study.racing.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> cars;
+    private final Cars cars;
     private final RandomNumber randomNumber;
 
     public RacingGame(List<String> carNames, RandomNumber randomNumber) {
-        this.cars = new ArrayList<>();
-        for (String carName : carNames) {
-            this.cars.add(new Car(carName));
-        }
+        this.cars = new Cars(carNames);
         this.randomNumber = randomNumber;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
     public void playRound() {
-        for (Car car : cars) {
-            car.move(new Torque(randomNumber.generate()));
-        }
+        cars.playRound(randomNumber);
     }
 
     public Winners getWinners() {
-        return Winners.from(cars);
+        return Winners.from(cars.getCars());
     }
 }
