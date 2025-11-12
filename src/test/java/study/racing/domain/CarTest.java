@@ -21,16 +21,16 @@ public class CarTest {
     }
 
     @Test
-    void 자동차는_전달받은_값이_4이상이면_전진한다() {
+    void 자동차는_전달받은_토크가_4이상이면_전진한다() {
         Car car = new Car("yang");
-        car.move(4);
+        car.move(new Torque(4));
         assertEquals(1, car.getPosition());
     }
 
     @Test
-    void 자동차는_전달받은_값이_4미이면_정지한다() {
+    void 자동차는_전달받은_토크가_4미만이면_정지한다() {
         Car car = new Car("yang");
-        car.move(3);
+        car.move(new Torque(3));
         assertEquals(0, car.getPosition());
     }
 

@@ -42,7 +42,7 @@ public class WinnerTest {
     private Car createCarWithPosition(String name, int position) {
         Car car = new Car(name);
         for (int i = 1; i <= position; i++) {
-            car.move(MOVABLE_NUMBER);
+            car.move(new Torque(MOVABLE_NUMBER));
         }
         return car;
     }

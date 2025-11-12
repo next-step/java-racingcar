@@ -21,7 +21,7 @@ public class RacingGame {
 
     public void playRound() {
         for (Car car : cars) {
-            car.move(randomNumber.generate());
+            car.move(new Torque(randomNumber.generate()));
         }
     }
 

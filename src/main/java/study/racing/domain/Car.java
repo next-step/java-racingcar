@@ -3,7 +3,6 @@ package study.racing.domain;
 import java.util.Objects;
 
 public class Car {
-    private static final int MOVE_CONDITION = 4;
     private final CarName name;
     private CarPosition position;
 
@@ -12,8 +11,8 @@ public class Car {
         this.position = new CarPosition();
     }
 
-    public void move(int randonValue) {
-        if (randonValue >= MOVE_CONDITION) {
+    public void move(Torque torque) {
+        if (torque.isMovable()) {
             this.position = position.increase();
         }
     }
