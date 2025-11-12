@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 class RoundTest {
 
     @Test
-    void 생성자_올바른_값으로_정상적으로_생성() {
-        assertThat(new Round(1)).isNotNull();
+    void 생성자_시작_라운드는_1() {
+        assertThat(new Round(5).getCurrentRound()).isEqualTo(1);
     }
 
     @Test
@@ -19,5 +19,14 @@ class RoundTest {
         assertThatThrownBy(() -> new Round(0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("최대 라운드 수는 1이상이어야 합니다.");
+    }
+
+    @Test
+    void next_현재_라운드_1_증가() {
+        Round round = new Round(2);
+
+        round.next();
+
+        assertThat(round.getCurrentRound()).isEqualTo(2);
     }
 }
