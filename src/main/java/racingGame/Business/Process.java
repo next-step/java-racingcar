@@ -4,7 +4,6 @@ import java.util.List;
 
 import racingGame.Response.GameFinalResult;
 import racingGame.model.Car;
-import racingGame.model.ProgressRecord;
 
 public class Process {
     

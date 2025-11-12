@@ -14,6 +14,24 @@ public class ProgressRecord {
         }
     }
     
+    public List<String> findWinners() {
+        List<String> winners = new ArrayList<>();
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < this.joinCarsRecord.size(); i++) {
+            int location = this.joinCarsRecord.get(i);
+            String name = this.joinCarsName.get(i);
+            
+            if (location > max) {
+                max = location;
+                winners.clear();
+                winners.add(name);
+            } else if (location == max) {
+                winners.add(name);
+            }
+        }
+        return winners;
+    }
+    
     public List<Integer> carRecord() {
         return this.joinCarsRecord;
     }
