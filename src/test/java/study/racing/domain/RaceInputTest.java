@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 
@@ -14,8 +16,8 @@ class RaceInputTest {
     @Test
     @DisplayName("정상 입력으로 RaceInput 객체를 생성한다.")
     void createSuccess() {
-        RaceInput race = new RaceInput("car1,car2,car3", 2);
-        assertThat(race.getNames().size()).isEqualTo(3);
+        RaceInput race = new RaceInput(List.of("car1", "car2", "car3"), 2);
+        assertThat(race.getNames()).hasSize(3);
         assertThat(race.getNumberOfAttempt()).isEqualTo(2);
     }
 
@@ -24,14 +26,14 @@ class RaceInputTest {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void throwExceptionAttemptNumber(int numberOfAttempt) {
-        assertThatThrownBy(() -> new RaceInput("car1,car2", numberOfAttempt))
+        assertThatThrownBy(() -> new RaceInput(List.of("car1", "car2"), numberOfAttempt))
                 .isInstanceOf(RuntimeException.class);
     }
 
     @NullAndEmptySource
     @ParameterizedTest
     void 이름이_null_또는_빈값이면_예외발생(String name) {
-        assertThatThrownBy(() -> new RaceInput(name, 2))
+        assertThatThrownBy(() -> new RaceInput(List.of(name), 2))
                 .isInstanceOf(RuntimeException.class);
     }
 

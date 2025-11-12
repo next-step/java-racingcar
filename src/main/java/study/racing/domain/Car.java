@@ -2,26 +2,26 @@ package study.racing.domain;
 
 public class Car {
 
-    private static final String MARK = "-";
-
     private String name;
-    private String position;
+    private int position;
 
     public Car(String name) {
         this.name = name;
-        this.position = "";
+        this.position = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPosition() {
+    public int getPosition() {
         return position;
     }
 
-    public void forwardPosition() {
-        this.position += MARK;
+    public void move() {
+        if (RandomMoveRule.isRandomNumber()) {
+            this.position++;
+        }
     }
 
 }

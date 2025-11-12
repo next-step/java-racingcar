@@ -1,9 +1,7 @@
 package study.racing.view;
 
 import study.racing.domain.Car;
-import study.racing.domain.RaceAttempt;
-import study.racing.domain.RaceInput;
-import study.racing.domain.RandomMoveRule;
+import study.racing.domain.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,30 +9,26 @@ import java.util.List;
 public class ResultView {
 
     private static final String WINNER_SEPARATOR = ", ";
+    private static final String MARK = "-";
 
-    public static void result(RaceInput raceInput, RaceAttempt attempts) {
+    public static void printStartGame() {
         System.out.println("실행 결과");
-
-        for (int i = 0; i < raceInput.getNumberOfAttempt(); i++) {
-            playRacing(raceInput, attempts);
-            System.out.println();
-        }
-
-        printWinners(attempts);
     }
 
-    private static void playRacing(RaceInput raceInput, RaceAttempt attempts) {
-        for (int j = 0; j < raceInput.getNames().size(); j++) {
-            if (RandomMoveRule.isRandomNumber()) {
-                attempts.getCars().get(j).forwardPosition();
-            }
-            Car currrentCar = attempts.getCars().get(j);
-            System.out.println(currrentCar.getName() + " : " + currrentCar.getPosition());
-        }
+    public static void printGameRound(Car car) {
+        System.out.print(car.getName() + " : ");
+        printPosition(car.getPosition());
     }
 
-    private static void printWinners(RaceAttempt attempts) {
-        System.out.println(joinWinnerNames(attempts.topRankCars()).concat("가 최종 우승했습니다."));
+    private static void printPosition(int position) {
+        for (int i = 0; i < position; i++) {
+            System.out.print(MARK);
+        }
+        printEmptyLine();
+    }
+
+    public static void printWinners(Cars cars) {
+        System.out.println(joinWinnerNames(cars.topRankCars()).concat("가 최종 우승했습니다."));
     }
 
     private static String joinWinnerNames(List<Car> winners) {
@@ -45,5 +39,9 @@ public class ResultView {
         }
 
         return String.join(WINNER_SEPARATOR, names);
+    }
+
+    public static void printEmptyLine(){
+        System.out.println();
     }
 }

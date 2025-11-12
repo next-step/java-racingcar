@@ -1,15 +1,22 @@
 package study.racing;
 
-import study.racing.domain.RaceAttempt;
+import study.racing.domain.Cars;
+import study.racing.domain.Game;
 import study.racing.domain.RaceInput;
-import study.racing.view.ResultView;
 
 import static study.racing.view.InputView.*;
+import static study.racing.view.ResultView.*;
 
 public class RaceMain {
 
     public static void main(String[] args) {
-        RaceInput race = race();
-        ResultView.result(race, new RaceAttempt(race));
+        RaceInput raceInput = raceInput();
+        Cars cars = new Cars(raceInput.getNames());
+
+        Game game = new Game(cars, raceInput.getNumberOfAttempt());
+
+        printStartGame();
+        game.playGame();
+        printWinners(cars);
     }
 }

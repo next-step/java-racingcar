@@ -17,7 +17,7 @@ class CarTest {
     @Test
     void 앞으로_1칸_전진(){
         Car car = new Car("car1");
-        car.forwardPosition();
+        car.move();
         assertThat(car.getPosition()).isEqualTo("-");
     }
 
