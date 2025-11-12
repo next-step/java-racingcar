@@ -21,12 +21,6 @@ public class RacingGame {
         return racingCars;
     }
 
-    private void carNameSizeCheck(String name) {
-        if (name.length() > 5) {
-            throw new RuntimeException();
-        }
-    }
-
     public List<String> selectWinner() {
         List<String> winners = new ArrayList<>();
         int maxPosition = getMaxPosition(racingCars);
@@ -37,7 +31,7 @@ public class RacingGame {
     }
 
     private void addWinner(RacingCar racingCar, int maxPosition, List<String> winners) {
-        if (racingCar.getPosition() >= maxPosition) {
+        if (racingCar.isGreaterThanPosition(maxPosition)) {
             winners.add(racingCar.getName());
         }
     }
@@ -51,7 +45,7 @@ public class RacingGame {
     }
 
     private int updateMaxPosition(RacingCar racingCar, int maxPosition) {
-        if (racingCar.getPosition() >= maxPosition) {
+        if (racingCar.isGreaterThanPosition(maxPosition)) {
             maxPosition = racingCar.getPosition();
         }
         return maxPosition;

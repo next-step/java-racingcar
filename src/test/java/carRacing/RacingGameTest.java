@@ -50,9 +50,9 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("승자는 최소 1명, 최대 참가자수이다")
-    void selectWinner_winner_count() {
+    @DisplayName("참가자중에 승리자가 있다")
+    void selectWinner_winner() {
         racingGame.playGame();
-        assertThat(racingGame.selectWinner()).hasSizeBetween(1, 2);
+        assertThat("kim,lee").contains(racingGame.selectWinner());
     }
 }
