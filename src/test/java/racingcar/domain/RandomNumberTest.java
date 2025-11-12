@@ -23,4 +23,20 @@ class RandomNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
     }
+
+    @ParameterizedTest(name = "랜덤값={0}, 기준값={1}")
+    @ValueSource(ints = {4, 9})
+    void isGreaterThanOrEqual_랜덤값이_기준값_이상이면_true(int randomValue) {
+        RandomNumber random = new RandomNumber(randomValue);
+
+        assertThat(random.isGreaterThanOrEqual(4)).isTrue();
+    }
+
+    @ParameterizedTest(name = "랜덤값={0}, 기준값={1}")
+    @ValueSource(ints = {0, 3})
+    void isGreaterThanOrEqual_랜덤값이_기준값_미만이면_false(int randomValue) {
+        RandomNumber random = new RandomNumber(randomValue);
+
+        assertThat(random.isGreaterThanOrEqual(4)).isFalse();
+    }
 }

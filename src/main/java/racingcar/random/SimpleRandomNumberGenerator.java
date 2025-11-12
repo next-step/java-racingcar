@@ -1,6 +1,7 @@
 package racingcar.random;
 
 import java.util.Random;
+import racingcar.domain.RandomNumber;
 
 public class SimpleRandomNumberGenerator implements RandomNumberGenerator {
     private final Random random;
@@ -12,7 +13,7 @@ public class SimpleRandomNumberGenerator implements RandomNumberGenerator {
     }
 
     @Override
-    public int generate() {
-        return random.nextInt(MAX_VALUE);
+    public RandomNumber generate() {
+        return new RandomNumber(random.nextInt(MAX_VALUE));
     }
 }

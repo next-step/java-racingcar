@@ -17,4 +17,8 @@ public record RandomNumber(int value) {
     private boolean isOutOfRange(int value) {
         return value < MIN_RANDOM_VALUE || value > MAX_RANDOM_VALUE;
     }
+
+    public boolean isGreaterThanOrEqual(int other) {
+        return value >= other;
+    }
 }

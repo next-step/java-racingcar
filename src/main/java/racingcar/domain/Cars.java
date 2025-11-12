@@ -46,9 +46,9 @@ public class Cars {
         return cars;
     }
 
-    public void moveAll(RandomNumberGenerator randomNumberGenerator) {
+    public void moveAll(RandomNumberGenerator generator) {
         for (Car car : values) {
-            car.move(randomNumberGenerator.generate());
+            car.move(generator);
         }
     }
 

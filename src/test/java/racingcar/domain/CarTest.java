@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.random.RandomNumberGenerator;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarTest {
@@ -43,8 +44,9 @@ class CarTest {
     @ValueSource(ints = {0, 3})
     void move_랜덤값이_0_이상_또는_3_이하이면_정지한다(int input) {
         Car car = new Car("자동차이름");
+        RandomNumberGenerator generator = () -> new RandomNumber(input);
 
-        car.move(input);
+        car.move(generator);
 
         assertThat(car.getDistance()).isZero();
     }
@@ -53,8 +55,9 @@ class CarTest {
     @ValueSource(ints = {4, 9})
     void move_랜덤값이_4_이상_또는_9_이하이면_전진한다(int input) {
         Car car = new Car("자동차이름");
+        RandomNumberGenerator generator = () -> new RandomNumber(input);
 
-        car.move(input);
+        car.move(generator);
 
         assertThat(car.getDistance()).isGreaterThan(0);
     }
@@ -62,7 +65,9 @@ class CarTest {
     @ParameterizedTest(name = "입력값: {0}")
     @ValueSource(ints = {-1, 10})
     void move_랜덤값이_0_미만_또는_9_초과면_예외가_발생한다(int input) {
-        assertThatThrownBy(() -> new Car("자동차이름").move(input))
+        RandomNumberGenerator generator = () -> new RandomNumber(input);
+
+        assertThatThrownBy(() -> new Car("자동차이름").move(generator))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
     }
@@ -70,8 +75,9 @@ class CarTest {
     @Test
     void move_전진할_때_1_칸씩_이동한다() {
         Car car = new Car("자동차이름");
+        RandomNumberGenerator generator = () -> new RandomNumber(4);
 
-        car.move(4);
+        car.move(generator);
 
         assertThat(car.getDistance()).isEqualTo(1);
     }
@@ -79,10 +85,11 @@ class CarTest {
     @Test
     void move_여러번_전진_시_이동거리가_누적된다() {
         Car car = new Car("자동차이름");
+        RandomNumberGenerator generator = () -> new RandomNumber(4);
 
-        car.move(4);
-        car.move(6);
-        car.move(9);
+        car.move(generator);
+        car.move(generator);
+        car.move(generator);
 
         assertThat(car.getDistance()).isEqualTo(3);
     }
