@@ -3,8 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoundResult {
-    private final List<CarSnapshot> snapshots;
+public record RoundResult(List<CarSnapshot> snapshots) {
 
     public RoundResult(List<CarSnapshot> snapshots) {
         validate(snapshots);
@@ -18,7 +17,7 @@ public class RoundResult {
     }
 
     public List<CarSnapshot> snapshots() {
-        return this.snapshots;
+        return List.copyOf(this.snapshots);
     }
 
     public List<String> findLeaders() {
