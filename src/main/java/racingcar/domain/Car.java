@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.policy.MovePolicy;
 import racingcar.random.RandomNumberGenerator;
 
 public class Car {
@@ -11,10 +12,10 @@ public class Car {
         this.distance = new CarDistance();
     }
 
-    public void move(RandomNumberGenerator generator) {
+    public void move(RandomNumberGenerator generator, MovePolicy movePolicy) {
         RandomNumber randomNumber = generator.generate();
 
-        if (randomNumber.canMoveForward()) {
+        if (movePolicy.canMove(randomNumber)) {
             this.distance = distance.increase();
         }
     }

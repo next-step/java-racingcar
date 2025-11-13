@@ -3,7 +3,6 @@ package racingcar.domain;
 public record RandomNumber(int value) {
     private static final int MIN_RANDOM_VALUE = 0;
     private static final int MAX_RANDOM_VALUE = 9;
-    private static final int FORWARD_THRESHOLD = 4;
 
     public RandomNumber {
         validate(value);
@@ -19,7 +18,7 @@ public record RandomNumber(int value) {
         return value < MIN_RANDOM_VALUE || value > MAX_RANDOM_VALUE;
     }
 
-    public boolean canMoveForward() {
-        return value >= FORWARD_THRESHOLD;
+    public boolean isGreaterThan(int other) {
+        return this.value >= other;
     }
 }

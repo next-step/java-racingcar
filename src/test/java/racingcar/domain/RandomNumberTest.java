@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -23,11 +22,5 @@ class RandomNumberTest {
         assertThatThrownBy(() -> new RandomNumber(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
-    }
-
-    @ParameterizedTest(name = "랜덤값={0}, 전진 가능 여부={1} ")
-    @CsvSource({"0, false", "3, false", "4, true", "9, true"})
-    void canMoveForward_전진_가능_여부_반환(int input, boolean expected) {
-        assertThat(new RandomNumber(input).canMoveForward()).isEqualTo(expected);
     }
 }

@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.domain.Cars;
 import racingcar.domain.RaceHistory;
 import racingcar.domain.RacingGame;
+import racingcar.policy.DefaultMovePolicy;
 import racingcar.random.SimpleRandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.RaceGameInput;
@@ -19,7 +20,7 @@ public class Application {
 
     private static RaceHistory executeRaceGame(RaceGameInput input) {
         Cars cars = new Cars(input.carNames());
-        RacingGame game = new RacingGame(cars);
+        RacingGame game = new RacingGame(cars, new DefaultMovePolicy());
 
         return game.race(input.roundCount(), new SimpleRandomNumberGenerator());
     }

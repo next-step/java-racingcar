@@ -1,12 +1,15 @@
 package racingcar.domain;
 
+import racingcar.policy.MovePolicy;
 import racingcar.random.RandomNumberGenerator;
 
 public class RacingGame {
     private final Cars cars;
+    private final MovePolicy movePolicy;
 
-    public RacingGame(Cars cars) {
+    public RacingGame(Cars cars, MovePolicy movePolicy) {
         this.cars = cars;
+        this.movePolicy = movePolicy;
     }
 
     public RaceHistory race(int roundCount, RandomNumberGenerator generator) {
@@ -28,7 +31,7 @@ public class RacingGame {
     }
 
     private void executeRound(RandomNumberGenerator generator) {
-        cars.moveAll(generator);
+        cars.moveAll(generator, this.movePolicy);
     }
 
     private RoundResult getRoundResult() {

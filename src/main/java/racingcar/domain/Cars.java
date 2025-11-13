@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import racingcar.policy.MovePolicy;
 import racingcar.random.RandomNumberGenerator;
 
 public class Cars {
@@ -46,9 +47,9 @@ public class Cars {
         return cars;
     }
 
-    public void moveAll(RandomNumberGenerator generator) {
+    public void moveAll(RandomNumberGenerator generator, MovePolicy movePolicy) {
         for (Car car : values) {
-            car.move(generator);
+            car.move(generator, movePolicy);
         }
     }
 

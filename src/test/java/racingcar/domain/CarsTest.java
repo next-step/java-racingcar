@@ -6,13 +6,14 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import racingcar.policy.MovePolicy;
 import racingcar.random.RandomNumberGenerator;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarsTest {
 
     @Test
-    void 생성자__자동차_이름_크기만큼_자동차를_생성한다() {
+    void 생성자_자동차_이름_크기만큼_자동차를_생성한다() {
         assertThat(new Cars(List.of("자동차하나", "자동차둘")).size()).isEqualTo(2);
     }
 
@@ -34,27 +35,11 @@ class CarsTest {
     void moveAll_모든_자동차에게_이동_메시지를_전달한다() {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘", "자동차셋"));
         RandomNumberGenerator generator = () -> new RandomNumber(4);
+        MovePolicy movePolicy = (randomNumber) -> true;
 
-        cars.moveAll(generator);
+        cars.moveAll(generator, movePolicy);
 
         assertThat(cars.size()).isEqualTo(3);
         assertThat(cars.toSnapshots()).hasSize(3);
-    }
-
-    @Test
-    void moveAll_각_자동차는_서로_다른_랜덤값을_받는다() {
-        Cars cars = new Cars(List.of("자동차하나", "자동차둘", "자동차셋", "자동차넷"));
-        int[] values = {0, 3, 4, 9};
-        int[] index = {0};
-        RandomNumberGenerator randomNumberGenerator = () -> new RandomNumber(values[index[0]++]);
-
-        cars.moveAll(randomNumberGenerator);
-
-        assertThat(cars.toSnapshots())
-                .containsExactly(
-                        new CarSnapshot("자동차하나", 0),
-                        new CarSnapshot("자동차둘", 0),
-                        new CarSnapshot("자동차셋", 1),
-                        new CarSnapshot("자동차넷", 1));
     }
 }
