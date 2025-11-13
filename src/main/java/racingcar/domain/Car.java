@@ -24,12 +24,4 @@ public class Car {
     public CarSnapshot toSnapshot() {
         return new CarSnapshot(name.value(), distance.getValue());
     }
-
-    public String getName() {
-        return this.name.value();
-    }
-
-    public int getDistance() {
-        return this.distance.getValue();
-    }
 }

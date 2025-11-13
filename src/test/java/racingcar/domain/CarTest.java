@@ -14,8 +14,8 @@ class CarTest {
     void 생성자_정상적으로_생성되면_올바른_초기_상태() {
         Car car = new Car("자동차");
 
-        assertThat(car.getName()).isEqualTo("자동차");
-        assertThat(car.getDistance()).isZero();
+        assertThat(car.toSnapshot().name()).isEqualTo("자동차");
+        assertThat(car.toSnapshot().distance()).isZero();
     }
 
     @Test
@@ -25,7 +25,7 @@ class CarTest {
 
         car.move(generator);
 
-        assertThat(car.getDistance()).isZero();
+        assertThat(car.toSnapshot().distance()).isZero();
     }
 
     @Test
@@ -35,16 +35,14 @@ class CarTest {
 
         car.move(generator);
 
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.toSnapshot().distance()).isEqualTo(1);
     }
 
     @Test
     void toSnapshot_현재_상태를_스냅샷으로_변환한다() {
         Car car = new Car("자동차");
 
-        CarSnapshot snapShot = car.toSnapshot();
-
-        assertThat(snapShot.name()).isEqualTo("자동차");
-        assertThat(snapShot.distance()).isEqualTo(0);
+        assertThat(car.toSnapshot().name()).isEqualTo("자동차");
+        assertThat(car.toSnapshot().distance()).isEqualTo(0);
     }
 }
