@@ -7,13 +7,13 @@ public class ResultView {
 
   private static final String POSITION_MARKER = "-";
 
-  public void printStart() {
+  public static void printResultMessage() {
     System.out.println("\n" + Message.RESULT_MESSAGE.getMessage());
   }
 
-  public void printRoundResult(List<Car> cars) {
+  public static void printRoundResult(List<Car> cars) {
     for (Car car : cars) {
-      System.out.println(POSITION_MARKER.repeat(car.getPosition()));
+      System.out.println(car.getName() + " : " + POSITION_MARKER.repeat(car.getPosition()));
     }
     System.out.println();
   }

@@ -1,39 +1,56 @@
 package racing.domain;
 
+import java.util.Objects;
+import racing.exception.RacingException;
+
 /**
  * 자동차 1. 전진 & 멈추기 2. 현재 위치 반환
  *
  */
 public class Car {
-  private final int MOVE_BORDER;
-
+  private static final int MOVE_BORDER = 4;
+  private CarName name;
   private int position;
 
-  public Car(){
-    this(4, 0);
+  public Car(String name){
+    this(new CarName(name));
   }
 
-  public Car(int position){
-    this(4, position);
+  public Car(CarName name){
+    this(name, 0);
   }
 
-  public Car(int moveBorder, int position) {
-    this.MOVE_BORDER = moveBorder;
+  public Car(CarName name, int position) {
+    this.name = name;
     this.position = position;
   }
 
   public void move(int value) {
-    if (!isMove(value)) {
+    if (value < MOVE_BORDER) {
       return;
     }
-    position += 1;
+    this.position += 1;
   }
 
   public int getPosition() {
-    return position;
+    return this.position;
   }
 
-  private boolean isMove(int value) {
-    return value >= MOVE_BORDER;
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Car car = (Car) o;
+    return Objects.equals(name, car.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(name);
+  }
+
+  public String getName() {
+    return this.name.getName();
   }
 }

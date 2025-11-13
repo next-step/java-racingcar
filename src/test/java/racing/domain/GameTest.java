@@ -2,23 +2,25 @@ package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
 
-  private final int CAR_CNT = 10;
   private final int TRY_CNT = 5;
+  private List<CarName> carNames;
   private Game game;
 
   @BeforeEach
   void init() {
-    game = new Game(new MovementStrategy(0, 9), CAR_CNT, TRY_CNT);
+    carNames = List.of(new CarName("pobi"), new CarName("crong"), new CarName("honux"));
+    game = new Game(new MovementStrategy(0, 9), carNames, TRY_CNT);
   }
 
   @Test
   void gameContainsNCars() {
-    assertThat(game.getCars().size()).isEqualTo(CAR_CNT);
+    assertThat(game.getCars().size()).isEqualTo(carNames.size());
   }
 
   @Test

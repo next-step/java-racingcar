@@ -1,19 +1,23 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import javax.print.attribute.standard.MediaSize.NA;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racing.exception.RacingException;
 
 public class CarTest {
+  private final String NAME = "eun";
 
   private Car car;
 
   @BeforeEach
   void init() {
-    car = new Car(0);
+    car = new Car(NAME);
   }
 
   @Test
@@ -24,9 +28,21 @@ public class CarTest {
   @ParameterizedTest
   @CsvSource({"4,1", "9,1", "0,0", "3,0"})
   void carGoIfMoreThan4(int randomValue, int expected) {
-    int prevPos = car.getPosition();
-    assertThat(prevPos).isEqualTo(0);
     car.move(randomValue);
     assertThat(car.getPosition()).isEqualTo(expected);
   }
+
+  @Test
+  void carsWithSameNameAreEqual(){
+    assertThat(car).isEqualTo(new Car(NAME));
+  }
+
+  @ParameterizedTest
+  @CsvSource({"abcdef", "verylongname"})
+  void carNameShouldThrowExceptionWhenMoreThan5(String name) {
+    assertThatThrownBy(() -> new Car(name))
+        .isInstanceOf(RacingException.class)
+        .hasMessageContaining(ErrorMessage.NAME_VALIDATION_LENGTH.getMessage());
+  }
+
 }

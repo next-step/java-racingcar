@@ -2,6 +2,7 @@ package racing.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -14,16 +15,16 @@ public class Game {
   private final List<Car> cars;
   private final int tryCnt;
 
-  public Game(MovementStrategy random, int carCnt, int tryCnt) {
+  public Game(MovementStrategy random, List<CarName> carNames, int tryCnt) {
     this.random = random;
-    this.cars = initCars(carCnt);
+    this.cars = initCars(carNames);
     this.tryCnt = tryCnt;
   }
 
-  private List<Car> initCars(int cnt){
+  private List<Car> initCars(List<CarName> carNames){
     List<Car> cars = new ArrayList<>();
-    for (int i = 0; i < cnt; i++) {
-      cars.add(new Car());
+    for (CarName name : carNames) {
+      cars.add(new Car(name));
     }
     return cars;
   }
