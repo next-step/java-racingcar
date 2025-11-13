@@ -7,15 +7,23 @@ import java.util.Random;
 public class Car {
     private static final int FORWARD_NUM = 4;
     private static final int MAX_BOUND = 10;
+    public static final int NAME_MAX_LENGTH = 5;
 
     private final String name;
     private int position = 0;
 
     public Car(final String name) {
+        validate(name);
+        this.name = name;
+    }
+
+    private static void validate(String name) {
         if (StringUtils.isBlank(name)) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
-        this.name = name.trim();
+        if (name.trim().length() > NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
+        }
     }
 
     public int getPosition() {
