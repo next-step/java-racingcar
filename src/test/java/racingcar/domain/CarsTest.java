@@ -13,8 +13,10 @@ import racingcar.random.RandomNumberGenerator;
 class CarsTest {
 
     @Test
-    void 생성자_자동차_이름_크기만큼_자동차를_생성한다() {
-        assertThat(new Cars(List.of("자동차하나", "자동차둘")).size()).isEqualTo(2);
+    void 생성자_자동차_이름_목록대로_자동차가_생성된다() {
+        Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
+
+        assertThat(cars.toSnapshots()).extracting(CarSnapshot::name).containsExactly("자동차하나", "자동차둘");
     }
 
     @Test
@@ -39,7 +41,6 @@ class CarsTest {
 
         cars.moveAll(generator, movePolicy);
 
-        assertThat(cars.size()).isEqualTo(3);
         assertThat(cars.toSnapshots()).hasSize(3);
     }
 }

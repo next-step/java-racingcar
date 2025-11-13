@@ -53,10 +53,6 @@ public class Cars {
         }
     }
 
-    public int size() {
-        return this.values.size();
-    }
-
     public List<CarSnapshot> toSnapshots() {
         List<CarSnapshot> snapshots = new ArrayList<>();
 
