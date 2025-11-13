@@ -16,13 +16,9 @@ public class Car {
     public void move(RandomNumberGenerator generator) {
         RandomNumber randomNumber = generator.generate();
 
-        if (shouldMoveForward(randomNumber)) {
+        if (randomNumber.canMoveForward()) {
             this.distance.increase();
         }
-    }
-
-    private boolean shouldMoveForward(RandomNumber randomNumber) {
-        return randomNumber.isGreaterThanOrEqual(FORWARD_THRESHOLD);
     }
 
     public CarSnapshot toSnapshot() {

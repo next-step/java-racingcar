@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -24,19 +25,9 @@ class RandomNumberTest {
                 .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
     }
 
-    @ParameterizedTest(name = "랜덤값={0}, 기준값={1}")
-    @ValueSource(ints = {4, 9})
-    void isGreaterThanOrEqual_랜덤값이_기준값_이상이면_true(int randomValue) {
-        RandomNumber random = new RandomNumber(randomValue);
-
-        assertThat(random.isGreaterThanOrEqual(4)).isTrue();
-    }
-
-    @ParameterizedTest(name = "랜덤값={0}, 기준값={1}")
-    @ValueSource(ints = {0, 3})
-    void isGreaterThanOrEqual_랜덤값이_기준값_미만이면_false(int randomValue) {
-        RandomNumber random = new RandomNumber(randomValue);
-
-        assertThat(random.isGreaterThanOrEqual(4)).isFalse();
+    @ParameterizedTest(name = "랜덤값={0}, 전진 가능 여부={1} ")
+    @CsvSource({"0, false", "3, false", "4, true", "9, true"})
+    void canMoveForward_전진_가능_여부_반환(int input, boolean expected) {
+        assertThat(new RandomNumber(input).canMoveForward()).isEqualTo(expected);
     }
 }
