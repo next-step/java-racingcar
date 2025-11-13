@@ -42,8 +42,8 @@ public class RaceGame {
         }
     }
 
-    public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
+    public List<CarName> getWinners() {
+        List<CarName> winners = new ArrayList<>();
         int maxPos = getMaxPosition(cars);
         for (Car car : cars) {
             addWinnerIfMaxPosition(winners, car, maxPos);
@@ -51,7 +51,7 @@ public class RaceGame {
         return winners;
     }
 
-    private static void addWinnerIfMaxPosition(List<String> winners, Car car, int maxPos) {
+    private static void addWinnerIfMaxPosition(List<CarName> winners, Car car, int maxPos) {
         if (car.position() == maxPos) {
             winners.add(car.name());
         }
