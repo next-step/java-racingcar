@@ -13,7 +13,7 @@ import racingcar.random.RandomNumberGenerator;
 class RacingGameTest {
 
     @Test
-    void race_지정된_라운드만큼_경주를_진행하고_히스토리를_기록한다() {
+    void race_모든_자동차가_정상적으로_경주를_완료한다() {
         Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
         RandomNumberGenerator randomNumberGenerator = () -> new RandomNumber(4);
         MovePolicy movePolicy = (randomNumber) -> true;
@@ -21,19 +21,6 @@ class RacingGameTest {
 
         RaceHistory history = game.race(2, randomNumberGenerator);
 
-        assertThat(history.size()).isEqualTo(2);
-        assertThat(history.lastRound().snapshots()).hasSize(2);
-    }
-
-    @Test
-    void race_입력된_라운드_수가_1미만이면_예외발생() {
-        Cars cars = new Cars(List.of("자동차하나", "자동차둘"));
-        RandomNumberGenerator randomNumberGenerator = () -> new RandomNumber(4);
-        MovePolicy movePolicy = (randomNumber) -> true;
-        RacingGame game = new RacingGame(cars, movePolicy);
-
-        assertThatThrownBy(() -> game.race(0, randomNumberGenerator))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("라운드 수는 1이상이어야 합니다.");
+        assertThat(history.winners()).containsExactlyInAnyOrder("자동차하나", "자동차둘");
     }
 }

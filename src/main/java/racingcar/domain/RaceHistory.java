@@ -18,15 +18,11 @@ public class RaceHistory {
         return lastRound().findLeaders();
     }
 
-    public RoundResult lastRound() {
+    private RoundResult lastRound() {
         if (rounds.isEmpty()) {
             throw new IllegalStateException("경주 기록이 존재하지 않습니다.");
         }
 
         return rounds.getLast();
-    }
-
-    public int size() {
-        return this.rounds.size();
     }
 }
