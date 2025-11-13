@@ -11,13 +11,12 @@ class GameTest {
 
     @Test
     void 차량_초기위치_확인() {
-        Cars cars = new Cars(List.of("car1", "car2"));
 
-        Game game = new Game(cars, 0);
+        Game game = new Game(List.of("car1", "car2"), 0);
         game.playGame();
 
-        assertThat(cars.getCars().get(0).getPosition()).isEqualTo(0);
-        assertThat(cars.getCars().get(1).getPosition()).isEqualTo(0);
+        assertThat(game.getCars().getCar(0).getPosition()).isEqualTo(0);
+        assertThat(game.getCars().getCar(1).getPosition()).isEqualTo(0);
     }
 
     @Test

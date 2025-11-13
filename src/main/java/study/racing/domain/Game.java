@@ -9,8 +9,8 @@ public class Game {
     private final Cars cars;
     private final int roundCount;
 
-    public Game(Cars cars, int roundCount) {
-        this.cars = cars;
+    public Game(List<String> names, int roundCount) {
+        this.cars = new Cars(names);
         this.roundCount = roundCount;
     }
 
@@ -27,5 +27,13 @@ public class Game {
             car.move();
             printGameRound(car);
         }
+    }
+
+    public Cars getCars() {
+        return cars;
+    }
+
+    public int getRoundCount() {
+        return roundCount;
     }
 }

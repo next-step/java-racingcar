@@ -11,6 +11,10 @@ public class Cars {
         this.cars = initCars(names);
     }
 
+    public Cars(String... names){
+        this.cars = initCars(List.of(names));
+    }
+
     public List<Car> getCars() {
         return this.cars;
     }
@@ -48,6 +52,10 @@ public class Cars {
             }
         }
         return findTopCars;
+    }
+
+    public Car getCar(int index) {
+        return cars.get(index);
     }
 
 }
