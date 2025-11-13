@@ -22,6 +22,14 @@ public class CarPosition {
         return value;
     }
 
+    public boolean isGreaterThan(int value) {
+        return this.value > value;
+    }
+
+    public boolean isEqualTo(int value) {
+        return this.value == value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

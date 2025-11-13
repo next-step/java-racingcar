@@ -29,6 +29,13 @@ public class Car {
     public int getPosition() {
         return position.getValue();
     }
+    public boolean isPositionGreaterThan(int position) {
+        return this.position.isGreaterThan(position);
+    }
+
+    public boolean hasPosition(int position) {
+        return this.position.isEqualTo(position);
+    }
 
     @Override
     public boolean equals(Object o) {

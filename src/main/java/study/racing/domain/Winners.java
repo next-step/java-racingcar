@@ -18,7 +18,7 @@ public class Winners {
     private static int findMaxPosition(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
-            if (car.getPosition() > maxPosition) {
+            if (car.isPositionGreaterThan(maxPosition)) {
                 maxPosition = car.getPosition();
             }
         }
@@ -28,7 +28,7 @@ public class Winners {
     private static List<Car> findWinners(List<Car> cars, int maxPosition) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
+            if (car.hasPosition(maxPosition)) {
                 winners.add(car);
             }
         }

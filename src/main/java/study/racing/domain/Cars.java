@@ -22,4 +22,8 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public Winners getWinners() {
+        return Winners.from(cars);
+    }
 }
