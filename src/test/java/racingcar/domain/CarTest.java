@@ -5,57 +5,47 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.policy.MovePolicy;
+import racingcar.random.RandomNumberGenerator;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class CarTest {
 
-    @ParameterizedTest(name = "입력값: {0}")
-    @ValueSource(ints = {0, 3})
-    void move_랜덤값이_0_이상_또는_3_이하이면_정지한다(int input) {
-        Car car = new Car();
+    @Test
+    void 생성자_정상적으로_생성되면_올바른_초기_상태() {
+        Car car = new Car("자동차");
 
-        car.move(input);
-
-        assertThat(car.getDistance()).isZero();
-    }
-
-    @ParameterizedTest(name = "입력값: {0}")
-    @ValueSource(ints = {4, 9})
-    void move_랜덤값이_4_이상_또는_9_이하이면_전진한다(int input) {
-        Car car = new Car();
-
-        car.move(input);
-
-        assertThat(car.getDistance()).isGreaterThan(0);
-    }
-
-    @ParameterizedTest(name = "입력값: {0}")
-    @ValueSource(ints = {-1, 10})
-    void move_랜덤값이_0_미만_또는_9_초과면_예외가_발생한다(int input) {
-        assertThatThrownBy(() -> new Car().move(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("랜덤 값은 0 이상 9 이하이어야 합니다.");
+        assertThat(car.toSnapshot().name()).isEqualTo("자동차");
+        assertThat(car.toSnapshot().distance()).isZero();
     }
 
     @Test
-    void 전진할_때_1_칸씩_이동한다() {
-        Car car = new Car();
+    void move_랜덤값이_3_이하이면_정지한다() {
+        Car car = new Car("자동차");
+        RandomNumberGenerator generator = () -> new RandomNumber(3);
+        MovePolicy movePolicy = (randomNumber) -> false;
 
-        car.move(4);
+        car.move(generator, movePolicy);
 
-        assertThat(car.getDistance()).isEqualTo(1);
+        assertThat(car.toSnapshot().distance()).isZero();
     }
 
     @Test
-    void 여러번_전진_시_이동거리가_누적된다() {
-        Car car = new Car();
+    void move_랜덤값이_4_이상이면_전진한다() {
+        Car car = new Car("자동차");
+        RandomNumberGenerator generator = () -> new RandomNumber(4);
+        MovePolicy movePolicy = (randomNumber) -> true;
 
-        car.move(4);
-        car.move(6);
-        car.move(9);
+        car.move(generator, movePolicy);
 
-        assertThat(car.getDistance()).isEqualTo(3);
+        assertThat(car.toSnapshot().distance()).isEqualTo(1);
+    }
+
+    @Test
+    void toSnapshot_현재_상태를_스냅샷으로_변환한다() {
+        Car car = new Car("자동차");
+
+        assertThat(car.toSnapshot().name()).isEqualTo("자동차");
+        assertThat(car.toSnapshot().distance()).isEqualTo(0);
     }
 }

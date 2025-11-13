@@ -1,44 +1,40 @@
 package racingcar.domain;
 
-import racingcar.random.RandomNumber;
+import racingcar.policy.MovePolicy;
+import racingcar.random.RandomNumberGenerator;
 
 public class RacingGame {
     private final Cars cars;
+    private final MovePolicy movePolicy;
 
-    private static final int MIN_ROUND = 1;
-
-    public RacingGame(Cars cars) {
+    public RacingGame(Cars cars, MovePolicy movePolicy) {
         this.cars = cars;
+        this.movePolicy = movePolicy;
     }
 
-    public RaceHistory race(int roundCount, RandomNumber randomNumber) {
-        validateRoundCount(roundCount);
+    public RaceHistory race(int roundCount, RandomNumberGenerator generator) {
+        Round round = new Round(roundCount);
+        return executeRounds(round, generator);
+    }
 
+    private RaceHistory executeRounds(Round round, RandomNumberGenerator generator) {
         RaceHistory raceHistory = new RaceHistory();
 
-        for (int round = 0; round < roundCount; round++) {
-            executeRound(randomNumber);
+        while (!round.isFinished()) {
+            executeRound(generator);
             raceHistory.record(getRoundResult());
+
+            round.next();
         }
 
         return raceHistory;
     }
 
-    private void validateRoundCount(int roundCount) {
-        if (isInvalidRoundCount(roundCount)) {
-            throw new IllegalArgumentException("라운드 수는 1이상이어야 합니다.");
-        }
-    }
-
-    private boolean isInvalidRoundCount(int roundCount) {
-        return roundCount < MIN_ROUND;
+    private void executeRound(RandomNumberGenerator generator) {
+        cars.moveAll(generator, this.movePolicy);
     }
 
     private RoundResult getRoundResult() {
-        return new RoundResult(cars.getDistances());
-    }
-
-    private void executeRound(RandomNumber randomNumber) {
-        cars.moveAll(randomNumber);
+        return new RoundResult(cars.toSnapshots());
     }
 }
