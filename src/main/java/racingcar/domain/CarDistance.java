@@ -1,20 +1,18 @@
 package racingcar.domain;
 
-public class CarDistance {
+public record CarDistance(int value) {
     private static final int DEFAULT_DISTANCE = 0;
     private static final int MOVE_DISTANCE = 1;
 
-    private int value;
-
     public CarDistance() {
-        this.value = DEFAULT_DISTANCE;
+        this(DEFAULT_DISTANCE);
     }
 
     public int getValue() {
         return this.value;
     }
 
-    public void increase() {
-        this.value += MOVE_DISTANCE;
+    public CarDistance increase() {
+        return new CarDistance(this.value + MOVE_DISTANCE);
     }
 }

@@ -16,20 +16,14 @@ class CarDistanceTest {
 
     @Test
     void increase_거리는_1씩_증가() {
-        CarDistance distance = new CarDistance();
-
-        distance.increase();
+        CarDistance distance = new CarDistance().increase();
 
         assertThat(distance.getValue()).isOne();
     }
 
     @Test
     void increase_여러번_호출_시_거리가_누적된다() {
-        CarDistance distance = new CarDistance();
-
-        distance.increase();
-        distance.increase();
-        distance.increase();
+        CarDistance distance = new CarDistance().increase().increase().increase();
 
         assertThat(distance.getValue()).isEqualTo(3);
     }
