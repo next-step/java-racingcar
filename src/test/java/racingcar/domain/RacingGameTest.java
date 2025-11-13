@@ -20,8 +20,7 @@ class RacingGameTest {
         RaceHistory history = game.race(2, randomNumberGenerator);
 
         assertThat(history.size()).isEqualTo(2);
-        assertThat(history.getRound(0).snapshots()).hasSize(2);
-        assertThat(history.getRound(1).snapshots()).hasSize(2);
+        assertThat(history.lastRound().snapshots()).hasSize(2);
     }
 
     @Test

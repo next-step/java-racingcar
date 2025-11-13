@@ -12,13 +12,12 @@ class RaceHistoryTest {
 
     @Test
     void record_라운드_결과를_기록한다() {
-        RoundResult result = new RoundResult(List.of(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 0)));
+        RoundResult result = createRoundResult(new CarSnapshot("하나", 1), new CarSnapshot("둘", 0));
         RaceHistory history = new RaceHistory();
 
         history.record(result);
 
-        assertThat(history.getRound(0).snapshots())
-                .containsExactly(new CarSnapshot("자동차하나", 1), new CarSnapshot("자동차둘", 0));
+        assertThat(history.lastRound().snapshots()).containsExactly(new CarSnapshot("하나", 1), new CarSnapshot("둘", 0));
     }
 
     @Test
@@ -33,15 +32,15 @@ class RaceHistoryTest {
     @Test
     void winners_여러_라운드_중_마지막_라운드의_우승자만_반환한다() {
         RaceHistory history = new RaceHistory();
-
-        history.record(new RoundResult(
-                List.of(new CarSnapshot("apple", 0), new CarSnapshot("banana", 0), new CarSnapshot("orange", 0))));
-
-        history.record(new RoundResult(
-                List.of(new CarSnapshot("apple", 0), new CarSnapshot("banana", 1), new CarSnapshot("orange", 0))));
+        history.record(createRoundResult(new CarSnapshot("하나", 0), new CarSnapshot("둘", 0)));
+        history.record(createRoundResult(new CarSnapshot("하나", 0), new CarSnapshot("둘", 1)));
 
         List<String> winners = history.winners();
 
-        assertThat(winners).containsExactly("banana");
+        assertThat(winners).containsExactly("둘");
+    }
+
+    private RoundResult createRoundResult(CarSnapshot... snapshots) {
+        return new RoundResult(List.of(snapshots));
     }
 }
