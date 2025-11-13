@@ -29,12 +29,13 @@ public class Car {
     public int getPosition() {
         return position.getValue();
     }
-    public boolean isPositionGreaterThan(int position) {
-        return this.position.isGreaterThan(position);
+
+    public boolean isPositionGreaterThan(Car other) {
+        return this.position.isGreaterThan(other.position);
     }
 
-    public boolean hasPosition(int position) {
-        return this.position.isEqualTo(position);
+    public boolean isSamePosition(Car other) {
+        return this.position.equals(other.position);
     }
 
     @Override

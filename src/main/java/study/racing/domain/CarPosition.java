@@ -26,6 +26,10 @@ public class CarPosition {
         return this.value > value;
     }
 
+    public boolean isGreaterThan(CarPosition other) {
+        return this.value > other.value;
+    }
+
     public boolean isEqualTo(int value) {
         return this.value == value;
     }

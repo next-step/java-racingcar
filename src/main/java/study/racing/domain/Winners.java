@@ -11,24 +11,27 @@ public class Winners {
     }
 
     public static Winners from(List<Car> cars) {
-        int maxPosition = findMaxPosition(cars);
-        return new Winners(findWinners(cars, maxPosition));
+        if (cars.isEmpty()) {
+            return new Winners(cars);
+        }
+        return new Winners(findWinners(cars, findMaxPosition(cars)));
     }
 
-    private static int findMaxPosition(List<Car> cars) {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            if (car.isPositionGreaterThan(maxPosition)) {
-                maxPosition = car.getPosition();
+    private static Car findMaxPosition(List<Car> cars) {
+        Car maxPositionCar = cars.get(0);
+        for (int i = 1; i < cars.size(); i++) {
+            Car car = cars.get(i);
+            if (car.isPositionGreaterThan(maxPositionCar)) {
+                maxPositionCar = car;
             }
         }
-        return maxPosition;
+        return maxPositionCar;
     }
 
-    private static List<Car> findWinners(List<Car> cars, int maxPosition) {
+    private static List<Car> findWinners(List<Car> cars, Car maxPositionCar) {
         List<Car> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.hasPosition(maxPosition)) {
+            if (car.isSamePosition(maxPositionCar)) {
                 winners.add(car);
             }
         }
