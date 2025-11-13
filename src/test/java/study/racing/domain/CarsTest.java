@@ -32,20 +32,22 @@ class CarsTest {
     void 단독_1위_차량_찾기() {
         Cars raceAttempt = new Cars("car1", "car2", "car3", "car4", "car5");
 
-        raceAttempt.getCars().get(0).move();
+        raceAttempt.getCars().getFirst().moveToPosition(1);
 
         List<Car> topCars = raceAttempt.topRankCars();
-        assertThat(topCars.get(0).getName()).isEqualTo("car1");
+        assertThat(topCars.getFirst().getName()).isEqualTo("car1");
     }
 
     @Test
     void 공동_1위_차량_모두찾기() {
-        Cars cars = new Cars("car1", "car2", "car3", "car4", "car5");
-
-        cars.getCars().get(0).move();
-        cars.getCars().get(1).move();
-        cars.getCars().get(2).move();
-
+        Cars cars = new Cars(
+                new Car("car1", 3),
+                new Car("car2", 3),
+                new Car("car3", 3),
+                new Car("car4", 0),
+                new Car("car5", 1)
+        );
+        
         List<Car> topCars = cars.topRankCars();
         assertThat(topCars).extracting(Car::getName).contains("car2", "car1", "car3");
     }

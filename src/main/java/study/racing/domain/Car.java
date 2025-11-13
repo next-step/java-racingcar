@@ -10,6 +10,11 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
     public String getName() {
         return name;
     }
@@ -24,4 +29,15 @@ public class Car {
         }
     }
 
+    public boolean isEqualsMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
+    public int max(int maxPosition){
+        return Math.max(maxPosition, this.getPosition());
+    }
+
+    public void moveToPosition(int position) {
+        this.position = position;
+    }
 }

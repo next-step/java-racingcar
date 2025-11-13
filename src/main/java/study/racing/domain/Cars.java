@@ -11,8 +11,12 @@ public class Cars {
         this.cars = initCars(names);
     }
 
-    public Cars(String... names){
+    public Cars(String... names) {
         this.cars = initCars(List.of(names));
+    }
+
+    public Cars(Car... cars) {
+        this.cars = List.of(cars);
     }
 
     public List<Car> getCars() {
@@ -38,8 +42,8 @@ public class Cars {
 
     private int topRankPoint() {
         int maxPoint = 0;
-        for (int i = 0; i < cars.size(); i++) {
-            maxPoint = Math.max(maxPoint, cars.get(i).getPosition());
+        for (Car car : cars) {
+            maxPoint = car.max(maxPoint);
         }
         return maxPoint;
     }
@@ -47,7 +51,7 @@ public class Cars {
     private List<Car> findTopRankCars(int topRankPoint) {
         List<Car> findTopCars = new ArrayList<>();
         for (Car car : cars) {
-            if (topRankPoint == car.getPosition()) {
+            if (car.isEqualsMaxPosition(topRankPoint)) {
                 findTopCars.add(car);
             }
         }

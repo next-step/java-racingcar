@@ -11,7 +11,6 @@ class GameTest {
 
     @Test
     void 차량_초기위치_확인() {
-
         Game game = new Game(List.of("car1", "car2"), 0);
         game.playGame();
 
