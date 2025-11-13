@@ -11,12 +11,9 @@ public class Car {
         this.position = new CarPosition();
     }
 
-    public static Car of(String name, int position) {
-        Car car = new Car(name);
-        for (int i = 0; i < position; i++) {
-            car.position = car.position.increase();
-        }
-        return car;
+    public Car(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new CarPosition(position);
     }
 
     public void move(Torque torque) {

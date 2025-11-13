@@ -13,8 +13,8 @@ public class WinnerTest {
 
     @Test
     void 우승자가_한명이면_우승자를_반환한다() {
-        Car car1 = Car.of("yang", 1);
-        Car car2 = Car.of("pobi", 0);
+        Car car1 = new Car("yang", 1);
+        Car car2 = new Car("pobi", 0);
 
         List<Car> cars = Arrays.asList(car1, car2);
         Winners winners = Winners.from(cars);
@@ -26,8 +26,8 @@ public class WinnerTest {
 
     @Test
     void 우승자가_여러명이면_모든우승자를_반환한다() {
-        Car car1 = Car.of("yang", 1);
-        Car car2 = Car.of("pobi", 1);
+        Car car1 = new Car("yang", 1);
+        Car car2 = new Car("pobi", 1);
 
         List<Car> cars = Arrays.asList(car1, car2);
         Winners winners = Winners.from(cars);
