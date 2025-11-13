@@ -20,6 +20,6 @@ public class Car {
     }
 
     public CarSnapshot toSnapshot() {
-        return new CarSnapshot(name.value(), distance.getValue());
+        return new CarSnapshot(name, distance);
     }
 }

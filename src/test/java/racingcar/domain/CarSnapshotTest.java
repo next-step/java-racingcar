@@ -13,23 +13,16 @@ class CarSnapshotTest {
 
     @Test
     void 생성자_정상적으로_생성된다() {
-        CarSnapshot snapshot = new CarSnapshot("자동차", 3);
+        CarSnapshot snapshot = new CarSnapshot(new CarName("자동차"), new CarDistance(3));
 
         assertThat(snapshot.name()).isEqualTo("자동차");
         assertThat(snapshot.distance()).isEqualTo(3);
     }
 
-    @Test
-    void 생성자_음수_거리_예외발생() {
-        assertThatThrownBy(() -> new CarSnapshot("자동차", -1))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("이동 거리는 음수일 수 없습니다.");
-    }
-
     @ParameterizedTest(name = "입력값: {0} == {1} = {2}")
     @CsvSource({"0, 0, true", "0, 1, false"})
     void hasSameDistance_거리가_같은지_비교(int snapshotDistance, int compareDistance, boolean expected) {
-        CarSnapshot snapshot = new CarSnapshot("자동차", snapshotDistance);
+        CarSnapshot snapshot = new CarSnapshot(new CarName("자동차"), new CarDistance(snapshotDistance));
 
         boolean result = snapshot.hasSameDistance(compareDistance);
 
