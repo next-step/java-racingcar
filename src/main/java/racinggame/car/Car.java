@@ -2,13 +2,18 @@ package racinggame.car;
 
 public class Car {
     private int position;
+    private String name;
 
-    private Car() {
-        this.position = 1;
+    private static final int DEFAULT_POSITION = 1;
+    private static final int STANDARD_TO_ADVANCE = 4;
+
+    private Car(String name) {
+        this.position = DEFAULT_POSITION;
+        this.name = name;
     }
 
-    public static Car of() {
-        return new Car();
+    public static Car of(String name) {
+        return new Car(name);
     }
 
     public void changePosition(int randomNum) {
@@ -28,7 +33,7 @@ public class Car {
     }
 
     private boolean isKeep(int randomNum) {
-        return randomNum < 4;
+        return randomNum < STANDARD_TO_ADVANCE;
     }
 
     public int getPosition() {
