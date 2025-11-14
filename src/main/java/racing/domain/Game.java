@@ -1,8 +1,5 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -11,36 +8,29 @@ import java.util.List;
  */
 public class Game {
 
-  private final MovementStrategy random;
-  private final List<Car> cars;
+  private final MovementStrategy strategy;
+  private final Participants participants;
   private final int tryCnt;
 
-  public Game(MovementStrategy random, List<CarName> carNames, int tryCnt) {
-    this.random = random;
-    this.cars = initCars(carNames);
+  public Game(MovementStrategy strategy, Participants participants, int tryCnt) {
+    this.strategy = strategy;
+    this.participants = participants;
     this.tryCnt = tryCnt;
   }
 
-  private List<Car> initCars(List<CarName> carNames){
-    List<Car> cars = new ArrayList<>();
-    for (CarName name : carNames) {
-      cars.add(new Car(name));
-    }
-    return cars;
-  }
-
   public void play() {
-    for (Car car : cars) {
-      car.move(random.generate());
-    }
+    participants.play(strategy);
   }
 
-  public List<Car> getCars() {
-    return Collections.unmodifiableList(cars);
+  public Participants getParticipants() {
+    return this.participants;
   }
 
   public int getTryCnt() {
     return this.tryCnt;
   }
 
+  public List<Car> getWinners() {
+    return participants.getWinners();
+  }
 }

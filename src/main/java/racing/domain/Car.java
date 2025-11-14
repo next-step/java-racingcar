@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.Comparator;
 import java.util.Objects;
 import racing.exception.RacingException;
 
@@ -7,7 +8,7 @@ import racing.exception.RacingException;
  * 자동차 1. 전진 & 멈추기 2. 현재 위치 반환
  *
  */
-public class Car {
+public class Car implements Comparable<Car> {
   private static final int MOVE_BORDER = 4;
   private CarName name;
   private int position;
@@ -52,5 +53,14 @@ public class Car {
 
   public String getName() {
     return this.name.getName();
+  }
+
+  @Override
+  public int compareTo(Car o) {
+    return this.position - o.position;
+  }
+
+  public boolean hasSamePosition(Car topCar) {
+    return this.position == topCar.getPosition();
   }
 }
