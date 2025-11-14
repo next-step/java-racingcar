@@ -1,6 +1,7 @@
 package racingGame.business;
 
 import static org.assertj.core.api.Assertions.*;
+import static racingGame.business.CarFactory.createCars;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,7 +32,7 @@ class GameMoveTest {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove(moveCount);
-        List<Car> cars = new CarFactory().createCars(strings);
+        List<Car> cars = createCars(strings);
         GameFinalResult gameFinalResult = gameMove.moveCar(cars);
         
         List<GameResult> gameResults = gameFinalResult.gameResult();
@@ -46,7 +47,7 @@ class GameMoveTest {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove(moveCount);
-        List<Car> cars = new CarFactory().createCars(strings);
+        List<Car> cars = createCars(strings);
         GameFinalResult gameFinalResult = gameMove.moveCar(cars);
         
         List<GameResult> gameResults = gameFinalResult.gameResult();
