@@ -20,20 +20,20 @@ public class Participants {
     return cars;
   }
 
-  public List<Car> getWinners(){
-    Car topCar = findTopCar();
-    List<Car> winners = new ArrayList<>();
+  public List<String> getWinnerNames(){
+    int maxPosition = findMaxPosition();
+    List<String> winners = new ArrayList<>();
     Collections.sort(cars);
     for(Car car : cars){
-      if(car.hasSamePosition(topCar)){
-        winners.add(car);
+      if(car.hasSamePosition(maxPosition)){
+        winners.add(car.getName());
       }
     }
     return winners;
   }
 
-  private Car findTopCar(){
-    return Collections.max(cars, Comparator.comparingInt(Car::getPosition));
+  private int findMaxPosition(){
+    return Collections.max(cars, Comparator.comparingInt(Car::getPosition)).getPosition();
   }
 
   public void play(MovementStrategy strategy) {

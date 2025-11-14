@@ -21,11 +21,10 @@ public class ResultView {
     System.out.println();
   }
 
-  public static void printWinner(List<Car> winners){
+  public static void printWinner(List<String> winners){
     StringJoiner joiner = new StringJoiner(",");
-    for (Car x : winners) {
-      String name = x.getName();
-      joiner.add(name);
+    for (String x : winners) {
+      joiner.add(x);
     }
     System.out.println(joiner+"가 최종 우승했습니다.");
   }

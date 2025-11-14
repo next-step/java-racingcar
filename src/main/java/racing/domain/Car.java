@@ -60,7 +60,7 @@ public class Car implements Comparable<Car> {
     return this.position - o.position;
   }
 
-  public boolean hasSamePosition(Car topCar) {
-    return this.position == topCar.getPosition();
+  public boolean hasSamePosition(int position) {
+    return this.position == position;
   }
 }

@@ -10,15 +10,13 @@ public class Game {
 
   private final MovementStrategy strategy;
   private final Participants participants;
-  private final int tryCnt;
 
-  public Game(MovementStrategy strategy, Participants participants, int tryCnt) {
+  public Game(MovementStrategy strategy, Participants participants) {
     this.strategy = strategy;
     this.participants = participants;
-    this.tryCnt = tryCnt;
   }
 
-  public void play() {
+  public void playRound() {
     participants.play(strategy);
   }
 
@@ -26,11 +24,7 @@ public class Game {
     return this.participants;
   }
 
-  public int getTryCnt() {
-    return this.tryCnt;
-  }
-
-  public List<Car> getWinners() {
-    return participants.getWinners();
+  public List<String> getWinners() {
+    return participants.getWinnerNames();
   }
 }
