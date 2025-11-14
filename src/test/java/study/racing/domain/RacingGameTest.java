@@ -13,14 +13,12 @@ public class RacingGameTest {
     private static final int IMMOVABLE_NUMBER = 3;
     private static final int MOVABLE_NUMBER = 5;
     private List<String> names;
-    private RandomNumber randomNumber;
     private TestRandomNumber fixedRandomNumber3;
     private TestRandomNumber fixedRandomNumber5;
 
     @BeforeEach
     void setUp() {
         names = Arrays.asList("yang", "pobi", "jason");
-        randomNumber = new RandomNumber();
         fixedRandomNumber3 = new TestRandomNumber(IMMOVABLE_NUMBER);
         fixedRandomNumber5 = new TestRandomNumber(MOVABLE_NUMBER);
     }
