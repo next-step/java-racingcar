@@ -4,8 +4,8 @@ public class RaceController {
     private final RaceGame game;
     private final int roundCount;
 
-    public RaceController(List<String> carNames, int roundCount) {
-        this.game = new RaceGame(carNames);
+    public RaceController(List<Car> cars, int roundCount) {
+        this.game = new RaceGame(cars);
         this.roundCount = roundCount;
     }
 

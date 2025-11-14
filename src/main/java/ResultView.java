@@ -12,7 +12,7 @@ public class ResultView {
         print(createCarsLocationString(cars));
     }
 
-    public static void printWinners(List<Car> winners) {
+    public static void printWinners(Winners winners) {
         String names = createWinnerCarNamesString(winners);
         print(names + "가 최종 우승했습니다.");
     }
@@ -25,12 +25,8 @@ public class ResultView {
         return sb.toString();
     }
 
-    private static String createWinnerCarNamesString(List<Car> winners) {
-        List<String> winnerNames = new ArrayList<>();
-        for (Car car : winners) {
-            winnerNames.add(car.name());
-        }
-        return String.join(", ", winnerNames);
+    private static String createWinnerCarNamesString(Winners winners) {
+        return String.join(", ", winners.getNames());
     }
 
     private static String getCarNameString(Car car) {

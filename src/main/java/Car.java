@@ -4,8 +4,15 @@ public class Car {
     private int currentLocation;
 
     Car(String name) {
+        this(name, 0);
+    }
+
+    Car(String name, int currentLocation) {
+        if (!isValidName(name)) {
+            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
+        }
         this.name = name;
-        this.currentLocation = 0;
+        this.currentLocation = currentLocation;
     }
 
     String name() {
@@ -22,11 +29,23 @@ public class Car {
         }
     }
 
+    int getMaxLocation(int maxLocation) {
+        return Math.max(this.currentLocation, maxLocation);
+    }
+
+    boolean isAtLocation(int targetLocation) {
+        return this.currentLocation == targetLocation;
+    }
+
     private boolean isMovable(int number) {
         return number >= MOVE_THRESHOLD;
     }
 
     private void moveForward() {
         currentLocation++;
+    }
+
+    private boolean isValidName(String name) {
+        return name.length() <= 5;
     }
 }
