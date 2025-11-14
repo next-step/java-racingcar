@@ -2,41 +2,39 @@ package racinggame.car;
 
 import static java.util.Collections.unmodifiableList;
 import static racinggame.RandomNumberBox.getRandomNumber;
+import static racinggame.utils.StringUtils.splitToList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
-        this.cars = cars;
-    }
+    public Cars(List<String> carNames) {
+        List<Car> carList = new ArrayList<>(carNames.size());
 
-    public static Cars of(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            Car car = Car.of();
-            cars.add(car);
+        for (String carName : carNames) {
+            carList.add(
+                    new Car(carName)
+            );
         }
 
-        return new Cars(cars);
+        this.cars = carList;
     }
 
-    public void playPerRound() {
-        for (Car car : this.cars) {
-            // 아래 코드의 위치가 이곳이 어울릴까요?, 다른 방법이 있다면 키워드가 있을까요?
-            int randomNumber = getRandomNumber();
-            car.changePosition(randomNumber);
-        }
+    public int size() {
+        return this.cars.size();
+    }
+
+    public int findMaxPositions() {
+        return 0;
+    }
+
+    public List<String> findWinners(int maxPositions) {
+        return new ArrayList<>();
     }
 
     public List<Car> getCars() {
         return unmodifiableList(cars);
-    }
-
-    int size() {
-        return cars.size();
     }
 }

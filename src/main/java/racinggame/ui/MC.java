@@ -34,11 +34,7 @@ public class MC {
     }
 
     public static void printGameStates(Cars cars) {
-        for (Car car : cars.getCars()) {
-            printCarPosition(
-                    car.getPositionMark()
-            );
-        }
+
         printLineBreaker();
     }
 

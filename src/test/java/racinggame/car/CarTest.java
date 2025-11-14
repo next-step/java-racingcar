@@ -7,23 +7,24 @@ import org.junit.jupiter.api.Test;
 class CarTest {
     @Test
     void 주사위값이_4이상이면_자동차위치를_전진시킬_수_있다() {
-        Car car = Car.of();
+        Car car = new Car("mins");
 
-        car.changePosition(4);
+        car.move(4);
 
         assertThat(
-                car.getPosition()
-        ).isEqualTo(2);
+                car.isSamePosition(1)
+        ).isTrue();
     }
 
     @Test
     void 주사위값이_4미만이면_자동차위치를_전진시킬_수_없다() {
-        Car car = Car.of();
+        Car car = new Car("mins");
 
-        car.changePosition(3);
+        car.move(3);
 
         assertThat(
-                car.getPosition()
-        ).isEqualTo(1);
+                car.isSamePosition(1)
+        ).isFalse();
     }
+
 }
