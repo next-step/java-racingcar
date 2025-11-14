@@ -7,13 +7,16 @@ public class Car {
     private CarPosition position;
 
     public Car(String name) {
-        this.name = new CarName(name);
-        this.position = new CarPosition();
+        this(new CarName(name), new CarPosition());
     }
 
     public Car(String name, int position) {
-        this.name = new CarName(name);
-        this.position = new CarPosition(position);
+        this(new CarName(name), new CarPosition(position));
+    }
+
+    public Car(CarName name, CarPosition position) {
+        this.name = name;
+        this.position = position;
     }
 
     public void move(Torque torque) {
