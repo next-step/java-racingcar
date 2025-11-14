@@ -1,8 +1,8 @@
-package racingGame.Business;
+package racingGame.business;
 
 import java.util.List;
 
-import racingGame.Response.GameFinalResult;
+import racingGame.response.GameFinalResult;
 import racingGame.model.Car;
 
 public class Process {

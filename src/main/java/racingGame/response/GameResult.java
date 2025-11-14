@@ -1,4 +1,4 @@
-package racingGame.Response;
+package racingGame.response;
 
 
 import java.util.ArrayList;

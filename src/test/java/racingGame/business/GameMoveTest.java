@@ -1,14 +1,13 @@
-package racingGame.Business;
+package racingGame.business;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingGame.Response.GameFinalResult;
-import racingGame.Response.GameResult;
+import racingGame.response.GameFinalResult;
+import racingGame.response.GameResult;
 import racingGame.model.Car;
-import racingGame.model.ProgressRecord;
 
 import java.util.List;
 

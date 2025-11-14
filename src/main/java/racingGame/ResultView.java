@@ -1,8 +1,8 @@
 package racingGame;
 
 import java.util.List;
-import racingGame.Response.GameFinalResult;
-import racingGame.Response.GameResult;
+import racingGame.response.GameFinalResult;
+import racingGame.response.GameResult;
 import racingGame.model.ProgressRecord;
 
 public class ResultView {

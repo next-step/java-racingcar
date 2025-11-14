@@ -1,7 +1,7 @@
-package racingGame.Business;
+package racingGame.business;
 
-import racingGame.Response.GameFinalResult;
-import racingGame.Response.GameResult;
+import racingGame.response.GameFinalResult;
+import racingGame.response.GameResult;
 import racingGame.model.Car;
 import racingGame.model.ProgressRecord;
 import racingGame.util.RandomUtil;

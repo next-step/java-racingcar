@@ -1,10 +1,6 @@
 package racingGame;
 
-import java.util.ArrayList;
-import java.util.List;
-import racingGame.Business.Process;
-import racingGame.Response.GameFinalResult;
-import racingGame.Response.GameResult;
+import racingGame.business.Process;
 
 public class GameApplication {
     

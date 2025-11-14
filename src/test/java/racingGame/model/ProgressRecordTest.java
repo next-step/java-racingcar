@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingGame.Business.GameMove;
+import racingGame.business.GameMove;
 
 class ProgressRecordTest {
     

@@ -1,12 +1,12 @@
-package racingGame.Business;
+package racingGame.business;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingGame.Response.GameFinalResult;
-import racingGame.Response.GameResult;
+import racingGame.response.GameFinalResult;
+import racingGame.response.GameResult;
 
 import java.util.List;
 
