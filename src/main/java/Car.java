@@ -1,51 +1,44 @@
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
-    private final String name;
-    private int currentLocation;
+    private final CarName name;
+    private final Location location;
 
     Car(String name) {
         this(name, 0);
     }
 
-    Car(String name, int currentLocation) {
-        if (!isValidName(name)) {
-            throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
-        }
-        this.name = name;
-        this.currentLocation = currentLocation;
+    Car(String name, int location) {
+        this(new CarName(name), new Location(location));
     }
 
-    String name() {
+    Car(CarName name, Location location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    CarName name() {
         return name;
     }
 
-    int currentLocation() {
-        return currentLocation;
+    Location location() {
+        return location;
     }
 
     void makeMove(int number) {
         if (isMovable(number)) {
-            moveForward();
+            location.moveForward();
         }
     }
 
-    int getMaxLocation(int maxLocation) {
-        return Math.max(this.currentLocation, maxLocation);
+    boolean isAtLocation(Location targetLocation) {
+        return this.location.equals(targetLocation);
     }
 
-    boolean isAtLocation(int targetLocation) {
-        return this.currentLocation == targetLocation;
+    String expressLocationWith(String symbol) {
+        return location.toString(symbol);
     }
 
     private boolean isMovable(int number) {
         return number >= MOVE_THRESHOLD;
-    }
-
-    private void moveForward() {
-        currentLocation++;
-    }
-
-    private boolean isValidName(String name) {
-        return name.length() <= 5;
     }
 }

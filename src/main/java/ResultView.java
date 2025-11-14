@@ -26,15 +26,19 @@ public class ResultView {
     }
 
     private static String createWinnerCarNamesString(Winners winners) {
-        return String.join(", ", winners.getNames());
+        List<String> winnerNames = new ArrayList<>();
+        for (CarName name: winners.getNames()) {
+            winnerNames.add(name.toString());
+        }
+        return String.join(", ", winnerNames);
     }
 
     private static String getCarNameString(Car car) {
-        return car.name() + " : ";
+        return car.name().toString() + " : ";
     }
 
     private static String getLocationString(Car car) {
-        return LOCATION_INDICATOR.repeat(car.currentLocation());
+        return car.expressLocationWith(LOCATION_INDICATOR);
     }
 
     private static void print(String text) {

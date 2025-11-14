@@ -6,7 +6,7 @@ public class Winners {
     private final List<Car> winners;
 
     Winners(List<Car> candidates) {
-        int winnerLocation = findMaxLocation(candidates);
+        Location winnerLocation = findMaxLocation(candidates);
         this.winners = findCarsAtLocation(candidates, winnerLocation);
     }
 
@@ -14,23 +14,23 @@ public class Winners {
         return Collections.unmodifiableList(this.winners);
     }
 
-    List<String> getNames() {
-        List<String> winnerNames = new ArrayList<>();
+    List<CarName> getNames() {
+        List<CarName> winnerNames = new ArrayList<>();
         for (Car car : winners) {
             winnerNames.add(car.name());
         }
         return winnerNames;
     }
 
-    private static int findMaxLocation(List<Car> cars) {
-        int maxLocation = 0;
+    private static Location findMaxLocation(List<Car> cars) {
+        Location maxLocation = new Location(0);
         for (Car car : cars) {
-            maxLocation = car.getMaxLocation(maxLocation);
+            maxLocation = Location.max(car.location(), maxLocation);
         }
         return maxLocation;
     }
 
-    private List<Car> findCarsAtLocation(List<Car> cars, int targetLocation) {
+    private List<Car> findCarsAtLocation(List<Car> cars, Location targetLocation) {
         List<Car> locatedCars = new ArrayList<>();
         for (Car car : cars) {
             addIfLocationMatches(locatedCars, car, targetLocation);
@@ -38,7 +38,7 @@ public class Winners {
         return locatedCars;
     }
 
-    private void addIfLocationMatches(List<Car> locatedCars, Car car, int targetLocation) {
+    private void addIfLocationMatches(List<Car> locatedCars, Car car, Location targetLocation) {
         if (car.isAtLocation(targetLocation)) {
             locatedCars.add(car);
         }

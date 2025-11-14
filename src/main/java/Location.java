@@ -3,10 +3,6 @@ import java.util.Objects;
 public class Location {
     private int position;
 
-    Location() {
-        this(0);
-    }
-
     Location(int position) {
         if (!isValid(position)) {
             throw new IllegalArgumentException("Location은 0 이상의 값이어야 합니다.");
