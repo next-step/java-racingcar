@@ -12,7 +12,7 @@ public class StringAddCalculator {
         if (isBlank(text)) {
             return 0;
         }
-        return sum(toNonNegatives(split(text)));
+        return sum(toNonNegatives(split(text))).value();
     }
 
     private static boolean isBlank(String text) {
@@ -28,27 +28,19 @@ public class StringAddCalculator {
         return text.split(DEFAULT_DELIMITER);
     }
 
-    private static int sum(int[] numbers) {
-        int total = 0;
-        for (int number : numbers) {
-            total += number;
+    private static NonNegative sum(NonNegative[] numbers) {
+        NonNegative total = new NonNegative(0);
+        for (NonNegative number : numbers) {
+            total = number.plus(total);
         }
         return total;
     }
 
-    private static int[] toNonNegatives(String[] values) {
-        int[] numbers = new int[values.length];
+    private static NonNegative[] toNonNegatives(String[] values) {
+        NonNegative[] numbers = new NonNegative[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = toNonNegative(values[i]);
+            numbers[i] = new NonNegative(values[i]);
         }
         return numbers;
-    }
-
-    private static int toNonNegative(String value) {
-        int number = Integer.parseInt(value);
-        if (number < 0) {
-            throw new RuntimeException("음수를 입력할 수 없습니다.");
-        }
-        return number;
     }
 }

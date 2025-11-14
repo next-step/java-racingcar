@@ -13,8 +13,13 @@ public class Car {
     private int position = 0;
 
     public Car(final String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         validate(name);
         this.name = name;
+        this.position = position;
     }
 
     private static void validate(String name) {
@@ -39,5 +44,18 @@ public class Car {
         int randomNo = random.nextInt(MAX_BOUND);
         if (randomNo >= FORWARD_NUM)
             this.position++;
+    }
+
+    public void move(int randomNo) {
+        if (randomNo >= FORWARD_NUM)
+            this.position++;
+    }
+
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
+    public int max(int maxPosition) {
+        return Math.max(this.position, maxPosition);
     }
 }
