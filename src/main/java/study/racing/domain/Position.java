@@ -2,20 +2,20 @@ package study.racing.domain;
 
 import java.util.Objects;
 
-public class CarPosition {
+public class Position {
     private static final int DEFAULT_POSITION = 0;
     private final int value;
 
-    public CarPosition() {
+    public Position() {
         this(DEFAULT_POSITION);
     }
 
-    public CarPosition(int value) {
+    public Position(int value) {
         this.value = value;
     }
 
-    public CarPosition increase() {
-        return new CarPosition(value + 1);
+    public Position increase() {
+        return new Position(value + 1);
     }
 
     public int getValue() {
@@ -26,8 +26,8 @@ public class CarPosition {
         return this.value > value;
     }
 
-    public boolean isGreaterThan(CarPosition other) {
-        return this.value > other.value;
+    public boolean isGreaterThan(Position other) {
+        return isGreaterThan(other.value);
     }
 
     public boolean isEqualTo(int value) {
@@ -37,7 +37,7 @@ public class CarPosition {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        CarPosition that = (CarPosition) o;
+        Position that = (Position) o;
         return value == that.value;
     }
 

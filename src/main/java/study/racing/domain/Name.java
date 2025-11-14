@@ -2,11 +2,11 @@ package study.racing.domain;
 
 import java.util.Objects;
 
-public class CarName {
+public class Name {
     private static final int MAX_NAME_LENGTH = 5;
     private final String value;
 
-    public CarName(String value) {
+    public Name(String value) {
         validate(value);
         this.value = value;
     }
@@ -28,8 +28,8 @@ public class CarName {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        CarName carName = (CarName) o;
-        return Objects.equals(value, carName.value);
+        Name name = (Name) o;
+        return Objects.equals(value, name.value);
     }
 
     @Override

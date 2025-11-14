@@ -3,18 +3,18 @@ package study.racing.domain;
 import java.util.Objects;
 
 public class Car {
-    private final CarName name;
-    private CarPosition position;
+    private final Name name;
+    private Position position;
 
     public Car(String name) {
-        this(new CarName(name), new CarPosition());
+        this(new Name(name), new Position());
     }
 
     public Car(String name, int position) {
-        this(new CarName(name), new CarPosition(position));
+        this(new Name(name), new Position(position));
     }
 
-    public Car(CarName name, CarPosition position) {
+    public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
