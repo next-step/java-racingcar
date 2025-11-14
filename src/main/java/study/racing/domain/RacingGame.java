@@ -7,7 +7,7 @@ public class RacingGame {
     private final RoundStatus roundStatus;
 
     public RacingGame(List<String> carNames, RoundCount maxRoundCount) {
-        this.cars = new Cars(carNames);
+        this.cars = Cars.from(carNames);
         this.roundStatus = new RoundStatus(maxRoundCount.getValue());
     }
 

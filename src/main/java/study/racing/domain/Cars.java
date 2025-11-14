@@ -6,11 +6,20 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> carNames) {
-        this.cars = new ArrayList<>();
-        for (String carName : carNames) {
-            this.cars.add(new Car(carName));
+    public Cars(List<Car> cars) {
+        this.cars = new ArrayList<>(cars);
+    }
+
+    public static Cars from(List<String> names) {
+        return new Cars(createCars(names));
+    }
+
+    private static List<Car> createCars(List<String> names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
         }
+        return cars;
     }
 
     public void playRound(RandomNumber randomNumber) {
