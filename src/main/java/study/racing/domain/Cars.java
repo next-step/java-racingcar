@@ -8,29 +8,33 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<CarName> names) {
-        this.cars = initCars(names);
+    public Cars(CarNames names) {
+        this(initCars(names.value()));
     }
 
     public Cars(String... names) {
-        this.cars = initCars(Arrays.stream(names).map(CarName::new).toList());
+        this(initCars(Arrays.stream(names).map(CarName::new).toList()));
     }
 
     public Cars(Car... cars) {
-        this.cars = List.of(cars);
+        this(List.of(cars));
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
         return this.cars;
     }
 
-    public List<Car> initCars(List<CarName> names) {
+    public static List<Car> initCars(List<CarName> names) {
         List<Car> cars = new ArrayList<>();
         addCars(cars, names);
         return cars;
     }
 
-    private void addCars(List<Car> cars, List<CarName> names) {
+    private static void addCars(List<Car> cars, List<CarName> names) {
         for (CarName name : names) {
             cars.add(new Car(name.value()));
         }
@@ -63,4 +67,10 @@ public class Cars {
         return cars.get(index);
     }
 
+    @Override
+    public String toString() {
+        return "Cars{" +
+                "cars=" + cars +
+                '}';
+    }
 }

@@ -7,11 +7,24 @@ public class RoundCount {
     private int roundCount;
 
     public RoundCount(int roundCount) {
+        validateCount(roundCount);
         this.roundCount = roundCount;
     }
 
     public int value() {
         return this.roundCount;
+    }
+
+    public void executeRounds(Runnable runnable) {
+        for (int i = 0; i < roundCount; i++) {
+            runnable.run();
+        }
+    }
+
+    private void validateCount(int roundCount) {
+        if (roundCount < 1) {
+            throw new IllegalArgumentException("시도 수는 1이상 입력해주세요.");
+        }
     }
 
     @Override

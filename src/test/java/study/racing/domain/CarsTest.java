@@ -14,16 +14,15 @@ class CarsTest {
 
     @Test
     void 객체_정상생성_성공() {
-        Cars raceAttempt = new Cars("car1", "car2");
-        assertThat(raceAttempt.getCars().size()).isEqualTo(2);
-        assertThat(raceAttempt.getCars().get(0).getName()).isEqualTo(new CarName("car1"));
-        assertThat(raceAttempt.getCars().get(1).getName()).isEqualTo(new CarName("car2"));
+        Cars cars = new Cars("car1", "car2");
+        assertThat(cars.getCars()).hasSize(2);
+        assertThat(cars.getCars()).contains(new Car("car1"), new Car("car2"));
     }
 
     @NullAndEmptySource
     @ParameterizedTest
     void 이름이_null_또는_빈값이면_예외발생(String name) {
-        assertThatThrownBy(() -> new Cars(new RaceInput(Arrays.asList(name, name), 2).getNames()))
+        assertThatThrownBy(() -> new Cars(new CarNames(new RaceInput(Arrays.asList(name, name), 2).getNames())))
                 .isInstanceOf(RuntimeException.class);
     }
 

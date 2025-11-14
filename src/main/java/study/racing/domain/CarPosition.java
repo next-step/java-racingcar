@@ -18,6 +18,14 @@ public class CarPosition {
         this.position++;
     }
 
+    public boolean isMaxPosition(int maxPosition) {
+        return this.position == maxPosition;
+    }
+
+    public int max(int maxPosition){
+        return Math.max(maxPosition, this.position);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

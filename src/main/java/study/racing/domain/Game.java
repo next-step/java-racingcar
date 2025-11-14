@@ -15,11 +15,11 @@ public class Game {
     }
 
     public void playGame() {
-        for (int i = 0; i < this.roundCount.value(); i++) {
+        this.roundCount.executeRounds(() -> {
             List<Car> cars = this.cars.getCars();
             playRound(cars);
             printEmptyLine();
-        }
+        });
     }
 
     private static void playRound(List<Car> cars) {
