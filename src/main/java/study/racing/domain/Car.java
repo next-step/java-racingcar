@@ -2,42 +2,48 @@ package study.racing.domain;
 
 public class Car {
 
-    private String name;
-    private int position;
+    private CarName name;
+    private CarPosition position;
 
     public Car(String name) {
-        this.name = name;
-        this.position = 0;
+        this(new CarName(name), new CarPosition(0));
+
     }
 
     public Car(String name, int position) {
+        this(new CarName(name), new CarPosition(position));
+    }
+
+    public Car(CarName name, CarPosition position) {
         this.name = name;
         this.position = position;
     }
 
-    public String getName() {
-        return name;
+    public CarName getName() {
+        return this.name;
     }
 
-    public int getPosition() {
-        return position;
+    public CarPosition getPosition() {
+        return this.position;
     }
 
     public void move() {
         if (RandomMoveRule.isRandomNumber()) {
-            this.position++;
+            this.position.increasePosition();
         }
     }
 
     public boolean isEqualsMaxPosition(int maxPosition) {
-        return this.position == maxPosition;
+        return this.position.value() == maxPosition;
     }
 
-    public int max(int maxPosition){
-        return Math.max(maxPosition, this.getPosition());
+    public int max(int maxPosition) {
+        return Math.max(maxPosition, this.getPosition().value());
     }
 
     public void moveToPosition(int position) {
-        this.position = position;
+        this.position = new CarPosition(position);
     }
+
+
 }

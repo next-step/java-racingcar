@@ -18,7 +18,7 @@ class RaceInputTest {
     void createSuccess() {
         RaceInput race = new RaceInput(List.of("car1", "car2", "car3"), 2);
         assertThat(race.getNames()).hasSize(3);
-        assertThat(race.getNumberOfAttempt()).isEqualTo(2);
+        assertThat(race.getNumberOfAttempt()).isEqualTo(new RoundCount(2));
     }
 
 

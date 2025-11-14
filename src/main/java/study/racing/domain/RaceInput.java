@@ -4,15 +4,15 @@ import java.util.List;
 
 public class RaceInput {
 
-    private final List<String> names;
-    private final int numberOfAttempt;
+    private final List<CarName> names;
+    private final RoundCount numberOfAttempt;
 
     public RaceInput(List<String> names, int numberOfAttempts) {
         validateNames(names);
-        this.names = names;
+        this.names = names.stream().map(CarName::new).toList();
 
         validateNumber(numberOfAttempts);
-        this.numberOfAttempt = numberOfAttempts;
+        this.numberOfAttempt = new RoundCount(numberOfAttempts);
     }
 
     private static void validateNumber(int numberOfAttempts) {
@@ -20,6 +20,7 @@ public class RaceInput {
             throw new RuntimeException("레이스 횟수는 1회 이상이어야 합니다.");
         }
     }
+
     private void validateNames(List<String> names) {
         for (String name : names) {
             validateString(name);
@@ -48,11 +49,11 @@ public class RaceInput {
     }
 
 
-    public List<String> getNames() {
+    public List<CarName> getNames() {
         return names;
     }
 
-    public int getNumberOfAttempt() {
+    public RoundCount getNumberOfAttempt() {
         return numberOfAttempt;
     }
 }

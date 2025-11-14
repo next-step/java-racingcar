@@ -1,18 +1,19 @@
 package study.racing.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<String> names) {
+    public Cars(List<CarName> names) {
         this.cars = initCars(names);
     }
 
     public Cars(String... names) {
-        this.cars = initCars(List.of(names));
+        this.cars = initCars(Arrays.stream(names).map(CarName::new).toList());
     }
 
     public Cars(Car... cars) {
@@ -23,15 +24,15 @@ public class Cars {
         return this.cars;
     }
 
-    public List<Car> initCars(List<String> names) {
+    public List<Car> initCars(List<CarName> names) {
         List<Car> cars = new ArrayList<>();
         addCars(cars, names);
         return cars;
     }
 
-    private void addCars(List<Car> cars, List<String> names) {
-        for (String name : names) {
-            cars.add(new Car(name));
+    private void addCars(List<Car> cars, List<CarName> names) {
+        for (CarName name : names) {
+            cars.add(new Car(name.value()));
         }
     }
 

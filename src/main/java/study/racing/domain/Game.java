@@ -7,15 +7,15 @@ import static study.racing.view.ResultView.*;
 public class Game {
 
     private final Cars cars;
-    private final int roundCount;
+    private final RoundCount roundCount;
 
-    public Game(List<String> names, int roundCount) {
-        this.cars = new Cars(names);
-        this.roundCount = roundCount;
+    public Game(Cars cars, int roundCount) {
+        this.cars = cars;
+        this.roundCount = new RoundCount(roundCount);
     }
 
     public void playGame() {
-        for (int i = 0; i < this.roundCount; i++) {
+        for (int i = 0; i < this.roundCount.value(); i++) {
             List<Car> cars = this.cars.getCars();
             playRound(cars);
             printEmptyLine();
@@ -33,7 +33,4 @@ public class Game {
         return cars;
     }
 
-    public int getRoundCount() {
-        return roundCount;
-    }
 }

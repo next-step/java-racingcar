@@ -14,11 +14,10 @@ class CarsTest {
 
     @Test
     void 객체_정상생성_성공() {
-        Cars raceAttempt = new Cars("car1", "car2", "car3");
-        assertThat(raceAttempt.getCars().size()).isEqualTo(3);
-        assertThat(raceAttempt.getCars().get(0).getName()).isEqualTo("car1");
-        assertThat(raceAttempt.getCars().get(1).getName()).isEqualTo("car2");
-        assertThat(raceAttempt.getCars().get(2).getName()).isEqualTo("car3");
+        Cars raceAttempt = new Cars("car1", "car2");
+        assertThat(raceAttempt.getCars().size()).isEqualTo(2);
+        assertThat(raceAttempt.getCars().get(0).getName()).isEqualTo(new CarName("car1"));
+        assertThat(raceAttempt.getCars().get(1).getName()).isEqualTo(new CarName("car2"));
     }
 
     @NullAndEmptySource
@@ -30,12 +29,11 @@ class CarsTest {
 
     @Test
     void 단독_1위_차량_찾기() {
-        Cars raceAttempt = new Cars("car1", "car2", "car3", "car4", "car5");
+        Cars cars = new Cars("car1", "car2", "car3", "car4", "car5");
+        cars.getCar(0).moveToPosition(1);
 
-        raceAttempt.getCars().getFirst().moveToPosition(1);
-
-        List<Car> topCars = raceAttempt.topRankCars();
-        assertThat(topCars.getFirst().getName()).isEqualTo("car1");
+        List<Car> topCars = cars.topRankCars();
+        assertThat(topCars.getFirst().getName()).isEqualTo(new CarName("car1"));
     }
 
     @Test
@@ -43,12 +41,10 @@ class CarsTest {
         Cars cars = new Cars(
                 new Car("car1", 3),
                 new Car("car2", 3),
-                new Car("car3", 3),
-                new Car("car4", 0),
-                new Car("car5", 1)
+                new Car("car3", 1)
         );
-        
+
         List<Car> topCars = cars.topRankCars();
-        assertThat(topCars).extracting(Car::getName).contains("car2", "car1", "car3");
+        assertThat(topCars).extracting(Car::getName).contains(new CarName("car1"), new CarName("car2"));
     }
 }

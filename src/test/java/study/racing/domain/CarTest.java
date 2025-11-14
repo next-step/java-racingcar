@@ -10,15 +10,14 @@ class CarTest {
     @Test
     void car_생성_성공(){
         Car car = new Car("car1");
-        assertThat(car.getName()).isEqualTo("car1");
-        assertThat(car.getPosition()).isEqualTo("");
+        assertThat(car.getName()).isEqualTo(new CarName("car1"));
+        assertThat(car.getPosition()).isEqualTo(new CarPosition(0));
     }
 
     @Test
-    void 앞으로_1칸_전진(){
-        Car car = new Car("car1");
-        car.move();
-        assertThat(car.getPosition()).isEqualTo("-");
+    void 앞으로_3칸_전진(){
+        Car car = new Car("car1",3);
+        assertThat(car.getPosition()).isEqualTo(new CarPosition(3));
     }
 
 }
