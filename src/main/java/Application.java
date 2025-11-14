@@ -1,10 +1,12 @@
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        int carCount = InputView.readCarCountInput();
+        List<Car> cars = InputView.readCarsInput();
         int roundCount = InputView.readRoundCountInput();
 
         ResultView.printResultHeader();
-        RaceGame game = new RaceGame(carCount, roundCount);
-        game.execute();
+        RaceController controller = new RaceController(cars, roundCount);
+        controller.start();
     }
 }
