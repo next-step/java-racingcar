@@ -11,12 +11,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<String> carNames = GameInput.readCarCount();
-        RoundCount roundCount = GameInput.readRoundCount();
-        RacingGame racingGame = new RacingGame(carNames, new RandomNumber());
+        RoundCount maxRoundCount = GameInput.readRoundCount();
+        RacingGame racingGame = new RacingGame(carNames, maxRoundCount);
         GameOutput.printResult();
 
-        for (int i = 0; i < roundCount.getValue(); i++) {
-            racingGame.playRound();
+        while (racingGame.hasNextRound()) {
+            racingGame.playRound(new RandomNumber());
             GameOutput.printRound(racingGame.getCars());
             GameOutput.printEmptyLine();
         }
