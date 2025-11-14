@@ -46,11 +46,6 @@ public class Car {
             this.position++;
     }
 
-    public void move(int randomNo) {
-        if (randomNo >= FORWARD_NUM)
-            this.position++;
-    }
-
     public boolean isMaxPosition(int maxPosition) {
         return this.position == maxPosition;
     }
