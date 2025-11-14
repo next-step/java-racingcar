@@ -27,7 +27,7 @@ class CarFactoryTest {
     void carMakeTest() {
         String[] strings = {"pobi", "crong","honux"};
         carFactory = new CarFactory();
-        assertThat(carFactory.createCars(strings).size()).isEqualTo(3);
+        assertThat(carFactory.createCars(strings)).hasSize(strings.length);
     }
 
 }
