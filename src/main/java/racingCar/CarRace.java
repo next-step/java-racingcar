@@ -14,7 +14,7 @@ public class CarRace {
         random = new Random();
         cars = createCars(names);
     }
-    private List<Car> createCars(String[] names) {
+    private static List<Car> createCars(String[] names) {
         List<Car> carList = new ArrayList<>();
         for(String name : names) {
             carList.add(new Car(name));
