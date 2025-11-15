@@ -41,7 +41,7 @@ class CarTest {
     
     @Test
     void carGenerateAndInitTest() {
-        assertThat(car.findLocation()).isEqualTo(1);
+        assertThat(car.findLocation()).isEqualTo(0);
     }
 
     @Test
@@ -54,19 +54,19 @@ class CarTest {
         int num = 5;
         car.forward(num);
         car.forward(num);
-        assertThat(car.forward(num)).isEqualTo(4);
+        assertThat(car.forward(num)).isEqualTo(3);
     }
     
     @ParameterizedTest
     @ValueSource(ints = {4, 8})
     void carIsForward(int num) {
-        assertThat(car.forward(num)).isEqualTo(2);
+        assertThat(car.forward(num)).isEqualTo(1);
     }
     
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 3})
     void carIsNotForward(int num) {
-        assertThat(car.forward(num)).isEqualTo(1);
+        assertThat(car.forward(num)).isEqualTo(0);
     }
 
 }

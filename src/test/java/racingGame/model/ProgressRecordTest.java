@@ -35,16 +35,31 @@ class ProgressRecordTest {
     }
     
     @Test
-    void findWinnersTest() {
+    void findJointWinnersTest() {
         List<Car> joinCars = new ArrayList<>();
-        joinCars.add(new Car("pobi"));
-        joinCars.add(new Car("crong"));
-        joinCars.add(new Car("mo"));
-        joinCars.add(new Car("jae"));
-        new GameMove(5).moveCar(joinCars);
+        joinCars.add(new Car("pobi",5));
+        joinCars.add(new Car("crong",5));
+        joinCars.add(new Car("mo",3));
+        joinCars.add(new Car("jae",2));
         progressRecord.recordGame(joinCars);
         
-        assertThat(progressRecord.findWinners().size()).isGreaterThanOrEqualTo(1);
+        List<String> winner = List.of("pobi", "crong");
+        
+        assertThat(progressRecord.findWinners()).isEqualTo(winner);
+    }
+    
+    @Test
+    void findSoleWinnersTest() {
+        List<Car> joinCars = new ArrayList<>();
+        joinCars.add(new Car("pobi",4));
+        joinCars.add(new Car("crong",5));
+        joinCars.add(new Car("mo",3));
+        joinCars.add(new Car("jae",2));
+        progressRecord.recordGame(joinCars);
+        
+        List<String> winner = List.of("crong");
+        
+        assertThat(progressRecord.findWinners()).isEqualTo(winner);
     }
     
     @Test
