@@ -1,13 +1,12 @@
 package racingGame;
 
-import java.util.List;
-import racingGame.Business.Process;
-import racingGame.model.ProgressRecord;
+import racingGame.business.Process;
 
 public class GameApplication {
     
     public static void main(String[] args) {
         Process process = new Process();
-        ResultView.printAllResult(process.run(InputView.inputCarNum(), InputView.inputMoveNum()));
+        ResultView.printAllResult(process.run(InputView.inputCarName(), InputView.inputMoveNum()));
     }
+
 }

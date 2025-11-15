@@ -1,24 +1,68 @@
 package racingGame.model;
 
+import java.util.Objects;
+
 public class Car {
     
-    public static final int INIT_LOCATION = 1;
+    public static final int INIT_LOCATION = 0;
     public static final int CAR_FORWARD_CRITERIA = 3;
+    private final String name;
     private int location;
     
-    public Car() {
+    public Car(Car car) {
+        this(car.name, car.location);
+    }
+    public Car(String name, int location) {
+        this(name);
+        this.location = location;
+    }
+
+    public Car(String name) {
+        validate(name);
+        this.name = name;
         this.location = INIT_LOCATION;
+    }    
+
+    public int forward(int randomNum) {
+        if (randomNum > CAR_FORWARD_CRITERIA) {
+            location += 1;
+        }
+        return location;
     }
     
-    public int forward() {
-        return location++;
+    public int compareLocation(int max) {
+        return Math.max(max, this.location);
+    }
+    
+    public boolean isSameLocation(int max) {
+        return max == this.location;
     }
     
     public int findLocation() {
         return location;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    private void validate(String name) {
+        if (name.isEmpty() || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
+        }
+    }
     
-    public boolean isForwardByRandom(int randomNum) {
-        return randomNum > CAR_FORWARD_CRITERIA;
+    @Override
+    public boolean equals(Object o) {
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return location == car.location && Objects.equals(name, car.name);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }

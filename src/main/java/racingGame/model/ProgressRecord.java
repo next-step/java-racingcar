@@ -1,19 +1,13 @@
 package racingGame.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ProgressRecord {
-    private final List<Integer> joinCarsRecord = new ArrayList<>();
+public record ProgressRecord(JoinCars joinCars) {
     
-    public List<Integer> recordGame(List<Car> cars) {
-        for(Car car: cars) {
-            this.joinCarsRecord.add(car.findLocation()) ;
+    // ? 깊은 복사가 필요하게된 원인을 사전에 포착하기 위한 테스트 방법은?
+    public ProgressRecord(JoinCars joinCars) {
+        JoinCars cars = new JoinCars();
+        for(Car joinCar: joinCars.cars()) {
+            cars.addJoinCars(new Car(joinCar));
         }
-        return this.joinCarsRecord;
-    }
-    
-    public List<Integer> carRecord() {
-        return this.joinCarsRecord;
+        this.joinCars = cars;
     }
 }

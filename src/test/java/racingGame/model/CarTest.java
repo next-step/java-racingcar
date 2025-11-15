@@ -1,6 +1,7 @@
 package racingGame.model;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,36 +14,68 @@ class CarTest {
     
     @BeforeEach
     void setUp() {
-        car = new Car();
+        String name = "mo";
+        car = new Car(name);
     }
     
     @Test
     void carGenerateTest() {
         assertThat(car);
     }
-    
+
     @Test
-    void carGenerateAndInitTest() {
-        assertThat(car.findLocation()).isEqualTo(1);
+    void carsNameBlankValidateTest() {
+        assertThatThrownBy(() -> {
+            new Car("");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("%s", "자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
+    }
+
+    @Test
+    void carsNameOverLetterValidateTest() {
+        assertThatThrownBy(() -> {
+            new Car("123456");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("%s", "자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
+    }
+
+    @Test
+    void carShowNameTest() {
+        assertThat(car.getName()).isEqualTo("mo");
     }
 
     @Test
     void carForwardTest() {
-        car.forward();
-        car.forward();
-        assertThat(car.forward() + 1).isEqualTo(4);
+        int num = 5;
+        car.forward(num);
+        car.forward(num);
+        assertThat(car.forward(num)).isEqualTo(3);
     }
     
     @ParameterizedTest
-    @ValueSource(ints = {4, 6, 8})
+    @ValueSource(ints = {4, 8})
     void carIsForward(int num) {
-        assertThat(car.isForwardByRandom(num)).isTrue();
+        assertThat(car.forward(num)).isEqualTo(1);
     }
     
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 1, 3})
     void carIsNotForward(int num) {
-        assertThat(car.isForwardByRandom(num)).isFalse();
+        assertThat(car.forward(num)).isEqualTo(0);
     }
-
+    
+    @Test
+    void compareLocationTest() {
+        String name = "mo";
+        car = new Car(name,6);
+        assertThat(car.compareLocation(5)).isEqualTo(6);
+    }
+    
+    @Test
+    void isSameLocationTest() {
+        String name = "mo";
+        car = new Car(name,5);
+        assertThat(car.isSameLocation(5)).isTrue();
+    }
+    
 }
