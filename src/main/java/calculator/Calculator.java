@@ -24,12 +24,10 @@ public class Calculator {
     }
 
     public int calculate(String input) {
-        // 입력 값이 빈 문자열 또는 null인 경우 0 반환
         if (isBlank(input)) {
             return 0;
         }
 
-        // 구분자 유효성 검사
         delimiter.validate(input);
 
         return sum(toInts(delimiter.split(input)));
