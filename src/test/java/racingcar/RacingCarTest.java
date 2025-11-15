@@ -66,13 +66,11 @@ public class RacingCarTest {
 	void returnDashes_WhenMoved(
 		int expected
 	) {
-		StringBuilder dashes = new StringBuilder();
-
 		for (int i = 1; i <= expected; i++) {
-			dashes.append(car.move(expected));
+			car.move(expected);
 		}
 
-		assertThat(dashes.toString()).isEqualTo("-".repeat(expected));
+		assertThat("-".repeat(car.getPosition())).isEqualTo("-".repeat(expected));
 	}
 
 	@Test

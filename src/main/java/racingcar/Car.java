@@ -2,6 +2,10 @@ package racingcar;
 
 public class Car {
 
+	public static final int MIN_MOVE_NUMBER = 0;
+	public static final int MAX_MOVE_NUMBER = 9;
+	public static final int MOVE_THRESHOLD = 4;
+
 	public int position;
 
 	public Car() {
@@ -13,15 +17,18 @@ public class Car {
 	}
 
 	public String move(int number) {
-		if (number < 0 || number > 9) {
+		validate(number);
+
+		if (number < MOVE_THRESHOLD) {
+			return "-".repeat(position);
+		}
+
+		return "-".repeat(++position);
+	}
+
+	private static void validate(int number) {
+		if (number < MIN_MOVE_NUMBER || number > MAX_MOVE_NUMBER) {
 			throw new IllegalArgumentException("0부터 9까지의 숫자만 입력할 수 있습니다.");
 		}
-
-		if (number <= 3) {
-			return "";
-		}
-
-		++position;
-		return "-";
 	}
 }
