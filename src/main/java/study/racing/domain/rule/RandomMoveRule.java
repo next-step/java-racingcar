@@ -1,4 +1,4 @@
-package study.racing.domain;
+package study.racing.domain.rule;
 
 import java.util.Random;
 
