@@ -1,28 +1,48 @@
 package racinggame;
 
 import static racinggame.ui.MC.*;
-import static racinggame.ui.MC.askCarCountToUser;
+import static racinggame.ui.MC.printEndMessage;
+import static racinggame.ui.MC.printLineBreaker;
 import static racinggame.ui.ResultView.printCarPositionTitle;
+import static racinggame.utils.StringUtils.splitToList;
 
-import racinggame.car.Cars;
+import java.util.List;
+import racinggame.model.car.Cars;
+import racinggame.ui.UserInput;
 
 public class RacingGame {
+    public static final String CAR_NAME_DELIMITER = ",";
 
     public void start() {
-        int carCount = askCarCountToUser();
-        int tryCount = askTryCountToUser();
+        UserInput userInput = getUserInput();
+        List<String> carNameList = splitToList(
+                userInput.getCarNames(),
+                CAR_NAME_DELIMITER
+        );
 
-        Cars cars = Cars.of(carCount);
-        startRacing(tryCount, cars);
+        startRacing(
+                userInput.getTryCount(),
+                Cars.createByNames(carNameList)
+        );
     }
 
     private void startRacing(int tryCount, Cars cars) {
         printCarPositionTitle();
-        for (int i = 0; i < tryCount; i++) {
-            // 랜덤값 구하기
-            cars.playPerRound();
 
-            printGameStates(cars);
+        processGame(tryCount, cars);
+
+        reportWinnerAndEndGame(cars);
+    }
+
+    private void processGame(int tryCount, Cars cars) {
+        for (int perTry = 0; perTry < tryCount; perTry++) {
+            cars.playPerRound();
+            printLineBreaker();
         }
+    }
+
+    private void reportWinnerAndEndGame(Cars cars) {
+        List<String> winners = cars.findWinners(cars.findMaxPositions());
+        printEndMessage(winners);
     }
 }
