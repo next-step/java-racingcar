@@ -13,7 +13,7 @@ class CarFactoryTest {
     @Test
     void carMakeTest() {
         String[] strings = {"pobi", "crong","honux"};
-        assertThat(createCars(new NonNegativeReadyCars(strings))).hasSize(strings.length);
+        assertThat(createCars(new NonNegativeReadyCars(strings)).cars()).hasSize(strings.length);
     }
 
 }

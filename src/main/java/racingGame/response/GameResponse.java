@@ -1,9 +1,8 @@
 package racingGame.response;
 
-import java.util.List;
-import racingGame.model.Car;
 import racingGame.model.GameResult;
+import racingGame.model.JoinCars;
 
-public record GameResponse(GameResult gameResult, List<Car> winners) {
+public record GameResponse(GameResult gameResult, JoinCars winners) {
 
 }

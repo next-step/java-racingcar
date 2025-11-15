@@ -11,13 +11,13 @@ public class ResultView {
     public static void printAllResult(GameResponse results) {
         System.out.println("실행 결과");
         for (ProgressRecord record : results.gameResult().progressRecords()) { // 각 라운드
-            for (int i = 0; i < record.joinCars().size() ; i++) {
-                System.out.print(record.joinCars().get(i).getName() + " : ");
-                System.out.println(makeTrack(record.joinCars().get(i).findLocation()));
+            for (int i = 0; i < record.joinCars().cars().size() ; i++) {
+                System.out.print(record.joinCars().cars().get(i).getName() + " : ");
+                System.out.println(makeTrack(record.joinCars().cars().get(i).findLocation()));
             }
             System.out.println();
         }
-        winnersPrint(results.winners());
+        winnersPrint(results.winners().cars());
     }
     
     private static void winnersPrint(List<Car> winners) {

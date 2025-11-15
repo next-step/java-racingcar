@@ -36,7 +36,7 @@ class ProcessTest {
         
         assertThat(gamedResult.progressRecords())
             .allSatisfy(progressRecord ->
-                assertThat(progressRecord.joinCars()).hasSize(carsNames.length)
+                assertThat(progressRecord.joinCars().cars()).hasSize(carsNames.length)
             );
     }
 }

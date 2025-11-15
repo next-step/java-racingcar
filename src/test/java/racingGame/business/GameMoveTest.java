@@ -4,11 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 import static racingGame.business.CarFactory.createCars;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingGame.model.*;
-
-import java.util.List;
 
 class GameMoveTest {
 
@@ -23,7 +19,7 @@ class GameMoveTest {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove((new NonNegativeMoves(moveCount)));
-        List<Car> cars = createCars(new NonNegativeReadyCars(strings));
+        JoinCars cars = createCars(new NonNegativeReadyCars(strings));
         GameResult gameResult = gameMove.moveCar(cars);
         
         assertThat(gameResult.progressRecords())
@@ -35,12 +31,12 @@ class GameMoveTest {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove((new NonNegativeMoves(moveCount)));
-        List<Car> cars = createCars(new NonNegativeReadyCars(strings));
+        JoinCars cars = createCars(new NonNegativeReadyCars(strings));
         GameResult gameResult = gameMove.moveCar(cars);
         
         assertThat(gameResult.progressRecords())
             .allSatisfy(progressRecord ->
-                assertThat(progressRecord.joinCars()).hasSize(strings.length)
+                assertThat(progressRecord.joinCars().cars()).hasSize(strings.length)
         );
     }
 

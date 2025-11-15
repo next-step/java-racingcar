@@ -13,9 +13,10 @@ class GameResultTest {
     @Test
     void getGameResultTest() {
         List<Car> cars = new ArrayList<>();
+        JoinCars joinCars = new JoinCars(cars);
         
         List<ProgressRecord> progressRecords = new ArrayList<>();
-        progressRecords.add(new ProgressRecord(cars));
+        progressRecords.add(new ProgressRecord(joinCars));
         gameResult = new GameResult(progressRecords);
         assertThat(gameResult.progressRecords().size()).isEqualTo(1);
     }
@@ -27,13 +28,15 @@ class GameResultTest {
         joinCars.add(new Car("crong",5));
         joinCars.add(new Car("mo",3));
         joinCars.add(new Car("jae",2));
-        ProgressRecord progressRecord = new ProgressRecord(joinCars);
+        JoinCars jc = new JoinCars(joinCars);
+        ProgressRecord progressRecord = new ProgressRecord(jc);
         List<ProgressRecord> progressRecords = List.of(progressRecord);
         GameResult gameResult = new GameResult(progressRecords);
         
-        List<Car> winner = List.of(new Car("pobi",5), new Car("crong",5));
+        List<Car> expectWinnerCars = List.of(new Car("pobi",5), new Car("crong",5));
+        JoinCars winner = new JoinCars(expectWinnerCars);
         
-        assertThat(gameResult.findWinners()).isEqualTo(winner);
+        assertThat(gameResult.findGameWinners()).isEqualTo(winner);
     }
     
     @Test
@@ -43,12 +46,14 @@ class GameResultTest {
         joinCars.add(new Car("crong",5));
         joinCars.add(new Car("mo",3));
         joinCars.add(new Car("jae",2));
-        ProgressRecord progressRecord = new ProgressRecord(joinCars);
+        JoinCars jc = new JoinCars(joinCars);
+        ProgressRecord progressRecord = new ProgressRecord(jc);
         List<ProgressRecord> progressRecords = List.of(progressRecord);
         GameResult gameResult = new GameResult(progressRecords);
         
-        List<Car> winner = List.of(new Car("crong",5));
+        List<Car> expectWinnerCars = List.of(new Car("crong",5));
+        JoinCars winner = new JoinCars(expectWinnerCars);
         
-        assertThat(gameResult.findWinners()).isEqualTo(winner);
+        assertThat(gameResult.findGameWinners()).isEqualTo(winner);
     }
 }
