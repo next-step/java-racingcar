@@ -1,11 +1,17 @@
 package racing.domain;
 
+import java.util.Objects;
 import racing.exception.ErrorMessage;
 import racing.exception.RacingException;
 
 public class Position implements Comparable<Position> {
 
+  private static final String POSITION_MARKER = "-";
   private int position;
+
+  public Position(){
+    this(0);
+  }
 
   public Position(int position) {
     if (position < 0) {
@@ -14,12 +20,8 @@ public class Position implements Comparable<Position> {
     this.position = position;
   }
 
-  public void move(int dist) {
-    this.position += dist;
-  }
-
-  public int getPosition() {
-    return position;
+  public void increase() {
+    this.position += 1;
   }
 
   @Override
@@ -27,17 +29,32 @@ public class Position implements Comparable<Position> {
     return this.position - o.position;
   }
 
-  enum PositionMessage implements ErrorMessage {
-    INVALID_CAR_INIT_POSITION("자동차의 위치는 0부터 시작합니다");
-
-    private String message;
-
-    PositionMessage(String message) {
-      this.message = message;
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    Position position1 = (Position) o;
+    return position == position1.position;
+  }
 
-    public String getMessage() {
-      return message;
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(position);
+  }
+
+  @Override
+  public String toString() {
+    return POSITION_MARKER.repeat(this.position);
+  }
+
+  static class PositionMessage extends ErrorMessage {
+
+    public static final PositionMessage INVALID_CAR_INIT_POSITION =
+        new PositionMessage("자동차의 위치는 0부터 시작합니다");
+
+    private PositionMessage(String message) {
+      super(message);
     }
   }
 }

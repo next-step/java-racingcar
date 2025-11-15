@@ -15,7 +15,7 @@ public class GameApplication {
     List<String> cars = InputView.inputCar(Message.INPUT_CAR_NAME);
     int tryCnt = InputView.inputTryCnt(Message.INPUT_TRY_COUNT);
 
-    MovementStrategy strategy = new MovementStrategy(0, 9);
+    MovementStrategy strategy = new MovementStrategy();
     Participants participants = Participants.from(cars);
     RacingGame racingGame = new RacingGame(new Game(strategy, participants),
         new RoundCount(tryCnt));

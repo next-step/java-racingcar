@@ -10,10 +10,14 @@ public class Car implements Comparable<Car> {
 
   private static final int MOVE_BORDER = 4;
   private final CarName name;
-  private Position position;
+  private final Position position;
 
   public Car(String name) {
     this(new CarName(name));
+  }
+
+  public Car(String name, int position) {
+    this(new CarName(name), new Position(position));
   }
 
   public Car(CarName name) {
@@ -26,14 +30,17 @@ public class Car implements Comparable<Car> {
   }
 
   public void move(int value) {
-    if (value < MOVE_BORDER) {
-      return;
+    if (value > MOVE_BORDER) {
+      this.position.increase();
     }
-    this.position.move(1);
   }
 
-  public Position getPosition() {
-    return this.position;
+  public boolean hasSamePosition(Car car) {
+    return this.position.equals(car.position);
+  }
+
+  public String getName() {
+    return this.name.getName();
   }
 
   @Override
@@ -50,16 +57,14 @@ public class Car implements Comparable<Car> {
     return Objects.hashCode(name);
   }
 
-  public String getName() {
-    return this.name.getName();
-  }
-
   @Override
   public int compareTo(Car o) {
     return this.position.compareTo(o.position);
   }
 
-  public boolean hasSamePosition(Position position) {
-    return this.position.equals(position);
+  @Override
+  public String toString() {
+    return this.name + " : " + this.position;
   }
+
 }

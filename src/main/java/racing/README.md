@@ -67,3 +67,8 @@ Exception in thread "main" racing.exception.RacingException: 이름은 5자 이�
 ## Message를 분리해야 하나
 
 - 메서드가 많아진다 vs 메시지를 외부에서 주입받는다
+
+
+----
+- jacoco
+  - `./gradlew test jacocoTestReport`

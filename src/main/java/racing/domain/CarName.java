@@ -13,6 +13,10 @@ public class CarName {
     this.name = name;
   }
 
+  public String getName() {
+    return this.name;
+  }
+
   private void validate(String name) {
     if (name == null || name.isEmpty()) {
       throw new RacingException(CarNameMessage.NAME_VALIDATION_EMPTY);
@@ -36,22 +40,20 @@ public class CarName {
     return Objects.hashCode(name);
   }
 
-  public String getName() {
+  @Override
+  public String toString() {
     return this.name;
   }
 
-  enum CarNameMessage implements ErrorMessage {
-    NAME_VALIDATION_EMPTY("이름은 비어있을 수 없습니다."),
-    NAME_VALIDATION_LENGTH("이름은 5자 이하여야 합니다.");
+  static class CarNameMessage extends ErrorMessage {
 
-    private String message;
+    public static final CarNameMessage NAME_VALIDATION_EMPTY =
+        new CarNameMessage("이름은 비어있을 수 없습니다.");
+    public static final CarNameMessage NAME_VALIDATION_LENGTH =
+        new CarNameMessage("이름은 5자 이하여야 합니다.");
 
-    CarNameMessage(String message) {
-      this.message = message;
-    }
-
-    public String getMessage() {
-      return message;
+    private CarNameMessage(String message) {
+      super(message);
     }
   }
 }

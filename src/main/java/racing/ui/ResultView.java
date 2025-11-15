@@ -7,18 +7,13 @@ import racing.domain.Participants;
 
 public class ResultView {
 
-  private static final String POSITION_MARKER = "-";
 
   public static void printResultMessage() {
     System.out.println("\n" + Message.RESULT_MESSAGE.getMessage());
   }
 
   public static void printRoundResult(Participants participants) {
-    for (Car car : participants.getCars()) {
-      System.out.println(
-          car.getName() + " : " + POSITION_MARKER.repeat(car.getPosition().getPosition()));
-    }
-    System.out.println();
+    System.out.println(participants);
   }
 
   public static void printWinner(List<String> winners) {

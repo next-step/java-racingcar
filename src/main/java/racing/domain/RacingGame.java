@@ -14,9 +14,10 @@ public class RacingGame {
 
   public void play() {
     ResultView.printResultMessage();
-    for (int i = 0; i < tryCnt.getCount(); i++) {
+    while (tryCnt.canRace()) {
       game.playRound();
       ResultView.printRoundResult(game.getParticipants());
+      tryCnt.doRace();
     }
     ResultView.printWinner(game.getWinners());
   }
