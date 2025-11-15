@@ -1,49 +1,49 @@
 package calculator;
 
 public class Calculator {
-	private final Delimiter delimiter;
+    private final Delimiter delimiter;
 
-	public Calculator(Delimiter delimiter) {
-		this.delimiter = delimiter;
-	}
+    public Calculator(Delimiter delimiter) {
+        this.delimiter = delimiter;
+    }
 
-	public int calculate(String input) {
-		// 입력 값이 빈 문자열 또는 null인 경우 0 반환
-		if (isBlank(input)) {
-			return 0;
-		}
+    private static int toInt(String value) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
+            throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+        }
+        return number;
+    }
 
-		// 구분자 유효성 검사
-		delimiter.validate(input);
+    private static int[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = toInt(values[i]);
+        }
+        return numbers;
+    }
 
-		return sum(toInts(delimiter.split(input)));
-	}
+    public int calculate(String input) {
+        // 입력 값이 빈 문자열 또는 null인 경우 0 반환
+        if (isBlank(input)) {
+            return 0;
+        }
 
-	private boolean isBlank(String input) {
-		return input == null || input.isEmpty() || input.equals("null");
-	}
+        // 구분자 유효성 검사
+        delimiter.validate(input);
 
-	private int sum(int[] numbers) {
-		int total = 0;
-		for (int number : numbers) {
-			total += number;
-		}
-		return total;
-	}
+        return sum(toInts(delimiter.split(input)));
+    }
 
-	private static int toInt(String value) {
-		int number = Integer.parseInt(value);
-		if (number < 0) {
-			throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
-		}
-		return number;
-	}
+    private boolean isBlank(String input) {
+        return input == null || input.isEmpty() || input.equals("null");
+    }
 
-	private static int[] toInts(String[] values) {
-		int[] numbers = new int[values.length];
-		for (int i = 0; i < values.length; i++) {
-			numbers[i] = toInt(values[i]);
-		}
-		return numbers;
-	}
+    private int sum(int[] numbers) {
+        int total = 0;
+        for (int number : numbers) {
+            total += number;
+        }
+        return total;
+    }
 }

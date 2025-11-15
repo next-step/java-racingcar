@@ -1,7 +1,6 @@
 package racingcar;
 
 public class OutputView {
-
 	static void printRoundResult(Racing racing) {
 		for (String result : racing.play()) {
 			System.out.println(result);
