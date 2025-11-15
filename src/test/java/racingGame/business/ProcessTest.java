@@ -42,7 +42,7 @@ class ProcessTest {
             .allSatisfy(gameResult ->
                 assertThat(gameResult.progressRecords())
                     .allSatisfy(progressRecord ->
-                        assertThat(progressRecord.carRecord()).hasSize(carsNames.length)
+                        assertThat(progressRecord.joinCars()).hasSize(carsNames.length)
                     ));
     }
 }

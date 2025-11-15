@@ -56,7 +56,7 @@ class GameMoveTest {
             .allSatisfy(gameResult ->
                 assertThat(gameResult.progressRecords())
                     .allSatisfy(progressRecord ->
-                        assertThat(progressRecord.carRecord()).hasSize(strings.length)
+                        assertThat(progressRecord.joinCars()).hasSize(strings.length)
                     ));
     }
 

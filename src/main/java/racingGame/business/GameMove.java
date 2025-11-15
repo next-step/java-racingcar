@@ -21,7 +21,7 @@ public class GameMove {
     public GameFinalResult moveCar(List<Car> joinCars) {
         List<ProgressRecord> progressRecords = new ArrayList<>();
         for (int i = 0; i < this.moves; i++) {
-            progressRecords.add(recordCarsMove(joinCars));
+            progressRecords.add(new ProgressRecord(joinCars));
             nextMove(joinCars);
         }
         
@@ -35,12 +35,6 @@ public class GameMove {
         for(Car car: joinCars) {
             car.forward(RandomUtil.generateInt());
         }
-    }
-
-    private ProgressRecord recordCarsMove(List<Car> joinCars) {
-        ProgressRecord pr = new ProgressRecord();
-        pr.recordGame(joinCars);
-        return pr;
     }
 
     private void validate(int moves) {
