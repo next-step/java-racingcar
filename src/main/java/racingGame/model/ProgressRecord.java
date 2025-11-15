@@ -5,6 +5,13 @@ import java.util.List;
 
 public record ProgressRecord(List<Car> joinCars) {
     
+    public ProgressRecord(List<Car> joinCars) {
+        List<Car> cars = new ArrayList<>();
+        for(Car joinCar: joinCars) {
+            cars.add(new Car(joinCar.getName(), joinCar.findLocation()));
+        }
+        this.joinCars = cars;
+    }
     
     public List<Car> findWinners() {
         return findMaxCar(findMaxLocation());
@@ -27,4 +34,5 @@ public record ProgressRecord(List<Car> joinCars) {
         }
         return winnerCars;
     }
+    
 }
