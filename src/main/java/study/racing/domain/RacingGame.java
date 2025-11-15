@@ -1,37 +1,43 @@
 package study.racing.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> cars;
-    private final RandomNumber randomNumber;
+    private final Cars cars;
+    private final Round round;
 
-    public RacingGame(int carCount, RandomNumber randomNumber) {
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
-        }
-        this.randomNumber = randomNumber;
+    public RacingGame(String carNames, int roundCount) {
+        this(Arrays.asList(carNames.split(",")), roundCount);
+    }
+
+    public RacingGame(List<String> names, Round round) {
+        this(Cars.from(names), round);
+    }
+
+    public RacingGame(List<String> carNames, int roundCount) {
+        this(Cars.from(carNames), new Round(roundCount));
+    }
+
+    public RacingGame(Cars cars, Round round) {
+        this.cars = cars;
+        this.round = round;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return cars.getCars();
     }
 
-    public void playRound() {
-        for (Car car : cars) {
-            car.move(randomNumber.generate());
-        }
+    public void playRound(RandomNumber randomNumber) {
+        round.decrease();
+        cars.playRound(randomNumber);
     }
 
-    public List<Integer> getPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
+    public Winners getWinners() {
+        return cars.getWinners();
     }
 
-
+    public boolean hasNextRound() {
+        return round.hasRemaining();
+    }
 }

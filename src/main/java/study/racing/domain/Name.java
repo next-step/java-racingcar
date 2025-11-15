@@ -1,0 +1,44 @@
+package study.racing.domain;
+
+import java.util.Objects;
+
+public class Name {
+    private static final int MAX_NAME_LENGTH = 5;
+    private final String value;
+
+    public Name(String value) {
+        validate(value);
+        this.value = value;
+    }
+
+    private void validate(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("이름은 null일 수 없습니다.");
+        }
+
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("이름은 최대 5글자를 초과할 수 없습니다.");
+        }
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name = (Name) o;
+        return Objects.equals(value, name.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(value);
+    }
+
+    @Override
+    public String toString() {
+        return "CarName{value=" + value + " }";
+    }
+}

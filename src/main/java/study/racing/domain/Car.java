@@ -3,38 +3,58 @@ package study.racing.domain;
 import java.util.Objects;
 
 public class Car {
-    private static final int DEFAULT_POSITION = 0;
-    private static final int MOVE_CONDITION = 4;
-    private int position;
+    private final Name name;
+    private Position position;
 
-    public Car() {
-        this.position = DEFAULT_POSITION;
+    public Car(String name) {
+        this(new Name(name), new Position());
     }
 
-    public void move(int randonValue) {
-        if (randonValue >= MOVE_CONDITION) {
-            this.position++;
+    public Car(String name, int position) {
+        this(new Name(name), new Position(position));
+    }
+
+    public Car(Name name, Position position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public void move(Torque torque) {
+        if (torque.isMovable()) {
+            this.position = position.increase();
         }
     }
 
+    public String getName() {
+        return name.getValue();
+    }
+
     public int getPosition() {
-        return position;
+        return position.getValue();
+    }
+
+    public boolean isPositionGreaterThan(Car other) {
+        return this.position.isGreaterThan(other.position);
+    }
+
+    public boolean isSamePosition(Car other) {
+        return this.position.equals(other.position);
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position;
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(position);
+        return Objects.hash(name, position);
     }
 
     @Override
     public String toString() {
-        return "Car{position=" + position + "}";
+        return "Car{name= " + name.getValue() + ", position= " + position.getValue() + "}";
     }
 }
