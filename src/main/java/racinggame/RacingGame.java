@@ -1,18 +1,14 @@
 package racinggame;
 
 import static racinggame.ui.MC.*;
-import static racinggame.ui.MC.askCarNamesToUser;
 import static racinggame.ui.MC.printEndMessage;
 import static racinggame.ui.MC.printLineBreaker;
 import static racinggame.ui.ResultView.printCarPositionTitle;
 import static racinggame.utils.StringUtils.splitToList;
 
 import java.util.List;
-import racinggame.car.Car;
-import racinggame.car.Cars;
-import racinggame.ui.MC;
+import racinggame.model.car.Cars;
 import racinggame.ui.UserInput;
-import racinggame.utils.StringUtils;
 
 public class RacingGame {
     public static final String CAR_NAME_DELIMITER = ",";

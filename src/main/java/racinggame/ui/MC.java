@@ -8,7 +8,7 @@ import static racinggame.ui.ResultView.printCarPosition;
 import static racinggame.ui.ResultView.printTryCountQuestion;
 
 import java.util.List;
-import racinggame.car.Car;
+import racinggame.model.car.Car;
 
 // UI 의 기능의 추상화단계를 높히고
 // UI 클래스와 비즈니스 클래스의 결합도를 낮추기 위한 클래스

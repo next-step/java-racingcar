@@ -1,11 +1,11 @@
-package racinggame.car;
+package racinggame.model.car;
 
 import static racinggame.RandomNumberBox.getRandomNumber;
 import static racinggame.ui.MC.printGameStates;
 
 import java.util.ArrayList;
 import java.util.List;
-import racinggame.ui.MC;
+import racinggame.model.position.Position;
 
 public class Cars {
     private final List<Car> cars;
@@ -40,8 +40,8 @@ public class Cars {
         }
     }
 
-    public int findMaxPositions() {
-        int max = 0;
+    public Position findMaxPositions() {
+        Position max = new Position();
         for (Car car : cars) {
             max = car.compareAndChangeIfMax(max);
         }
@@ -49,7 +49,7 @@ public class Cars {
         return max;
     }
 
-    public List<String> findWinners(int maxPositions) {
+    public List<String> findWinners(Position maxPositions) {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             judgeCarHasMax(maxPositions, car, winners);
@@ -64,7 +64,7 @@ public class Cars {
     // TODO : 이렇게 외부 파라미터를 메서드 안에서 직접 수정/변경 하는 케이스는 어떻게 생각하시나요?
     //  다른 방법은 크게 생각나는 부분이 없어서 아래 방식 vs findWinners() 주석처리한 부분 이 두가지 방식중 선택했습니다
     private void judgeCarHasMax(
-            final int maxPositions,
+            final Position maxPositions,
             final Car car,
             final List<String> winners
     ) {
