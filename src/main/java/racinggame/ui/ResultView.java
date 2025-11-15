@@ -18,11 +18,17 @@ public class ResultView {
         System.out.println(question);
     }
 
-    public static void printCarPosition(String positionMark) {
-        System.out.println(positionMark);
+    public static void printCarPosition(String carState) {
+        System.out.println(carState);
     }
 
     public static void printLineBreaker() {
         System.out.println();
     }
+
+    public static void printEndMessage(String message) {
+        System.out.println(message + "가 최종 우승했습니다");
+    }
+
+
 }

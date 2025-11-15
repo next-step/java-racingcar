@@ -1,14 +1,14 @@
 package racinggame.ui;
 
+import static java.lang.String.join;
 import static racinggame.ui.InputView.inputInt;
 import static racinggame.ui.InputView.inputString;
 import static racinggame.ui.ResultView.printCarNamesQuestion;
 import static racinggame.ui.ResultView.printCarPosition;
-import static racinggame.ui.ResultView.printLineBreaker;
 import static racinggame.ui.ResultView.printTryCountQuestion;
 
+import java.util.List;
 import racinggame.car.Car;
-import racinggame.car.Cars;
 
 // UI 의 기능의 추상화단계를 높히고
 // UI 클래스와 비즈니스 클래스의 결합도를 낮추기 위한 클래스
@@ -33,9 +33,17 @@ public class MC {
         return inputInt();
     }
 
-    public static void printGameStates(Cars cars) {
-
-        printLineBreaker();
+    public static void printGameStates(Car car) {
+        printCarPosition(car.getStateMessage());
     }
 
+    public static void printLineBreaker() {
+        ResultView.printLineBreaker();
+    }
+
+    public static void printEndMessage(List<String> winners) {
+        ResultView.printEndMessage(
+                join(", ", winners)
+        );
+    }
 }

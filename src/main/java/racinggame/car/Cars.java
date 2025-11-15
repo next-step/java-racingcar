@@ -1,9 +1,11 @@
 package racinggame.car;
 
 import static racinggame.RandomNumberBox.getRandomNumber;
+import static racinggame.ui.MC.printGameStates;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.ui.MC;
 
 public class Cars {
     private final List<Car> cars;
@@ -34,6 +36,7 @@ public class Cars {
             car.move(
                     getRandomNumber()
             );
+            printGameStates(car);
         }
     }
 
