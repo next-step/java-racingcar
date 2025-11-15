@@ -1,6 +1,6 @@
 package study.racing.view;
 
-import study.racing.domain.RoundCount;
+import study.racing.domain.Round;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +14,8 @@ public class GameInput {
         return Arrays.asList(scanner.nextLine().split(","));
     }
 
-    public static RoundCount readRoundCount() {
+    public static Round readRound() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        return new RoundCount(scanner.nextInt());
+        return new Round(scanner.nextInt());
     }
 }
