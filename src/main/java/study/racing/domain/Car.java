@@ -1,24 +1,33 @@
 package study.racing.domain;
 
+import study.racing.domain.move.MoveStrategy;
+import study.racing.domain.move.RandomMoveStrategy;
+
 import java.util.Objects;
 
 public class Car {
 
     private final CarName name;
     private CarPosition position;
+    private final MoveStrategy moveStrategy;
 
     public Car(String name) {
-        this(new CarName(name), new CarPosition(0));
+        this(new CarName(name), new CarPosition(0), new RandomMoveStrategy());
 
+    }
+
+    public Car(String name, MoveStrategy moveStrategy) {
+        this(new CarName(name), new CarPosition(0), moveStrategy);
     }
 
     public Car(String name, int position) {
-        this(new CarName(name), new CarPosition(position));
+        this(new CarName(name), new CarPosition(position), new RandomMoveStrategy());
     }
 
-    public Car(CarName name, CarPosition position) {
+    public Car(CarName name, CarPosition position, MoveStrategy moveStrategy) {
         this.name = name;
         this.position = position;
+        this.moveStrategy = moveStrategy;
     }
 
     public CarName getName() {
@@ -30,13 +39,9 @@ public class Car {
     }
 
     public void move() {
-        if (RandomMoveRule.isRandomNumber()) {
+        if (this.moveStrategy.isMove()) {
             this.position.increasePosition();
         }
-    }
-
-    public void move(int position) {
-        this.position = new CarPosition(position);
     }
 
     public boolean isEqualsMaxPosition(int maxPosition) {
