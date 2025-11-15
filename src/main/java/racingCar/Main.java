@@ -12,6 +12,6 @@ public class Main {
             ResultView.show(carRace.getCars());
         }
 
-        ResultView.showWinner(carRace.getWinner());
+        ResultView.showWinner(carRace.getWinners());
     }
 }

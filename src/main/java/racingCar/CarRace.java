@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class CarRace {
+    private static final int RANDOM_MAX_NUM = 10;
     private final List<Car> cars;
     private final Random random;
 
@@ -21,7 +22,7 @@ public class CarRace {
 
         return carList;
     }
-    public String[] split(String names) {
+    private String[] split(String names) {
         return names.split(",");
     }
 
@@ -35,26 +36,11 @@ public class CarRace {
         }
     }
 
-    public List<Car> getWinner() {
-        List<Car> winners = new ArrayList<>();
-        int max = getMaxDistance();
-
-        for(Car car : cars) {
-            if(car.getDistance() == max) {
-                winners.add(car);
-            }
-        }
-        return winners;
+    public List<Car> getWinners() {
+        return Winners.getWinners(cars);
     }
 
     private int getRandomNum() {
-        return random.nextInt(10);
-    }
-    private int getMaxDistance() {
-        int max = 0;
-        for(Car car : cars) {
-            max = Math.max(car.getDistance(), max);
-        }
-        return max;
+        return random.nextInt(RANDOM_MAX_NUM);
     }
 }

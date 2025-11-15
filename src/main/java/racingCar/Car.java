@@ -6,14 +6,15 @@ public class Car {
     private int distance;
     private String name;
 
-    public Car() {
-        this.distance = 0;
-    }
-
     public Car(String name) {
         checkName(name);
         this.name = name;
         this.distance = 0;
+    }
+    public Car(String name, int distance) {
+        checkName(name);
+        this.name =  name;
+        this.distance = distance;
     }
     private void checkName(String name) {
         if (name.length() > LIMIT_NAME_LENGH) {
@@ -37,5 +38,13 @@ public class Car {
 
     private boolean isMoveable(int dis) {
         return dis >= LIMIT_NUM;
+    }
+
+    public int max(int max) {
+        return Math.max(max, this.distance);
+    }
+
+    public boolean isMax(int max) {
+        return this.distance == max;
     }
 }
