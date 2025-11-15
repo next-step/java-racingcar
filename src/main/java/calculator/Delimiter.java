@@ -24,4 +24,11 @@ public class Delimiter {
 		String customDelimiter = input.substring(input.indexOf("//") + 2, input.indexOf("\n"));
 		return new Delimiter("[" + DEFAULT_DELIMITERS + customDelimiter + "]");
 	}
+
+	 public void validate(String input) {
+		String regex = "[\\d" + getDelimiter() + "]+";
+		if (!input.matches(regex)) {
+			throw new IllegalArgumentException("허용되지 않은 구분자가 포함되어 있습니다.");
+		}
+	}
 }

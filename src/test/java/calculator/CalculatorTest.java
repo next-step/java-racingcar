@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {
@@ -20,7 +21,7 @@ public class CalculatorTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = {"", "null"})
+	@NullAndEmptySource
 	@DisplayName("빈 문자열 또는 null 값을 입력할 경우 0을 반환한다")
 	void add_isSingleNumberForNullOrEmptyStrings(
 		String input
