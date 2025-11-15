@@ -25,33 +25,27 @@ public class RacingCarTest {
 
 	@ParameterizedTest
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
-	@DisplayName("자동차는 0부터 9까지의 수 중에서 4 이상인 수를 받으면 전진한다")
+	@DisplayName("자동차는 허용된 범위 중에서 4 이상인 수를 받으면 전진한다")
 	void moveForward_WhenNumberIsFourOrMore(
 		int expected
 	) {
-		// Arrange
 		int position = car.getPosition();
 
-		// Act
 		car.move(expected);
 
-		// Assert
 		assertThat(car.getPosition()).isEqualTo(position + 1);
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {0, 1, 2, 3})
-	@DisplayName("자동차는 0부터 9까지의 수 중에서 4 미만인 수를 받으면 멈춘다")
+	@DisplayName("자동차는 허용된 범위 중에서 4 미만인 수를 받으면 멈춘다")
 	void doNotMove_WhenNumberIsLessThanFour(
 		int expected
 	) {
-		// Arrange
 		int position = car.getPosition();
 
-		// Act
 		car.move(expected);
 
-		// Assert
 		assertThat(car.getPosition()).isEqualTo(position);
 	}
 
@@ -63,7 +57,6 @@ public class RacingCarTest {
 	) {
 		car.move(expected);
 
-		// Assert
 		assertThat(car.move(expected)).isEqualTo("");
 	}
 
@@ -73,15 +66,32 @@ public class RacingCarTest {
 	void returnDashes_WhenMoved(
 		int expected
 	) {
-		// TODO
+		StringBuilder dashes = new StringBuilder();
+
+		for (int i = 1; i <= expected; i++) {
+			dashes.append(car.move(expected));
+		}
+
+		assertThat(dashes.toString()).isEqualTo("-".repeat(expected));
+	}
+
+	@Test
+	@DisplayName("자동차가 여러 번 전진하면 전진한 횟수만큼 위치가 증가한다")
+	void addPosition_WhenMovedMultipleTimes() {
+		for (int i = 1; i <= 5; i++) {
+			car.move(4);
+		}
+
+		assertThat(car.getPosition()).isEqualTo(5);
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {1, 2, 3})
-	@DisplayName("자동차가 여러 번 전진하면 전진한 횟수만큼 위치가 증가한다")
-	void addPosition_WhenMovedMultipleTimes(
-		int moveCount
+	@ValueSource(ints = {-1, 10, 100})
+	@DisplayName("입력 값이 허용된 수가 아닐 경우 IllegalArgumentException 예외를 발생시킨다")
+	void throwException_WhenNumberIsOutOfRange(
+		int expected
 	) {
-		// TODO
+		assertThatThrownBy(() -> car.move(expected))
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }

@@ -13,12 +13,15 @@ public class Car {
 	}
 
 	public String move(int number) {
-		// 3 이하일 때 멈춤
+		if (number < 0 || number > 9) {
+			throw new IllegalArgumentException("0부터 9까지의 숫자만 입력할 수 있습니다.");
+		}
+
 		if (number <= 3) {
 			return "";
 		}
 
-		position++;
+		++position;
 		return "-";
 	}
 }
