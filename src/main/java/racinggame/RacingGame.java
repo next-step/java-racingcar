@@ -6,6 +6,7 @@ import static racinggame.ui.ResultView.printCarPositionTitle;
 import static racinggame.utils.StringUtils.splitToList;
 
 import java.util.List;
+import racinggame.car.Car;
 import racinggame.car.Cars;
 import racinggame.ui.MC;
 import racinggame.ui.UserInput;
@@ -36,14 +37,13 @@ public class RacingGame {
 
         startRacing(
                 userInput.getTryCount(),
-                new Cars(carNameList)
+                Cars.createByNames(carNameList)
         );
     }
 
     private void startRacing(int tryCount, Cars cars) {
         printCarPositionTitle();
         for (int perTry = 0; perTry < tryCount; perTry++) {
-            
         }
 
     }
