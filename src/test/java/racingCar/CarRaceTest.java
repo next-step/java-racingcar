@@ -2,6 +2,7 @@ package racingCar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -45,16 +46,14 @@ public class CarRaceTest {
 
     @Test
     void 우승자_출력() {
-        CarRace carRace = new CarRace("pobi,crong,honux");
+        Car pobi = new Car("pobi",5);
+        Car crong = new Car("crong",2);
+        Car honux = new Car("honux",2);
 
-        carRace.play();
-        carRace.play();
-        carRace.play();
-        
-        List<Car> winner = carRace.getWinner();
+        List<Car> cars = Arrays.asList(pobi, crong, honux);
 
-        assertThat(winner)
-                .extracting(Car::getName)
-                .anyMatch(name -> List.of("pobi", "crong", "honux").contains(name));
+        List<Car> winners = Winners.getWinners(cars);
+
+        assertThat(winners).contains(pobi);
     }
 }
