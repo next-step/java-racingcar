@@ -11,9 +11,7 @@ public class Process {
     public GameResponse run(String[] names, int moves) {
         List<Car> joinCars = CarFactory.createCars(names);
         GameResult gameResult = new GameMove(moves).moveCar(joinCars);
-        
-        
-        return new GameResponse(gameResult, null);
+        List<Car> winners = gameResult.findWinners();
+        return new GameResponse(gameResult, winners);
     }
-
 }
