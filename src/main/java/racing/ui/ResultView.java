@@ -1,18 +1,26 @@
 package racing.ui;
 
 import java.util.List;
+import java.util.StringJoiner;
 import racing.domain.Car;
+import racing.domain.Participants;
 
 public class ResultView {
-  private static final String POSITION_MARKER = "-";
-  public void printStart() {
+
+
+  public static void printResultMessage() {
     System.out.println("\n" + Message.RESULT_MESSAGE.getMessage());
   }
 
-  public void printRoundResult(List<Car> cars) {
-    for(Car car : cars){
-      System.out.println(POSITION_MARKER.repeat(car.getPosition()));
+  public static void printRoundResult(Participants participants) {
+    System.out.println(participants);
+  }
+
+  public static void printWinner(List<String> winners) {
+    StringJoiner joiner = new StringJoiner(",");
+    for (String x : winners) {
+      joiner.add(x);
     }
-    System.out.println();
+    System.out.println(joiner + "가 최종 우승했습니다.");
   }
 }

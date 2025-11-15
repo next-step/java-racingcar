@@ -3,7 +3,7 @@ package calculator;
 public class StringAddCalculator {
 
   public static int splitAndSum(String input) {
-    if(validate(input)) {
+    if (validate(input)) {
       return 0;
     }
     InputContext inputContext = new InputContext(input);
@@ -12,7 +12,7 @@ public class StringAddCalculator {
     return numbers.sum();
   }
 
-  private static boolean validate(String input){
+  private static boolean validate(String input) {
     return input == null || input.isBlank();
   }
 

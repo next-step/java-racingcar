@@ -9,7 +9,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
+
   private Set<Integer> numbers;
+
   @BeforeEach
   public void setUp() {
     numbers = new HashSet<>();
@@ -31,7 +33,7 @@ public class SetTest {
   }
 
   @Test
-  void check_set_size(){
+  void check_set_size() {
     assertThat(numbers).hasSize(3);
   }
 }
