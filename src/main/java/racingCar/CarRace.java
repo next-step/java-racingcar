@@ -10,20 +10,17 @@ public class CarRace {
     private final List<Car> cars;
     private final Random random;
 
-    public CarRace(String names) {
+    public CarRace(String[] names) {
         random = new Random();
         cars = createCars(names);
     }
-    private List<Car> createCars(String names) {
+    private List<Car> createCars(String[] names) {
         List<Car> carList = new ArrayList<>();
-        for(String name : split(names)) {
+        for(String name : names) {
             carList.add(new Car(name));
         }
 
         return carList;
-    }
-    private String[] split(String names) {
-        return names.split(",");
     }
 
     public List<Car> getCars() {
