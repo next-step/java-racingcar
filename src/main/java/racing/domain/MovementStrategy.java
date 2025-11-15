@@ -7,6 +7,10 @@ public class MovementStrategy {
   private final int MIN_VALUE;
   private final int MAX_VALUE;
 
+  public MovementStrategy() {
+    this(0, 9);
+  }
+
   public MovementStrategy(int minMove, int maxMove) {
     this.MIN_VALUE = minMove;
     this.MAX_VALUE = maxMove;

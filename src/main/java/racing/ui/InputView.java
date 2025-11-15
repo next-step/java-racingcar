@@ -1,9 +1,9 @@
 package racing.ui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import racing.domain.CarName;
 
 public class InputView {
 
@@ -24,15 +24,11 @@ public class InputView {
     }
   }
 
-  public static List<CarName> inputCarName(Message message) {
-    List<CarName> names = new ArrayList<>();
+  public static List<String> inputCar(Message message) {
     System.out.println(message.getMessage());
     String line = scanner.next();
     String[] tokens = line.split(",");
-    for (String name : tokens) {
-      names.add(new CarName(name));
-    }
-    return names;
+    return new ArrayList<>(Arrays.asList(tokens));
   }
 
   public static void close() {

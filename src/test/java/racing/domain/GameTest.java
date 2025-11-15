@@ -12,8 +12,8 @@ public class GameTest {
 
   @BeforeEach
   void init() {
-    List<CarName> carNames = List.of(new CarName("pobi"), new CarName("crong"), new CarName("honux"));
-    game = new Game(new MovementStrategy(0, 9), new Participants(carNames));
+    List<String> carNames = List.of("pobi", "crong", "honux");
+    game = new Game(new MovementStrategy(0, 9), Participants.from(carNames));
   }
 
   @Test

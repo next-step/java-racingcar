@@ -3,7 +3,6 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import javax.print.attribute.standard.MediaSize.NA;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,14 +21,14 @@ public class CarTest {
 
   @Test
   void carStartsAtZero() {
-    assertThat(car.getPosition()).isEqualTo(0);
+    assertThat(car.getPosition().getPosition()).isEqualTo(0);
   }
 
   @ParameterizedTest
   @CsvSource({"4,1", "9,1", "0,0", "3,0"})
   void carGoIfMoreThan4(int randomValue, int expected) {
     car.move(randomValue);
-    assertThat(car.getPosition()).isEqualTo(expected);
+    assertThat(car.getPosition().getPosition()).isEqualTo(expected);
   }
 
   @Test
@@ -42,7 +41,7 @@ public class CarTest {
   void carNameShouldThrowExceptionWhenMoreThan5(String name) {
     assertThatThrownBy(() -> new Car(name))
         .isInstanceOf(RacingException.class)
-        .hasMessageContaining(ErrorMessage.NAME_VALIDATION_LENGTH.getMessage());
+        .hasMessageContaining("5자");
   }
 
 }

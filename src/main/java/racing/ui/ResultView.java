@@ -2,7 +2,6 @@ package racing.ui;
 
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.stream.Collectors;
 import racing.domain.Car;
 import racing.domain.Participants;
 
@@ -16,16 +15,17 @@ public class ResultView {
 
   public static void printRoundResult(Participants participants) {
     for (Car car : participants.getCars()) {
-      System.out.println(car.getName() + " : " + POSITION_MARKER.repeat(car.getPosition()));
+      System.out.println(
+          car.getName() + " : " + POSITION_MARKER.repeat(car.getPosition().getPosition()));
     }
     System.out.println();
   }
 
-  public static void printWinner(List<String> winners){
+  public static void printWinner(List<String> winners) {
     StringJoiner joiner = new StringJoiner(",");
     for (String x : winners) {
       joiner.add(x);
     }
-    System.out.println(joiner+"가 최종 우승했습니다.");
+    System.out.println(joiner + "가 최종 우승했습니다.");
   }
 }

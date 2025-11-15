@@ -1,27 +1,26 @@
 package racing.domain;
 
-import java.util.Comparator;
 import java.util.Objects;
-import racing.exception.RacingException;
 
 /**
  * 자동차 1. 전진 & 멈추기 2. 현재 위치 반환
  *
  */
 public class Car implements Comparable<Car> {
-  private static final int MOVE_BORDER = 4;
-  private CarName name;
-  private int position;
 
-  public Car(String name){
+  private static final int MOVE_BORDER = 4;
+  private final CarName name;
+  private Position position;
+
+  public Car(String name) {
     this(new CarName(name));
   }
 
-  public Car(CarName name){
-    this(name, 0);
+  public Car(CarName name) {
+    this(name, new Position(0));
   }
 
-  public Car(CarName name, int position) {
+  public Car(CarName name, Position position) {
     this.name = name;
     this.position = position;
   }
@@ -30,10 +29,10 @@ public class Car implements Comparable<Car> {
     if (value < MOVE_BORDER) {
       return;
     }
-    this.position += 1;
+    this.position.move(1);
   }
 
-  public int getPosition() {
+  public Position getPosition() {
     return this.position;
   }
 
@@ -57,10 +56,10 @@ public class Car implements Comparable<Car> {
 
   @Override
   public int compareTo(Car o) {
-    return this.position - o.position;
+    return this.position.compareTo(o.position);
   }
 
-  public boolean hasSamePosition(int position) {
-    return this.position == position;
+  public boolean hasSamePosition(Position position) {
+    return this.position.equals(position);
   }
 }

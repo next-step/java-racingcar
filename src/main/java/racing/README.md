@@ -11,7 +11,7 @@
     - 자동차 상태(위치)를 화면에 출력한다
 4. 우승자 발표
     - 누가 우승했는지 알려준다
-        - 우승자는 한명 이상일 수 있다 
+        - 우승자는 한명 이상일 수 있다
 
 ## 제약 조건
 
@@ -21,8 +21,11 @@
 ------------
 
 ## 고민
+
 ### 빠른 실패가 좋지 않을까?
-- 늦은 실패 예시 
+
+- 늦은 실패 예시
+
 ```readme
 경주할 자동차 이름을 입력하세요
 ㅔpppppp,pa,a
@@ -31,8 +34,9 @@
 Exception in thread "main" racing.exception.RacingException: 이름은 5자 이하여야 합니다.
 	at racing.domain.Car.validate(Car.java:31)
 ```
+
 - 그렇다면, 차를 만들 때 이름을 검증하는데 차 이름 객체가 따로있는건 어떨까?
-    - 장점 : name validation check 하는 로직을 CarName으로 옮길 수 있다 
+    - 장점 : name validation check 하는 로직을 CarName으로 옮길 수 있다
 
 ### 역할 / 책임을 나누는 방법?
 
