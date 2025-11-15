@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
-    public ArrayList<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public Racing(int number) {
         for (int i = 0; i < number; i++) {
