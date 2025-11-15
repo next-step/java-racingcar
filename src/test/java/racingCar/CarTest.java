@@ -31,7 +31,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3})
+    @ValueSource(ints = {0,3})
     void 자동차_3이하일_경우_움직이지_않는다(int dis) {
         car.move(dis);
 

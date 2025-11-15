@@ -11,7 +11,7 @@ public class ResultView {
     }
     public static void showWinner(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<cars.size(); i++) {
+        for(int i = 0; i < cars.size(); i++) {
             sb.append(cars.get(i).getName());
             if(i != cars.size()-1) {
                 sb.append(", ");

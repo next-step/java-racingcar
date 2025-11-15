@@ -11,18 +11,18 @@ public class CarRace {
 
     public CarRace(String names) {
         random = new Random();
-        cars = new ArrayList<>();
-
-        allocateCars(split(names));
+        cars = createCars(names);
     }
-    private String[] split(String names) {
-        return names.split(",");
-    }
-
-    private void allocateCars(String[] names) {
-        for (String name : names) {
-            this.cars.add(new Car(name));
+    private List<Car> createCars(String names) {
+        List<Car> carList = new ArrayList<>();
+        for(String name : split(names)) {
+            carList.add(new Car(name));
         }
+
+        return carList;
+    }
+    public String[] split(String names) {
+        return names.split(",");
     }
 
     public List<Car> getCars() {
