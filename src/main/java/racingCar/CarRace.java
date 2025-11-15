@@ -6,15 +6,21 @@ import java.util.List;
 import java.util.Random;
 
 public class CarRace {
+    private static final int RANDOM_MAX_NUM = 10;
     private final List<Car> cars;
     private final Random random;
 
-    public  CarRace(int cnt) {
+    public CarRace(String[] names) {
         random = new Random();
-        this.cars = new ArrayList<>();
-        for (int i = 0; i < cnt; i++) {
-            this.cars.add(new Car());
+        cars = createCars(names);
+    }
+    private static List<Car> createCars(String[] names) {
+        List<Car> carList = new ArrayList<>();
+        for(String name : names) {
+            carList.add(new Car(name));
         }
+
+        return carList;
     }
 
     public List<Car> getCars() {
@@ -27,7 +33,11 @@ public class CarRace {
         }
     }
 
+    public List<Car> getWinners() {
+        return Winners.getWinners(cars);
+    }
+
     private int getRandomNum() {
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_MAX_NUM);
     }
 }
