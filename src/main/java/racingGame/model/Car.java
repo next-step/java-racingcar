@@ -6,7 +6,7 @@ public class Car {
     
     public static final int INIT_LOCATION = 0;
     public static final int CAR_FORWARD_CRITERIA = 3;
-    private String name;
+    private final String name;
     private int location;
     
     public Car(String name, int location) {
