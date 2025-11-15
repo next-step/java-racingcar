@@ -3,22 +3,16 @@ package racingGame.business;
 import java.util.ArrayList;
 import java.util.List;
 import racingGame.model.Car;
+import racingGame.model.NonNegativeReadyCars;
 
 public class CarFactory {
     
-    public static List<Car> createCars(String[] names) {
+    public static List<Car> createCars(NonNegativeReadyCars names) {
         List<Car> cars = new ArrayList<>();
-        validateCar(names.length);
-        for (String name : names) {
+        for (String name : names.getNames()) {
             cars.add(new Car(name));
         }
         return cars;
-    }
-
-    private static void validateCar(int cars){
-        if(cars < 1) {
-            throw new IllegalArgumentException("참가시킬 자동차 수 입력이 생략되거나, 0이하");
-        }
     }
 
 }

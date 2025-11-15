@@ -6,33 +6,24 @@ import static racingGame.business.CarFactory.createCars;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingGame.model.ProgressRecord;
-import racingGame.model.GameResult;
-import racingGame.model.Car;
+import racingGame.model.*;
 
 import java.util.List;
 
 class GameMoveTest {
-    @ParameterizedTest
-    @ValueSource(ints = {0, -1})
-    void moveSetTest(int num) {
-        assertThatThrownBy(() -> {
-            new GameMove(num);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("%s", "이동횟수에 입력이 생략되거나, 0이하");
-    }
+
 
     @Test
     void ruesSetTest() {
-        assertThat(new GameMove(5)).isNotNull();
+        assertThat(new GameMove(new NonNegativeMoves(5))).isNotNull();
     }
 
     @Test
     void moveCountTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        GameMove gameMove = new GameMove(moveCount);
-        List<Car> cars = createCars(strings);
+        GameMove gameMove = new GameMove((new NonNegativeMoves(moveCount)));
+        List<Car> cars = createCars(new NonNegativeReadyCars(strings));
         GameResult gameResult = gameMove.moveCar(cars);
         
         assertThat(gameResult.progressRecords())
@@ -43,8 +34,8 @@ class GameMoveTest {
     void CarCountTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        GameMove gameMove = new GameMove(moveCount);
-        List<Car> cars = createCars(strings);
+        GameMove gameMove = new GameMove((new NonNegativeMoves(moveCount)));
+        List<Car> cars = createCars(new NonNegativeReadyCars(strings));
         GameResult gameResult = gameMove.moveCar(cars);
         
         assertThat(gameResult.progressRecords())
