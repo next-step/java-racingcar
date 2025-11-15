@@ -6,8 +6,8 @@ import static racingGame.business.CarFactory.createCars;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingGame.response.GameFinalResult;
-import racingGame.response.GameResult;
+import racingGame.model.ProgressRecord;
+import racingGame.model.GameResult;
 import racingGame.model.Car;
 
 import java.util.List;
@@ -33,13 +33,10 @@ class GameMoveTest {
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove(moveCount);
         List<Car> cars = createCars(strings);
-        GameFinalResult gameFinalResult = gameMove.moveCar(cars);
+        GameResult gameResult = gameMove.moveCar(cars);
         
-        List<GameResult> gameResults = gameFinalResult.gameResult();
-        
-        assertThat(gameResults)
-            .allSatisfy(gameResult ->
-                assertThat(gameResult.progressRecords()).hasSize(moveCount));
+        assertThat(gameResult.progressRecords())
+            .allSatisfy(ProgressRecord::joinCars).hasSize(moveCount);
     }
     
     @Test
@@ -48,16 +45,12 @@ class GameMoveTest {
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove(moveCount);
         List<Car> cars = createCars(strings);
-        GameFinalResult gameFinalResult = gameMove.moveCar(cars);
+        GameResult gameResult = gameMove.moveCar(cars);
         
-        List<GameResult> gameResults = gameFinalResult.gameResult();
-        
-        assertThat(gameResults)
-            .allSatisfy(gameResult ->
-                assertThat(gameResult.progressRecords())
-                    .allSatisfy(progressRecord ->
-                        assertThat(progressRecord.joinCars()).hasSize(strings.length)
-                    ));
+        assertThat(gameResult.progressRecords())
+            .allSatisfy(progressRecord ->
+                assertThat(progressRecord.joinCars()).hasSize(strings.length)
+        );
     }
 
 }

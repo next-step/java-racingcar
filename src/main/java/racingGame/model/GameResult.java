@@ -1,9 +1,8 @@
-package racingGame.response;
+package racingGame.model;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import racingGame.model.ProgressRecord;
 
 public record GameResult(List<ProgressRecord> progressRecords) {
     
@@ -11,9 +10,6 @@ public record GameResult(List<ProgressRecord> progressRecords) {
         this.progressRecords = new ArrayList<>(progressRecords);
     }
     
-    @Override
-    public List<ProgressRecord> progressRecords() {
-        return List.copyOf(progressRecords);
-    }
+    
 
 }

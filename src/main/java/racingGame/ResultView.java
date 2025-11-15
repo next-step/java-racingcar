@@ -3,23 +3,19 @@ package racingGame;
 import java.util.ArrayList;
 import java.util.List;
 import racingGame.model.Car;
-import racingGame.response.GameFinalResult;
-import racingGame.response.GameResult;
+import racingGame.response.GameResponse;
 import racingGame.model.ProgressRecord;
 
 public class ResultView {
 
-    public static void printAllResult(GameFinalResult results) {
+    public static void printAllResult(GameResponse results) {
         System.out.println("실행 결과");
-        List<GameResult> gameResults = results.gameResult();
-        for (GameResult result : gameResults) { // 한 게임 단위
-            for (ProgressRecord record : result.progressRecords()) { // 각 라운드
-                for (int i = 0; i < record.joinCars().size() ; i++) {
-                    System.out.print(record.joinCars().get(i).getName() + " : ");
-                    System.out.println(makeTrack(record.joinCars().get(i).findLocation()));
-                }
-                System.out.println();
+        for (ProgressRecord record : results.gameResult().progressRecords()) { // 각 라운드
+            for (int i = 0; i < record.joinCars().size() ; i++) {
+                System.out.print(record.joinCars().get(i).getName() + " : ");
+                System.out.println(makeTrack(record.joinCars().get(i).findLocation()));
             }
+            System.out.println();
         }
         winnersPrint(results.winners());
     }

@@ -5,10 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingGame.response.GameFinalResult;
-import racingGame.response.GameResult;
-
-import java.util.List;
+import racingGame.response.GameResponse;
+import racingGame.model.GameResult;
 
 class ProcessTest {
     
@@ -23,26 +21,22 @@ class ProcessTest {
     @CsvSource(value = {"pobi,crong:5", "pobi,crong:6"}, delimiter = ':')
     void carsMoveCountTest(String names, int moves) {
         String[] carsNames = names.split(",");
-        GameFinalResult gameFinalResult =  gp.run(carsNames, moves);
-        List<GameResult> gameResults = gameFinalResult.gameResult();
+        GameResponse gameResponse =  gp.run(carsNames, moves);
+        GameResult gamedResult = gameResponse.gameResult();
         
-        assertThat(gameResults)
-            .allSatisfy(gameResult ->
-                assertThat(gameResult.progressRecords()).hasSize(moves));
+        assertThat(gamedResult.progressRecords()).hasSize(moves);
     }
     
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong:5", "pobi,crong:6"}, delimiter = ':')
     void carsCountTest(String names, int moves) {
         String[] carsNames = names.split(",");
-        GameFinalResult gameFinalResult =  gp.run(carsNames, moves);
-        List<GameResult> gameResults = gameFinalResult.gameResult();
+        GameResponse gameResponse =  gp.run(carsNames, moves);
+        GameResult gamedResult = gameResponse.gameResult();
         
-        assertThat(gameResults)
-            .allSatisfy(gameResult ->
-                assertThat(gameResult.progressRecords())
-                    .allSatisfy(progressRecord ->
-                        assertThat(progressRecord.joinCars()).hasSize(carsNames.length)
-                    ));
+        assertThat(gamedResult.progressRecords())
+            .allSatisfy(progressRecord ->
+                assertThat(progressRecord.joinCars()).hasSize(carsNames.length)
+            );
     }
 }

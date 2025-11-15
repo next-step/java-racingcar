@@ -2,15 +2,18 @@ package racingGame.business;
 
 import java.util.List;
 
-import racingGame.response.GameFinalResult;
+import racingGame.response.GameResponse;
 import racingGame.model.Car;
+import racingGame.model.GameResult;
 
 public class Process {
     
-    public GameFinalResult run(String[] names, int moves) {
+    public GameResponse run(String[] names, int moves) {
         List<Car> joinCars = CarFactory.createCars(names);
-        GameFinalResult gameFinalResult = new GameMove(moves).moveCar(joinCars);
-        return gameFinalResult;
+        GameResult gameResult = new GameMove(moves).moveCar(joinCars);
+        
+        
+        return new GameResponse(gameResult, null);
     }
 
 }
