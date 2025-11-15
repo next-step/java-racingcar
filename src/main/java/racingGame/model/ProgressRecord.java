@@ -6,7 +6,7 @@ public record ProgressRecord(JoinCars joinCars) {
     public ProgressRecord(JoinCars joinCars) {
         JoinCars cars = new JoinCars();
         for(Car joinCar: joinCars.cars()) {
-            cars.addJoinCars(new Car(joinCar.getName(), joinCar.findLocation()));
+            cars.addJoinCars(new Car(joinCar));
         }
         this.joinCars = cars;
     }

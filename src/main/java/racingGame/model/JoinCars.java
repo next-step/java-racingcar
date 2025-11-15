@@ -25,7 +25,7 @@ public record JoinCars(List<Car> cars) {
     private int findMaxLocation() {
         int max = Integer.MIN_VALUE;
         for(Car joinCar: this.cars) {
-            max = Math.max(max, joinCar.findLocation());
+            max = joinCar.compareLocation(max);
         }
         return max;
     }
@@ -33,7 +33,7 @@ public record JoinCars(List<Car> cars) {
     private JoinCars findMaxCar(int max) {
         List<Car> winnerCars = new ArrayList<>();
         for(Car joinCar: this.cars) {
-            if(max == joinCar.findLocation()) {
+            if(joinCar.isSameLocation(max)) {
                 winnerCars.add(joinCar);
             }
         }

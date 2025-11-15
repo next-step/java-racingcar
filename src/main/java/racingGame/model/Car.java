@@ -9,6 +9,9 @@ public class Car {
     private final String name;
     private int location;
     
+    public Car(Car car) {
+        this(car.name, car.location);
+    }
     public Car(String name, int location) {
         this(name);
         this.location = location;
@@ -18,7 +21,7 @@ public class Car {
         validate(name);
         this.name = name;
         this.location = INIT_LOCATION;
-    }
+    }    
 
     public int forward(int randomNum) {
         if (randomNum > CAR_FORWARD_CRITERIA) {
@@ -26,7 +29,15 @@ public class Car {
         }
         return location;
     }
-
+    
+    public int compareLocation(int max) {
+        return Math.max(max, this.location);
+    }
+    
+    public boolean isSameLocation(int max) {
+        return max == this.location;
+    }
+    
     public int findLocation() {
         return location;
     }
