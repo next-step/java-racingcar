@@ -1,8 +1,9 @@
 package racingGame.model;
 
+import java.util.Objects;
+
 public class Car {
-
-
+    
     public static final int INIT_LOCATION = 0;
     public static final int CAR_FORWARD_CRITERIA = 3;
     private String name;
@@ -30,7 +31,7 @@ public class Car {
         return location;
     }
 
-    public String showName() {
+    public String getName() {
         return this.name;
     }
 
@@ -38,5 +39,19 @@ public class Car {
         if (name.isEmpty() || name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름을 입력하거나, 5글자 이하이름을 쓰시오");
         }
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Car car = (Car) o;
+        return location == car.location && Objects.equals(name, car.name);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }

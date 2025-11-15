@@ -46,7 +46,7 @@ class CarTest {
 
     @Test
     void carShowNameTest() {
-        assertThat(car.showName()).isEqualTo("mo");
+        assertThat(car.getName()).isEqualTo("mo");
     }
 
     @Test

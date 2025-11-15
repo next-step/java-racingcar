@@ -3,40 +3,28 @@ package racingGame.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProgressRecord {
-    private final List<Integer> joinCarsRecord = new ArrayList<>();
-    private final List<String> joinCarsName = new ArrayList<>();
+public record ProgressRecord(List<Car> joinCars) {
     
-    public void recordGame(List<Car> cars) {
-        for(Car car: cars) {
-            this.joinCarsRecord.add(car.findLocation()) ;
-            this.joinCarsName.add(car.showName());
-        }
+    
+    public List<Car> findWinners() {
+        return findMaxCar(findMaxLocation());
     }
     
-    public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
+    private int findMaxLocation() {
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < this.joinCarsRecord.size(); i++) {
-            int location = this.joinCarsRecord.get(i);
-            String name = this.joinCarsName.get(i);
-            
-            if (location > max) {
-                max = location;
-                winners.clear();
-                winners.add(name);
-            } else if (location == max) {
-                winners.add(name);
+        for(Car joinCar: joinCars) {
+            max = Math.max(max, joinCar.findLocation());
+        }
+        return max;
+    }
+    
+    private List<Car> findMaxCar(int max) {
+        List<Car> winnerCars = new ArrayList<>();
+        for(Car joinCar: joinCars) {
+            if(max == joinCar.findLocation()) {
+                winnerCars.add(joinCar);
             }
         }
-        return winners;
-    }
-    
-    public List<Integer> carRecord() {
-        return this.joinCarsRecord;
-    }
-
-    public List<String> carName() {
-        return this.joinCarsName;
+        return winnerCars;
     }
 }
