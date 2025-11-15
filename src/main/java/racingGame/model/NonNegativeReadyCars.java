@@ -1,21 +1,14 @@
 package racingGame.model;
 
-public class NonNegativeReadyCars {
+public record NonNegativeReadyCars(String[] names) {
     
-    String[] names;
-    
-    public NonNegativeReadyCars(String[] carNames) {
-        validateCar(carNames.length);
-        this.names = carNames;
+    public NonNegativeReadyCars {
+        validateCar(names.length);
     }
     
-    private static void validateCar(int cars){
+    private static void validateCar(int cars) {
         if(cars < 1) {
             throw new IllegalArgumentException("참가시킬 자동차 수 입력이 생략되거나, 0이하");
         }
-    }
-    
-    public String[] getNames() {
-        return names;
     }
 }

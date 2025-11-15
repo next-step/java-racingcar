@@ -10,7 +10,7 @@ public record GameMove(NonNegativeMoves moves) {
     
     public GameResult moveCar(JoinCars joinCars) {
         List<ProgressRecord> progressRecords = new ArrayList<>();
-        for(int i = 0; i < this.moves.getMoves(); i++) {
+        for(int i = 0; i < this.moves.moves(); i++) {
             nextMove(joinCars);
             progressRecords.add(new ProgressRecord(joinCars));
         }
