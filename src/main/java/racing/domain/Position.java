@@ -4,6 +4,9 @@ import java.util.Objects;
 import racing.exception.ErrorMessage;
 import racing.exception.RacingException;
 
+/**
+ * 위치 관리
+ * */
 public class Position implements Comparable<Position> {
 
   private static final String POSITION_MARKER = "-";

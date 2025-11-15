@@ -2,6 +2,9 @@ package racing.domain;
 
 import java.util.Random;
 
+/**
+ * 이동 전략
+ * */
 public class MovementStrategy {
 
   private final int MIN_VALUE;

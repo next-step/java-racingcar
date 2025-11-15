@@ -3,8 +3,7 @@ package racing.domain;
 import java.util.List;
 
 /**
- * 게임 - 자동차 수, 시도 횟수 관리
- *
+ * 게임 라운드 진행
  */
 public class Game {
 

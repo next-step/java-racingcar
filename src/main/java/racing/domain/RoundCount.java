@@ -4,6 +4,9 @@ import java.util.Objects;
 import racing.exception.ErrorMessage;
 import racing.exception.RacingException;
 
+/**
+ * 라운드 횟수 관리
+ * */
 public class RoundCount {
 
   private int cnt;

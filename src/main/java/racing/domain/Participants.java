@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 참가자 관리, 우승자 판별
+ * */
 public class Participants {
 
   private final List<Car> cars;

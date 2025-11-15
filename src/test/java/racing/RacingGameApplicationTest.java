@@ -1,11 +1,12 @@
-package racing.domain;
+package racing;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import racing.domain.RoundCount;
 
-class RacingGameTest {
+class RacingGameApplicationTest {
 
   @Test
   void playRepeatNTimes() {

@@ -4,12 +4,12 @@ import java.util.List;
 import racing.domain.Game;
 import racing.domain.MovementStrategy;
 import racing.domain.Participants;
-import racing.domain.RacingGame;
 import racing.domain.RoundCount;
 import racing.ui.InputView;
 import racing.ui.Message;
+import racing.ui.ResultView;
 
-public class GameApplication {
+public class RacingGameApplication {
 
   public static void main(String[] args) {
     List<String> cars = InputView.inputCar(Message.INPUT_CAR_NAME);
@@ -17,8 +17,15 @@ public class GameApplication {
 
     MovementStrategy strategy = new MovementStrategy();
     Participants participants = Participants.from(cars);
-    RacingGame racingGame = new RacingGame(new Game(strategy, participants),
-        new RoundCount(tryCnt));
-    racingGame.play();
+    Game game = new Game(strategy, participants);
+    RoundCount round = new RoundCount(tryCnt);
+
+    ResultView.printResultMessage();
+    while (round.canRace()) {
+      game.playRound();
+      ResultView.printRoundResult(game.getParticipants());
+      round.doRace();
+    }
+    ResultView.printWinner(game.getWinners());
   }
 }

@@ -3,8 +3,7 @@ package racing.domain;
 import java.util.Objects;
 
 /**
- * 자동차 1. 전진 & 멈추기 2. 현재 위치 반환
- *
+ * 자동차 이동 로직
  */
 public class Car implements Comparable<Car> {
 
