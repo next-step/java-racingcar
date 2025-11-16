@@ -10,6 +10,7 @@ import racing.exception.RacingException;
 public class RoundCount {
 
   private int cnt;
+  private int playedRounds = 0;
 
   public RoundCount(int cnt) {
     if (cnt <= 0) {
@@ -20,10 +21,15 @@ public class RoundCount {
 
   public void doRace() {
     this.cnt -= 1;
+    this.playedRounds += 1;
   }
 
   public boolean canRace() {
     return this.cnt > 0;
+  }
+
+  public boolean isFirstRound(){
+    return playedRounds == 1;
   }
 
   @Override

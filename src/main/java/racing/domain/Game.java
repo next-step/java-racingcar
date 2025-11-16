@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.List;
+import racing.dto.RacingResult;
 
 /**
  * 게임 라운드 진행
@@ -30,8 +31,8 @@ public class Game {
     roundCount.doRace();
   }
 
-  public Participants getParticipants() {
-    return this.participants;
+  public RacingResult getRacingResult() {
+    return new RacingResult(this.roundCount, this.participants);
   }
 
   public List<String> getWinners() {
