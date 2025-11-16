@@ -1,10 +1,10 @@
 package racinggame.model.car;
 
 import java.util.Objects;
+import racinggame.model.move.MoveStrategy;
 import racinggame.model.position.Position;
 
 public class Car {
-    private static final int STANDARD_TO_ADVANCE = 4;
     private static final String RACE_STATE_PER_CAR_DELIMITER = " : ";
 
     private Position position;
@@ -15,14 +15,10 @@ public class Car {
         this.name = new CarName(name);
     }
 
-    public void move(int inputValue) {
-        if (moveable(inputValue)) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.moveable()) {
             this.position.plus();
         }
-    }
-
-    private boolean moveable(int inputValue) {
-        return inputValue >= STANDARD_TO_ADVANCE;
     }
 
     public boolean isSamePosition(Position checkPosition) {

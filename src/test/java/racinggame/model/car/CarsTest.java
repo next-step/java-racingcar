@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import racinggame.model.car.Car;
 import racinggame.model.car.Cars;
 import racinggame.model.position.Position;
+import racinggame.move.AlwaysMoveStrategy;
 
 class CarsTest {
 
@@ -21,35 +22,35 @@ class CarsTest {
         ).isEqualTo(3);
     }
 
-//    @Test
-//    void 자동차들이_가진_포지션값중_가장_큰_값을_찾아낼_수_있다() {
-//        Car first = new Car("first");
-//        first.updatePosition(new Position(5));
-//        Car second = new Car("second");
-//        Car third = new Car("third");
-//
-//        Cars cars = new Cars(of(first, second, third));
-//
-//        assertThat(
-//                cars.findMaxPositions()
-//        ).isEqualTo(new Position(5));
-//    }
-//
-//    @Test
-//    void 포지션값중_가장_큰_값으로_우승차량을_찾아낼_수_있다() {
-//        Car first = new Car("first");
-//        first.updatePosition(new Position(5));
-//        Car second = new Car("second");
-//        second.updatePosition(new Position(5));
-//        Car third = new Car("third");
-//
-//        Cars cars = new Cars(of(first, second, third));
-//
-//        assertThat(
-//                cars.findWinners(new Position(5))
-//        ).containsExactly(
-//                new CarName("first"),
-//                new CarName("second")
-//        );
-//    }
+    @Test
+    void 자동차들이_가진_포지션값중_가장_큰_값을_찾아낼_수_있다() {
+        Car first = new Car("first");
+        first.move(new AlwaysMoveStrategy());
+        Car second = new Car("second");
+        Car third = new Car("third");
+
+        Cars cars = new Cars(of(first, second, third));
+
+        assertThat(
+                cars.findMaxPositions()
+        ).isEqualTo(new Position(1));
+    }
+
+    @Test
+    void 포지션값중_가장_큰_값으로_우승차량을_찾아낼_수_있다() {
+        Car first = new Car("first");
+        first.move(new AlwaysMoveStrategy());
+        Car second = new Car("second");
+        second.move(new AlwaysMoveStrategy());
+        Car third = new Car("third");
+
+        Cars cars = new Cars(of(first, second, third));
+
+        assertThat(
+                cars.findWinners(new Position(1))
+        ).containsExactly(
+                new CarName("first"),
+                new CarName("second")
+        );
+    }
 }

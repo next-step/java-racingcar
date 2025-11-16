@@ -8,6 +8,8 @@ import static racinggame.utils.StringUtils.splitToList;
 
 import java.util.List;
 import racinggame.model.car.Cars;
+import racinggame.model.move.MoveStrategy;
+import racinggame.model.move.RandomMoveStrategy;
 import racinggame.model.winner.Winners;
 import racinggame.ui.UserInput;
 
@@ -30,14 +32,22 @@ public class RacingGame {
     private void startRacing(int tryCount, Cars cars) {
         printCarPositionTitle();
 
-        processGame(tryCount, cars);
+        processGame(
+                tryCount,
+                cars,
+                new RandomMoveStrategy()
+        );
 
         reportWinnerAndEndGame(cars);
     }
 
-    private void processGame(int tryCount, Cars cars) {
+    private void processGame(
+            int tryCount,
+            Cars cars,
+            MoveStrategy moveStrategy
+    ) {
         for (int perTry = 0; perTry < tryCount; perTry++) {
-            cars.playPerRound();
+            cars.playPerRound(moveStrategy);
             printLineBreaker();
         }
     }

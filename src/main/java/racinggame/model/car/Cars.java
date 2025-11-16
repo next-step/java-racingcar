@@ -5,6 +5,8 @@ import static racinggame.ui.MC.printGameStates;
 
 import java.util.ArrayList;
 import java.util.List;
+import racinggame.model.move.MoveStrategy;
+import racinggame.model.move.RandomMoveStrategy;
 import racinggame.model.position.Position;
 
 public class Cars {
@@ -30,12 +32,9 @@ public class Cars {
         return this.cars.size();
     }
 
-    // TODO : 일급컬랙인 Cars가 한 라운드 진행이라는 개념의 행동을 수행해도 적절할까요? 작성하고 다시 생각보니 이상적인 방향은 아닌것 같다는 생각이 듭니다
-    public void playPerRound() {
+    public void playPerRound(MoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(
-                    getRandomNumber()
-            );
+            car.move(moveStrategy);
             printGameStates(car);
         }
     }

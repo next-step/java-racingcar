@@ -3,16 +3,16 @@ package racinggame.model.car;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import racinggame.model.car.Car;
 import racinggame.model.position.Position;
+import racinggame.move.AlwaysMoveStrategy;
 
 class CarTest {
 
     @Test
-    void 주사위값이_4이상이면_자동차위치를_전진시킬_수_있다() {
+    void 전진조건을_만족하면_자동차_위치값을_증가시킬_수_있다() {
         Car car = new Car("mins");
 
-        car.move(4);
+        car.move(new AlwaysMoveStrategy());
 
         assertThat(
                 car.isSamePosition(new Position(1))
@@ -20,24 +20,13 @@ class CarTest {
     }
 
     @Test
-    void 주사위값이_4미만이면_자동차위치를_전진시킬_수_없다() {
+    void 주어진_위치값_보다_자동차_위치값이_더_작은걸_판별할_수_있다() {
         Car car = new Car("mins");
 
-        car.move(3);
+        car.move(new AlwaysMoveStrategy());
 
         assertThat(
-                car.isSamePosition(new Position(1))
-        ).isFalse();
+                car.hasDownPosition(new Position(2))
+        ).isTrue();
     }
-
-//    @Test
-//    void 주어진_위치값_보다_자동차_위치값이_더_작은걸_판별할_수_있다() {
-//        Car car = new Car("mins");
-//
-//        car.updatePosition(new Position(5));
-//
-//        assertThat(
-//                car.hasDownPosition(new Position(3))
-//        ).isTrue();
-//    }
 }
