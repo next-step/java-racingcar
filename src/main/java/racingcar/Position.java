@@ -4,11 +4,18 @@ import java.util.Objects;
 
 public class Position {
 
+    public static final int INITIAL_POSITION = 0;
+    private static final String ERROR_NEGATIVE_VALUE = "위치는 음수가 될 수 없습니다.";
+
     private final int value;
 
     public Position(int value) {
         validate(value);
         this.value = value;
+    }
+
+    public Position() {
+        this(INITIAL_POSITION);
     }
 
     public Position move() {
@@ -27,8 +34,8 @@ public class Position {
     }
 
     private static void validate(int value) {
-        if (value < 0) {
-            throw new IllegalArgumentException("위치는 음수가 될 수 없습니다.");
+        if (value < INITIAL_POSITION) {
+            throw new IllegalArgumentException(ERROR_NEGATIVE_VALUE);
         }
     }
 

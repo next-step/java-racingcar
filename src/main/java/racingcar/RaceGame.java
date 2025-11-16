@@ -69,7 +69,7 @@ public class RaceGame {
     }
 
     private Position getMaxPosition(List<Car> cars) {
-        Position maxPosition = new Position(0);
+        Position maxPosition = new Position();
         for (Car car : cars) {
             maxPosition = maxPosition.max(car.position());
         }
