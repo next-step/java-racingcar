@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
     private final CarName name;
@@ -40,5 +42,17 @@ public class Car {
 
     private boolean isMovable(int number) {
         return number >= MOVE_THRESHOLD;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(location, car.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }

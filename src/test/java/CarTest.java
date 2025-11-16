@@ -12,7 +12,7 @@ class CarTest {
     void moveTest(int number, int expectedLocation) {
         final Car car = new Car("pobi");
         car.makeMove(number);
-        assertThat(car.location()).isEqualTo(new Location(expectedLocation));
+        assertThat(car).isEqualTo(new Car("pobi", expectedLocation));
     }
 
     @Test
