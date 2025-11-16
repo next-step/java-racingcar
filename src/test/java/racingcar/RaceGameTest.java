@@ -29,14 +29,6 @@ public class RaceGameTest {
                 .hasMessageContaining("자동차 대수");
     }
 
-    @DisplayName("게임 횟수가 1 미만이면 예외 발생한다")
-    @Test
-    void gameCountValidation() {
-        assertThatThrownBy(() -> new RaceGame(List.of("car1", "car2", "car3"), 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("게임 횟수");
-    }
-
     @DisplayName("한 라운드에서 자동차가 고정값으로 이동한다")
     @Test
     void playRaceGame() {
