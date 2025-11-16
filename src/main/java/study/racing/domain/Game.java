@@ -1,5 +1,7 @@
 package study.racing.domain;
 
+import study.racing.domain.move.RandomMoveStrategy;
+
 import java.util.List;
 
 import static study.racing.view.ResultView.*;
@@ -24,7 +26,7 @@ public class Game {
 
     private static void playRound(List<Car> cars) {
         for (Car car : cars) {
-            car.move();
+            car.move(new RandomMoveStrategy());
             printGameRound(car);
         }
     }

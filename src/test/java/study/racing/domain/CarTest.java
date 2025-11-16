@@ -1,7 +1,6 @@
 package study.racing.domain;
 
 import org.junit.jupiter.api.Test;
-import study.racing.domain.move.TestMoveStrategy;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,12 +20,18 @@ class CarTest {
     }
 
     @Test
-    void 앞으로_3칸_전진() {
-        Car car = new Car("car1", new TestMoveStrategy(true));
-        for (int i = 0; i < 3; i++) {
-            car.move();
-        }
-        assertThat(car.getPosition()).isEqualTo(new CarPosition(3));
+    void 이동() {
+        Car car = new Car("car1");
+        car.move(() -> true);
+        assertThat(car.getPosition()).isEqualTo(new CarPosition(1));
     }
+
+    @Test
+    void 정지() {
+        Car car = new Car("car1");
+        car.move(() -> false);
+        assertThat(car.getPosition()).isEqualTo(new CarPosition(0));
+    }
+
 
 }

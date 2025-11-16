@@ -9,25 +9,19 @@ public class Car {
 
     private final CarName name;
     private CarPosition position;
-    private final MoveStrategy moveStrategy;
 
     public Car(String name) {
-        this(new CarName(name), new CarPosition(0), new RandomMoveStrategy());
+        this(new CarName(name), new CarPosition(0));
 
-    }
-
-    public Car(String name, MoveStrategy moveStrategy) {
-        this(new CarName(name), new CarPosition(0), moveStrategy);
     }
 
     public Car(String name, int position) {
-        this(new CarName(name), new CarPosition(position), new RandomMoveStrategy());
+        this(new CarName(name), new CarPosition(position));
     }
 
-    public Car(CarName name, CarPosition position, MoveStrategy moveStrategy) {
+    public Car(CarName name, CarPosition position) {
         this.name = name;
         this.position = position;
-        this.moveStrategy = moveStrategy;
     }
 
     public CarName getName() {
@@ -38,8 +32,8 @@ public class Car {
         return this.position;
     }
 
-    public void move() {
-        if (this.moveStrategy.isMove()) {
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.isMove()) {
             this.position.increasePosition();
         }
     }
