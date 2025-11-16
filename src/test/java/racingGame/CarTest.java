@@ -7,26 +7,34 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
     @Test
-    @DisplayName("항상 이동 정책이면 위치 +1 된 새 Car를 반환한다")
-    void move_alwaysMove_returnsNewCarWithIncrementedPosition() {
-        Car origin = new Car("car_0", 0);
-        Car moved = origin.move(new TestPositions.AlwaysMove());
+    @DisplayName("전략이 true를 반환하면 자동차는 한 칸 전진한다")
+    void move_whenStrategyIsTrue_increasePosition() {
+        Car car = new Car();
 
-        // 불변 확인: 원본은 그대로, 새 객체는 +1
-        assertThat(origin.getPosition()).isEqualTo(0);
-        assertThat(moved.getPosition()).isEqualTo(1);
-        assertThat(moved.getName()).isEqualTo("car_0");
-        assertThat(moved).isNotSameAs(origin);
+        car.move(new AlwaysMoveStrategy());
+
+        assertThat(car.position()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("절대 이동 안 함 정책이면 위치 그대로인 새 Car를 반환한다")
-    void move_neverMove_returnsNewCarWithSamePosition() {
-        Car origin = new Car("car_0", 3);
-        Car stayed = origin.move(new TestPositions.NeverMove());
+    @DisplayName("전략이 false를 반환하면 자동차는 이동하지 않는다")
+    void move_whenStrategyIsFalse_positionNotChanged() {
+        Car car = new Car();
 
-        assertThat(origin.getPosition()).isEqualTo(3);
-        assertThat(stayed.getPosition()).isEqualTo(3);
-        assertThat(stayed).isNotSameAs(origin);
+        car.move(new NeverMoveStrategy());
+
+        assertThat(car.position()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("여러 번 이동하면 누적 이동 거리가 올바르게 증가한다")
+    void move_multipleTimes_accumulatesCorrectly() {
+        Car car = new Car();
+
+        car.move(new AlwaysMoveStrategy());
+        car.move(new AlwaysMoveStrategy());
+        car.move(new AlwaysMoveStrategy());
+
+        assertThat(car.position()).isEqualTo(3);
     }
 }

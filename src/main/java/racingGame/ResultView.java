@@ -3,10 +3,20 @@ package racingGame;
 import java.util.List;
 
 public class ResultView {
-    public void printRound(int roundIndex, List<Racing.CarSnapshot> round) {
-        System.out.println("Round " + (roundIndex + 1));
-        for (Racing.CarSnapshot s : round) {
-            System.out.println(s.name + " : " + "-".repeat(s.position));
+
+    public void print(List<Round> rounds) {
+        System.out.println("실행 결과");
+
+        for (Round round : rounds) {
+            printRound(round);
+        }
+    }
+
+    private void printRound(Round round) {
+        List<String> lines = round.drawLines();
+
+        for (String line : lines) {
+            System.out.println(line);
         }
         System.out.println();
     }
