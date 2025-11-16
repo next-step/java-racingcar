@@ -11,12 +11,12 @@ public class Participants {
 
   private final List<Car> cars;
 
-  public Participants(List<Car> cars) {
+  Participants(List<Car> cars) {
     this.cars = cars;
   }
 
-  public static Participants from(List<String> names) {
-    return new Participants(names.stream().map(Car::new).toList());
+  public Participants(String names) {
+    this(Cars.from(names));
   }
 
   public List<String> getWinnerNames() {

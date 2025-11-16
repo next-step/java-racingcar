@@ -10,12 +10,10 @@ import org.junit.jupiter.api.Test;
 class ParticipantsTest {
 
   private Participants participants;
-  private List<String> carNames;
 
   @BeforeEach
   void init() {
-    carNames = List.of("a", "b", "c");
-    participants = Participants.from(carNames);
+    participants = new Participants("a,b,c");
   }
 
   @Test

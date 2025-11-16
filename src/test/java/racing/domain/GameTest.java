@@ -1,6 +1,5 @@
 package racing.domain;
 
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +9,9 @@ public class GameTest {
 
   @BeforeEach
   void init() {
-    List<String> carNames = List.of("pobi", "crong", "honux");
-    game = new Game(new MovementStrategy(), Participants.from(carNames));
+    String carNames = "pobi,crong,honux";
+    int roundCount = 3;
+    game = new Game(new Participants(carNames), new RoundCount(roundCount));
   }
 
   @Test

@@ -2,21 +2,18 @@ package racing.ui;
 
 import java.util.List;
 import java.util.StringJoiner;
-import racing.domain.Car;
-import racing.domain.Participants;
+import racing.dto.RacingResult;
 
 public class ResultView {
 
-
-  public static void printResultMessage() {
-    System.out.println("\n" + Message.RESULT_MESSAGE.getMessage());
+  public static void printRoundResult(RacingResult racingResult) {
+    if(racingResult.needsResultHeader()){
+      System.out.println("\n" + Message.RESULT_MESSAGE.getMessage());
+    }
+    System.out.println(racingResult.getCurrentStatus());
   }
 
-  public static void printRoundResult(Participants participants) {
-    System.out.println(participants);
-  }
-
-  public static void printWinner(List<String> winners) {
+  public static void printWinners(List<String> winners) {
     StringJoiner joiner = new StringJoiner(",");
     for (String x : winners) {
       joiner.add(x);
