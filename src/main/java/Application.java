@@ -1,8 +1,6 @@
-import java.util.List;
-
 public class Application {
     public static void main(String[] args) {
-        List<Car> cars = InputView.readCarsInput();
+        Cars cars = CarsFactory.createCars(InputView.readCarNameInput());
         int roundCount = InputView.readRoundCountInput();
 
         ResultView.printResultHeader();
