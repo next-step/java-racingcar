@@ -1,5 +1,7 @@
 package racingcar;
 
+import static racingcar.OutputView.getPositionDisplay;
+
 public class Car {
 	public static final int MIN_MOVE_NUMBER = 0;
 	public static final int MAX_MOVE_NUMBER = 9;
@@ -24,11 +26,7 @@ public class Car {
 	public String move(int number) {
 		validate(number);
 		updatePosition(number);
-		return getPositionDisplay();
-	}
-
-	private String getPositionDisplay() {
-		return "-".repeat(position);
+		return getPositionDisplay(this);
 	}
 
 	private void updatePosition(int number) {

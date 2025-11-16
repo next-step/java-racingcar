@@ -15,4 +15,8 @@ public class OutputView {
 			System.out.println();
 		}
 	}
+
+	static String getPositionDisplay(Car car) {
+		return "-".repeat(car.getPosition());
+	}
 }
