@@ -2,10 +2,8 @@ package racinggame.ui;
 
 public class ResultView {
 
-    // 원래 네이밍은 "askCarCountToUser"입니다. 추상화 레벨로 생각했을때 어떤기능을 하는지 순수하게 네이밍하는게 좋다고 생각했습니다.
-    // 왼쪽 네이밍과 아래 네이밍중 어느쪽이 더 적절한지 그 이유는 무엇인지 궁금합니다
-    public static void printCarCountQuestion() {
-        String question = "자동차 대수는 몇 대 인가요?";
+    public static void printCarNamesQuestion() {
+        String question = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)?";
         System.out.println(question);
     }
 
@@ -20,11 +18,17 @@ public class ResultView {
         System.out.println(question);
     }
 
-    public static void printCarPosition(String positionMark) {
-        System.out.println(positionMark);
+    public static void printCarPosition(String carState) {
+        System.out.println(carState);
     }
 
     public static void printLineBreaker() {
         System.out.println();
     }
+
+    public static void printEndMessage(String message) {
+        System.out.println(message + "가 최종 우승했습니다");
+    }
+
+
 }
