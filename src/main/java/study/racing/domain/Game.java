@@ -18,8 +18,7 @@ public class Game {
 
     public void playGame() {
         this.roundCount.executeRounds(() -> {
-            List<Car> cars = this.cars.getCars();
-            playRound(cars);
+            playRound(this.cars.getCars());
             printEmptyLine();
         });
     }

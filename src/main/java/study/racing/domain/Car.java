@@ -1,7 +1,6 @@
 package study.racing.domain;
 
 import study.racing.domain.move.MoveStrategy;
-import study.racing.domain.move.RandomMoveStrategy;
 
 import java.util.Objects;
 
