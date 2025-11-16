@@ -16,15 +16,13 @@ public class Car {
     }
 
     public void move(int inputValue) {
-        if (isKeep(inputValue)) {
-            return;
+        if (moveable(inputValue)) {
+            this.position.plus();
         }
-
-        this.position.plus();
     }
 
-    private boolean isKeep(int inputValue) {
-        return inputValue < STANDARD_TO_ADVANCE;
+    private boolean moveable(int inputValue) {
+        return inputValue >= STANDARD_TO_ADVANCE;
     }
 
     public boolean isSamePosition(Position checkPosition) {
