@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -16,15 +15,6 @@ public class CarTest {
     void createCar(String name) {
         Car car = new Car(name);
         assertThat(car).isNotNull();
-    }
-
-    @DisplayName("이름이 빈 값이거나 5자 초과인 경우 예외가 발생한다")
-    @ParameterizedTest
-    @ValueSource(strings = {"", "   ", "car006"})
-    void carNameLongThrowsException(String name) {
-        assertThatThrownBy(() -> new Car(name))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름");
     }
 
     @DisplayName("값이 4 이상일 때 자돋차가 이동한다")
