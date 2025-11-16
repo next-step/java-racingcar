@@ -1,10 +1,9 @@
 public class Application {
     public static void main(String[] args) {
-        Cars cars = CarsFactory.createCars(InputView.readCarNameInput());
+        String cars = InputView.readCarNameInput();
         int roundCount = InputView.readRoundCountInput();
 
-        ResultView.printResultHeader();
-        RaceController controller = new RaceController(cars, roundCount);
+        RaceController controller = new RaceController(CarsFactory.createCars(cars), roundCount);
         controller.start();
     }
 }

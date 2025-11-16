@@ -1,14 +1,19 @@
 public class RaceController {
     private final RaceGame game;
-    private final int roundCount;
+    private final RoundCount roundCount;
 
     public RaceController(Cars cars, int roundCount) {
-        this.game = new RaceGame(cars);
+        this(new RaceGame(cars), new RoundCount(roundCount));
+    }
+
+    public RaceController(RaceGame game, RoundCount roundCount) {
+        this.game = game;
         this.roundCount = roundCount;
     }
 
     public void start() {
-        for (int round = 0; round < roundCount; round++) {
+        ResultView.printResultHeader();
+        for (int round = 0; round < roundCount.count(); round++) {
             playRound();
         }
         ResultView.printWinners(game.getWinners());
