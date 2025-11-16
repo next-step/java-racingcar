@@ -24,11 +24,10 @@ public class InputView {
     }
   }
 
-  public static List<String> inputCar(Message message) {
+  public static String inputCar(Message message) {
     System.out.println(message.getMessage());
     String line = scanner.next();
-    String[] tokens = line.split(",");
-    return new ArrayList<>(Arrays.asList(tokens));
+    return line;
   }
 
   public static void close() {

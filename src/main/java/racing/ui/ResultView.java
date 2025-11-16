@@ -2,7 +2,6 @@ package racing.ui;
 
 import java.util.List;
 import java.util.StringJoiner;
-import racing.domain.Car;
 import racing.domain.Participants;
 
 public class ResultView {
@@ -16,7 +15,7 @@ public class ResultView {
     System.out.println(participants);
   }
 
-  public static void printWinner(List<String> winners) {
+  public static void printWinners(List<String> winners) {
     StringJoiner joiner = new StringJoiner(",");
     for (String x : winners) {
       joiner.add(x);

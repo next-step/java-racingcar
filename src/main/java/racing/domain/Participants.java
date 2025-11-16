@@ -1,6 +1,7 @@
 package racing.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,8 +16,16 @@ public class Participants {
     this.cars = cars;
   }
 
-  public static Participants from(List<String> names) {
-    return new Participants(names.stream().map(Car::new).toList());
+  public Participants(String names) {
+    this(createCarList(names));
+  }
+
+  private static List<Car> createCarList(String names) {
+    List<Car> cars = new ArrayList<>();
+    for (String name : names.split(",")) {
+      cars.add(new Car(name));
+    }
+    return cars;
   }
 
   public List<String> getWinnerNames() {
