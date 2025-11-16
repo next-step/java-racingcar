@@ -1,28 +1,58 @@
-import java.util.Random;
+import java.util.Objects;
 
 public class Car {
     private static final int MOVE_THRESHOLD = 4;
-    private int currentLocation;
+    private final CarName name;
+    private final Location location;
 
-    Car() {
-        this.currentLocation = 0;
+    Car(String name) {
+        this(name, 0);
     }
 
-    int currentLocation() {
-        return currentLocation;
+    Car(String name, int location) {
+        this(new CarName(name), new Location(location));
+    }
+
+    Car(CarName name, Location location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    CarName name() {
+        return name;
+    }
+
+    Location location() {
+        return location;
     }
 
     void makeMove(int number) {
         if (isMovable(number)) {
-            moveForward();
+            location.moveForward();
         }
+    }
+
+    boolean isAtLocation(Location targetLocation) {
+        return this.location.equals(targetLocation);
+    }
+
+    String expressLocationWith(String symbol) {
+        return location.toString(symbol);
     }
 
     private boolean isMovable(int number) {
         return number >= MOVE_THRESHOLD;
     }
 
-    private void moveForward() {
-        currentLocation++;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(name, car.name) && Objects.equals(location, car.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }
