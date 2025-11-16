@@ -29,6 +29,14 @@ public class RaceGameTest {
                 .hasMessageContaining("자동차 대수");
     }
 
+    @DisplayName("중복된 이름이면 예외 발생한다")
+    @Test
+    void carNameDuplicateValidation() {
+        assertThatThrownBy(() -> new RaceGame(List.of("car1", "car1"), 3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("중복");
+    }
+
     @DisplayName("한 라운드에서 자동차가 고정값으로 이동한다")
     @Test
     void playRaceGame() {
