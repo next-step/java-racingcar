@@ -23,28 +23,28 @@ public class RacingGame {
 
     public List<String> selectWinner() {
         List<String> winners = new ArrayList<>();
-        int maxPosition = getMaxPosition(racingCars);
+        Position maxPosition = getMaxPosition(racingCars);
         for (RacingCar racingCar : racingCars) {
             addWinner(racingCar, maxPosition, winners);
         }
         return winners;
     }
 
-    private void addWinner(RacingCar racingCar, int maxPosition, List<String> winners) {
+    private void addWinner(RacingCar racingCar, Position maxPosition, List<String> winners) {
         if (racingCar.isGreaterThanPosition(maxPosition)) {
             winners.add(racingCar.getName());
         }
     }
 
-    private int getMaxPosition(List<RacingCar> racingCars) {
-        int maxPosition = 0;
+    private Position getMaxPosition(List<RacingCar> racingCars) {
+        Position maxPosition = new Position();
         for (RacingCar racingCar : racingCars) {
             maxPosition = updateMaxPosition(racingCar, maxPosition);
         }
         return maxPosition;
     }
 
-    private int updateMaxPosition(RacingCar racingCar, int maxPosition) {
+    private Position updateMaxPosition(RacingCar racingCar, Position maxPosition) {
         if (racingCar.isGreaterThanPosition(maxPosition)) {
             maxPosition = racingCar.getPosition();
         }

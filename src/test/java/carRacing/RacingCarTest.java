@@ -29,7 +29,7 @@ class RacingCarTest {
     @ValueSource(ints = {4, 9})
     void move_success(int input) {
         racingCar.move(input);
-        assertThat(racingCar.getPosition()).isEqualTo(1);
+        assertThat(racingCar.getPosition()).isEqualTo(new Position(1));
     }
 
     @ParameterizedTest
@@ -37,7 +37,7 @@ class RacingCarTest {
     @ValueSource(ints = {1, 3})
     void move_fail(int input) {
         racingCar.move(input);
-        assertThat(racingCar.getPosition()).isEqualTo(0);
+        assertThat(racingCar.getPosition()).isEqualTo(new Position());
     }
 
     @Test

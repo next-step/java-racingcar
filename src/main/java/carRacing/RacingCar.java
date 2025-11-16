@@ -3,23 +3,24 @@ package carRacing;
 public class RacingCar {
 
     public static final int MOVE_CONDITION = 4;
-    private int position;
+    private Position position;
     private CarName name;
 
     public RacingCar(String name) {
-            this.name = new CarName(name);
+        this.name = new CarName(name);
+        this.position = new Position();
     }
 
     public String getName() {
         return name.getValue();
     }
 
-    public int getPosition() {
+    public Position getPosition() {
         return position;
     }
 
     private void movePosition() {
-        position++;
+        position.plus();
     }
 
     public void move(int value) {
@@ -28,7 +29,7 @@ public class RacingCar {
         }
     }
 
-    public boolean isGreaterThanPosition(int position) {
-        return this.position >= position;
+    public boolean isGreaterThanPosition(Position position) {
+        return this.position.value() >= position.value();
     }
 }
