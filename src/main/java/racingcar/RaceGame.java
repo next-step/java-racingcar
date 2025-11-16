@@ -13,7 +13,7 @@ public class RaceGame {
     private static final String ERROR_GAME_COUNT = "게임 횟수는 최소 " + MIN_GAME_COUNT + "회 이상이어야 합니다.";
 
     private final List<Car> cars;
-    private final int gameCount;
+    private final GameCount gameCount;
     private final Random random;
 
     public RaceGame(List<String> carNames, int gameCount) {
@@ -22,9 +22,8 @@ public class RaceGame {
 
     public RaceGame(List<String> carNames, int gameCount, Random random) {
         validateCarNames(carNames);
-        validateGameCount(gameCount);
         this.cars = createCars(carNames);
-        this.gameCount = gameCount;
+        this.gameCount = new GameCount(gameCount);
         this.random = random;
     }
 
@@ -32,7 +31,7 @@ public class RaceGame {
         return cars;
     }
 
-    public int gameCount() {
+    public GameCount gameCount() {
         return gameCount;
     }
 

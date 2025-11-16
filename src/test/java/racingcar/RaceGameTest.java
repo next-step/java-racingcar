@@ -18,7 +18,7 @@ public class RaceGameTest {
         int gameCount = 3;
         RaceGame raceGame = new RaceGame(carNames, gameCount);
         assertThat(raceGame.cars()).hasSize(carNames.size());
-        assertThat(raceGame.gameCount()).isEqualTo(gameCount);
+        assertThat(raceGame.gameCount().asInt()).isEqualTo(gameCount);
     }
 
     @DisplayName("자동차 수가 1 미만이면 예외 발생한다")
