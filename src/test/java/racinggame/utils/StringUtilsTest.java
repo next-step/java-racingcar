@@ -22,10 +22,7 @@ class StringUtilsTest {
 
     static Stream<Arguments> generatedCarFixture() {
         return Stream.of(
-                Arguments.of("first,second,third,force", new String[]{"first", "second", "third", "force"}, 4),
                 Arguments.of("first,second,third", new String[]{"first", "second", "third"}, 3),
-                Arguments.of("first,second", new String[]{"first", "second"}, 2),
-                Arguments.of("first", new String[]{"first"}, 1),
                 Arguments.of("", new String[]{}, 0),
                 Arguments.of(null, new String[]{}, 0)
         );

@@ -8,6 +8,7 @@ import static racinggame.utils.StringUtils.splitToList;
 
 import java.util.List;
 import racinggame.model.car.Cars;
+import racinggame.model.winner.Winners;
 import racinggame.ui.UserInput;
 
 public class RacingGame {
@@ -42,7 +43,9 @@ public class RacingGame {
     }
 
     private void reportWinnerAndEndGame(Cars cars) {
-        List<String> winners = cars.findWinners(cars.findMaxPositions());
+        Winners winners = new Winners(
+                cars.findWinners(cars.findMaxPositions())
+        );
         printEndMessage(winners);
     }
 }

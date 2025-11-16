@@ -49,28 +49,25 @@ public class Cars {
         return max;
     }
 
-    public List<String> findWinners(Position maxPositions) {
-        List<String> winners = new ArrayList<>();
+    public List<CarName> findWinners(Position maxPositions) {
+        List<CarName> winners = new ArrayList<>();
         for (Car car : cars) {
-            judgeCarHasMax(maxPositions, car, winners);
-            // if (car.isSamePosition(maxPositions)) {
-            //     winners.add(car.getName());
-            // }
+            winners.addAll(
+                    judgeCarHasMax(maxPositions, car)
+            );
         }
 
         return winners;
     }
 
-    // TODO : 이렇게 외부 파라미터를 메서드 안에서 직접 수정/변경 하는 케이스는 어떻게 생각하시나요?
-    //  다른 방법은 크게 생각나는 부분이 없어서 아래 방식 vs findWinners() 주석처리한 부분 이 두가지 방식중 선택했습니다
-    private void judgeCarHasMax(
+    private List<CarName> judgeCarHasMax(
             final Position maxPositions,
-            final Car car,
-            final List<String> winners
+            final Car car
     ) {
-        String carNameIfMaxPosition = car.getCarNameIfMaxPosition(maxPositions);
-        if (!carNameIfMaxPosition.isBlank()) {
-            winners.add(carNameIfMaxPosition);
+        if (!car.isSamePosition(maxPositions)) {
+            return new ArrayList<>();
         }
+
+        return List.of(car.name());
     }
 }

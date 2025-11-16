@@ -3,16 +3,20 @@ package racinggame.model.position;
 import java.util.Objects;
 
 public class Position {
-    private int position;
-
     private static final int DEFAULT_POSITION = 0;
     private static final int PLUS_POSITION = 1;
 
+    private int position;
+
     public Position() {
-        this.position = DEFAULT_POSITION;
+        this(DEFAULT_POSITION);
     }
 
     public Position(int position) {
+        if (position < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다");
+        }
+
         this.position = position;
     }
 
