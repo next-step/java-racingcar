@@ -23,7 +23,7 @@ class LocationTest {
     @Test
     @DisplayName("max 메서드는 두 Location 중 더 큰 값을 가진 Location을 반환한다.")
     void maxLocationTest() {
-        assertThat(Location.max(new Location(1), new Location(2)))
+        assertThat(new Location(1).max(new Location(2)))
                 .isEqualTo(new Location(2));
     }
 }

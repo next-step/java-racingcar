@@ -18,14 +18,14 @@ public class Location {
         return symbol.repeat(this.position);
     }
 
-    public static Location max(Location location1, Location location2) {
-        if (location1.position >= location2.position) {
-            return location1;
+    Location max(Location compareTo) {
+        if (this.position >= compareTo.position) {
+            return this;
         }
-        return location2;
+        return compareTo;
     }
 
-    private static boolean isValid(int position) {
+    private boolean isValid(int position) {
         return position >= 0;
     }
 
