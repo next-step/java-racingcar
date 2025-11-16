@@ -49,7 +49,7 @@ public class RaceGame {
     }
 
     private static void addWinnerIfMaxPosition(List<CarName> winners, Car car, Position maxPos) {
-        if (car.position().equals(maxPos)) {
+        if (car.isAtPosition(maxPos)) {
             winners.add(car.name());
         }
     }

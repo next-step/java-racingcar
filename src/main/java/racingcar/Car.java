@@ -29,4 +29,8 @@ public class Car {
             position = position.move();
         }
     }
+
+    public boolean isAtPosition(Position position) {
+        return this.position.equals(position);
+    }
 }
