@@ -5,23 +5,25 @@ import java.util.Random;
 public class RaceGame {
     private static final Random RANDOM = new Random();
     private static final int MAX_RANDOM_VALUE = 10;
-    private final List<Car> cars;
+    private final Cars cars;
 
     RaceGame(List<Car> cars) {
+        this(new Cars(cars));
+    }
+
+    RaceGame(Cars cars) {
         this.cars = cars;
     }
 
-    public List<Car> cars() {
+    Cars cars() {
         return cars;
     }
 
     void race() {
-        for (Car car : this.cars) {
-            car.makeMove(RANDOM.nextInt(MAX_RANDOM_VALUE));
-        }
+        cars.race(RANDOM, MAX_RANDOM_VALUE);
     }
 
     Winners getWinners() {
-        return new Winners(cars);
+        return cars.winners();
     }
 }

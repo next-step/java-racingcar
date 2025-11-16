@@ -8,8 +8,8 @@ public class ResultView {
         print("실행 결과");
     }
 
-    public static void printResult(List<Car> cars) {
-        print(createCarsLocationString(cars));
+    public static void printResult(RaceGame game) {
+        print(createCarsLocationString(game.cars()));
     }
 
     public static void printWinners(Winners winners) {
@@ -17,9 +17,9 @@ public class ResultView {
         print(names + "가 최종 우승했습니다.");
     }
 
-    private static String createCarsLocationString(List<Car> cars) {
+    private static String createCarsLocationString(Cars cars) {
         StringBuilder sb = new StringBuilder();
-        for (Car car : cars) {
+        for (Car car : cars.cars()) {
             sb.append(getCarNameString(car)).append(getLocationString(car)).append("\n");
         }
         return sb.toString();

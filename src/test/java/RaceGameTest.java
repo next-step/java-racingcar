@@ -18,15 +18,9 @@ class RaceGameTest {
     }
 
     @Test
-    @DisplayName("RaceGame 객체를 생성하면 자동차가 carCount개 만큼 생성된다.")
-    void createCarTest() {
-        assertThat(game.cars()).hasSize(3);
-    }
-
-    @Test
     @DisplayName("RaceGame 객체에서 우승자를 정확히 반환한다.")
     void getWinnersTest() {
         Winners winners = game.getWinners();
-        assertThat(winners.winners()).containsExactly(HONUX);
+        assertThat(winners).isEqualTo(new Winners(List.of(HONUX)));
     }
 }

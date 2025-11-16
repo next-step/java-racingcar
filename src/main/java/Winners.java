@@ -1,17 +1,12 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Winners {
     private final List<Car> winners;
 
-    Winners(List<Car> candidates) {
-        Location winnerLocation = findMaxLocation(candidates);
-        this.winners = findCarsAtLocation(candidates, winnerLocation);
-    }
-
-    List<Car> winners() {
-        return Collections.unmodifiableList(this.winners);
+    Winners(List<Car> winners) {
+        this.winners = winners;
     }
 
     List<CarName> getNames() {
@@ -22,25 +17,15 @@ public class Winners {
         return winnerNames;
     }
 
-    private static Location findMaxLocation(List<Car> cars) {
-        Location maxLocation = new Location(0);
-        for (Car car : cars) {
-            maxLocation = Location.max(car.location(), maxLocation);
-        }
-        return maxLocation;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Winners object = (Winners) o;
+        return Objects.equals(winners, object.winners);
     }
 
-    private List<Car> findCarsAtLocation(List<Car> cars, Location targetLocation) {
-        List<Car> locatedCars = new ArrayList<>();
-        for (Car car : cars) {
-            addIfLocationMatches(locatedCars, car, targetLocation);
-        }
-        return locatedCars;
-    }
-
-    private void addIfLocationMatches(List<Car> locatedCars, Car car, Location targetLocation) {
-        if (car.isAtLocation(targetLocation)) {
-            locatedCars.add(car);
-        }
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(winners);
     }
 }

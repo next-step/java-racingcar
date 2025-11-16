@@ -1,10 +1,8 @@
-import java.util.List;
-
 public class RaceController {
     private final RaceGame game;
     private final int roundCount;
 
-    public RaceController(List<Car> cars, int roundCount) {
+    public RaceController(Cars cars, int roundCount) {
         this.game = new RaceGame(cars);
         this.roundCount = roundCount;
     }
@@ -18,6 +16,6 @@ public class RaceController {
 
     private void playRound() {
         game.race();
-        ResultView.printResult(game.cars());
+        ResultView.printResult(game);
     }
 }
