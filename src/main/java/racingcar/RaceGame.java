@@ -41,15 +41,15 @@ public class RaceGame {
 
     public List<CarName> getWinners() {
         List<CarName> winners = new ArrayList<>();
-        Position maxPos = getMaxPosition(cars);
+        Car leadingCar = findLeadingCar(cars);
         for (Car car : cars) {
-            addWinnerIfMaxPosition(winners, car, maxPos);
+            addWinnerIfAtLeadingPosition(winners, car, leadingCar);
         }
         return winners;
     }
 
-    private static void addWinnerIfMaxPosition(List<CarName> winners, Car car, Position maxPos) {
-        if (car.isAtPosition(maxPos)) {
+    private static void addWinnerIfAtLeadingPosition(List<CarName> winners, Car car, Car leadingCar) {
+        if (car.isAtSamePositionAs(leadingCar)) {
             winners.add(car.name());
         }
     }
@@ -68,11 +68,18 @@ public class RaceGame {
         }
     }
 
-    private Position getMaxPosition(List<Car> cars) {
-        Position maxPosition = new Position();
+    private Car findLeadingCar(List<Car> cars) {
+        Car leadingCar = cars.getFirst();
         for (Car car : cars) {
-            maxPosition = maxPosition.max(car.position());
+            leadingCar = compareCar(car, leadingCar);
         }
-        return maxPosition;
+        return leadingCar;
+    }
+
+    private static Car compareCar(Car car, Car leadingCar) {
+        if (car.isAheadOf(leadingCar)) {
+            return car;
+        }
+        return leadingCar;
     }
 }

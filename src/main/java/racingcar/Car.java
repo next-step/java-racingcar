@@ -30,7 +30,11 @@ public class Car {
         }
     }
 
-    public boolean isAtPosition(Position position) {
-        return this.position.equals(position);
+    public boolean isAtSamePositionAs(Car maxCar) {
+        return this.position.equals(maxCar.position);
+    }
+
+    public boolean isAheadOf(Car car) {
+        return this.position.asInt() > car.position.asInt();
     }
 }
