@@ -5,11 +5,9 @@ public class Main {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame(InputView.initCarInfo());
 
-        int tryCount = InputView.initTryCount();
-        for (int i = 0; i < tryCount; i++) {
-            racingGame.playGame();
-            ResultView.printResult(racingGame.getRacingCars());
-        }
+        TryCount tryCount = new TryCount(InputView.initTryCount(), racingGame);
+        tryCount.playGame();
+
         ResultView.printWinner(racingGame);
     }
 }
