@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class Numbers {
+
   private final List<Integer> values;
 
   Numbers(String[] tokens) {

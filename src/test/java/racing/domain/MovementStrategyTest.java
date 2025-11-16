@@ -7,6 +7,7 @@ import org.junit.jupiter.api.RepeatedTest;
 
 
 class MovementStrategyTest {
+
   @RepeatedTest(100)
   @DisplayName("0~9 범위의 난수를 생성한다")
   void generateRandomNumberBetween0And9() {
