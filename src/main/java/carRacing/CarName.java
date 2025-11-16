@@ -2,7 +2,7 @@ package carRacing;
 
 public class CarName {
     public static final int MAX_NAME_SIZE = 5;
-    private String value;
+    private final String value;
 
     public CarName(String value) {
         carNameLengthCheck(value);

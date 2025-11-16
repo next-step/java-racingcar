@@ -8,7 +8,7 @@ public class RacingGame {
     private List<RacingCar> racingCars;
 
     public RacingGame(String name) {
-        racingCars = CarFactory.initRacingCars(name);
+        racingCars = CarFactory.from(name);
     }
 
     public void playGame() {
