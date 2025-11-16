@@ -5,10 +5,11 @@ public class Car {
     private static final int MOVE_THRESHOLD = 4;
 
     private final CarName name;
-    private int position = 0;
+    private Position position;
 
     public Car(CarName name) {
         this.name = name;
+        this.position = new Position(0);
     }
 
     public Car(String value) {
@@ -19,17 +20,13 @@ public class Car {
         return name;
     }
 
-    public int position() {
+    public Position position() {
         return position;
     }
 
     public void moveIfPossible(int number) {
         if (number >= MOVE_THRESHOLD) {
-            move();
+            position = position.move();
         }
-    }
-
-    private void move() {
-        position++;
     }
 }

@@ -33,6 +33,6 @@ public class CarTest {
     void canMoveWhenAtLeast(int number, int expected) {
         Car car = new Car("car1");
         car.moveIfPossible(number);
-        assertThat(car.position()).isEqualTo(expected);
+        assertThat(car.position()).isEqualTo(new Position(expected));
     }
 }

@@ -49,7 +49,7 @@ public class RaceGameTest {
         RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3, fixedRandom);
         raceGame.playRound();
         for (Car car : raceGame.cars()) {
-            assertThat(car.position()).isEqualTo(1);
+            assertThat(car.position()).isEqualTo(new Position(1));
         }
     }
 

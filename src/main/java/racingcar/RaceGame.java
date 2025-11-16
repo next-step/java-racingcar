@@ -44,15 +44,15 @@ public class RaceGame {
 
     public List<CarName> getWinners() {
         List<CarName> winners = new ArrayList<>();
-        int maxPos = getMaxPosition(cars);
+        Position maxPos = getMaxPosition(cars);
         for (Car car : cars) {
             addWinnerIfMaxPosition(winners, car, maxPos);
         }
         return winners;
     }
 
-    private static void addWinnerIfMaxPosition(List<CarName> winners, Car car, int maxPos) {
-        if (car.position() == maxPos) {
+    private static void addWinnerIfMaxPosition(List<CarName> winners, Car car, Position maxPos) {
+        if (car.position().equals(maxPos)) {
             winners.add(car.name());
         }
     }
@@ -77,10 +77,10 @@ public class RaceGame {
         }
     }
 
-    private int getMaxPosition(List<Car> cars) {
-        int maxPosition = Integer.MIN_VALUE;
+    private Position getMaxPosition(List<Car> cars) {
+        Position maxPosition = new Position(0);
         for (Car car : cars) {
-            maxPosition = Math.max(car.position(), maxPosition);
+            maxPosition = maxPosition.max(car.position());
         }
         return maxPosition;
     }

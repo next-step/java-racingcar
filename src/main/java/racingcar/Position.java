@@ -15,6 +15,17 @@ public class Position {
         return new Position(this.value + 1);
     }
 
+    public Position max(Position other) {
+        if (other.value > this.value) {
+            return other;
+        }
+        return this;
+    }
+
+    public int asInt() {
+        return value;
+    }
+
     private static void validate(int value) {
         if (value < 0) {
             throw new IllegalArgumentException("위치는 음수가 될 수 없습니다.");

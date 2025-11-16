@@ -21,7 +21,7 @@ public class ResultView {
 
     public static void printRoundResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.name() + POSITION_SEPARATOR + POSITION_MARK.repeat(car.position()));
+            System.out.println(car.name() + POSITION_SEPARATOR + POSITION_MARK.repeat(car.position().asInt()));
         }
         System.out.println();
     }
