@@ -12,7 +12,7 @@ public class Participants {
 
   private final List<Car> cars;
 
-  public Participants(List<Car> cars) {
+  Participants(List<Car> cars) {
     this.cars = cars;
   }
 

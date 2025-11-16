@@ -16,11 +16,11 @@ public class Game {
     this(new Participants(names), new RoundCount(cnt));
   }
 
-  public Game(Participants participants, RoundCount roundCount){
+  Game(Participants participants, RoundCount roundCount){
     this(new MovementStrategy(), participants, roundCount);
   }
 
-  public Game(MovementStrategy strategy, Participants participants, RoundCount roundCount) {
+  Game(MovementStrategy strategy, Participants participants, RoundCount roundCount) {
     this.strategy = strategy;
     this.participants = participants;
     this.roundCount = roundCount;
