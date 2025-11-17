@@ -9,12 +9,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarNameTest {
 
-    @DisplayName("이름을 가진 자동차가 생성된다")
+    @DisplayName("올바른 이름이면 CarName이 생성된다")
     @ParameterizedTest
     @ValueSource(strings = {"a", "car05"})
-    void createCar(String name) {
-        CarName carName = new CarName(name);
-        assertThat(carName).isNotNull();
+    void createCarName(String name) {
+        assertThat(new CarName(name)).isNotNull();
     }
 
     @DisplayName("이름이 빈 값이거나 5자 초과인 경우 예외가 발생한다")
