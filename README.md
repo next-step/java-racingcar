@@ -31,8 +31,12 @@
 * 단위 테스트 구현 시, Mockito와 같은 Mock을 사용하지 않는다.
 
 ## 기능 목록
-* 기능 목록 작성
-* InputView 클래스 생성
-* Car 클래스 생성
-* ResultView 클래스 생성
+* domain 패키지 작성
+  * RacingCar 클래스 생성
+  * RacingGame 클래스 생성
+* util 패키지 작성
+  * RandomUtil 클래스 생성
+* view 패키지 작성
+  * InputView 클래스 생성
+  * ResultView 클래스 생성
 * Car Main 클래스 생성
