@@ -45,4 +45,6 @@ public class Car {
     public int max(int maxPosition) {
         return Math.max(this.position, maxPosition);
     }
+
+
 }

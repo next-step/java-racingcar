@@ -2,11 +2,11 @@ package racinggame.domain;
 
 import java.util.Objects;
 
-public class Name {
-    public static final int NAME_MAX_LENGTH = 5;
+class Name {
+    private static final int NAME_MAX_LENGTH = 5;
     private final String name;
 
-    public Name(String name) {
+    Name(String name) {
         validate(name);
         this.name = name;
     }
@@ -20,7 +20,7 @@ public class Name {
         }
     }
 
-    public String getName() {
+    String getName() {
         return this.name;
     }
 
