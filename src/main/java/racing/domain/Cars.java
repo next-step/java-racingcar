@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Cars {
 
+    private static final String INVALID_CAR_COUNT_MESSAGE = "자동차 경주를 진행하기 위해서는 두 대 이상의 자동차가 필요합니다.";
+    private static final int MIN_CAR_COUNT = 2;
+
     private final int carCount;
     private final List<Car> cars;
 
@@ -16,8 +19,8 @@ public class Cars {
     }
 
     private void validateCount(int carCount) {
-        if (carCount == 1) {
-            throw new RuntimeException("자동차 경주를 진행하기 위해서는 두 대 이상의 자동차가 필요합니다.");
+        if (carCount < MIN_CAR_COUNT) {
+            throw new RuntimeException(INVALID_CAR_COUNT_MESSAGE);
         }
     }
 
