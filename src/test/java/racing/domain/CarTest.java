@@ -1,6 +1,7 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,5 +31,14 @@ public class CarTest {
         car.move(randomNumber);
 
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 10})
+    void 랜덤_값이_0과9_사이를_벗어나면_예외가_발생한다(int randomNumber) {
+        Car car = new Car();
+        assertThatThrownBy(() -> car.move(randomNumber))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("랜덤 값이 0과 9 사이여야 합니다.");
     }
 }
