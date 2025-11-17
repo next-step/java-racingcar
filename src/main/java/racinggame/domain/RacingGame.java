@@ -46,7 +46,7 @@ public class RacingGame {
         return Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getWinners() {
+    public Winners getWinners() {
         return Winners.findWinners(this.cars);
     }
 }

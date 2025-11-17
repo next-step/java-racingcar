@@ -18,8 +18,16 @@ public class Winners {
         return String.join(", ", carNames());
     }
 
-    public static List<Car> findWinners(List<Car> cars) {
-        return findWinners(cars, getMaxPosition(cars));
+    public int size() {
+        return winners.size();
+    }
+
+    public boolean contains(Car car) {
+        return winners.contains(car);
+    }
+
+    public static Winners findWinners(List<Car> cars) {
+        return new Winners(findWinners(cars, getMaxPosition(cars)));
     }
 
     private static List<Car> findWinners(List<Car> cars, int maxPosition) {

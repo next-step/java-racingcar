@@ -25,9 +25,9 @@ public class WinnersTest {
         Car woni = new Car("woni", 3);
         List<Car> cars = List.of(pobi, jason, woni);
 
-        List<Car> winners = Winners.findWinners(cars);
+        Winners winners = Winners.findWinners(cars);
 
-        assertThat(winners).hasSize(1);
-        assertThat(winners).contains(pobi);
+        assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.contains(pobi)).isTrue();
     }
 }
