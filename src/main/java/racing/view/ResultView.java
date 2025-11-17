@@ -1,3 +1,7 @@
+package racing.view;
+
+import racing.model.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,5 @@
+package racing.model;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +20,7 @@ class RaceGameTest {
     }
 
     @Test
-    @DisplayName("RaceGame 객체에서 우승자를 정확히 반환한다.")
+    @DisplayName("racing.model.RaceGame 객체에서 우승자를 정확히 반환한다.")
     void getWinnersTest() {
         Winners winners = game.getWinners();
         assertThat(winners).isEqualTo(new Winners(List.of(HONUX)));

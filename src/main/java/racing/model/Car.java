@@ -1,3 +1,5 @@
+package racing.model;
+
 import java.util.Objects;
 
 public class Car {
@@ -5,38 +7,38 @@ public class Car {
     private final CarName name;
     private final Location location;
 
-    Car(String name) {
-        this(name, 0);
+    public Car(String name) {
+        this(new CarName(name), new Location());
     }
 
-    Car(String name, int location) {
+    public Car(String name, int location) {
         this(new CarName(name), new Location(location));
     }
 
-    Car(CarName name, Location location) {
+    public Car(CarName name, Location location) {
         this.name = name;
         this.location = location;
     }
 
-    CarName name() {
+    public CarName name() {
         return name;
     }
 
-    Location location() {
-        return location;
-    }
-
-    void makeMove(int number) {
+    public void makeMove(int number) {
         if (isMovable(number)) {
             location.moveForward();
         }
     }
 
-    boolean isAtLocation(Location targetLocation) {
+    public boolean isAtLocation(Location targetLocation) {
         return this.location.equals(targetLocation);
     }
 
-    String expressLocationWith(String symbol) {
+    public Location max(Location maxLocation) {
+        return this.location.max(maxLocation);
+    }
+
+    public String expressLocationWith(String symbol) {
         return location.toString(symbol);
     }
 

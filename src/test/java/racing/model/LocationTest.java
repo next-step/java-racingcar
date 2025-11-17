@@ -1,3 +1,5 @@
+package racing.model;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -5,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class LocationTest {
     @Test
-    @DisplayName("Location 객체는 음수 값을 가질 수 없다.")
+    @DisplayName("racing.model.Location 객체는 음수 값을 가질 수 없다.")
     void invalidLocationTest() {
         assertThatThrownBy(() -> new Location(-1))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -21,7 +23,7 @@ class LocationTest {
     }
 
     @Test
-    @DisplayName("max 메서드는 두 Location 중 더 큰 값을 가진 Location을 반환한다.")
+    @DisplayName("max 메서드는 두 racing.model.Location 중 더 큰 값을 가진 Location을 반환한다.")
     void maxLocationTest() {
         assertThat(new Location(1).max(new Location(2)))
                 .isEqualTo(new Location(2));

@@ -1,20 +1,28 @@
+package racing.controller;
+
+import racing.model.Cars;
+import racing.model.RaceGame;
+import racing.model.Round;
+import racing.view.ResultView;
+
 public class RaceController {
     private final RaceGame game;
-    private final RoundCount roundCount;
+    private final Round round;
 
     public RaceController(Cars cars, int roundCount) {
-        this(new RaceGame(cars), new RoundCount(roundCount));
+        this(new RaceGame(cars), new Round(roundCount));
     }
 
-    public RaceController(RaceGame game, RoundCount roundCount) {
+    public RaceController(RaceGame game, Round round) {
         this.game = game;
-        this.roundCount = roundCount;
+        this.round = round;
     }
 
     public void start() {
         ResultView.printResultHeader();
-        for (int round = 0; round < roundCount.count(); round++) {
+        while (round.isPlaying()) {
             playRound();
+            round.decreaseRemainingCount();
         }
         ResultView.printWinners(game.getWinners());
     }
