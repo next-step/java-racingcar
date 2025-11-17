@@ -6,6 +6,10 @@ public class CarPosition {
 
     private int position;
 
+    public CarPosition() {
+        this(0);
+    }
+
     public CarPosition(int position) {
         this.position = position;
     }
