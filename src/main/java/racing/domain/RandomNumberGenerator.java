@@ -1,8 +1,8 @@
-package racing.service;
+package racing.domain;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements NumberGenerator {
 
     private static final int RANDOM_MAX_VALUE = 10;
 
@@ -12,6 +12,7 @@ public class RandomNumberGenerator {
         this.random = new Random();
     }
 
+    @Override
     public int generate() {
         return random.nextInt(RANDOM_MAX_VALUE);
     }
