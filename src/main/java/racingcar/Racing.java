@@ -12,6 +12,13 @@ public class Racing {
         }
     }
 
+    public void addCar(Car car) {
+        if (cars.contains(car)) {
+            throw new IllegalArgumentException("각 자동차의 이름은 중복될 수 없습니다.");
+        }
+        cars.add(car);
+    }
+
     public List<String> play() {
         List<String> roundResults = new ArrayList<>();
         for (Car car : cars) {
