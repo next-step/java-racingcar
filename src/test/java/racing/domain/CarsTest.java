@@ -1,5 +1,6 @@
 package racing.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
@@ -12,5 +13,12 @@ public class CarsTest {
         assertThatThrownBy(() -> new Cars(1))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("자동차 경주를 진행하기 위해서는 두 대 이상의 자동차가 필요합니다.");
+    }
+
+    @Test
+    void 입력한_자동차의_대수만큼_자동차가_생성된다() {
+        Cars cars = new Cars(3);
+
+        assertThat(cars.size()).isEqualTo(3);
     }
 }
