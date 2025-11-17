@@ -7,8 +7,12 @@ public class RacingCar {
     private CarName name;
 
     public RacingCar(String name) {
-        this.name = new CarName(name);
-        this.position = new Position();
+        this(new Position(), new CarName(name));
+    }
+
+    public RacingCar(Position position, CarName name) {
+        this.position = position;
+        this.name = name;
     }
 
     public String getName() {
@@ -29,7 +33,7 @@ public class RacingCar {
         }
     }
 
-    public boolean isGreaterThanPosition(Position position) {
-        return this.position.value() >= position.value();
+    public boolean isGreaterThanPosition(Position other) {
+        return position.isGreaterThan(other);
     }
 }

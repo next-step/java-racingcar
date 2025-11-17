@@ -6,9 +6,16 @@ import java.util.List;
 public class RacingGame {
 
     private List<RacingCar> racingCars;
+    private int tryCount;
 
     public RacingGame(String name) {
         racingCars = CarFactory.from(name);
+        tryCount = 0;
+    }
+
+    public RacingGame(String name, int tryCount) {
+        racingCars = CarFactory.from(name);
+        this.tryCount = tryCount;
     }
 
     public void playGame() {
@@ -49,5 +56,16 @@ public class RacingGame {
             maxPosition = racingCar.getPosition();
         }
         return maxPosition;
+    }
+
+    public boolean isEnd() {
+        if (tryCount == 0) {
+            return false;
+        }
+
+        playGame();
+        tryCount--;
+
+        return true;
     }
 }

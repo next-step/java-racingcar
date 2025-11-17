@@ -3,16 +3,18 @@ package carRacing;
 import java.util.Objects;
 
 public class Position {
+    private int value;
 
     public Position() {
-        new Position(0);
+        this(0);
     }
 
     public Position(int value) {
+        if (value < 0) {
+            throw new RuntimeException();
+        }
         this.value = value;
     }
-
-    private int value;
 
     public int value() {
         return value;
@@ -20,13 +22,6 @@ public class Position {
 
     public void plus() {
         value++;
-    }
-
-    public void printPosition() {
-        for (int i = 0; i < value; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
     }
 
     @Override
@@ -47,5 +42,9 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(value);
+    }
+
+    public boolean isGreaterThan(Position other) {
+        return value >= other.value;
     }
 }

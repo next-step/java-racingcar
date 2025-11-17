@@ -6,14 +6,17 @@ public class ResultView {
 
     public static void printResult(List<RacingCar> racingCars) {
         for (RacingCar racingCar : racingCars) {
-            printPosition(racingCar);
+            System.out.print(racingCar.getName() + " : ");
+            printPosition(racingCar.getPosition());
         }
         System.out.println();
     }
 
-    private static void printPosition(RacingCar racingCar) {
-        System.out.print(racingCar.getName() + " : ");
-        racingCar.getPosition().printPosition();
+    private static void printPosition(Position position) {
+        for (int i = 0; i < position.value(); i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 
     public static void printWinners(List<String> winners) {
