@@ -8,7 +8,8 @@ public class StringAddCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        List<String> tokens = new InputParser(input).getTokens();
+        InputParser inputParser = new InputParser();
+        List<String> tokens = inputParser.split(input);
         Numbers numbers = new Numbers(tokens);
         return numbers.sum();
     }
