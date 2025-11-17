@@ -1,11 +1,8 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarTest {
 
@@ -15,30 +12,19 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    void 랜덤_값이_0과3_사이의_값일_때는_전진하지_않는다(int randomNumber) {
+    @Test
+    void 이동_전략이_false이면_전진하지_않는다() {
         Car car = new Car();
-        car.move(randomNumber);
+        car.move(() -> false);
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 9})
-    void 랜덤_값이_4와9_사이의_값일_때는_전진한다(int randomNumber) {
+    @Test
+    void 이동_전략이_true이면_전진한다() {
         Car car = new Car();
-        car.move(randomNumber);
+        car.move(() -> true);
 
         assertThat(car.getPosition()).isEqualTo(1);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 10})
-    void 랜덤_값이_0과9_사이를_벗어나면_예외가_발생한다(int randomNumber) {
-        Car car = new Car();
-        assertThatThrownBy(() -> car.move(randomNumber))
-                .isInstanceOf(RuntimeException.class)
-                .hasMessageContaining("랜덤 값이 0과 9 사이여야 합니다.");
     }
 }
