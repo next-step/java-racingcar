@@ -20,8 +20,8 @@ class TryNo {
         return new TryNo(this.value - 1);
     }
 
-    boolean isZero() {
-        return this.value == 0;
+    boolean isPositive() {
+        return this.value > 0;
     }
 
     @Override
