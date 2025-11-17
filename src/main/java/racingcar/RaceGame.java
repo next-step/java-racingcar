@@ -13,6 +13,12 @@ public class RaceGame {
     private final GameCount gameCount;
     private final Random random;
 
+    public RaceGame(List<Car> cars, GameCount gameCount) {
+        this.cars = cars;
+        this.gameCount = gameCount;
+        this.random = new Random();
+    }
+
     public RaceGame(List<String> carNames, int gameCount, Random random) {
         List<CarName> validatedNames = validateCarNames(carNames);
         this.cars = createCars(validatedNames);
