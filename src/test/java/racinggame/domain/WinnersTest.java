@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinnersTest {
     @Test
@@ -16,6 +17,14 @@ public class WinnersTest {
         Winners winners = new Winners(cars);
         assertThat(winners.carNames()).contains("pobi", "jason");
         assertThat(winners.joinWithComma()).isEqualTo("pobi, jason");
+    }
+
+    @Test
+    void validate() {
+        assertThatThrownBy(() -> new Winners(null))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Winners(List.of()))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
