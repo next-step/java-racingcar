@@ -21,7 +21,7 @@ public class RacingGame {
         return racingCars;
     }
 
-    public List<String> selectWinner() {
+    public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
         Position maxPosition = getMaxPosition(racingCars);
         for (RacingCar racingCar : racingCars) {

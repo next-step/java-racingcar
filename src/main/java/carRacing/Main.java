@@ -8,6 +8,6 @@ public class Main {
         TryCount tryCount = new TryCount(InputView.initTryCount(), racingGame);
         tryCount.playGame();
 
-        ResultView.printWinner(racingGame);
+        ResultView.printWinners(racingGame.findWinners());
     }
 }

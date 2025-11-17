@@ -16,8 +16,8 @@ public class ResultView {
         racingCar.getPosition().printPosition();
     }
 
-    public static void printWinner(RacingGame racingGame) {
-        System.out.println(String.join(", ", racingGame.selectWinner()) + "가 최종 우승했습니다.");
+    public static void printWinners(List<String> winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
 

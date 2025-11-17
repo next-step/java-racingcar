@@ -45,13 +45,13 @@ class RacingGameTest {
     @DisplayName("게임이 끝나면 승자가 나온다")
     void selectWinner_greaterThan_0() {
         racingGame.playGame();
-        assertThat(racingGame.selectWinner()).hasSizeGreaterThan(0);
+        assertThat(racingGame.findWinners()).hasSizeGreaterThan(0);
     }
 
     @Test
     @DisplayName("참가자중에 승리자가 있다")
     void selectWinner_winner() {
         racingGame.playGame();
-        assertThat("kim,lee").contains(racingGame.selectWinner());
+        assertThat("kim,lee").contains(racingGame.findWinners());
     }
 }
