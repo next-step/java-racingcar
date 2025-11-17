@@ -5,7 +5,6 @@ import java.util.Random;
 public class Car {
     private static final int FORWARD_NUM = 4;
     private static final int MAX_BOUND = 10;
-    public static final int NAME_MAX_LENGTH = 5;
 
     private final Name name;
     private int position = 0;
