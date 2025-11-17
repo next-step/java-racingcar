@@ -1,6 +1,7 @@
 package racing.view;
 
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 public class InputView {
 
@@ -13,20 +14,21 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int readCarCount() {
-        return readPositiveNumber(CAR_COUNT_INPUT_MESSAGE);
+        System.out.println(CAR_COUNT_INPUT_MESSAGE);
+        return repeatUntilReadValidInput(InputView::readPositiveNumber);
     }
 
     public static int readTryCount() {
-        return readPositiveNumber(TRY_COUNT_INPUT_MESSAGE);
+        System.out.println(TRY_COUNT_INPUT_MESSAGE);
+        return repeatUntilReadValidInput(InputView::readPositiveNumber);
     }
 
-    private static int readPositiveNumber(String message) {
-        String input = readLine(message);
+    private static int readPositiveNumber() {
+        String input = readLine();
         return parsePositiveNumber(input);
     }
 
-    private static String readLine(String message) {
-        System.out.println(message);
+    private static String readLine() {
         return scanner.nextLine();
     }
 
@@ -52,5 +54,15 @@ public class InputView {
 
     private static boolean isBlank(String input) {
         return input == null || input.isEmpty();
+    }
+
+    private static <T> T repeatUntilReadValidInput(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (RuntimeException exception) {
+                System.out.println(exception.getMessage());;
+            }
+        }
     }
 }
