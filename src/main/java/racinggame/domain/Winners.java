@@ -4,6 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
+    private final List<Car> winners;
+
+    public Winners(List<Car> winners) {
+        this.winners = winners;
+    }
+
+    public List<String> carNames() {
+        return winners.stream().map(Car::getName).toList();
+    }
+
+    public String joinWithComma() {
+        return String.join(", ", carNames());
+    }
+
     public static List<Car> findWinners(List<Car> cars) {
         return findWinners(cars, getMaxPosition(cars));
     }

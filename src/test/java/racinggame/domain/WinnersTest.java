@@ -8,6 +8,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinnersTest {
     @Test
+    void carNames() {
+        Car pobi = new Car("pobi", 5);
+        Car jason = new Car("jason", 4);
+        List<Car> cars = List.of(pobi, jason);
+
+        Winners winners = new Winners(cars);
+        assertThat(winners.carNames()).contains("pobi", "jason");
+        assertThat(winners.joinWithComma()).isEqualTo("pobi, jason");
+    }
+
+    @Test
     void 우승자_구하기() {
         Car pobi = new Car("pobi", 5);
         Car jason = new Car("jason", 4);
