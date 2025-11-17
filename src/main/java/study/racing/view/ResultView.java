@@ -11,9 +11,11 @@ public class ResultView {
 
     private static final String WINNER_SEPARATOR = ", ";
     private static final String MARK = "-";
+    private static final String START_GAME = "실행 결과";
+    private static final String WINERS_GAME = "가 최종 우승했습니다.";
 
     public static void printStartGame() {
-        System.out.println("실행 결과");
+        System.out.println(START_GAME);
     }
 
     public static void printGameRound(Car car) {
@@ -29,7 +31,7 @@ public class ResultView {
     }
 
     public static void printWinners(Cars cars) {
-        System.out.println(joinWinnerNames(cars.topRankCars()).concat("가 최종 우승했습니다."));
+        System.out.println(joinWinnerNames(cars.topRankCars()).concat(WINERS_GAME));
     }
 
     private static String joinWinnerNames(List<Car> winnerCars) {

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,7 +21,7 @@ class CarsTest {
     @NullAndEmptySource
     @ParameterizedTest
     void 이름이_null_또는_빈값이면_예외발생(String name) {
-        assertThatThrownBy(() -> new Cars(new CarNames(new RaceInput(Arrays.asList(name, name), 2).getNames())))
+        assertThatThrownBy(() -> new Cars(new CarNames(name)))
                 .isInstanceOf(RuntimeException.class);
     }
 

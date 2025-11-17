@@ -9,9 +9,7 @@ class GameTest {
 
     @Test
     void 차량_초기위치_확인() {
-        Game game = new Game(new Cars("car1"), 0);
-        game.playGame();
-
+        Game game = new Game(new Cars("car1"), 1);
         assertThat(game.getCars().getCar(0).getPosition()).isEqualTo(new CarPosition(0));
     }
 
