@@ -3,7 +3,6 @@ package racing.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-
 import org.junit.jupiter.api.Test;
 
 public class CarsTest {
@@ -20,5 +19,15 @@ public class CarsTest {
         Cars cars = new Cars(3);
 
         assertThat(cars.size()).isEqualTo(3);
+    }
+
+    @Test
+    void 모든_자동차들이_이동한다() {
+        Cars cars = new Cars(3);
+        cars.moveCars(() -> true);
+
+        for (Car car : cars.getCars()) {
+            assertThat(car.getPosition()).isEqualTo(1);
+        }
     }
 }
