@@ -3,7 +3,7 @@ package racingCar;
 import java.util.Objects;
 
 public class Distance {
-    private int value;
+    private final int value;
     public Distance() {
         this(0);
     }
