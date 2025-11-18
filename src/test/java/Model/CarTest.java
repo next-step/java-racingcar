@@ -1,6 +1,7 @@
 package Model;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -14,6 +15,7 @@ public class CarTest {
         car = new Car(0);
     }
 
+    @DisplayName("전진할 수 있는지 조건을 체크한다.")
     @ParameterizedTest
     @CsvSource({
             "1, false",
@@ -27,6 +29,7 @@ public class CarTest {
         assertThat(car.canMoveForward(randomNumber)).isEqualTo(expected);
     }
 
+    @DisplayName("난수에 따라 자동차는 전진 혹은 정지한다.")
     @ParameterizedTest
     @CsvSource({
             "1, 0",
