@@ -11,7 +11,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car(0);
     }
 
     @ParameterizedTest
@@ -27,4 +27,19 @@ public class CarTest {
         assertThat(car.canMoveForward(randomNumber)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "1, 0",
+            "2, 0",
+            "3, 0",
+            "4, 1",
+            "5, 1",
+            "9, 1"
+    })
+    public void moveForward(int randomNumber, int expectedDiff) {
+        int prevPosition = car.getPosition();
+        car.tryMoveForward(randomNumber);
+
+        assertThat(car.getPosition() - prevPosition).isEqualTo(expectedDiff);
+    }
 }
