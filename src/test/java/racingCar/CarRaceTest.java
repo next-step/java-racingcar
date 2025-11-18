@@ -24,9 +24,9 @@ public class CarRaceTest {
 
         List<Car> cars = carRace.getCars();
 
-        assertTrue(cars.get(0).getDistance() == 0 || cars.get(0).getDistance() == 1);
-        assertTrue(cars.get(1).getDistance() == 0 || cars.get(1).getDistance() == 1);
-        assertTrue(cars.get(2).getDistance() == 0 || cars.get(2).getDistance() == 1);
+        assertTrue(cars.get(0).getDistance().equals(new Distance()) || cars.get(0).getDistance().equals(new Distance(1)));
+        assertTrue(cars.get(1).getDistance().equals(new Distance()) || cars.get(1).getDistance().equals(new Distance(1)));
+        assertTrue(cars.get(2).getDistance().equals(new Distance()) || cars.get(2).getDistance().equals(new Distance(1)));
     }
 
     @Test
@@ -47,9 +47,9 @@ public class CarRaceTest {
 
     @Test
     void 우승자_출력() {
-        Car pobi = new Car("pobi",5);
-        Car crong = new Car("crong",2);
-        Car honux = new Car("honux",2);
+        Car pobi = new Car("pobi",new Distance(5));
+        Car crong = new Car("crong",new Distance(2));
+        Car honux = new Car("honux",new Distance(2));
 
         List<Car> cars = Arrays.asList(pobi, crong, honux);
 

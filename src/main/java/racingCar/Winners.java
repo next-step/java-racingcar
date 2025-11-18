@@ -8,7 +8,7 @@ public class Winners {
         return getWinners(carList, getMaxDistance(carList));
     }
 
-    private static List<Car> getWinners(List<Car> carList, int maxDistance) {
+    private static List<Car> getWinners(List<Car> carList, Distance maxDistance) {
         List<Car> winners = new ArrayList<>();
 
         for(Car car : carList) {
@@ -19,8 +19,8 @@ public class Winners {
         return winners;
     }
 
-    private static int getMaxDistance(List<Car> carList) {
-        int max = 0;
+    private static Distance getMaxDistance(List<Car> carList) {
+        Distance max = new Distance();
         for(Car car : carList) {
             max = car.max(max);
         }

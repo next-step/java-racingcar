@@ -3,13 +3,13 @@ package racingCar;
 public class Car {
     private static final int LIMIT_NUM = 4;
     private static final int LIMIT_NAME_LENGH = 5;
-    private int distance;
+    private Distance distance;
     private String name;
 
     public Car(String name) {
-        this(name,0);
+        this(name,new Distance());
     }
-    public Car(String name, int distance) {
+    public Car(String name, Distance distance) {
         checkName(name);
         this.name =  name;
         this.distance = distance;
@@ -24,25 +24,25 @@ public class Car {
         return this.name;
     }
 
-    public int getDistance() {
+    public Distance getDistance() {
         return this.distance;
     }
 
     public void move(int dis) {
         if (isMoveable(dis)) {
-            this.distance++;
+            this.distance.plus();
         }
+    }
+
+    public Distance max(Distance max) {
+        return this.distance.greaterThan(max);
     }
 
     private boolean isMoveable(int dis) {
         return dis >= LIMIT_NUM;
     }
 
-    public int max(int max) {
-        return Math.max(max, this.distance);
-    }
-
-    public boolean isMax(int max) {
-        return this.distance == max;
+    public boolean isMax(Distance max) {
+        return this.distance.equals(max);
     }
 }
