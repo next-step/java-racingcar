@@ -36,6 +36,8 @@
     * Position 클래스 구현
     * Name 클래스 구현
   * RacingGame 클래스 생성
+    * TryCount 클래스 구현
+    * CarFactory 클래스 구현
 * util 패키지 작성
   * RandomUtil 클래스 생성
 * view 패키지 작성
