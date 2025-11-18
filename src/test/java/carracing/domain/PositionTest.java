@@ -17,7 +17,7 @@ class PositionTest {
     @DisplayName("생성 후 움직이면 position이 증가한다")
     void move() {
         Position position = new Position();
-        Position movedPosition = position.move();
+        Position movedPosition = position.increase();
         assertThat(movedPosition.value()).isEqualTo(1);
     }
 

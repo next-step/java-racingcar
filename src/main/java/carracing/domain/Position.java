@@ -18,7 +18,7 @@ public class Position {
         return value;
     }
 
-    public Position move() {
+    public Position increase() {
         return new Position(value + 1);
     }
 
