@@ -1,6 +1,6 @@
-package racingcar;
+package racinggame.domain;
 
-import static racingcar.OutputView.getPositionDisplay;
+import static racinggame.view.OutputView.getPositionDisplay;
 
 public class Car {
 
@@ -10,9 +10,10 @@ public class Car {
     public static final int MAX_NAME_LENGTH = 5;
 
     private int position;
-    private String name;
+    private final String name;
 
     public Car() {
+        this.name = "";
         this.position = 0;
     }
 

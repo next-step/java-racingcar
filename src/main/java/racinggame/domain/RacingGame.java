@@ -1,23 +1,16 @@
-package racingcar;
-
-import static racingcar.InputView.addCar;
+package racinggame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Racing {
+public class RacingGame {
     private final List<Car> cars = new ArrayList<>();
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public Racing(int number) {
+    public RacingGame(int number) {
         for (int i = 0; i < number; i++) {
             cars.add(new Car());
         }
     }
-
 
     public List<String> play() {
         List<String> roundResults = new ArrayList<>();
@@ -35,7 +28,7 @@ public class Racing {
         return (int) (Math.random() * 10);
     }
 
-    public String getWinners() {
-        return "";
+    public List<Car> getCars() {
+        return cars;
     }
 }
