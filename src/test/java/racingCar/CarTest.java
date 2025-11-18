@@ -11,7 +11,7 @@ public class CarTest {
     @Test
     void 자동차_처음_위치_0() {
         Car car = new Car("hojun");
-        assertThat(car.getDistance()).isEqualTo(new Distance());
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 
 
@@ -21,7 +21,7 @@ public class CarTest {
         Car car = new Car("hojun");
         car.move(dis);
 
-        assertThat(car.getDistance()).isEqualTo(new Distance(1));
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -30,6 +30,6 @@ public class CarTest {
         Car car = new Car("hojun");
         car.move(dis);
 
-        assertThat(car.getDistance()).isEqualTo(new Distance());
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }

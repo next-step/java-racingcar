@@ -2,7 +2,6 @@ package racingCar;
 
 public class Car {
     private static final int LIMIT_NUM = 4;
-    private static final int LIMIT_NAME_LENGH = 5;
     private Distance distance;
     private Name name;
 
@@ -18,8 +17,8 @@ public class Car {
         return this.name.value();
     }
 
-    public Distance getDistance() {
-        return this.distance;
+    public int getDistance() {
+        return this.distance.value();
     }
 
     public void move(int dis) {

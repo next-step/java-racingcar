@@ -24,9 +24,9 @@ public class CarRaceTest {
 
         List<Car> cars = carRace.getCars();
 
-        assertTrue(cars.get(0).getDistance().equals(new Distance()) || cars.get(0).getDistance().equals(new Distance(1)));
-        assertTrue(cars.get(1).getDistance().equals(new Distance()) || cars.get(1).getDistance().equals(new Distance(1)));
-        assertTrue(cars.get(2).getDistance().equals(new Distance()) || cars.get(2).getDistance().equals(new Distance(1)));
+        assertTrue(cars.get(0).getDistance() == 0 || cars.get(0).getDistance() == 1);
+        assertTrue(cars.get(1).getDistance() == 0 || cars.get(1).getDistance() == 1);
+        assertTrue(cars.get(2).getDistance() == 0 || cars.get(2).getDistance() == 1);
     }
 
     @Test
