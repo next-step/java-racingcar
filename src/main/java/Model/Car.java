@@ -3,7 +3,7 @@ package Model;
 public class Car {
     private int position;
 
-    Car(int position) {
+    public Car(int position) {
         this.position = position;
     }
 
