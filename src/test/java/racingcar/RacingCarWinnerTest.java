@@ -8,8 +8,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.InputView.addCar;
 
-public class RacingCarWinnerTest {
+class RacingCarWinnerTest {
 
     @Test
     @DisplayName("자동차 이름을 부여할 수 있다")
@@ -33,13 +34,12 @@ public class RacingCarWinnerTest {
         assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"pobi", "crong", "honux", "pobi"})
+    @Test
     @DisplayName("각 자동차의 이름은 중복될 수 없다")
-    void carNamesCannotBeDuplicated(String name) {
-        Racing racing = new Racing(4);
+    void carNamesCannotBeDuplicated() {
+        addCar("pobi,crong,honux");
 
-        assertThatThrownBy(() -> racing.addCar(new Car(name))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> addCar("pobi")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

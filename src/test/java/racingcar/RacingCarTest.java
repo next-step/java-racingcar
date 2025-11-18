@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class RacingCarTest {
+class RacingCarTest {
     private Car car;
 
     @BeforeEach
@@ -50,7 +50,7 @@ public class RacingCarTest {
     void returnEmptyString_WhenNotMoved(int expected) {
         car.move(expected);
 
-        assertThat(car.move(expected)).isEqualTo("");
+        assertThat(car.move(expected)).isEmpty();
     }
 
     @ParameterizedTest

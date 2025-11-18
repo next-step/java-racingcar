@@ -1,10 +1,16 @@
 package racingcar;
 
+import static racingcar.InputView.addCar;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
     private final List<Car> cars = new ArrayList<>();
+
+    public List<Car> getCars() {
+        return cars;
+    }
 
     public Racing(int number) {
         for (int i = 0; i < number; i++) {
@@ -12,12 +18,6 @@ public class Racing {
         }
     }
 
-    public void addCar(Car car) {
-        if (cars.contains(car)) {
-            throw new IllegalArgumentException("각 자동차의 이름은 중복될 수 없습니다.");
-        }
-        cars.add(car);
-    }
 
     public List<String> play() {
         List<String> roundResults = new ArrayList<>();
@@ -33,5 +33,9 @@ public class Racing {
 
     private int generateRandomNumber() {
         return (int) (Math.random() * 10);
+    }
+
+    public String getWinners() {
+        return "";
     }
 }
