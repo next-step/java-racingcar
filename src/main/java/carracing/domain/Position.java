@@ -34,4 +34,8 @@ public class Position {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    public boolean isGreaterThanOther(Position other) {
+        return value >= other.value();
+    }
 }
