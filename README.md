@@ -33,6 +33,8 @@
 ## 기능 목록
 * domain 패키지 작성
   * RacingCar 클래스 생성
+    * Position 클래스 구현
+    * Name 클래스 구현
   * RacingGame 클래스 생성
 * util 패키지 작성
   * RandomUtil 클래스 생성
