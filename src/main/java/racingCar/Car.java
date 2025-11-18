@@ -7,9 +7,7 @@ public class Car {
     private String name;
 
     public Car(String name) {
-        checkName(name);
-        this.name = name;
-        this.distance = 0;
+        this(name,0);
     }
     public Car(String name, int distance) {
         checkName(name);

@@ -40,4 +40,8 @@ public class CarRace {
     private int getRandomNum() {
         return random.nextInt(RANDOM_MAX_NUM);
     }
+
+    public int carNos() {
+        return this.cars.size();
+    }
 }

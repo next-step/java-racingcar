@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Winners {
     public static List<Car> getWinners(List<Car> carList) {
+        return getWinners(carList, getMaxDistance(carList));
+    }
+
+    private static List<Car> getWinners(List<Car> carList, int maxDistance) {
         List<Car> winners = new ArrayList<>();
-        int max = getMaxDistance(carList);
 
         for(Car car : carList) {
-            if(car.isMax(max)) {
+            if(car.isMax(maxDistance)) {
                 winners.add(car);
             }
         }

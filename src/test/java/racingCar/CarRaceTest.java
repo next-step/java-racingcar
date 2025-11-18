@@ -12,7 +12,8 @@ public class CarRaceTest {
     @Test
     void 입력받은_차량_대수() {
         CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"});
-        assertThat(carRace.getCars().size()).isEqualTo(3);
+        assertThat(carRace.getWinners()).hasSize(3);
+        assertThat(carRace.carNos()).isEqualTo(3);
     }
 
     @Test
