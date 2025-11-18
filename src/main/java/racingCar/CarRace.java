@@ -1,17 +1,14 @@
 package racingCar;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 
 public class CarRace {
-    private static final int RANDOM_MAX_NUM = 10;
     private final List<Car> cars;
-    private final Random random;
+    private final RandomNumber random;
 
     public CarRace(String[] names) {
-        random = new Random();
+        random = new RandomNumber();
         cars = createCars(names);
     }
     private static List<Car> createCars(String[] names) {
@@ -38,7 +35,7 @@ public class CarRace {
     }
 
     private int getRandomNum() {
-        return random.nextInt(RANDOM_MAX_NUM);
+        return random.getRandomNum();
     }
 
     public int carNos() {
