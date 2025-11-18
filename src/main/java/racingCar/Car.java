@@ -4,24 +4,18 @@ public class Car {
     private static final int LIMIT_NUM = 4;
     private static final int LIMIT_NAME_LENGH = 5;
     private Distance distance;
-    private String name;
+    private Name name;
 
     public Car(String name) {
-        this(name,new Distance());
+        this(new Name(name), new Distance());
     }
-    public Car(String name, Distance distance) {
-        checkName(name);
+    public Car(Name name, Distance distance) {
         this.name =  name;
         this.distance = distance;
     }
-    private void checkName(String name) {
-        if (name.length() > LIMIT_NAME_LENGH) {
-            throw new RuntimeException("이름이 5글자 초과되면 안됩니다.");
-        }
-    }
 
     public String getName() {
-        return this.name;
+        return this.name.value();
     }
 
     public Distance getDistance() {
@@ -30,7 +24,7 @@ public class Car {
 
     public void move(int dis) {
         if (isMoveable(dis)) {
-            this.distance.plus();
+            this.distance = this.distance.plus();
         }
     }
 

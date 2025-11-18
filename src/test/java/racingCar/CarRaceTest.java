@@ -47,9 +47,9 @@ public class CarRaceTest {
 
     @Test
     void 우승자_출력() {
-        Car pobi = new Car("pobi",new Distance(5));
-        Car crong = new Car("crong",new Distance(2));
-        Car honux = new Car("honux",new Distance(2));
+        Car pobi = new Car(new Name("pobi"), new Distance(5));
+        Car crong = new Car(new Name("crong"), new Distance(2));
+        Car honux = new Car(new Name("honux"), new Distance(2));
 
         List<Car> cars = Arrays.asList(pobi, crong, honux);
 
