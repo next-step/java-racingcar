@@ -12,8 +12,8 @@ public class ResultView {
         print("실행 결과");
     }
 
-    public static void printResult(RaceGame game) {
-        print(createCarsLocationString(game.cars()));
+    public static void printResult(Cars cars) {
+        print(createCarsLocationString(cars));
     }
 
     public static void printWinners(Winners winners) {
