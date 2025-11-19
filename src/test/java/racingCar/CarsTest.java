@@ -2,6 +2,8 @@ package racingCar;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import racingCar.domain.Car;
+import racingCar.domain.Cars;
 
 import java.util.List;
 
@@ -9,7 +11,7 @@ public class CarsTest {
     @Test
     void init() {
         Cars cars = new Cars(new String[]{"hobi", "crong", "honux"});
-        Assertions.assertThat(cars.value().size()).isEqualTo(3);
+        Assertions.assertThat(cars.value()).hasSize(3);
     }
     @Test
     void createCar() {

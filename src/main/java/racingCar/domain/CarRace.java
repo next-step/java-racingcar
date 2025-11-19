@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.List;
 
@@ -31,9 +31,5 @@ public class CarRace {
 
     private int getRandomNum() {
         return random.getRandomNum();
-    }
-
-    public int carNos() {
-        return this.cars.value().size();
     }
 }

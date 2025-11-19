@@ -1,5 +1,9 @@
 package racingCar;
 
+import racingCar.domain.CarRace;
+import racingCar.view.InputView;
+import racingCar.view.ResultView;
+
 public class Main {
     public static void main(String[] args) {
         String[] names = InputView.inputCarName();

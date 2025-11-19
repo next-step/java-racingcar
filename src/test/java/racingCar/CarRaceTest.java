@@ -1,6 +1,7 @@
 package racingCar;
 
 import org.junit.jupiter.api.Test;
+import racingCar.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,6 @@ public class CarRaceTest {
     void 입력받은_차량_대수() {
         CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"});
         assertThat(carRace.getWinners().value()).hasSize(3);
-        assertThat(carRace.carNos()).isEqualTo(3);
     }
 
     @Test

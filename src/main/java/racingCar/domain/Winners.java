@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,4 +36,13 @@ public class Winners {
         }
         return max;
     }
+
+    public List<String> getNames() {
+        List<String> names = new ArrayList<>();
+        for(Car car : cars) {
+            names.add(car.getName());
+        }
+        return names;
+    }
+
 }

@@ -1,6 +1,7 @@
 package racingCar;
 
 import org.junit.jupiter.api.Test;
+import racingCar.domain.Distance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
