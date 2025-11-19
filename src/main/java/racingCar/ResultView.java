@@ -9,11 +9,12 @@ public class ResultView {
         }
         System.out.println();
     }
-    public static void showWinner(List<Car> cars) {
+    public static void showWinner(Winners winners) {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < cars.size(); i++) {
-            sb.append(cars.get(i).getName());
-            if(i != cars.size()-1) {
+        List<Car> winnerList = winners.value();
+        for(int i = 0; i < winnerList.size(); i++) {
+            sb.append(winnerList.get(i).getName());
+            if(i != winnerList.size()-1) {
                 sb.append(", ");
             }
         }

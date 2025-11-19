@@ -8,6 +8,7 @@ public class Distance {
         this(0);
     }
     public Distance(int value) {
+        checkPositive(value);
         this.value = value;
     }
 
@@ -24,6 +25,11 @@ public class Distance {
     }
     public Distance greaterThan(Distance max) {
         return greaterThan(max.value());
+    }
+    private void checkPositive(int value) {
+        if(value < 0) {
+            throw new RuntimeException("음수 값은 들어갈 수 없습니다.");
+        }
     }
 
     @Override

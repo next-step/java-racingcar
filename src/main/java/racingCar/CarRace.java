@@ -1,37 +1,32 @@
 package racingCar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRace {
-    private final List<Car> cars;
+    private final Cars cars;
     private final RandomNumber random;
 
     public CarRace(String[] names) {
-        random = new RandomNumber();
-        cars = createCars(names);
+        this(new RandomNumber(), new Cars(names));
     }
-    private static List<Car> createCars(String[] names) {
-        List<Car> carList = new ArrayList<>();
-        for(String name : names) {
-            carList.add(new Car(name));
-        }
 
-        return carList;
+    public CarRace(RandomNumber random, Cars cars) {
+        this.random = random;
+        this.cars = cars;
     }
 
     public List<Car> getCars() {
-        return this.cars;
+        return this.cars.value();
     }
 
     public void play() {
-        for (Car car : this.cars) {
+        for (Car car : this.cars.value()) {
             car.move(getRandomNum());
         }
     }
 
-    public List<Car> getWinners() {
-        return Winners.getWinners(cars);
+    public Winners getWinners() {
+        return cars.getWinners();
     }
 
     private int getRandomNum() {
@@ -39,6 +34,6 @@ public class CarRace {
     }
 
     public int carNos() {
-        return this.cars.size();
+        return this.cars.value().size();
     }
 }

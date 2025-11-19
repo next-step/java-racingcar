@@ -12,7 +12,7 @@ public class CarRaceTest {
     @Test
     void 입력받은_차량_대수() {
         CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"});
-        assertThat(carRace.getWinners()).hasSize(3);
+        assertThat(carRace.getWinners().value()).hasSize(3);
         assertThat(carRace.carNos()).isEqualTo(3);
     }
 
@@ -53,8 +53,8 @@ public class CarRaceTest {
 
         List<Car> cars = Arrays.asList(pobi, crong, honux);
 
-        List<Car> winners = Winners.getWinners(cars);
+        Winners winners = Winners.getWinners(cars);
 
-        assertThat(winners).contains(pobi);
+        assertThat(winners.value()).contains(pobi);
     }
 }

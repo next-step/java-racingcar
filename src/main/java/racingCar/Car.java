@@ -2,12 +2,13 @@ package racingCar;
 
 public class Car {
     private static final int LIMIT_NUM = 4;
+    private final Name name;
     private Distance distance;
-    private Name name;
 
     public Car(String name) {
         this(new Name(name), new Distance());
     }
+
     public Car(Name name, Distance distance) {
         this.name =  name;
         this.distance = distance;

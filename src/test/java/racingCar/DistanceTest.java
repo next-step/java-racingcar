@@ -3,6 +3,7 @@ package racingCar;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class DistanceTest {
 
@@ -24,5 +25,12 @@ public class DistanceTest {
         Distance greaterDistance = new Distance(2);
 
         assertThat(distance.greaterThan(greaterDistance)).isEqualTo(greaterDistance);
+    }
+
+    @Test
+    void 음수_값을_허용하지_않음() {
+        assertThatThrownBy(() -> new Distance(-1))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수 값은 들어갈 수 없습니다.");
     }
 }

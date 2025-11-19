@@ -4,11 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winners {
-    public static List<Car> getWinners(List<Car> carList) {
+    private final List<Car> cars;
+
+    public Winners(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> value() {
+        return this.cars;
+    }
+
+    public static Winners getWinners(List<Car> carList) {
         return getWinners(carList, getMaxDistance(carList));
     }
 
-    private static List<Car> getWinners(List<Car> carList, Distance maxDistance) {
+    private static Winners getWinners(List<Car> carList, Distance maxDistance) {
         List<Car> winners = new ArrayList<>();
 
         for(Car car : carList) {
@@ -16,7 +26,7 @@ public class Winners {
                 winners.add(car);
             }
         }
-        return winners;
+        return new Winners(winners);
     }
 
     private static Distance getMaxDistance(List<Car> carList) {
