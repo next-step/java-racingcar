@@ -9,14 +9,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class WinnersTest {
     @Test
-    void carNames() {
+    void getWinnerNames() {
         Car pobi = new Car("pobi", 5);
         Car jason = new Car("jason", 4);
         List<Car> cars = List.of(pobi, jason);
 
         Winners winners = new Winners(cars);
-        assertThat(winners.carNames()).contains("pobi", "jason");
-        assertThat(winners.joinWithComma()).isEqualTo("pobi, jason");
+        assertThat(winners.getWinnerNames()).contains("pobi", "jason");
+        assertThat(winners.getCommaSeparatedWinnerNames()).isEqualTo("pobi, jason");
     }
 
     @Test

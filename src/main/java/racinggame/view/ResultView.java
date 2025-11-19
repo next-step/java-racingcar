@@ -15,6 +15,6 @@ public class ResultView {
     }
 
     public static void printWinners(Winners winners) {
-        System.out.println(String.format("%s가 최종 우승했습니다.", winners.joinWithComma()));
+        System.out.println(String.format("%s가 최종 우승했습니다.", winners.getCommaSeparatedWinnerNames()));
     }
 }

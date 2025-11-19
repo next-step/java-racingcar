@@ -1,7 +1,6 @@
 package racinggame.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Winners {
@@ -18,12 +17,12 @@ public class Winners {
         }
     }
 
-    public List<String> carNames() {
+    public List<String> getWinnerNames() {
         return winners.stream().map(Car::getName).toList();
     }
 
-    public String joinWithComma() {
-        return String.join(", ", carNames());
+    public String getCommaSeparatedWinnerNames() {
+        return String.join(", ", getWinnerNames());
     }
 
     public int size() {
