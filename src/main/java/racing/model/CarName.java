@@ -1,9 +1,11 @@
+package racing.model;
+
 import java.util.Objects;
 
 public class CarName {
     private final String name;
 
-    CarName(String name) {
+    public CarName(String name) {
         if (!isValidName(name)) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }

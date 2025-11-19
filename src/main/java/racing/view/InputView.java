@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+package racing.view;
+
 import java.util.Scanner;
 
 public class InputView {

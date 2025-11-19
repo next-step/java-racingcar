@@ -1,23 +1,25 @@
+package racing.model;
+
 import java.util.*;
 
 public class Cars {
     private final List<Car> cars;
 
-    Cars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    List<Car> cars() {
+    public List<Car> cars() {
         return Collections.unmodifiableList(this.cars);
     }
 
-    void race(Random random, int maxRandomValue) {
+    public void race(Random random, int maxRandomValue) {
         for (Car car : this.cars) {
             car.makeMove(random.nextInt(maxRandomValue));
         }
     }
 
-    Winners winners() {
+    public Winners winners() {
         Location winnerLocation = findMaxLocation();
         return new Winners(findCarsAtLocation(winnerLocation));
     }
@@ -25,7 +27,7 @@ public class Cars {
     private Location findMaxLocation() {
         Location maxLocation = new Location(0);
         for (Car car : this.cars) {
-            maxLocation = car.location().max(maxLocation);
+            maxLocation = car.max(maxLocation);
         }
         return maxLocation;
     }

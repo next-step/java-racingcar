@@ -1,24 +1,30 @@
+package racing.model;
+
 import java.util.Objects;
 
 public class Location {
     private int position;
 
-    Location(int position) {
+    public Location() {
+        this(0);
+    }
+
+    public Location(int position) {
         if (!isValid(position)) {
             throw new IllegalArgumentException("Location은 0 이상의 값이어야 합니다.");
         }
         this.position = position;
     }
 
-    void moveForward() {
+    public void moveForward() {
         this.position++;
     }
 
-    String toString(String symbol) {
+    public String toString(String symbol) {
         return symbol.repeat(this.position);
     }
 
-    Location max(Location compareTo) {
+    public Location max(Location compareTo) {
         if (this.position >= compareTo.position) {
             return this;
         }
