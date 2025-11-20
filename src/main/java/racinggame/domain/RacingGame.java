@@ -11,11 +11,15 @@ public class RacingGame {
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
-        this.cars = initCars(carNames);
+        this(createCars(carNames), tryNo);
+    }
+
+    public RacingGame(List<Car> cars, int tryNo) {
+        this.cars = cars;
         this.tryNo = tryNo;
     }
 
-    private static List<Car> initCars(String carNames) {
+    private static List<Car> createCars(String carNames) {
         if (StringUtils.isBlank(carNames)) {
             throw new IllegalArgumentException("자동차 이름은 값이 존재해야 합니다.");
         }
