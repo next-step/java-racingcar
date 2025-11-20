@@ -4,14 +4,12 @@ import java.util.List;
 
 public class CarRace {
     private final Cars cars;
-    private final RandomNumber random;
 
     public CarRace(String[] names) {
-        this(new RandomNumber(), new Cars(names));
+        this(new Cars(names));
     }
 
-    public CarRace(RandomNumber random, Cars cars) {
-        this.random = random;
+    public CarRace(Cars cars) {
         this.cars = cars;
     }
 
@@ -20,16 +18,10 @@ public class CarRace {
     }
 
     public void play() {
-        for (Car car : this.cars.value()) {
-            car.move(getRandomNum());
-        }
+        this.cars.play();
     }
 
     public Winners getWinners() {
         return cars.getWinners();
-    }
-
-    private int getRandomNum() {
-        return random.getRandomNum();
     }
 }

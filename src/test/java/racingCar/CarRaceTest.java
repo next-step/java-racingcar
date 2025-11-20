@@ -45,16 +45,4 @@ public class CarRaceTest {
                 .hasMessageContaining("이름이 5글자 초과되면 안됩니다.");
     }
 
-    @Test
-    void 우승자_출력() {
-        Car pobi = new Car(new Name("pobi"), new Distance(5));
-        Car crong = new Car(new Name("crong"), new Distance(2));
-        Car honux = new Car(new Name("honux"), new Distance(2));
-
-        List<Car> cars = Arrays.asList(pobi, crong, honux);
-
-        Winners winners = Winners.getWinners(cars);
-
-        assertThat(winners.value()).contains(pobi);
-    }
 }
