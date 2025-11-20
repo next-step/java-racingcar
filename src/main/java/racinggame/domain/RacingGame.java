@@ -32,6 +32,9 @@ public class RacingGame {
     }
 
     public void race() {
+        if (!racing()) {
+            throw new IllegalStateException("게임이 종료되었습니다.");
+        }
         this.tryNo--;
         moveCars();
     }
@@ -52,5 +55,13 @@ public class RacingGame {
 
     public Winners getWinners() {
         return Winners.findWinners(this.cars);
+    }
+
+    @Override
+    public String toString() {
+        return "RacingGame{" +
+                "cars=" + cars +
+                ", tryNo=" + tryNo +
+                '}';
     }
 }
