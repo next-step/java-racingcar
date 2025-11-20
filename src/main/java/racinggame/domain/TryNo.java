@@ -24,7 +24,7 @@ class TryNo {
         return this.value > 0;
     }
 
-    boolean isZeo() {
+    boolean isEnd() {
         return this.value == 0;
     }
 

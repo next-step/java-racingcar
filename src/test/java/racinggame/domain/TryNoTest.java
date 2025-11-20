@@ -7,8 +7,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TryNoTest {
     @Test
-    void isZero() {
-        assertThat(new TryNo(0).isZeo()).isTrue();
+    void isEnd() {
+        assertThat(new TryNo(0).isEnd()).isTrue();
     }
 
     @Test

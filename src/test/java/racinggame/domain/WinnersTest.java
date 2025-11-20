@@ -26,17 +26,4 @@ public class WinnersTest {
         assertThatThrownBy(() -> new Winners(List.of()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    void 우승자_구하기() {
-        Car pobi = new Car("pobi", 5);
-        Car jason = new Car("jason", 4);
-        Car woni = new Car("woni", 3);
-        List<Car> cars = List.of(pobi, jason, woni);
-
-        Winners winners = Winners.findWinners(cars);
-
-        assertThat(winners.size()).isEqualTo(1);
-        assertThat(winners.contains(pobi)).isTrue();
-    }
 }

@@ -8,7 +8,7 @@ public class Car {
     private static final int MAX_BOUND = 10;
 
     private final Name name;
-    private int position = 0;
+    private Position position = new Position();
 
     public Car(final String name) {
         this(name, 0);
@@ -19,12 +19,16 @@ public class Car {
     }
 
     public Car(Name name, int position) {
+        this(name, new Position(position));
+    }
+
+    public Car(Name name, Position position) {
         this.name = name;
         this.position = position;
     }
 
     public int getPosition() {
-        return position;
+        return position.value();
     }
 
     public String getName() {
@@ -35,15 +39,19 @@ public class Car {
         Random random = new Random();
         int randomNo = random.nextInt(MAX_BOUND);
         if (randomNo >= FORWARD_NUM)
-            this.position++;
+            this.position.increase();
+    }
+
+    public RaceResult result() {
+        return new RaceResult(this.name.getName(), this.position.value());
     }
 
     public boolean isMaxPosition(int maxPosition) {
-        return this.position == maxPosition;
+        return this.position.isMaxPosition(maxPosition);
     }
 
     public int max(int maxPosition) {
-        return Math.max(this.position, maxPosition);
+        return this.position.max(maxPosition);
     }
 
     @Override
@@ -51,7 +59,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override

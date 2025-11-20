@@ -12,7 +12,7 @@ public class RacingMain {
         RacingGame racingGame = new RacingGame(carNames, tryNo);
         while(racingGame.racing()) {
             racingGame.race();
-            ResultView.printCars(racingGame.getCars());
+            ResultView.printCars(racingGame.getCar());
         }
         ResultView.printWinners(racingGame.getWinners());
     }
