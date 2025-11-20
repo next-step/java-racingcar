@@ -24,6 +24,10 @@ class TryNo {
         return this.value > 0;
     }
 
+    boolean isZeo() {
+        return this.value == 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
