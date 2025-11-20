@@ -11,7 +11,7 @@ public class WinnersTest {
     @Test
     void getWinnerNames() {
         Car pobi = new Car("pobi", 5);
-        Car jason = new Car("jason", 4);
+        Car jason = new Car("jason", 5);
         List<Car> cars = List.of(pobi, jason);
 
         Winners winners = new Winners(cars);
