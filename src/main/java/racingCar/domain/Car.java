@@ -1,0 +1,42 @@
+package racingCar.domain;
+
+public class Car {
+    private static final int LIMIT_NUM = 4;
+    private final Name name;
+    private Distance distance;
+
+    public Car(String name) {
+        this(new Name(name), new Distance());
+    }
+
+    public Car(Name name, Distance distance) {
+        this.name =  name;
+        this.distance = distance;
+    }
+
+    public String getName() {
+        return this.name.value();
+    }
+
+    public int getDistance() {
+        return this.distance.value();
+    }
+
+    public void move(int dis) {
+        if (isMoveable(dis)) {
+            this.distance = this.distance.plus();
+        }
+    }
+
+    public Distance max(Distance max) {
+        return this.distance.greaterThan(max);
+    }
+
+    private boolean isMoveable(int dis) {
+        return dis >= LIMIT_NUM;
+    }
+
+    public boolean isMax(Distance max) {
+        return this.distance.equals(max);
+    }
+}
