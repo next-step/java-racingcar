@@ -8,14 +8,14 @@ class Name {
 
     Name(String name) {
         validate(name);
-        this.name = name;
+        this.name = name.trim();
     }
 
     private void validate(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("이름은 비어있을 수 없습니다.");
         }
-        if (name.length() > NAME_MAX_LENGTH) {
+        if (name.trim().length() > NAME_MAX_LENGTH) {
             throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
         }
     }
