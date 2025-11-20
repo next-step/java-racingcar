@@ -1,7 +1,6 @@
 package racingGame;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Round {
@@ -9,7 +8,8 @@ public class Round {
     private final List<Integer> positions;
 
     public Round(List<Integer> positions) {
-        this.positions = positions;    }
+        this.positions = positions;
+    }
 
     public List<Integer> positions() {
         return positions;

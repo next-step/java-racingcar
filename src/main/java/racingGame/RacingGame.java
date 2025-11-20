@@ -1,26 +1,24 @@
 package racingGame;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
-
     protected final List<Car> cars;
     private final int tryCount;
     private final MoveStrategy strategy;
     private final List<Round> rounds = new ArrayList<>();
 
-    public RacingGame(int carCount, int tryCount, MoveStrategy strategy) {
-        this.cars = initCars(carCount);
+    public RacingGame(List<String> names, int tryCount, MoveStrategy strategy) {
+        this.cars = initCars(names);
         this.tryCount = tryCount;
         this.strategy = strategy;
     }
 
-    private List<Car> initCars(int count) {
+    private List<Car> initCars(List<String> names) {
         List<Car> list = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            list.add(new Car());
+        for (String name : names) {
+            list.add(new Car(name.trim()));
         }
         return list;
     }
@@ -41,11 +39,31 @@ public class RacingGame {
 
     private void saveRound() {
         List<Integer> positions = new ArrayList<>();
-
         for (Car car : cars) {
             positions.add(car.position());
         }
-
         rounds.add(new Round(positions));
+    }
+
+    public List<String> winners() {
+        int max = maxPosition();
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.isAt(max)) {
+                winners.add(car.name());
+            }
+        }
+        return winners;
+    }
+
+    private int maxPosition() {
+        int max = 0;
+        for (Car car : cars) {
+            if (car.isFurtherThan(max)) {
+                max = car.position();
+            }
+        }
+        return max;
     }
 }
