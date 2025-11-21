@@ -1,6 +1,6 @@
 package racinggame.domain;
 
-import static racinggame.view.OutputView.getPositionDisplay;
+import static racinggame.view.OutputView.*;
 
 public class Car {
 
@@ -34,10 +34,15 @@ public class Car {
     public String move(int number) {
         validateNumber(number);
         updatePosition(number);
-        return getPositionDisplay(this);
+
+        if (this.name.isBlank()) {
+            return getPositionDisplay(this);
+        }
+
+        return getPositionDisplayWithNames(this);
     }
 
-    private static void validateNumber(int number) {
+    private void validateNumber(int number) {
         if (number < MIN_MOVE_NUMBER || number > MAX_MOVE_NUMBER) {
             throw new IllegalArgumentException("0부터 9까지의 숫자만 입력할 수 있습니다.");
         }

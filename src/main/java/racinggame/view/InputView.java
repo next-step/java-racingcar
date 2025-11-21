@@ -1,7 +1,5 @@
 package racinggame.view;
 
-import racinggame.domain.Car;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -13,13 +11,5 @@ public class InputView {
     public static String readNames(String x, Scanner scanner) {
         System.out.println(x);
         return scanner.nextLine();
-    }
-
-    public static void splitCarName(String name) {
-        String[] split = name.split(",");
-
-        for (String carName : split) {
-            new Car(carName);
-        }
     }
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class WinnerTest {
 
     @Test
-    @DisplayName("우승자는 가장 멀리 간 자동차이다")
+    @DisplayName("자동차 경주에서 가장 멀리 간 자동차가 우승자이다")
     void winnerIsFurthestCar() {
 
     }

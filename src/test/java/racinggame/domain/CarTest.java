@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static racinggame.view.InputView.splitCarName;
 
 public class CarTest {
 
@@ -43,8 +42,6 @@ public class CarTest {
     @ValueSource(strings = {"pobi,crong,honux"})
     @DisplayName("자동차의 이름은 쉼표(,)를 기준으로 구분한다")
     void carNamesAreSeparatedByComma(String names) {
-        splitCarName(names);
-
         // assertThatList().containsExactly("pobi", "crong", "honux");
     }
 }
