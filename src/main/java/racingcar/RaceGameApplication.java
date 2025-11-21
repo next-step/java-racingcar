@@ -19,7 +19,7 @@ public class RaceGameApplication {
         ResultView.printResultMessage();
         while (raceGame.hasNextRound()) {
             raceGame.playRound();
-            ResultView.printRoundResult(raceGame.cars());
+            ResultView.printRoundResult(raceGame.cars().allCars());
         }
 
         ResultView.printWinners(raceGame.getWinners());

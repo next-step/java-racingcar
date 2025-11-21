@@ -9,7 +9,7 @@ public class RaceGame {
     private static final String ERROR_CAR_COUNT = "자동차 대수는 최소 " + MIN_CAR_COUNT + "대 이상이어야 합니다.";
     public static final String ERROR_CAR_NAME_DUPLICATE = "자동차 이름은 중복될 수 없습니다.";
 
-    private final List<Car> cars;
+    private final Cars cars;
     private GameCount gameCount;
     private final Random random;
 
@@ -19,19 +19,19 @@ public class RaceGame {
     }
 
     public RaceGame(List<Car> cars, GameCount gameCount) {
-        this.cars = cars;
+        this.cars = Cars.fromCars(cars);
         this.gameCount = gameCount;
         this.random = new Random();
     }
 
     public RaceGame(List<String> carNames, int gameCount, Random random) {
         List<CarName> validatedNames = validateCarNames(carNames);
-        this.cars = createCars(validatedNames);
+        this.cars = new Cars(validatedNames);
         this.gameCount = new GameCount(gameCount);
         this.random = random;
     }
 
-    public List<Car> cars() {
+    public Cars cars() {
         return cars;
     }
 
@@ -44,7 +44,7 @@ public class RaceGame {
     }
 
     public void playRound() {
-        for (Car car : cars) {
+        for (Car car : cars.allCars()) {
             car.moveIfPossible(random.nextInt(MAX_RANDOM_VALUE));
         }
         gameCount = gameCount.decrease();
@@ -52,8 +52,8 @@ public class RaceGame {
 
     public List<CarName> getWinners() {
         List<CarName> winners = new ArrayList<>();
-        Position maxPosition = findMaxPosition(cars);
-        for (Car car : cars) {
+        Position maxPosition = findMaxPosition(cars.allCars());
+        for (Car car : cars.allCars()) {
             addWinnerIfMaxPosition(winners, car, maxPosition);
         }
         return winners;
@@ -63,14 +63,6 @@ public class RaceGame {
         if (car.isAtSamePositionAs(maxPosition)) {
             winners.add(car.name());
         }
-    }
-
-    private List<Car> createCars(List<CarName> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (CarName carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
     }
 
     private List<CarName> validateCarNames(List<String> carNames) {

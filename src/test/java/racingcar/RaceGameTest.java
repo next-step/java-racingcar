@@ -17,7 +17,7 @@ public class RaceGameTest {
         List<String> carNames = List.of("car1", "car2", "car3");
         int gameCount = 3;
         RaceGame raceGame = new RaceGame(carNames, gameCount);
-        assertThat(raceGame.cars()).hasSize(carNames.size());
+        assertThat(raceGame.cars().allCars()).hasSize(carNames.size());
         assertThat(raceGame.gameCount().asInt()).isEqualTo(gameCount);
     }
 
@@ -48,7 +48,7 @@ public class RaceGameTest {
         };
         RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3, fixedRandom);
         raceGame.playRound();
-        for (Car car : raceGame.cars()) {
+        for (Car car : raceGame.cars().allCars()) {
             assertThat(car.position()).isEqualTo(new Position(1));
         }
     }
