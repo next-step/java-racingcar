@@ -33,6 +33,10 @@ public class Position {
         return value;
     }
 
+    public boolean isGreaterThan(Position position) {
+        return this.value > position.value;
+    }
+
     private static void validate(int value) {
         if (value < INITIAL_POSITION) {
             throw new IllegalArgumentException(ERROR_NEGATIVE_VALUE);
