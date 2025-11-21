@@ -12,7 +12,6 @@ public class RaceGame {
     private GameCount gameCount;
     private final Random random;
 
-
     public RaceGame(List<String> carNames, int gameCount) {
         this(carNames, gameCount, new Random());
     }
