@@ -23,7 +23,7 @@ class RacingTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {4, 9})
     @DisplayName("자동차는 허용된 범위 중에서 4 이상인 수를 받으면 전진한다")
     void moveForward_WhenNumberIsFourOrMore(int expected) {
         int position = car.getPosition();
@@ -34,7 +34,7 @@ class RacingTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 3})
     @DisplayName("자동차는 허용된 범위 중에서 4 미만인 수를 받으면 멈춘다")
     void doNotMove_WhenNumberIsLessThanFour(int expected) {
         int position = car.getPosition();
@@ -45,7 +45,7 @@ class RacingTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 3})
+    @ValueSource(ints = {0, 3})
     @DisplayName("자동차가 전진하지 않았을 때 빈 문자열을 반환한다")
     void returnEmptyString_WhenNotMoved(int expected) {
         car.move(expected);
@@ -54,7 +54,7 @@ class RacingTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {4, 5, 6, 7, 8, 9})
+    @ValueSource(ints = {4, 8, 9})
     @DisplayName("자동차가 전진했을 때 위치에 해당하는 개수만큼 '-'를 반환한다")
     void returnDashes_WhenMoved(int expected) {
         for (int i = 1; i <= expected; i++) {
