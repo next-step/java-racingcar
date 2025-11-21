@@ -17,7 +17,7 @@ public class RaceGameApplication {
         RaceGame raceGame = new RaceGame(parseCarNames(carNames), gameCount);
 
         ResultView.printResultMessage();
-        for (int i = 0; i < gameCount; i++) {
+        while (raceGame.hasNextRound()) {
             raceGame.playRound();
             ResultView.printRoundResult(raceGame.cars());
         }

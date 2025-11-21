@@ -21,4 +21,24 @@ class GameCountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("게임 횟수");
     }
+
+    @DisplayName("GameCount가 양수이면 true 반환한다")
+    @Test
+    void gameCountIsPositive() {
+        assertThat(new GameCount(1).isPositive()).isTrue();
+    }
+
+    @DisplayName("GameCount가 1 감소하여 0이 되면 isPositive는 false 반환")
+    @Test
+    void gameCountIsPositive_whenZeroAfterDecrease() {
+        GameCount count = new GameCount(1);
+        GameCount decreased = count.decrease();
+        assertThat(decreased.isPositive()).isFalse();
+    }
+
+    @DisplayName("GameCount 가 1회 감소한다")
+    @Test
+    void gameCountDecrease() {
+        assertThat(new GameCount(2).decrease()).isEqualTo(new GameCount(1));
+    }
 }

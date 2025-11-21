@@ -14,8 +14,21 @@ public class GameCount {
         this.value = value;
     }
 
+    private GameCount(int value, boolean allowZero) {
+        if (!allowZero && value < 1) throw new IllegalArgumentException();
+        this.value = value;
+    }
+
     public int asInt() {
         return value;
+    }
+
+    public boolean isPositive() {
+        return value > 0;
+    }
+
+    public GameCount decrease() {
+        return new GameCount(value - 1, true);
     }
 
     private void validate(int value) {

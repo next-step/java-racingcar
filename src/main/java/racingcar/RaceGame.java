@@ -10,7 +10,7 @@ public class RaceGame {
     public static final String ERROR_CAR_NAME_DUPLICATE = "자동차 이름은 중복될 수 없습니다.";
 
     private final List<Car> cars;
-    private final GameCount gameCount;
+    private GameCount gameCount;
     private final Random random;
 
     public RaceGame(List<Car> cars, GameCount gameCount) {
@@ -38,10 +38,15 @@ public class RaceGame {
         return gameCount;
     }
 
+    public boolean hasNextRound() {
+        return gameCount.isPositive();
+    }
+
     public void playRound() {
         for (Car car : cars) {
             car.moveIfPossible(random.nextInt(MAX_RANDOM_VALUE));
         }
+        gameCount = gameCount.decrease();
     }
 
     public List<CarName> getWinners() {
