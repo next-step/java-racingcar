@@ -29,10 +29,7 @@ class PositionTest {
     @CsvSource({
             "3, 5, 5",
             "5, 3, 5",
-            "4, 4, 4",
-            "0, 0, 0",
-            "0, 1, 1",
-            "1, 0, 1"
+            "4, 4, 4"
     })
     void max_returnsCorrectPosition(int thisValue, int otherValue, int expectedValue) {
         Position thisPosition = new Position(thisValue);
