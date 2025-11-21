@@ -9,19 +9,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    @DisplayName("자동차가 생성된다")
+    @DisplayName("Car 객체는 CarName 객체를 받아 생성된다")
     @Test
-    void createCar() {
-        Car car = new Car();
+    void createCarWithCarName() {
+        CarName carName = new CarName("car1");
+        Car car = new Car(carName);
         assertThat(car).isNotNull();
+        assertThat(car.name()).isEqualTo(carName);
+        assertThat(car.position().asInt()).isEqualTo(0);
     }
 
     @DisplayName("값이 4 이상일 때 자돋차가 이동한다")
     @ParameterizedTest
-    @CsvSource({"0,0", "3,0", "4,1", "5,1"})
+    @CsvSource({"0,0", "3,0", "4,1", "9,1"})
     void canMoveWhenAtLeast(int number, int expected) {
-        Car car = new Car();
+        Car car = new Car(new CarName("car1"));
         car.moveIfPossible(number);
-        assertThat(car.position()).isEqualTo(expected);
+        assertThat(car.position()).isEqualTo(new Position(expected));
     }
 }
