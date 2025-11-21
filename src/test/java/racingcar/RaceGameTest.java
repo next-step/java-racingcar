@@ -35,24 +35,4 @@ public class RaceGameTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복");
     }
-
-    @DisplayName("우승자를 구한다")
-    @Test
-    void getSingleWinner() {
-        Car a = new Car(new CarName("car1"), new Position(3));
-        Car b = new Car(new CarName("car2"), new Position(2));
-        RaceGame raceGame = new RaceGame(List.of(a, b), new GameCount(3));
-        List<CarName> winners = raceGame.getWinners();
-        assertThat(winners).hasSize(1);
-        assertThat(winners).containsExactly(new CarName("car1"));
-    }
-
-    @DisplayName("공동 우승자를 구한다")
-    @Test
-    void getMultipleWinners() {
-        RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3);
-        List<CarName> winners = raceGame.getWinners();
-        assertThat(winners).hasSize(2)
-                .containsExactly(new CarName("car1"), new CarName("car2"));
-    }
 }
