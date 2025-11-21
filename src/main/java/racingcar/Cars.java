@@ -30,6 +30,14 @@ public class Cars {
         }
     }
 
+    public List<String> getWinnerNames() {
+        List<String> names = new ArrayList<>();
+        for (CarName car : getWinners()) {
+            names.add(car.toString());
+        }
+        return names;
+    }
+
     public List<CarName> getWinners() {
         List<CarName> winners = new ArrayList<>();
         Position maxPosition = findMaxPosition();

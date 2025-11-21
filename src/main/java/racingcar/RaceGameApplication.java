@@ -21,8 +21,7 @@ public class RaceGameApplication {
             raceGame.playRound();
             ResultView.printRoundResult(raceGame.cars().allCars());
         }
-
-        ResultView.printWinners(raceGame.getWinners());
+        ResultView.printWinners(raceGame.cars());
     }
 
     private static List<String> parseCarNames(String input) {

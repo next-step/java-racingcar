@@ -36,6 +36,17 @@ class CarsTest {
         }
     }
 
+    @DisplayName("우승자 이름을 구한다")
+    @Test
+    void getWinnerNames() {
+        Car a = new Car(new CarName("car1"), new Position(3));
+        Car b = new Car(new CarName("car2"), new Position(2));
+        Cars cars = Cars.fromCars(List.of(a, b));
+        List<String> winners = cars.getWinnerNames();
+        assertThat(winners).hasSize(1);
+        assertThat(winners).containsExactly("car1");
+    }
+
     @DisplayName("우승자를 구한다")
     @Test
     void getSingleWinner() {
