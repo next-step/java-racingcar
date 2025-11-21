@@ -49,7 +49,7 @@ public class Cars {
         return names;
     }
 
-    public List<CarName> winners() {
+    private List<CarName> winners() {
         List<CarName> winners = new ArrayList<>();
         Position maxPosition = findMaxPosition();
         for (Car car : cars) {

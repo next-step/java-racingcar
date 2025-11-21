@@ -49,7 +49,7 @@ class CarsTest {
 
     @DisplayName("우승자 이름을 구한다")
     @Test
-    void winnerNames() {
+    void singleWinnerName() {
         Car a = new Car(new CarName("car1"), new Position(3));
         Car b = new Car(new CarName("car2"), new Position(2));
         Cars cars = Cars.fromCars(List.of(a, b));
@@ -58,25 +58,14 @@ class CarsTest {
         assertThat(winners).containsExactly("car1");
     }
 
-    @DisplayName("우승자를 구한다")
+    @DisplayName("공동 우승자 이름을 구한다")
     @Test
-    void getSingleWinner() {
+    void multipleWinnersNames() {
         Car a = new Car(new CarName("car1"), new Position(3));
-        Car b = new Car(new CarName("car2"), new Position(2));
+        Car b = new Car(new CarName("car2"), new Position(3));
         Cars cars = Cars.fromCars(List.of(a, b));
-        List<CarName> winners = cars.winners();
-        assertThat(winners).hasSize(1);
-        assertThat(winners).containsExactly(new CarName("car1"));
-    }
-
-    @DisplayName("공동 우승자를 구한다")
-    @Test
-    void getMultipleWinners() {
-        Car a = new Car(new CarName("car1"), new Position(2));
-        Car b = new Car(new CarName("car2"), new Position(2));
-        Cars cars = Cars.fromCars(List.of(a, b));
-        List<CarName> winners = cars.winners();
-        assertThat(winners).hasSize(2)
-                .containsExactly(new CarName("car1"), new CarName("car2"));
+        List<String> winners = cars.winnerNames();
+        assertThat(winners).hasSize(2);
+        assertThat(winners).containsExactly("car1", "car2");
     }
 }
