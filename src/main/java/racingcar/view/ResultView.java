@@ -1,9 +1,6 @@
 package racingcar.view;
 
-import racingcar.Car;
 import racingcar.Cars;
-
-import java.util.List;
 
 public class ResultView {
 
@@ -18,9 +15,9 @@ public class ResultView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void printRoundResult(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.println(car.name() + POSITION_SEPARATOR + POSITION_MARK.repeat(car.position().asInt()));
+    public static void printRoundResult(Cars cars) {
+        for (String line : cars.roundResult()) {
+            System.out.println(line);
         }
         System.out.println();
     }
