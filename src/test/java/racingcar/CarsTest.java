@@ -36,6 +36,17 @@ class CarsTest {
         }
     }
 
+    @DisplayName("라운드 결과를 구한다")
+    @Test
+    void roundResult() {
+        Car a = new Car(new CarName("car1"), new Position(3));
+        Car b = new Car(new CarName("car2"), new Position(2));
+        Cars cars = Cars.fromCars(List.of(a, b));
+        List<String> result = cars.roundResult();
+        assertThat(result).hasSize(2);
+        assertThat(result).containsExactly("car1 : ---", "car2 : --");
+    }
+
     @DisplayName("우승자 이름을 구한다")
     @Test
     void getWinnerNames() {
