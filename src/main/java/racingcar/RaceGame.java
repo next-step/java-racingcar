@@ -13,6 +13,11 @@ public class RaceGame {
     private GameCount gameCount;
     private final Random random;
 
+
+    public RaceGame(List<String> carNames, int gameCount) {
+        this(carNames, gameCount, new Random());
+    }
+
     public RaceGame(List<Car> cars, GameCount gameCount) {
         this.cars = cars;
         this.gameCount = gameCount;
@@ -24,10 +29,6 @@ public class RaceGame {
         this.cars = createCars(validatedNames);
         this.gameCount = new GameCount(gameCount);
         this.random = random;
-    }
-
-    public RaceGame(List<String> carNames, int gameCount) {
-        this(carNames, gameCount, new Random());
     }
 
     public List<Car> cars() {

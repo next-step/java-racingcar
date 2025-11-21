@@ -7,17 +7,17 @@ public class Car {
     private final CarName name;
     private Position position;
 
-    public Car(CarName name, Position position) {
-        this.name = name;
-        this.position = position;
-    }
-
     public Car(CarName name) {
         this(name, new Position());
     }
 
     public Car(String name) {
         this(new CarName(name), new Position());
+    }
+
+    public Car(CarName name, Position position) {
+        this.name = name;
+        this.position = position;
     }
 
     public CarName name() {

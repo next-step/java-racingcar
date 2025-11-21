@@ -9,13 +9,13 @@ public class Position {
 
     private final int value;
 
+    public Position() {
+        this(INITIAL_POSITION);
+    }
+
     public Position(int value) {
         validate(value);
         this.value = value;
-    }
-
-    public Position() {
-        this(INITIAL_POSITION);
     }
 
     public Position move() {
