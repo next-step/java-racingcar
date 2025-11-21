@@ -30,6 +30,29 @@ public class Cars {
         }
     }
 
+    public List<CarName> getWinners() {
+        List<CarName> winners = new ArrayList<>();
+        Position maxPosition = findMaxPosition();
+        for (Car car : cars) {
+            addWinnerIfMaxPosition(winners, car, maxPosition);
+        }
+        return winners;
+    }
+
+    private static void addWinnerIfMaxPosition(List<CarName> winners, Car car, Position maxPosition) {
+        if (car.isAtSamePositionAs(maxPosition)) {
+            winners.add(car.name());
+        }
+    }
+
+    private Position findMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.updateMax(maxPosition);
+        }
+        return maxPosition;
+    }
+
     private List<Car> createCars(List<CarName> carNames) {
         List<Car> cars = new ArrayList<>();
         for (CarName carName : carNames) {

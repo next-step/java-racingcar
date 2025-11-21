@@ -35,4 +35,26 @@ class CarsTest {
             assertThat(car.position()).isEqualTo(new Position(1));
         }
     }
+
+    @DisplayName("우승자를 구한다")
+    @Test
+    void getSingleWinner() {
+        Car a = new Car(new CarName("car1"), new Position(3));
+        Car b = new Car(new CarName("car2"), new Position(2));
+        Cars cars = Cars.fromCars(List.of(a, b));
+        List<CarName> winners = cars.getWinners();
+        assertThat(winners).hasSize(1);
+        assertThat(winners).containsExactly(new CarName("car1"));
+    }
+
+    @DisplayName("공동 우승자를 구한다")
+    @Test
+    void getMultipleWinners() {
+        Car a = new Car(new CarName("car1"), new Position(2));
+        Car b = new Car(new CarName("car2"), new Position(2));
+        Cars cars = Cars.fromCars(List.of(a, b));
+        List<CarName> winners = cars.getWinners();
+        assertThat(winners).hasSize(2)
+                .containsExactly(new CarName("car1"), new CarName("car2"));
+    }
 }
