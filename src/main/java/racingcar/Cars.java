@@ -41,15 +41,15 @@ public class Cars {
         return roundResult;
     }
 
-    public List<String> getWinnerNames() {
+    public List<String> winnerNames() {
         List<String> names = new ArrayList<>();
-        for (CarName car : getWinners()) {
+        for (CarName car : winners()) {
             names.add(car.toString());
         }
         return names;
     }
 
-    public List<CarName> getWinners() {
+    public List<CarName> winners() {
         List<CarName> winners = new ArrayList<>();
         Position maxPosition = findMaxPosition();
         for (Car car : cars) {
