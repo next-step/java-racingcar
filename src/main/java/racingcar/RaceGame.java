@@ -44,9 +44,7 @@ public class RaceGame {
     }
 
     public void playRound() {
-        for (Car car : cars.allCars()) {
-            car.moveIfPossible(random.nextInt(MAX_RANDOM_VALUE));
-        }
+        cars.moveAll(random);
         gameCount = gameCount.decrease();
     }
 

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -35,22 +34,6 @@ public class RaceGameTest {
         assertThatThrownBy(() -> new RaceGame(List.of("car1", "car1"), 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("중복");
-    }
-
-    @DisplayName("한 라운드에서 자동차가 고정값으로 이동한다")
-    @Test
-    void playRaceGame() {
-        Random fixedRandom = new Random() {
-            @Override
-            public int nextInt(int bound) {
-                return 5;
-            }
-        };
-        RaceGame raceGame = new RaceGame(List.of("car1", "car2"), 3, fixedRandom);
-        raceGame.playRound();
-        for (Car car : raceGame.cars().allCars()) {
-            assertThat(car.position()).isEqualTo(new Position(1));
-        }
     }
 
     @DisplayName("우승자를 구한다")

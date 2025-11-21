@@ -2,8 +2,11 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cars {
+
+    private static final int MAX_RANDOM_VALUE = 10;
 
     private final List<Car> cars;
 
@@ -19,6 +22,12 @@ public class Cars {
 
     public List<Car> allCars() {
         return cars;
+    }
+
+    public void moveAll(Random random) {
+        for (Car car : cars) {
+            car.moveIfPossible(random.nextInt(MAX_RANDOM_VALUE));
+        }
     }
 
     private List<Car> createCars(List<CarName> carNames) {
