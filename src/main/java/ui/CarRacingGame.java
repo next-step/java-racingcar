@@ -1,7 +1,7 @@
-package UI;
+package ui;
 
-import Model.Car;
-import Util.RandomNumberGenerator;
+import model.Car;
+import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

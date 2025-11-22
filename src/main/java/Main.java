@@ -1,4 +1,4 @@
-import UI.CarRacingGame;
+import ui.CarRacingGame;
 
 import java.util.Scanner;
 

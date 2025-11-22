@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Car {
     private static final int CAR_MOVE_BOUNDARY = 4;
