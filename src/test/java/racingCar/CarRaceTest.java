@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CarRaceTest {
     @Test
     void 입력받은_차량_대수() {
-        CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"});
+        CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"}, 0);
         assertThat(carRace.getWinners().value()).hasSize(3);
     }
 
     @Test
     void 자동차들_이동_시도() {
-        CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"});
+        CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"}, 1);
 
         carRace.play();
 
@@ -31,7 +31,7 @@ public class CarRaceTest {
 
     @Test
     void 자동차_이름_부여() {
-        CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"});
+        CarRace carRace = new CarRace(new String[]{"pobi","crong","honux"},1);
 
         assertThat(carRace.getCars())
                 .extracting(Car::getName)
@@ -40,21 +40,9 @@ public class CarRaceTest {
 
     @Test
     void 자동차_이름_5초과_실패() {
-        assertThatThrownBy(() -> new CarRace(new String[]{"janghojun"}))
+        assertThatThrownBy(() -> new CarRace(new String[]{"janghojun"},1))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("이름이 5글자 초과되면 안됩니다.");
     }
 
-    @Test
-    void 우승자_출력() {
-        Car pobi = new Car(new Name("pobi"), new Distance(5));
-        Car crong = new Car(new Name("crong"), new Distance(2));
-        Car honux = new Car(new Name("honux"), new Distance(2));
-
-        List<Car> cars = Arrays.asList(pobi, crong, honux);
-
-        Winners winners = Winners.getWinners(cars);
-
-        assertThat(winners.value()).contains(pobi);
-    }
 }

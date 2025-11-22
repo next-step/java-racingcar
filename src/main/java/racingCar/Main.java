@@ -7,11 +7,11 @@ import racingCar.view.ResultView;
 public class Main {
     public static void main(String[] args) {
         String[] names = InputView.inputCarName();
-        int runCount = InputView.inputRunCount();
+        int roundCount = InputView.inputRunCount();
 
-        CarRace carRace = new CarRace(names);
+        CarRace carRace = new CarRace(names, roundCount);
 
-        for(int i = 0; i < runCount; i++) {
+        while(carRace.hasNextRound()) {
             carRace.play();
             ResultView.show(carRace.getCars());
         }

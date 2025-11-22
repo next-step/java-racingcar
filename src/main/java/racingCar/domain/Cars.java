@@ -5,12 +5,14 @@ import java.util.List;
 
 public class Cars {
     private final List<Car> cars;
+    private final RandomNumber random;
 
     public Cars(String[] names) {
         this(createCars(names));
     }
 
     public Cars(List<Car> cars) {
+        random = new RandomNumber();
         this.cars = cars;
     }
 
@@ -29,6 +31,35 @@ public class Cars {
     }
 
     public Winners getWinners() {
-        return Winners.getWinners(cars);
+        return new Winners(getWinners(getMaxDistance()));
+    }
+
+    private List<Car> getWinners(Distance maxDistance) {
+        List<Car> winners = new ArrayList<>();
+
+        for(Car car : this.cars) {
+            if(car.isMax(maxDistance)) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private Distance getMaxDistance() {
+        Distance max = new Distance();
+        for(Car car : this.cars) {
+            max = car.max(max);
+        }
+        return max;
+    }
+
+    public void play() {
+        for (Car car : this.cars) {
+            car.move(getRandomNum());
+        }
+    }
+
+    private int getRandomNum() {
+        return random.getRandomNum();
     }
 }
