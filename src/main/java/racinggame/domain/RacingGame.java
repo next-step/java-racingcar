@@ -4,28 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> cars = new ArrayList<>();
+    private static List<Car> cars = new ArrayList<>();
 
     public RacingGame(String names) {
-        splitCarName(names);
+        this(createCars(names));
+
     }
 
-    public RacingGame(int number) {
-        addCars(number);
+    public RacingGame(List<Car> cars) {
+        RacingGame.cars = cars;
     }
 
-    private void addCars(int number) {
-        for (int i = 0; i < number; i++) {
-            cars.add(new Car(""));
-        }
-    }
-
-    private void splitCarName(String name) {
-        String[] split = name.split(",");
+    private static List<Car> createCars(String names) {
+        String[] split = names.split(",");
 
         for (String s : split) {
             cars.add(new Car(s.trim()));
         }
+
+        return cars;
     }
 
     public List<String> play() {

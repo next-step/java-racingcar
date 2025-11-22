@@ -43,10 +43,10 @@ public class OutputView {
     }
 
 	public static String getPositionDisplay(Car car) {
-		return "-".repeat(car.getPosition());
-	}
+        if (car.getName().isEmpty()) {
+            return "-".repeat(car.getPosition());
+        }
 
-    public static String getPositionDisplayWithNames(Car car) {
         return car.getName() + " : " + "-".repeat(car.getPosition());
-    }
+	}
 }

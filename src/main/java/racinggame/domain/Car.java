@@ -30,11 +30,7 @@ public class Car {
         validateNumber(number);
         updatePosition(number);
 
-        if (this.name.isBlank()) {
-            return getPositionDisplay(this);
-        }
-
-        return getPositionDisplayWithNames(this);
+        return getPositionDisplay(this);
     }
 
     private void validateNumber(int number) {
