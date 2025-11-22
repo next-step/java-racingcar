@@ -1,6 +1,8 @@
 package Model;
 
 public class Car {
+    private static final int CAR_MOVE_BOUNDARY = 4;
+
     private int position;
 
     public Car(int position) {
@@ -8,7 +10,7 @@ public class Car {
     }
 
     private boolean canMoveForward(int randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= CAR_MOVE_BOUNDARY;
     }
 
     public void tryMoveForward(int randomNumber) {

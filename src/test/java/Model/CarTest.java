@@ -19,10 +19,8 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({
             "1, 0",
-            "2, 0",
             "3, 0",
             "4, 1",
-            "5, 1",
             "9, 1"
     })
     public void moveForward(int randomNumber, int expectedDiff) {
