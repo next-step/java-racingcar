@@ -23,10 +23,8 @@ public class CarTest {
             "4, 1",
             "9, 1"
     })
-    public void moveForward(int randomNumber, int expectedDiff) {
-        int prevPosition = car.getPosition();
+    public void moveForward(int randomNumber, int expected) {
         car.tryMoveForward(randomNumber);
-
-        assertThat(car.getPosition() - prevPosition).isEqualTo(expectedDiff);
+        assertThat(car.getPosition()).isEqualTo(expected);
     }
 }
