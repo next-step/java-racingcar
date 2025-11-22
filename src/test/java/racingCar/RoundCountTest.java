@@ -8,4 +8,9 @@ public class RoundCountTest {
     void create() {
         Assertions.assertThat(new RoundCount(1).value()).isEqualTo(1);
     }
+
+    @Test
+    void decrease() {
+        Assertions.assertThat(new RoundCount(1).decrease()).isEqualTo(new RoundCount());
+    }
 }
