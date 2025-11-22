@@ -15,20 +15,6 @@ public class CarTest {
         car = new Car(0);
     }
 
-    @DisplayName("전진할 수 있는지 조건을 체크한다.")
-    @ParameterizedTest
-    @CsvSource({
-            "1, false",
-            "2, false",
-            "4, true",
-            "5, true",
-            "6, true",
-            "9, true"
-    })
-    public void moveForwardCondition(int randomNumber, boolean expected) {
-        assertThat(car.canMoveForward(randomNumber)).isEqualTo(expected);
-    }
-
     @DisplayName("난수에 따라 자동차는 전진 혹은 정지한다.")
     @ParameterizedTest
     @CsvSource({

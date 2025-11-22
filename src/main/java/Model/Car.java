@@ -7,7 +7,7 @@ public class Car {
         this.position = position;
     }
 
-    public boolean canMoveForward(int randomNumber) {
+    private boolean canMoveForward(int randomNumber) {
         return randomNumber >= 4;
     }
 
