@@ -10,7 +10,14 @@ public class RoundCount {
     }
 
     public RoundCount(int count) {
+        validation(count);
         this.count = count;
+    }
+
+    private void validation(int count) {
+        if (count < 0) {
+            throw new RuntimeException("음수가 될 수 없습니다.");
+        }
     }
 
     public int value() {
