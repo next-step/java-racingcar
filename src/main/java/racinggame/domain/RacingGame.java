@@ -16,7 +16,7 @@ public class RacingGame {
 
     private void addCars(int number) {
         for (int i = 0; i < number; i++) {
-            cars.add(new Car());
+            cars.add(new Car(""));
         }
     }
 

@@ -13,7 +13,7 @@ class RacingTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car();
+        car = new Car("test");
     }
 
     @Test
@@ -50,7 +50,7 @@ class RacingTest {
     void returnEmptyString_WhenNotMoved(int expected) {
         car.move(expected);
 
-        assertThat(car.move(expected)).isEmpty();
+        assertThat(car.move(expected)).isEqualTo("test : ");
     }
 
     @ParameterizedTest

@@ -12,11 +12,6 @@ public class Car {
     private int position;
     private final String name;
 
-    public Car() {
-        this.name = "";
-        this.position = 0;
-    }
-
     public Car(String name) {
         validateName(name);
         this.name = name;
