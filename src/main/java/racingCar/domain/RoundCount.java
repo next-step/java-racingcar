@@ -1,4 +1,4 @@
-package racingCar;
+package racingCar.domain;
 
 import java.util.Objects;
 
@@ -45,5 +45,9 @@ public class RoundCount {
         return "RoundCount{" +
                 "count=" + count +
                 '}';
+    }
+
+    public boolean hasNextRound() {
+        return this.count > 0;
     }
 }

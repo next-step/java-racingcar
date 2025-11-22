@@ -4,13 +4,15 @@ import java.util.List;
 
 public class CarRace {
     private final Cars cars;
+    private RoundCount roundCount;
 
-    public CarRace(String[] names) {
-        this(new Cars(names));
+    public CarRace(String[] names, int roundCount) {
+        this(new Cars(names), new RoundCount(roundCount));
     }
 
-    public CarRace(Cars cars) {
+    public CarRace(Cars cars, RoundCount roundCount) {
         this.cars = cars;
+        this.roundCount = roundCount;
     }
 
     public List<Car> getCars() {
@@ -19,9 +21,14 @@ public class CarRace {
 
     public void play() {
         this.cars.play();
+        this.roundCount = roundCount.decrease();
     }
 
     public Winners getWinners() {
         return cars.getWinners();
+    }
+
+    public boolean hasNextRound() {
+        return roundCount.hasNextRound();
     }
 }
