@@ -10,14 +10,13 @@ public class CarRacingGame {
 
     private List<Car> cars;
 
-    public CarRacingGame(int carCount) {
+    public CarRacingGame(String[] carNames) {
         cars = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(1));
+        for (String CarName : carNames) {
+            cars.add(new Car(1, CarName));
         }
     }
-
 
     public void race(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
@@ -30,5 +29,9 @@ public class CarRacingGame {
         for (Car car : cars) {
             car.tryMoveForward(RandomNumberGenerator.random());
         }
+    }
+
+    public int getCarsCount() {
+        return cars.size();
     }
 }

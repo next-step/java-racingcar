@@ -4,9 +4,15 @@ public class Car {
     private static final int CAR_MOVE_BOUNDARY = 4;
 
     private int position;
+    private String name;
 
     public Car(int position) {
         this.position = position;
+    }
+
+    public Car(int position, String name) {
+        this.position = position;
+        this.name = name;
     }
 
     private boolean canMoveForward(int randomNumber) {
@@ -22,4 +28,5 @@ public class Car {
     public int getPosition() {
         return position;
     }
+    public String getName() {return name; };
 }
