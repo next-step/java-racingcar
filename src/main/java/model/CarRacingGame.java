@@ -1,6 +1,6 @@
-package ui;
+package model;
 
-import model.Car;
+import ui.GameUI;
 import util.RandomNumberGenerator;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class CarRacingGame {
     public void race(int tryCount) {
         for (int i = 0; i < tryCount; i++) {
             moveCars();
-            printCarsStatus();
+            GameUI.printCarsStatus(cars);
         }
     }
 
@@ -30,16 +30,5 @@ public class CarRacingGame {
         for (Car car : cars) {
             car.tryMoveForward(RandomNumberGenerator.random());
         }
-    }
-
-    private void printCarsStatus() {
-        for (Car car : cars) {
-            printCarPosition(car.getPosition());
-        }
-        System.out.println();
-    }
-
-    private void printCarPosition(int position) {
-        System.out.println("-".repeat(position));
     }
 }
