@@ -7,16 +7,16 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StringAddCalculatorTest {
     @Test
     public void 문자열_덧셈_null_또는_빈문자열() {
-        int result = StringAddCalculator.splitAndSum(null);
+        int result = StringAddCalculator.blankNumber(null);
         assertThat(result).isEqualTo(0);
 
-        result = StringAddCalculator.splitAndSum("");
+        result = StringAddCalculator.blankNumber("");
         assertThat(result).isEqualTo(0);
     }
 
     @Test
     void 문자열_덧셈_숫자하나() {
-        int result = StringAddCalculator.splitAndSum("2");
+        int result = StringAddCalculator.ChangeInteger("2");
         assertThat(result).isEqualTo(2);
     }
 
@@ -34,7 +34,7 @@ public class StringAddCalculatorTest {
 
     @Test
     void 문자열_덧셈_커스텀구분자_덧셈() {
-        int result = StringAddCalculator.splitAndSum("//;\n1;2;3");
+        int result = StringAddCalculator.customSplitAndSum("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
 

@@ -6,19 +6,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringAddCalculator {
-    public static int splitAndSum(String text) {
-        if(StringUtils.isBlank(text)) {
+
+    public static int blankNumber(String text) {
+        if (StringUtils.isBlank(text)) {
             return 0;
         }
 
-        if(text.contains(",") || text.contains(":")) {
-            int sum          = 0;
+        throw new IllegalArgumentException("처리할 수 없는 text입니다.");
+    }
+
+    public static int ChangeInteger(String text) {
+        validateNotNegative(text);
+        return Integer.parseInt(text);
+    }
+
+    public static int splitAndSum(String text) {
+        if (text.contains(",") || text.contains(":")) {
+            int sum = 0;
             String[] numbers = text.split("[,:]");
 
-            for(String number : numbers) {
-                if(Integer.parseInt(number) < 0) {
-                    throw new RuntimeException(" RuntimeException 예외 발생");
-                }
+            for (String number : numbers) {
+                validateNotNegative(number);
 
                 sum += Integer.parseInt(number);
             }
@@ -26,24 +34,33 @@ public class StringAddCalculator {
             return sum;
         }
 
-        if(text.contains("//") || text.contains("\n")) {
+        throw new IllegalArgumentException("처리할 수 없는 text입니다.");
+    }
+
+    public static int customSplitAndSum (String text){
+
+        if (text.contains("//") || text.contains("\n")) {
             int sum = 0;
             Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-            if(m.find()) {
+            if (m.find()) {
 
                 String customDelimiter = m.group(1);
                 String[] tokens = m.group(2).split(customDelimiter);
 
-                for(String token : tokens) {
+                for (String token : tokens) {
                     sum += Integer.parseInt(token);
                 }
 
                 return sum;
             }
         }
-
-
-
-        return Integer.parseInt(text);
+        throw new IllegalArgumentException("처리할 수 없는 text입니다,");
     }
+
+    public static void validateNotNegative(String text) {
+        if(Integer.parseInt(text) < 0) {
+            throw new RuntimeException(" RuntimeException 예외 발생");
+        }
+    }
+
 }

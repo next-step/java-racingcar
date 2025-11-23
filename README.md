@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+[ ] feat(input): 자동차 대수 입력 구현.  
+[ ] feat(input): 자동차의 이동 입력 구현.  
+[ ] feat(condition): 0~9 사이의 랜덤 값 추출 함수 구현.  
+[ ] feat(condition): random 값이 4이상일 경우 전진 로직 구현.  
+[ ] feat(output): 자동차의 상태를 화면에 출력.  
