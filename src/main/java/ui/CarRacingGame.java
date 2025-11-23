@@ -10,13 +10,14 @@ public class CarRacingGame {
 
     private List<Car> cars;
 
-    public void setUp(int carCount) {
+    public CarRacingGame(int carCount) {
         cars = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car(1));
         }
     }
+
 
     public void race(int tryCount) {
         for (int i = 0; i < tryCount; i++) {

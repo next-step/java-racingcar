@@ -8,11 +8,10 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        CarRacingGame carRacingGame = new CarRacingGame();
 
         System.out.println(CAR_COUNT_INPUT_MESSAGE);
         int carCount = scanner.nextInt();
-        carRacingGame.setUp(carCount);
+        CarRacingGame carRacingGame = new CarRacingGame(carCount);
 
         System.out.println(CAR_MOVE_COUNT_INPUT_MESSAGE);
         int tryCount = scanner.nextInt();
