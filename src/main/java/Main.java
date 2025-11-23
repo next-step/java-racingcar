@@ -1,6 +1,8 @@
 import model.CarRacingGame;
 import model.Cars;
+import ui.GameUI;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -21,5 +23,8 @@ public class Main {
         int tryCount = scanner.nextInt();
         System.out.println(GAME_RESULT_MESSAGE);
         carRacingGame.race(tryCount, cars.getCars());
+
+        List<String> winnerNames = carRacingGame.findWinner(cars.getCars());
+        GameUI.printWinners(winnerNames);
     }
 }
