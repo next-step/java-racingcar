@@ -33,15 +33,56 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("각 자동차의 이름은 중복될 수 없다")
-    void carNamesCannotBeDuplicated() {
+    @DisplayName("자동차의 초기 위치는 0이다")
+    void returnZero_WhenInitialized() {
+        Car car = new Car("test");
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4, 9})
+    @DisplayName("자동차는 허용된 범위 중에서 4 이상인 수를 받으면 전진한다")
+    void moveForward_WhenNumberIsFourOrMore(int number) {
+        Car car = new Car("test");
+
+        car.move(number);
+
+        assertThat(car.getPosition()).isEqualTo(1);
 
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"pobi,crong,honux"})
-    @DisplayName("자동차의 이름은 쉼표(,)를 기준으로 구분한다")
-    void carNamesAreSeparatedByComma(String names) {
-        // assertThatList().containsExactly("pobi", "crong", "honux");
+    @ValueSource(ints = {0, 3})
+    @DisplayName("자동차는 허용된 범위 중에서 4 미만인 수를 받으면 멈춘다")
+    void doNotMove_WhenNumberIsLessThanFour(int number) {
+        Car car = new Car("test");
+
+        car.move(number);
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("자동차가 여러 번 전진하면 전진한 횟수만큼 위치가 증가한다")
+    void addPosition_WhenMovedMultipleTimes() {
+        Car car = new Car("test");
+
+        for (int i = 0; i < 5; i++) {
+            car.move(4);
+        }
+
+        assertThat(car.getPosition()).isEqualTo(5);
+
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 10, 100})
+    @DisplayName("입력 값이 허용된 수가 아닐 경우 IllegalArgumentException 예외를 발생시킨다")
+    void throwException_WhenNumberIsOutOfRange(int number) {
+        Car car = new Car("test");
+
+        assertThatThrownBy(() -> car.move(number)).isInstanceOf(IllegalArgumentException.class);
+
     }
 }

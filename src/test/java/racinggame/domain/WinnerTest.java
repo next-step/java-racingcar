@@ -3,18 +3,26 @@ package racinggame.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 class WinnerTest {
-
-    @Test
-    @DisplayName("자동차 경주에서 가장 멀리 간 자동차가 우승자이다")
-    void winnerIsFurthestCar() {
-
-    }
 
     @Test
     @DisplayName("우승자가 여러 명일 경우 모두 출력한다")
     void multipleWinnersAreAllAnnounced() {
+        Car pobi = new Car("pobi");
+        Car crong = new Car("crong");
+        Car honux = new Car("honux");
 
+        pobi.move(5);
+        crong.move(5);
+        honux.move(3);
+
+        RacingGame racingGame = new RacingGame(List.of(pobi, crong, honux));
+
+        assertThat(racingGame.findWinners()).containsExactlyInAnyOrder("pobi", "crong");
     }
 
 }
