@@ -6,16 +6,17 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class CarRacingGameTest {
+
+public class CarsTest {
     @DisplayName("자동차 이름으로 입력받았을 때 그 수만큼 자동차를 생성한다.")
     @ParameterizedTest
     @CsvSource(value = {
             "pobi,crong,houx: 3",
             "kim,lee: 2"
     }, delimiter = ':')
-    public void CarRacingGameSetUpTest(String carNames, int expected) {
-        CarRacingGame carRacingGame = new CarRacingGame(carNames.split(","));
+    public void CarsSetup(String carNames, int expected) {
+        Cars cars = new Cars(carNames);
 
-        assertThat(carRacingGame.getCarsCount()).isEqualTo(expected);
+        assertThat(cars.getCarsCount()).isEqualTo(expected);
     }
 }

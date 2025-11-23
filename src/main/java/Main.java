@@ -1,4 +1,5 @@
 import model.CarRacingGame;
+import model.Cars;
 
 import java.util.Scanner;
 
@@ -9,14 +10,16 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        CarRacingGame carRacingGame = new CarRacingGame();
 
         System.out.println(CAR_NAME_INPUT_MESSAGE);
         String carNames = scanner.nextLine();
-        CarRacingGame carRacingGame = new CarRacingGame(carNames.split(","));
+
+        Cars cars = new Cars(carNames);
 
         System.out.println(CAR_MOVE_COUNT_INPUT_MESSAGE);
         int tryCount = scanner.nextInt();
         System.out.println(GAME_RESULT_MESSAGE);
-        carRacingGame.race(tryCount);
+        carRacingGame.race(tryCount, cars.getCars());
     }
 }
