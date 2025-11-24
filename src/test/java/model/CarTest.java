@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     void setUp() {
-        car = new Car(0);
+        car = new Car(0, "LEE");
     }
 
     @DisplayName("난수에 따라 자동차는 전진 혹은 정지한다.")
