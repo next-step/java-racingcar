@@ -1,48 +1,34 @@
 package model;
 
-import ui.GameUI;
-import util.RandomNumberGenerator;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarRacingGame {
-    public void race(int tryCount, List<Car> cars) {
-        for (int i = 0; i < tryCount; i++) {
-            moveCars(cars);
-            GameUI.printCarsStatus(cars);
-        }
+    private int tryCount;
+    private int curTryCount;
+    Cars cars;
+
+    // Cars를 가지고 있는 것이 어떨까?
+    public CarRacingGame(int tryCount, String carNames) {
+        this.curTryCount = 0;
+        this.tryCount = tryCount;
+        this.cars = new Cars(carNames);
     }
 
-    private void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            car.tryMoveForward(RandomNumberGenerator.random());
-        }
+    public void race() {
+        this.curTryCount += 1;
+        cars.move();
     }
 
-    public List<String> findWinner(List<Car> cars) {
-        int maxPosition = getMaxPosition(cars);
-        List<String> winners = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (isWinner(car.getPosition(), maxPosition)) {
-                winners.add(car.getName());
-            }
-        }
-
-        return winners;
+    public List<String> findWinner() {
+        int maxPosition = cars.getMaxPosition();
+        return cars.getWinners(maxPosition);
     }
 
-    private boolean isWinner(int position, int maxPosition) {
-        return position == maxPosition;
+    public boolean isFinished() {
+        return this.curTryCount == this.tryCount;
     }
 
-    private int getMaxPosition(List<Car> cars) {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(car.getPosition(),  maxPosition);
-        }
-
-        return maxPosition;
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 }
