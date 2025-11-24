@@ -26,12 +26,8 @@ public class ResultView {
     }
 
     private String drawLine(String name, int position) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(name).append(" : ");
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
+        int safePosition = Math.max(0, position);
+        return name + " : " + "-".repeat(safePosition);
     }
 
     private void printWinners(List<String> winners) {

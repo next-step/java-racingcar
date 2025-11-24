@@ -9,10 +9,11 @@ public class Round {
     private final List<Integer> positions;
 
     public Round(List<Integer> positions) {
-        this.positions = positions;    }
+        this.positions = new ArrayList<>(positions);
+    }
 
     public List<Integer> positions() {
-        return positions;
+        return Collections.unmodifiableList(positions);
     }
 
     public List<String> drawLines() {
@@ -25,10 +26,9 @@ public class Round {
     }
 
     private String draw(int position) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            sb.append("-");
+        if (position <= 0) {
+            return "";
         }
-        return sb.toString();
+        return "-".repeat(position);
     }
 }

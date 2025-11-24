@@ -1,13 +1,15 @@
 package racingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RoundTest {
+class RoundTest {
+
     @Test
     @DisplayName("positions 리스트가 각 자동차의 '-' 출력으로 변환된다")
     void drawLines_returnsCorrectDashLines() {
@@ -24,20 +26,14 @@ public class RoundTest {
     }
 
     @Test
-    @DisplayName("라운드의 positions 리스트는 불변(unmodifiable)이다")
-    void positions_areUnmodifiable() {
+    @DisplayName("positions() 는 외부에서 변경할 수 없는 리스트를 반환한다")
+    void positions_isUnmodifiable() {
         List<Integer> positions = Arrays.asList(1, 2, 3);
         Round round = new Round(positions);
 
         List<Integer> result = round.positions();
 
-        boolean thrown = false;
-        try {
-            result.add(99); // 예외 발생해야 정상
-        } catch (UnsupportedOperationException e) {
-            thrown = true;
-        }
-
-        assertThat(thrown).isTrue();
+        assertThatThrownBy(() -> result.add(99))
+            .isInstanceOf(UnsupportedOperationException.class);
     }
 }

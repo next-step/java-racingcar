@@ -13,7 +13,7 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
         }
         if (name.length() > MAX_NAME_LENGTH) {

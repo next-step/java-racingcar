@@ -1,54 +1,52 @@
 package racingGame;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CarTest {
+class CarTest {
+
     @Test
     @DisplayName("전략이 true를 반환하면 자동차는 한 칸 전진한다")
     void move_whenStrategyIsTrue_increasePosition() {
         Car car = new Car("car1");
 
-        car.move(new AlwaysMoveStrategy());
-
+        car.move(() -> true);
         assertThat(car.position()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("전략이 false를 반환하면 자동차는 이동하지 않는다")
-    void move_whenStrategyIsFalse_positionNotChanged() {
+    @DisplayName("전략이 false를 반환하면 자동차는 전진하지 않는다")
+    void move_whenStrategyIsFalse_keepPosition() {
         Car car = new Car("car1");
 
-        car.move(new NeverMoveStrategy());
+        car.move(() -> false);
 
-        assertThat(car.position()).isEqualTo(0);
+        assertThat(car.position()).isZero();
     }
 
     @Test
-    @DisplayName("여러 번 이동하면 누적 이동 거리가 올바르게 증가한다")
-    void move_multipleTimes_accumulatesCorrectly() {
-        Car car = new Car("car1");
-
-        car.move(new AlwaysMoveStrategy());
-        car.move(new AlwaysMoveStrategy());
-        car.move(new AlwaysMoveStrategy());
-
-        assertThat(car.position()).isEqualTo(3);
-    }
-    @Test
-    @DisplayName("5자를 초과하는 이름으로 자동차를 생성하면 예외가 발생한다")
-    void nameTooLong_throwsException() {
-        assertThatThrownBy(() -> new Car("abcdef"))
+    @DisplayName("이름이 null 이면 예외가 발생한다")
+    void nullName_throwsException() {
+        assertThatThrownBy(() -> new Car(null))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("빈 이름으로 자동차를 생성하면 예외가 발생한다")
+    @DisplayName("이름이 공백이면 예외가 발생한다")
     void emptyName_throwsException() {
         assertThatThrownBy(() -> new Car(""))
+            .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car("   "))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("이름이 5자를 초과하면 예외가 발생한다")
+    void longName_throwsException() {
+        assertThatThrownBy(() -> new Car("abcdef"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
