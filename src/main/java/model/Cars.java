@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(String carNameInput) {
         cars = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Cars {
     public int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
-            maxPosition = Math.max(car.getPosition(),  maxPosition);
+            maxPosition = Math.max(car.getPosition(), maxPosition);
         }
 
         return maxPosition;

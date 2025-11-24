@@ -17,12 +17,7 @@ public class CarTest {
 
     @DisplayName("난수에 따라 자동차는 전진 혹은 정지한다.")
     @ParameterizedTest
-    @CsvSource({
-            "1, 0",
-            "3, 0",
-            "4, 1",
-            "9, 1"
-    })
+    @CsvSource({"1, 0", "3, 0", "4, 1", "9, 1"})
     public void moveForward(int randomNumber, int expected) {
         car.tryMoveForward(randomNumber);
         assertThat(car.getPosition()).isEqualTo(expected);

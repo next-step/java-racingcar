@@ -10,7 +10,7 @@ public class Main {
         CarRacingGame carRacingGame = new CarRacingGame(tryCount, carNames);
 
         ResultView.printResultStart();
-        while(!carRacingGame.isFinished()) {
+        while (!carRacingGame.isFinished()) {
             carRacingGame.race();
             ResultView.printRacingStatus(carRacingGame.getCars());
         }

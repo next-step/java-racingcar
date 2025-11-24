@@ -3,9 +3,9 @@ package model;
 import java.util.List;
 
 public class CarRacingGame {
-    private int tryCount;
-    private int curTryCount;
+    private final int tryCount;
     Cars cars;
+    private int curTryCount;
 
     // Cars를 가지고 있는 것이 어떨까?
     public CarRacingGame(int tryCount, String carNames) {
