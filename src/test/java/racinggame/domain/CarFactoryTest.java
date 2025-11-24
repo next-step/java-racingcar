@@ -27,9 +27,7 @@ public class CarFactoryTest {
         List<Car> cars = createCars(names);
 
         assertThat(cars).hasSize(3);
-        assertThat(cars.get(0).getName()).isEqualTo("pobi");
-        assertThat(cars.get(1).getName()).isEqualTo("crong");
-        assertThat(cars.get(2).getName()).isEqualTo("honux");
+        assertThat(cars).contains(new Car("pobi"), new Car("crong"), new Car("honux"));
     }
 
     @Test

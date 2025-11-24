@@ -37,7 +37,7 @@ public class RacingGame {
         int maxPosition = 0;
 
         for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+            maxPosition = car.compareAndReturnMax(maxPosition);
         }
 
         return maxPosition;
@@ -54,7 +54,7 @@ public class RacingGame {
     }
 
     private void addWinners(Car car, int maxPosition, List<String> winners) {
-        if (car.getPosition() == maxPosition) {
+        if (car.isWinnerWith(maxPosition)) {
             winners.add(car.getName());
         }
     }

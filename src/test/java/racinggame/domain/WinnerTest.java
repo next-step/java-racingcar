@@ -12,13 +12,9 @@ class WinnerTest {
     @Test
     @DisplayName("우승자가 여러 명일 경우 모두 출력한다")
     void multipleWinnersAreAllAnnounced() {
-        Car pobi = new Car("pobi");
-        Car crong = new Car("crong");
-        Car honux = new Car("honux");
-
-        pobi.move(5);
-        crong.move(5);
-        honux.move(3);
+        Car pobi = new Car("pobi", 5);
+        Car crong = new Car("crong", 5);
+        Car honux = new Car("honux", 3);
 
         RacingGame racingGame = new RacingGame(List.of(pobi, crong, honux));
 

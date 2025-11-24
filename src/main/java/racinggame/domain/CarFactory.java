@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public class CarFactory {
-    private static final int MAX_NAME_LENGTH = 5;
 
     public static List<Car> createCars(String names) {
         List<String> carNames = parseNames(names);

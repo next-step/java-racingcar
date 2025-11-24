@@ -2,34 +2,29 @@ package racinggame.domain;
 
 import static racinggame.view.OutputView.*;
 
+import java.util.Objects;
+
 public class Car {
 
     public static final int MIN_MOVE_NUMBER = 0;
     public static final int MAX_MOVE_NUMBER = 9;
-    public static final int MOVE_THRESHOLD = 4;
-    public static final int MAX_NAME_LENGTH = 5;
 
-    private int position;
-    private final String name;
+    private CarPosition position;
+    private final CarName name;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
-        this.position = 0;
+        this.name = new CarName(name);
+        this.position = new CarPosition();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getPosition() {
-        return position;
+    public Car(String name, int position) {
+        this(name);
+        this.position = new CarPosition(position);
     }
 
     public String move(int number) {
         validateNumber(number);
-        updatePosition(number);
-
+        this.position = this.position.move(number);
         return getPositionDisplay(this);
     }
 
@@ -39,24 +34,37 @@ public class Car {
         }
     }
 
-    private void validateName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 빈 문자열이나 null이 될 수 없습니다.");
-        }
-
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("각 자동차의 이름은 5자를 초과할 수 없습니다.");
-        }
+    public boolean isWinnerWith(int targetPosition) {
+        return position.isGreaterThanOrEqual(targetPosition);
     }
 
-    private void updatePosition(int number) {
-        if (number >= MOVE_THRESHOLD) {
-            position++;
-        }
+    public int compareAndReturnMax(int currentMax) {
+        return position.compareAndReturnMax(currentMax);
+    }
+
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
     }
 
     @Override
     public String toString() {
-        return "Car{" + "position=" + position + ", name='" + name + '\'' + '}';
+        return "Car{" + "position=" + position.getPosition() + ", name='" + name.getName() + '\'' + '}';
     }
 }
