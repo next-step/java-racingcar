@@ -16,9 +16,10 @@ class WinnerTest {
         Car crong = new Car("crong", 5);
         Car honux = new Car("honux", 3);
 
-        RacingGame racingGame = new RacingGame(List.of(pobi, crong, honux));
+        RacingGame racingGame = new RacingGame(List.of(pobi, crong, honux), 1);
 
-        assertThat(racingGame.findWinners()).containsExactlyInAnyOrder("pobi", "crong");
+
+        assertThat(racingGame.findWinners().getNames()).containsExactlyInAnyOrder("pobi", "crong");
     }
 
 }

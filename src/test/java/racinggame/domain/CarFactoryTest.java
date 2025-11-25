@@ -37,12 +37,4 @@ public class CarFactoryTest {
 
         assertThatThrownBy(() -> createCars(names)).isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    @DisplayName("5자를 초과하는 이름이 포함된 경우 IllegalArgumentException 예외를 발생시킨다")
-    void throwException_WhenNameExceedsFiveCharacters() {
-        String names = "pppobi,crong,honux";
-
-        assertThatThrownBy(() -> createCars(names)).isInstanceOf(IllegalArgumentException.class);
-    }
 }

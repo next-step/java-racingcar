@@ -4,29 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static racinggame.domain.CarFactory.createCars;
+import static racinggame.view.OutputView.getPositionDisplay;
 
 public class RacingGame {
 
     private final List<Car> cars;
+    private final int tryCount;
 
-    public RacingGame(List<Car> cars) {
+    public RacingGame(List<Car> cars, int tryCount) {
         this.cars = new ArrayList<>(cars);
+        this.tryCount = tryCount;
     }
 
-    public RacingGame(String names) {
-        this(createCars(names));
+    public RacingGame(String carNames, int tryCount) {
+        this(createCars(carNames), tryCount);
     }
 
-    public List<String> play() {
-        List<String> roundResults = new ArrayList<>();
-        for (Car car : cars) {
-            roundResults.add(moveCar(car));
+    public void play() {
+        System.out.println("실행 결과");
+
+        for (int i = 0; i < tryCount; i++) {
+            playRound();
+            System.out.println();
         }
-        return roundResults;
     }
 
-    private String moveCar(Car car) {
-        return car.move(generateRandomNumber());
+    public void playRound() {
+        for (Car car : cars) {
+            car.move(generateRandomNumber());
+            System.out.println(getPositionDisplay(car));
+        }
+
     }
 
     private int generateRandomNumber() {
@@ -43,24 +51,18 @@ public class RacingGame {
         return maxPosition;
     }
 
-    public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
+    public Winners findWinners() {
         int maxPosition = getMaxPosition();
-
-        for (Car car : cars) {
-            addWinners(car, maxPosition, winners);
-        }
-        return winners;
-    }
-
-    private void addWinners(Car car, int maxPosition, List<String> winners) {
-        if (car.isWinnerWith(maxPosition)) {
-            winners.add(car.getName());
-        }
+        List<String> winnerNames = cars.stream()
+                .filter(car -> car.isWinnerWith(maxPosition))
+                .map(Car::getName)
+                .toList();
+        return new Winners(winnerNames);
     }
 
     @Override
     public String toString() {
         return "RacingGame{" + "cars=" + cars + '}';
     }
+
 }

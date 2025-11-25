@@ -12,14 +12,17 @@ public class Car {
     private CarPosition position;
     private final CarName name;
 
-    public Car(String name) {
+    public Car(String name, CarPosition position) {
         this.name = new CarName(name);
-        this.position = new CarPosition();
+        this.position = position;
     }
 
     public Car(String name, int position) {
-        this(name);
-        this.position = new CarPosition(position);
+        this(name, new CarPosition(position));
+    }
+
+    public Car(String name) {
+        this(name, new CarPosition(0));
     }
 
     public String move(int number) {
