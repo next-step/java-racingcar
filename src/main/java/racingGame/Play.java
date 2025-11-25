@@ -1,18 +1,19 @@
 package racingGame;
 
+import java.util.List;
+
 public class Play {
     public static void main(String[] args) {
 
         InputView inputView = new InputView();
-
-        int carCount = inputView.readCarCount();
+        List<String> names = inputView.readCarNames();
         int tryCount = inputView.readTryCount();
 
-        RacingGame game = new RacingGame(carCount, tryCount, new RandomMoveStrategy());
-
-        java.util.List<Round> rounds = game.race();
+        RacingGame game = new RacingGame(names, tryCount, new RandomMoveStrategy());
+        List<Round> rounds = game.race();
+        List<String> winners = game.winners();
 
         ResultView resultView = new ResultView();
-        resultView.print(rounds);
+        resultView.print(rounds, names, winners);
     }
 }

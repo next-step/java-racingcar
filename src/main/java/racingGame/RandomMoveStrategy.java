@@ -2,7 +2,7 @@ package racingGame;
 
 import java.util.Random;
 
-public class RandomMoveStrategy  implements MoveStrategy {
+public class RandomMoveStrategy implements MoveStrategy {
 
     private final Random random = new Random();
 
@@ -10,5 +10,4 @@ public class RandomMoveStrategy  implements MoveStrategy {
     public boolean isMove() {
         return random.nextInt(10) >= 4;
     }
-
 }
