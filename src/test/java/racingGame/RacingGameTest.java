@@ -1,13 +1,13 @@
 package racingGame;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RacingGameTest {
+public class RacingGameTest {
 
     @Test
     @DisplayName("항상 이동하는 전략을 사용하면 매 라운드마다 모든 자동차의 위치가 1씩 증가한다")
@@ -18,20 +18,16 @@ class RacingGameTest {
         List<Round> rounds = game.race();
 
         assertThat(rounds).hasSize(3);
-
-        assertThat(rounds.get(0).positions())
-            .containsExactly(1, 1, 1);
-        assertThat(rounds.get(1).positions())
-            .containsExactly(2, 2, 2);
-        assertThat(rounds.get(2).positions())
-            .containsExactly(3, 3, 3);
+        assertThat(rounds.get(0).positions()).containsExactly(1, 1, 1);
+        assertThat(rounds.get(1).positions()).containsExactly(2, 2, 2);
+        assertThat(rounds.get(2).positions()).containsExactly(3, 3, 3);
     }
 
     @Test
     @DisplayName("위치가 가장 큰 자동차(들)가 우승자로 선택된다")
     void winners_returnsAllCarsWithMaxPosition() {
         List<String> names = Arrays.asList("a", "b", "c");
-        MoveStrategy[] strategies = new MoveStrategy[] {
+        MoveStrategy[] strategies = new MoveStrategy[]{
             () -> true,
             () -> false,
             () -> true
@@ -44,7 +40,6 @@ class RacingGameTest {
 
         assertThat(winners).containsExactlyInAnyOrder("a", "c");
     }
-
 
     static class RacingGameWithCustomStrategies extends RacingGame {
 

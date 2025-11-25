@@ -26,8 +26,8 @@ public class ResultView {
     }
 
     private String drawLine(String name, int position) {
-        int safePosition = Math.max(0, position);
-        return name + " : " + "-".repeat(safePosition);
+        int safe = Math.max(0, position);
+        return name + " : " + "-".repeat(safe);
     }
 
     private void printWinners(List<String> winners) {

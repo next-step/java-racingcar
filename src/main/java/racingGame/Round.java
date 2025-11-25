@@ -26,9 +26,7 @@ public class Round {
     }
 
     private String draw(int position) {
-        if (position <= 0) {
-            return "";
-        }
-        return "-".repeat(position);
+        int safe = Math.max(0, position);
+        return "-".repeat(safe);
     }
 }

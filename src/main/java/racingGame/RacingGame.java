@@ -19,7 +19,7 @@ public class RacingGame {
     private List<Car> initCars(List<String> names) {
         List<Car> list = new ArrayList<>();
         for (String name : names) {
-            list.add(new Car(name.trim()));
+            list.add(new Car(name));
         }
         return list;
     }
@@ -40,11 +40,9 @@ public class RacingGame {
 
     private void saveRound() {
         List<Integer> positions = new ArrayList<>();
-
         for (Car car : cars) {
             positions.add(car.position());
         }
-
         rounds.add(new Round(positions));
     }
 
@@ -53,7 +51,7 @@ public class RacingGame {
         List<String> result = new ArrayList<>();
 
         for (Car car : cars) {
-            if (car.position() == max) {
+            if (car.isSame(max)) {
                 result.add(car.name());
             }
         }
@@ -63,9 +61,7 @@ public class RacingGame {
     private int maxPosition() {
         int max = 0;
         for (Car car : cars) {
-            if (car.position() > max) {
-                max = car.position();
-            }
+            max = car.max(max);
         }
         return max;
     }

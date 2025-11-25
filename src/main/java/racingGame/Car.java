@@ -2,36 +2,38 @@ package racingGame;
 
 public class Car {
 
-    private static final int MAX_NAME_LENGTH = 5;
-
-    private final String name;
-    private int position = 0;
+    private final CarName name;
+    private Position position;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
+        this(new CarName(name));
     }
 
-    private void validateName(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 비어 있을 수 없습니다.");
-        }
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다: " + name);
-        }
+    Car(CarName name) {
+        this.name = name;
+        this.position = Position.ZERO;
     }
 
     public void move(MoveStrategy strategy) {
         if (strategy.isMove()) {
-            position++;
+            position = position.move();
         }
     }
 
+    // 외부(API/뷰/테스트)용 조회 메서드
     public int position() {
-        return position;
+        return position.value();
     }
 
     public String name() {
-        return name;
+        return name.value();
+    }
+
+    public int max(int currentMax) {
+        return position.max(currentMax);
+    }
+
+    public boolean isSame(int max) {
+        return position.isSame(max);
     }
 }

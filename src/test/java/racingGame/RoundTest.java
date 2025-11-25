@@ -1,14 +1,13 @@
 package racingGame;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RoundTest {
+public class RoundTest {
 
     @Test
     @DisplayName("positions 리스트가 각 자동차의 '-' 출력으로 변환된다")
@@ -33,7 +32,13 @@ class RoundTest {
 
         List<Integer> result = round.positions();
 
-        assertThatThrownBy(() -> result.add(99))
-            .isInstanceOf(UnsupportedOperationException.class);
+        boolean thrown = false;
+        try {
+            result.add(99);
+        } catch (UnsupportedOperationException e) {
+            thrown = true;
+        }
+
+        assertThat(thrown).isTrue();
     }
 }
