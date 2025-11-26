@@ -1,31 +1,42 @@
 package racingGame;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RacingGameTest {
+class RacingGameTest {
 
     @Test
-    @DisplayName("항상 이동하는 전략을 사용하면 매 라운드마다 모든 자동차의 위치가 1씩 증가한다")
-    void race_withAlwaysMoveStrategy_positionsIncreaseEveryRound() {
-        List<String> names = Arrays.asList("a", "b", "c");
-        RacingGame game = new RacingGame(names, 3, () -> true);
+    @DisplayName("항상 이동하는 전략을 사용하면 tryNo 만큼 라운드 진행 후 모든 자동차의 위치가 tryNo가 된다")
+    void race_withAlwaysMoveStrategy_allCarsMoveEveryRound() {
+        String carNames = "a,b,c";
+        int tryNo = 3;
+        RacingGame game = new RacingGame(
+            Arrays.asList("a", "b", "c"),
+            tryNo,
+            () -> true
+        );
 
-        List<Round> rounds = game.race();
+        while (game.isEnd()) {
+            game.race();
+        }
 
-        assertThat(rounds).hasSize(3);
-        assertThat(rounds.get(0).positions()).containsExactly(1, 1, 1);
-        assertThat(rounds.get(1).positions()).containsExactly(2, 2, 2);
-        assertThat(rounds.get(2).positions()).containsExactly(3, 3, 3);
+        List<Car> cars = game.getCars();
+
+        assertThat(cars)
+            .hasSize(3)
+            .allSatisfy(car -> assertThat(car.position()).isEqualTo(tryNo));
+
+        List<String> winners = game.findWinners();
+        assertThat(winners).containsExactlyInAnyOrder("a", "b", "c");
     }
 
     @Test
-    @DisplayName("위치가 가장 큰 자동차(들)가 우승자로 선택된다")
-    void winners_returnsAllCarsWithMaxPosition() {
+    @DisplayName("서로 다른 전략을 사용하면 위치가 가장 큰 자동차(들)가 우승자가 된다")
+    void winners_returnsCarsWithMaxPosition() {
         List<String> names = Arrays.asList("a", "b", "c");
         MoveStrategy[] strategies = new MoveStrategy[]{
             () -> true,
@@ -35,10 +46,27 @@ public class RacingGameTest {
 
         RacingGame game = new RacingGameWithCustomStrategies(names, 1, strategies);
 
-        game.race();
-        List<String> winners = game.winners();
+        while (game.isEnd()) {
+            game.race();
+        }
+
+        List<String> winners = game.findWinners();
 
         assertThat(winners).containsExactlyInAnyOrder("a", "c");
+    }
+
+    @Test
+    @DisplayName("isEnd는 tryNo만큼 race()가 호출되면 false를 반환한다")
+    void isEnd_becomesFalseAfterEnoughRounds() {
+        RacingGame game = new RacingGame(Arrays.asList("a"), 2, () -> true);
+
+        assertThat(game.isEnd()).isTrue();
+
+        game.race();
+        assertThat(game.isEnd()).isTrue();
+
+        game.race();
+        assertThat(game.isEnd()).isFalse();
     }
 
     static class RacingGameWithCustomStrategies extends RacingGame {

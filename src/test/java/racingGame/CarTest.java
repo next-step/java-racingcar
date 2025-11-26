@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CarTest {
+class CarTest {
 
     @Test
     @DisplayName("전략이 true를 반환하면 자동차는 한 칸 전진한다")
@@ -52,6 +52,9 @@ public class CarTest {
     void emptyName_throwsException() {
         assertThatThrownBy(() -> new Car(""))
             .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new Car("   "))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -61,5 +64,20 @@ public class CarTest {
 
         assertThat(car.name()).isEqualTo("pobi");
         assertThat(car.position()).isZero();
+    }
+
+    @Test
+    @DisplayName("car.max와 car.isSame은 Position 값에 따라 올바르게 동작한다")
+    void messageBasedMaxAndIsSame() {
+        Car car = new Car("pobi");
+        car.move(() -> true);
+        car.move(() -> true);
+
+        int max = 0;
+        max = car.max(max);
+
+        assertThat(max).isEqualTo(2);
+        assertThat(car.isSame(2)).isTrue();
+        assertThat(car.isSame(3)).isFalse();
     }
 }
