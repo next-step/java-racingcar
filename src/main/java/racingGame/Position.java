@@ -22,11 +22,9 @@ public class Position {
     public Position move() {
         return new Position(value + 1);
     }
-
     public int max(int currentMax) {
         return Math.max(value, currentMax);
     }
-
     public boolean isSame(int target) {
         return value == target;
     }

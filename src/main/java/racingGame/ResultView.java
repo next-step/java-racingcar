@@ -4,41 +4,23 @@ import java.util.List;
 
 public class ResultView {
 
-    public void print(List<Round> rounds, List<String> names, List<String> winners) {
-        System.out.println();
-        System.out.println("실행 결과");
-
-        for (Round round : rounds) {
-            printRound(round, names);
-        }
-
-        printWinners(winners);
+    private ResultView() {
     }
 
-    private void printRound(Round round, List<String> names) {
-        List<Integer> positions = round.positions();
-
-        for (int i = 0; i < names.size(); i++) {
-            String line = drawLine(names.get(i), positions.get(i));
-            System.out.println(line);
+    public static void printResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(drawLine(car));
         }
         System.out.println();
     }
 
-    private String drawLine(String name, int position) {
-        int safe = Math.max(0, position);
-        return name + " : " + "-".repeat(safe);
+    private static String drawLine(Car car) {
+        int position = Math.max(0, car.position());
+        return car.name() + " : " + "-".repeat(position);
     }
 
-    private void printWinners(List<String> winners) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < winners.size(); i++) {
-            if (i > 0) {
-                sb.append(", ");
-            }
-            sb.append(winners.get(i));
-        }
-        sb.append("가 최종 우승했습니다.");
-        System.out.println(sb);
+    public static void printWinners(List<String> winners) {
+        String joined = String.join(", ", winners);
+        System.out.println(joined + "가 최종 우승했습니다.");
     }
 }
