@@ -45,7 +45,7 @@ public class CalculatorTest {
     void add_isSingleNumberForNullOrEmptyStrings(
             String input
     ) {
-        assertThat(calculator.calculate(input)).isEqualTo(0);
+        assertThat(calculator.calculate(input)).isZero();
     }
 
     @ParameterizedTest
