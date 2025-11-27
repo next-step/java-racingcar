@@ -8,16 +8,26 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
+    public Cars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public Cars(String carNameInput) {
-        cars = new ArrayList<>();
+        this(createCars(carNameInput));
+    }
+
+    private static List<Car> createCars(String carNameInput) {
+        List<Car> cars = new ArrayList<>();
 
         String[] carNames = parseCarNames(carNameInput);
         for (String carName : carNames) {
-            cars.add(new Car(1, carName));
+            cars.add(new Car(0, carName));
         }
+
+        return cars;
     }
 
-    private String[] parseCarNames(String carNameInput) {
+    private static String[] parseCarNames(String carNameInput) {
         return carNameInput.split(",");
     }
 
