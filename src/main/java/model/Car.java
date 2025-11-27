@@ -2,12 +2,12 @@ package model;
 
 public class Car {
     private static final int CAR_MOVE_BOUNDARY = 4;
-    private final String name;
+    private CarName carName;
     private int position;
 
     public Car(int position, String name) {
         this.position = position;
-        this.name = name;
+        this.carName = new CarName(name);
     }
 
     private boolean canMoveForward(int randomNumber) {
@@ -24,12 +24,12 @@ public class Car {
         return position;
     }
 
-    public String getName() {
-        return name;
+    public String name() {
+        return carName.toString();
     }
 
     public String toString() {
-        return String.format("%s : %s", name, "-".repeat(position));
+        return String.format("%s : %s", carName, "-".repeat(position));
     }
 
 }

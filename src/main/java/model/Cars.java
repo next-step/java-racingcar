@@ -59,7 +59,7 @@ public class Cars {
 
         for (Car car : cars) {
             if (isWinner(car.getPosition(), maxPosition)) {
-                winners.add(car.getName());
+                winners.add(car.name());
             }
         }
 
