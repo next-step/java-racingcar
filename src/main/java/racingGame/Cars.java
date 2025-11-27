@@ -38,7 +38,7 @@ public class Cars {
         int max = maxPosition();
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            if (car.isSame(max)) {   // 메시지 기반 비교
+            if (car.isSame(max)) {
                 winners.add(car.name());
             }
         }
