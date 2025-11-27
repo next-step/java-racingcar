@@ -14,4 +14,8 @@ public class TryNumber {
     public boolean canPlayMore(int playedCount) {
         return playedCount < value;
     }
+
+    public boolean isGreaterThan(int count) {
+        return value > count;
+    }
 }

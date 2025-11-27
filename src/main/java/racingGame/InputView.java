@@ -19,10 +19,6 @@ public class InputView {
         if (!scanner.hasNextInt()) {
             throw new IllegalArgumentException("시도 회수는 숫자로 입력해야 합니다.");
         }
-        int count = scanner.nextInt();
-        if (count <= 0) {
-            throw new IllegalArgumentException("시도 회수는 1 이상이어야 합니다.");
-        }
-        return count;
+        return scanner.nextInt();
     }
 }

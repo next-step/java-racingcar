@@ -19,7 +19,7 @@ class RacingGameTest {
             () -> true
         );
 
-        while (game.isEnd()) {
+        while (game.hasNextRound()) {
             game.race();
         }
 
@@ -45,7 +45,7 @@ class RacingGameTest {
 
         RacingGame game = new RacingGameWithCustomStrategies(names, 1, strategies);
 
-        while (game.isEnd()) {
+        while (game.hasNextRound()) {
             game.race();
         }
 
@@ -55,17 +55,17 @@ class RacingGameTest {
     }
 
     @Test
-    @DisplayName("isEnd는 tryNo만큼 race()가 호출되면 false를 반환한다")
-    void isEnd_becomesFalseAfterEnoughRounds() {
+    @DisplayName("hasNextRound는 tryNo만큼 race()가 호출되면 false를 반환한다")
+    void hasNextRound_becomesFalseAfterEnoughRounds() {
         RacingGame game = new RacingGame(Arrays.asList("a"), 2, () -> true);
 
-        assertThat(game.isEnd()).isTrue();
+        assertThat(game.hasNextRound()).isTrue();
 
         game.race();
-        assertThat(game.isEnd()).isTrue();
+        assertThat(game.hasNextRound()).isTrue();
 
         game.race();
-        assertThat(game.isEnd()).isFalse();
+        assertThat(game.hasNextRound()).isFalse();
     }
 
     static class RacingGameWithCustomStrategies extends RacingGame {
@@ -76,6 +76,14 @@ class RacingGameTest {
             MoveStrategy[] strategies) {
             super(names, tryCount, () -> false); // 기본 전략은 사용하지 않음
             this.strategies = strategies;
+        }
+
+        @Override
+        protected void moveCars() {
+            List<Car> cars = getCars();
+            for (int i = 0; i < cars.size(); i++) {
+                cars.get(i).move(strategies[i]);
+            }
         }
     }
 }

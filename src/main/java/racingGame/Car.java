@@ -31,7 +31,12 @@ public class Car {
     public int max(int currentMax) {
         return position.max(currentMax);
     }
+
     public boolean isSame(int max) {
         return position.isSame(max);
+    }
+
+    public String toDisplayString() {
+        return name.value() + " : " + "-".repeat(position.value());
     }
 }

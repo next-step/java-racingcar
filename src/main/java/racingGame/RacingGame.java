@@ -8,46 +8,37 @@ public class RacingGame {
     private final TryNumber tryNumber;
     private final MoveStrategy strategy;
 
-    private int playedCount = 0;
+    private PlayCount playCount = PlayCount.zero();
+
     public RacingGame(String carNames, int tryNo) {
-        this(Util.parseNames(carNames), new TryNumber(tryNo), new RandomMoveStrategy());
+        this(CarNames.from(carNames), new TryNumber(tryNo), new RandomMoveStrategy());
     }
 
     public RacingGame(List<String> names, int tryNo, MoveStrategy strategy) {
-        this(Util.parseNamesFromList(names), new TryNumber(tryNo), strategy);
+        this(CarNames.from(names), new TryNumber(tryNo), strategy);
     }
 
-    private RacingGame(List<String> names, TryNumber tryNumber, MoveStrategy strategy) {
-        this.cars = Cars.fromNames(names);
+    private RacingGame(CarNames carNames, TryNumber tryNumber, MoveStrategy strategy) {
+        this.cars = carNames.toCars();
         this.tryNumber = tryNumber;
         this.strategy = strategy;
     }
-    public boolean isEnd() {
-        return tryNumber.canPlayMore(playedCount);
+    public boolean hasNextRound() {
+        return playCount.isLessThan(tryNumber);
     }
+
     public void race() {
+        moveCars();
+        playCount = playCount.increase();
+    }
+
+    protected void moveCars() {
         cars.moveAll(strategy);
-        playedCount++;
     }
     public List<Car> getCars() {
         return cars.asList();
     }
     public List<String> findWinners() {
         return cars.winnerNames();
-    }
-    static class Util {
-        static List<String> parseNames(String carNames) {
-            return java.util.Arrays.stream(carNames.split(","))
-                .map(String::trim)
-                .filter(s -> !s.isEmpty())
-                .toList();
-        }
-
-        static List<String> parseNamesFromList(List<String> names) {
-            return names.stream()
-                .map(String::trim)
-                .filter(s -> !s.isEmpty())
-                .toList();
-        }
     }
 }

@@ -6,7 +6,7 @@ public class Play {
         int tryNo = InputView.getTryNo();
 
         RacingGame racingGame = new RacingGame(carNames, tryNo);
-        while (racingGame.isEnd()) {
+        while (racingGame.hasNextRound()) {
             racingGame.race();
             ResultView.printResult(racingGame.getCars());
         }

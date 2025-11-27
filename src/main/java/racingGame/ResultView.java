@@ -9,14 +9,9 @@ public class ResultView {
 
     public static void printResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(drawLine(car));
+            System.out.println(car.toDisplayString());
         }
         System.out.println();
-    }
-
-    private static String drawLine(Car car) {
-        int position = Math.max(0, car.position());
-        return car.name() + " : " + "-".repeat(position);
     }
 
     public static void printWinners(List<String> winners) {
