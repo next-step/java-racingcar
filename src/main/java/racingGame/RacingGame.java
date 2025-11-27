@@ -1,76 +1,53 @@
 package racingGame;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingGame {
 
-    protected final List<Car> cars;
-    private final int tryCount;
+    private final Cars cars;
+    private final TryNumber tryNumber;
     private final MoveStrategy strategy;
+
     private int playedCount = 0;
-    public RacingGame(String carNames, int tryCount) {
-        this(parseNames(carNames), tryCount, new RandomMoveStrategy());
+    public RacingGame(String carNames, int tryNo) {
+        this(Util.parseNames(carNames), new TryNumber(tryNo), new RandomMoveStrategy());
     }
 
-    public RacingGame(List<String> names, int tryCount, MoveStrategy strategy) {
-        this.cars = initCars(names);
-        this.tryCount = tryCount;
+    public RacingGame(List<String> names, int tryNo, MoveStrategy strategy) {
+        this(Util.parseNamesFromList(names), new TryNumber(tryNo), strategy);
+    }
+
+    private RacingGame(List<String> names, TryNumber tryNumber, MoveStrategy strategy) {
+        this.cars = Cars.fromNames(names);
+        this.tryNumber = tryNumber;
         this.strategy = strategy;
     }
-
-    private static List<String> parseNames(String carNames) {
-        return Stream.of(carNames.split(","))
-            .map(String::trim)
-            .filter(name -> !name.isEmpty())
-            .collect(Collectors.toList());
-    }
-
-    private List<Car> initCars(List<String> names) {
-        List<Car> list = new ArrayList<>();
-        for (String name : names) {
-            list.add(new Car(name));
-        }
-        return list;
-    }
     public boolean isEnd() {
-        return playedCount < tryCount;
+        return tryNumber.canPlayMore(playedCount);
     }
-
     public void race() {
-        moveAllCars();
+        cars.moveAll(strategy);
         playedCount++;
     }
-
     public List<Car> getCars() {
-        return Collections.unmodifiableList(cars);
+        return cars.asList();
     }
-
     public List<String> findWinners() {
-        int max = maxPosition();
-        List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.isSame(max)) {       // 메시지 기반 비교
-                winners.add(car.name());
-            }
-        }
-        return winners;
+        return cars.winnerNames();
     }
-
-    protected void moveAllCars() {
-        for (Car car : cars) {
-            car.move(strategy);
+    static class Util {
+        static List<String> parseNames(String carNames) {
+            return java.util.Arrays.stream(carNames.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
         }
-    }
 
-    private int maxPosition() {
-        int max = 0;
-        for (Car car : cars) {
-            max = car.max(max);          // 메시지 기반 max 갱신
+        static List<String> parseNamesFromList(List<String> names) {
+            return names.stream()
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
         }
-        return max;
     }
 }
