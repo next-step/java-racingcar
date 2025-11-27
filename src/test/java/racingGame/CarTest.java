@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CarTest {
+class CarTest {
 
     @Test
     @DisplayName("전략이 true를 반환하면 자동차는 한 칸 전진한다")
@@ -51,6 +51,9 @@ public class CarTest {
     @DisplayName("빈 이름으로 자동차를 생성하면 예외가 발생한다")
     void emptyName_throwsException() {
         assertThatThrownBy(() -> new Car(""))
+            .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> new Car("   "))
             .isInstanceOf(IllegalArgumentException.class);
     }
 

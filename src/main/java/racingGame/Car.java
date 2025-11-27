@@ -20,13 +20,12 @@ public class Car {
         }
     }
 
-    // 외부(API/뷰/테스트)용 조회 메서드
-    public int position() {
-        return position.value();
-    }
-
     public String name() {
         return name.value();
+    }
+
+    public int position() {
+        return position.value();
     }
 
     public int max(int currentMax) {
@@ -35,5 +34,9 @@ public class Car {
 
     public boolean isSame(int max) {
         return position.isSame(max);
+    }
+
+    public String toDisplayString() {
+        return name.value() + " : " + "-".repeat(position.value());
     }
 }

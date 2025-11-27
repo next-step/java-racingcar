@@ -1,68 +1,44 @@
 package racingGame;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    protected final List<Car> cars;
-    private final int tryCount;
+    private final Cars cars;
+    private final TryNumber tryNumber;
     private final MoveStrategy strategy;
-    private final List<Round> rounds = new ArrayList<>();
 
-    public RacingGame(List<String> names, int tryCount, MoveStrategy strategy) {
-        this.cars = initCars(names);
-        this.tryCount = tryCount;
+    private PlayCount playCount = PlayCount.zero();
+
+    public RacingGame(String carNames, int tryNo) {
+        this(CarNames.from(carNames), new TryNumber(tryNo), new RandomMoveStrategy());
+    }
+
+    public RacingGame(List<String> names, int tryNo, MoveStrategy strategy) {
+        this(CarNames.from(names), new TryNumber(tryNo), strategy);
+    }
+
+    private RacingGame(CarNames carNames, TryNumber tryNumber, MoveStrategy strategy) {
+        this.cars = carNames.toCars();
+        this.tryNumber = tryNumber;
         this.strategy = strategy;
     }
-
-    private List<Car> initCars(List<String> names) {
-        List<Car> list = new ArrayList<>();
-        for (String name : names) {
-            list.add(new Car(name));
-        }
-        return list;
+    public boolean hasNextRound() {
+        return playCount.isLessThan(tryNumber);
     }
 
-    public List<Round> race() {
-        for (int i = 0; i < tryCount; i++) {
-            moveAllCars();
-            saveRound();
-        }
-        return rounds;
+    public void race() {
+        moveCars();
+        playCount = playCount.increase();
     }
 
-    protected void moveAllCars() {
-        for (Car car : cars) {
-            car.move(strategy);
-        }
+    protected void moveCars() {
+        cars.moveAll(strategy);
     }
-
-    private void saveRound() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.position());
-        }
-        rounds.add(new Round(positions));
+    public List<Car> getCars() {
+        return cars.asList();
     }
-
-    public List<String> winners() {
-        int max = maxPosition();
-        List<String> result = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.isSame(max)) {
-                result.add(car.name());
-            }
-        }
-        return result;
-    }
-
-    private int maxPosition() {
-        int max = 0;
-        for (Car car : cars) {
-            max = car.max(max);
-        }
-        return max;
+    public List<String> findWinners() {
+        return cars.winnerNames();
     }
 }
