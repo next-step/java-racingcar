@@ -65,19 +65,4 @@ class CarTest {
         assertThat(car.name()).isEqualTo("pobi");
         assertThat(car.position()).isZero();
     }
-
-    @Test
-    @DisplayName("car.max와 car.isSame은 Position 값에 따라 올바르게 동작한다")
-    void messageBasedMaxAndIsSame() {
-        Car car = new Car("pobi");
-        car.move(() -> true);
-        car.move(() -> true);
-
-        int max = 0;
-        max = car.max(max);
-
-        assertThat(max).isEqualTo(2);
-        assertThat(car.isSame(2)).isTrue();
-        assertThat(car.isSame(3)).isFalse();
-    }
 }

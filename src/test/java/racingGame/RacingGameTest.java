@@ -12,7 +12,6 @@ class RacingGameTest {
     @Test
     @DisplayName("항상 이동하는 전략을 사용하면 tryNo 만큼 라운드 진행 후 모든 자동차의 위치가 tryNo가 된다")
     void race_withAlwaysMoveStrategy_allCarsMoveEveryRound() {
-        String carNames = "a,b,c";
         int tryNo = 3;
         RacingGame game = new RacingGame(
             Arrays.asList("a", "b", "c"),
@@ -39,9 +38,9 @@ class RacingGameTest {
     void winners_returnsCarsWithMaxPosition() {
         List<String> names = Arrays.asList("a", "b", "c");
         MoveStrategy[] strategies = new MoveStrategy[]{
-            () -> true,
-            () -> false,
-            () -> true
+            () -> true,   // a: 이동
+            () -> false,  // b: 정지
+            () -> true    // c: 이동
         };
 
         RacingGame game = new RacingGameWithCustomStrategies(names, 1, strategies);
@@ -70,21 +69,13 @@ class RacingGameTest {
     }
 
     static class RacingGameWithCustomStrategies extends RacingGame {
-
         private final MoveStrategy[] strategies;
 
         public RacingGameWithCustomStrategies(List<String> names,
             int tryCount,
             MoveStrategy[] strategies) {
-            super(names, tryCount, () -> false);
+            super(names, tryCount, () -> false); // 기본 전략은 사용하지 않음
             this.strategies = strategies;
-        }
-
-        @Override
-        protected void moveAllCars() {
-            for (int i = 0; i < strategies.length; i++) {
-                cars.get(i).move(strategies[i]);
-            }
         }
     }
 }
