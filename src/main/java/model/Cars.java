@@ -56,7 +56,6 @@ public class Cars {
 
     public List<String> getWinners(Position maxPosition) {
         List<String> winners = new ArrayList<>();
-
         for (Car car : cars) {
             if (car.isMaxPosition(maxPosition)) {
                 winners.add(car.name());
@@ -66,7 +65,4 @@ public class Cars {
         return winners;
     }
 
-    private boolean isWinner(int position, int maxPosition) {
-        return position == maxPosition;
-    }
 }
