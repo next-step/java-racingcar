@@ -3,10 +3,10 @@ package model;
 public class Car {
     private static final int CAR_MOVE_BOUNDARY = 4;
     private CarName carName;
-    private int position;
+    private Position position;
 
     public Car(int position, String name) {
-        this.position = position;
+        this.position = new Position(position);
         this.carName = new CarName(name);
     }
 
@@ -16,12 +16,8 @@ public class Car {
 
     public void tryMoveForward(int randomNumber) {
         if (canMoveForward(randomNumber)) {
-            position++;
+            position.forward();
         }
-    }
-
-    public int getPosition() {
-        return position;
     }
 
     public String name() {
@@ -29,7 +25,14 @@ public class Car {
     }
 
     public String toString() {
-        return String.format("%s : %s", carName, "-".repeat(position));
+        return String.format("%s : %s", carName, position);
     }
 
+    public Position max(Position maxPosition) {
+        return position.max(maxPosition);
+    }
+
+    public boolean isMaxPosition(Position maxPosition) {
+        return position == maxPosition;
+    }
 }

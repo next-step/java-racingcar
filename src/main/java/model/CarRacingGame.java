@@ -20,7 +20,7 @@ public class CarRacingGame {
     }
 
     public List<String> findWinner() {
-        int maxPosition = cars.getMaxPosition();
+        Position maxPosition = cars.getMaxPosition();
         return cars.getWinners(maxPosition);
     }
 

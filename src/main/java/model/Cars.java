@@ -45,20 +45,20 @@ public class Cars {
         }
     }
 
-    public int getMaxPosition() {
-        int maxPosition = 0;
+    public Position getMaxPosition() {
+        Position maxPosition = new Position(0);
         for (Car car : cars) {
-            maxPosition = Math.max(car.getPosition(), maxPosition);
+            maxPosition = car.max(maxPosition);
         }
 
         return maxPosition;
     }
 
-    public List<String> getWinners(int maxPosition) {
+    public List<String> getWinners(Position maxPosition) {
         List<String> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            if (isWinner(car.getPosition(), maxPosition)) {
+            if (car.isMaxPosition(maxPosition)) {
                 winners.add(car.name());
             }
         }
