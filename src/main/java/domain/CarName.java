@@ -3,10 +3,18 @@ package domain;
 import java.util.Objects;
 
 public class CarName {
+    private static final int MAX_NAME_LENGTH = 5;
     private String name;
 
     public CarName(String name) {
+        if (!isNameValid(name)) {
+            throw new RuntimeException(String.format("자동차 이름은 %d를 넘을 수 없습니다.",  MAX_NAME_LENGTH));
+        }
         this.name = name;
+    }
+
+    private boolean isNameValid(String name) {
+        return name.length() <= MAX_NAME_LENGTH;
     }
 
     @Override
