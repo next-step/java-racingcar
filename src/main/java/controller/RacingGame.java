@@ -33,4 +33,8 @@ public class RacingGame {
     private static List<String> parseCarNames(String carNameInput) {
         return Arrays.asList(carNameInput.split(","));
     }
+
+    public boolean isEnd() {
+        return tryNumber.isEnd();
+    }
 }
