@@ -21,4 +21,21 @@ public class Car {
 
         position.move();
     }
+
+    public Position max(Position maxPosition) {
+        return position.max(maxPosition);
+    }
+
+    public boolean isMaxPosition(Position maxPosition) {
+        return position.equals(maxPosition);
+    }
+
+    public String name() {
+        return carName.toString();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s : %s", carName, position);
+    }
 }
