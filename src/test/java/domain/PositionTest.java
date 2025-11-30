@@ -12,4 +12,10 @@ public class PositionTest {
 
         assertThat(position).isEqualTo(new Position(1));
     }
+
+    @Test
+    public void 포지현_문자열_출력() {
+        Position position = new Position(5);
+        assertThat(position.toString()).isEqualTo("-".repeat(5));
+    }
 }
