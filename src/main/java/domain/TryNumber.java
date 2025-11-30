@@ -6,6 +6,7 @@ public class TryNumber {
 
     public TryNumber(int totalTry) {
         this.totalTryNumber = totalTry;
+        this.curTryCount = 0;
     }
 
     public boolean isEnd() {

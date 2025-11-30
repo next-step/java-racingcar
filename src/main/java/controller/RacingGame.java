@@ -1,7 +1,6 @@
 package controller;
 
-import domain.Car;
-import domain.TryNumber;
+import domain.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,5 +35,21 @@ public class RacingGame {
 
     public boolean isEnd() {
         return tryNumber.isEnd();
+    }
+
+    public List<String> race() {
+        tryNumber.increase();
+
+        List<String> raceResult = new ArrayList<>();
+        for (Car car : cars) {
+            car.tryMoveForward(new RandomNumber());
+            raceResult.add(car.toString());
+        }
+
+        return raceResult;
+    }
+
+    public List<String> winners() {
+        return Winner.getWinners(cars);
     }
 }
