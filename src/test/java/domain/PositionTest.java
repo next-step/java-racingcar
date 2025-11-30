@@ -18,4 +18,9 @@ public class PositionTest {
         Position position = new Position(5);
         assertThat(position.toString()).isEqualTo("-".repeat(5));
     }
+
+    @Test
+    public void 최대값() {
+        assertThat(new Position(1).max(new Position(2))).isEqualTo(new Position(2));
+    }
 }

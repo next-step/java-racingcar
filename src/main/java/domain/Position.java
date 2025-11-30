@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class Position {
+public class Position implements Comparable<Position>{
     private int position;
 
     public Position(int position) {
@@ -11,6 +11,20 @@ public class Position {
 
     public void move() {
         position++;
+    }
+
+    public Position max(Position other) {
+        return this.compareTo(other) >= 0 ? this : other;
+    }
+
+    @Override
+    public String toString() {
+        return "-".repeat(position);
+    }
+
+    @Override
+    public int compareTo(Position o) {
+        return Integer.compare(this.position, o.position);
     }
 
     @Override
@@ -23,10 +37,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hashCode(position);
-    }
-
-    @Override
-    public String toString() {
-        return "-".repeat(position);
     }
 }
