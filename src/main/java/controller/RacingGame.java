@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
+    private final List<Car> cars;
     private TryNumber tryNumber;
 
     public RacingGame(String carNames, int tryNumber) {
