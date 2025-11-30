@@ -8,7 +8,7 @@ public class CarName {
 
     public CarName(String name) {
         if (!isNameValid(name)) {
-            throw new RuntimeException(String.format("자동차 이름은 %d를 넘을 수 없습니다.",  MAX_NAME_LENGTH));
+            throw new RuntimeException(String.format("자동차 이름은 %d를 넘을 수 없습니다.", MAX_NAME_LENGTH));
         }
         this.name = name;
     }

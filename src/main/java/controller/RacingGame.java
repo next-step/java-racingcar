@@ -20,7 +20,7 @@ public class RacingGame {
         this.tryNumber = tryNumber;
     }
 
-    private static List<Car>  createCars(List<String> parsedCarNames) {
+    private static List<Car> createCars(List<String> parsedCarNames) {
         List<Car> cars = new ArrayList<>();
 
         for (String carName : parsedCarNames) {
