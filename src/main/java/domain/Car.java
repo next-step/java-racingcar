@@ -14,6 +14,10 @@ public class Car {
         this.position = position;
     }
 
+    public Car(String carName) {
+        this(carName, 0);
+    }
+
     public void tryMoveForward(RandomNumber randomNumber) {
         if (!randomNumber.isBiggerThan(CAR_MOVE_BOUNDARY)) {
             return;
