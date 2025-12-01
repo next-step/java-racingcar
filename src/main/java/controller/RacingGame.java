@@ -7,30 +7,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RacingGame {
-    private final List<Car> cars;
+    private final Cars cars;
     private TryNumber tryNumber;
 
     public RacingGame(String carNames, int tryNumber) {
-        this(createCars(parseCarNames(carNames)), new TryNumber(tryNumber));
+        this(new Cars(carNames), new TryNumber(tryNumber));
     }
 
-    public RacingGame(List<Car> cars, TryNumber tryNumber) {
+    public RacingGame(Cars cars, TryNumber tryNumber) {
         this.cars = cars;
         this.tryNumber = tryNumber;
-    }
-
-    private static List<Car> createCars(List<String> parsedCarNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : parsedCarNames) {
-            cars.add(new Car(carName));
-        }
-
-        return cars;
-    }
-
-    private static List<String> parseCarNames(String carNameInput) {
-        return Arrays.asList(carNameInput.split(","));
     }
 
     public boolean isEnd() {
@@ -39,17 +25,12 @@ public class RacingGame {
 
     public List<String> race() {
         tryNumber.increase();
+        cars.move();
 
-        List<String> raceResult = new ArrayList<>();
-        for (Car car : cars) {
-            car.tryMoveForward(new RandomNumber());
-            raceResult.add(car.toString());
-        }
-
-        return raceResult;
+        return cars.status();
     }
 
     public List<String> winners() {
-        return Winner.getWinners(cars);
+        return cars.getWinners();
     }
 }
