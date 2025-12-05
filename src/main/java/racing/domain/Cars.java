@@ -9,13 +9,11 @@ public class Cars {
     private static final String INVALID_CAR_COUNT_MESSAGE = "자동차 경주를 진행하기 위해서는 두 대 이상의 자동차가 필요합니다.";
     private static final int MIN_CAR_COUNT = 2;
 
-    private final int carCount;
     private final List<Car> cars;
 
     public Cars(int carCount) {
         validateCount(carCount);
-        this.carCount = carCount;
-        this.cars = createCars();
+        this.cars = createCars(carCount);
     }
 
     private void validateCount(int carCount) {
@@ -24,7 +22,7 @@ public class Cars {
         }
     }
 
-    private List<Car> createCars() {
+    private List<Car> createCars(int carCount) {
         List<Car> created = new ArrayList<>();
 
         for (int i = 0; i < carCount; i++) {
