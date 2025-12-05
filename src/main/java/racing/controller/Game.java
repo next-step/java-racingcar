@@ -35,7 +35,7 @@ public class Game {
 
     private void playSingleRound(MoveStrategy moveStrategy, RaceResult raceResult) {
         cars.moveCars(moveStrategy);
-        RoundResult roundResult = new RoundResult(cars);
+        RoundResult roundResult = cars.roundResult();
         raceResult.addResult(roundResult);
     }
 }

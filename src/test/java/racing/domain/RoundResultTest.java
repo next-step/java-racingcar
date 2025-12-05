@@ -11,7 +11,7 @@ public class RoundResultTest {
         Cars cars = new Cars(3);
         cars.moveCars(() -> true);
 
-        RoundResult roundResult = new RoundResult(cars);
+        RoundResult roundResult = cars.roundResult();
         assertThat(roundResult.getRoundResult()).containsExactly(1, 1, 1);
     }
 }

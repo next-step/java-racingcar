@@ -30,4 +30,15 @@ public class CarsTest {
             assertThat(car.getPosition()).isEqualTo(1);
         }
     }
+
+    @Test
+    void 여러번_이동한_후_현재_위치를_반영한다() {
+        Cars cars = new Cars(3);
+
+        cars.moveCars(() -> true);
+        cars.moveCars(() -> true);
+
+        RoundResult result = cars.roundResult();
+        assertThat(result.getRoundResult()).containsExactly(2, 2, 2);
+    }
 }

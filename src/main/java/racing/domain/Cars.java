@@ -46,4 +46,17 @@ public class Cars {
     public int size() {
         return cars.size();
     }
+
+    public RoundResult roundResult() {
+        return new RoundResult(positions());
+    }
+
+    private List<Integer> positions() {
+        List<Integer> positions = new ArrayList<>();
+
+        for (Car car : cars) {
+            positions.add(car.getPosition());
+        }
+        return positions;
+    }
 }
