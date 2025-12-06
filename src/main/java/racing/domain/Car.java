@@ -4,19 +4,19 @@ public class Car {
 
     private static final int DEFAULT_POSITION = 0;
 
-    private int position;
+    private Position position;
 
     public Car() {
-        this.position = DEFAULT_POSITION;
+        this.position = new Position(DEFAULT_POSITION);
     }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMovable()) {
-            position++;
+            this.position = position.move();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.value();
     }
 }
