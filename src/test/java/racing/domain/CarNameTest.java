@@ -12,7 +12,7 @@ public class CarNameTest {
         String name = "넥스트스텝";
         CarName carName = new CarName(name);
 
-        assertThat(carName.getCarName()).isEqualTo(name);
+        assertThat(carName.value()).isEqualTo(name);
     }
 
     @Test

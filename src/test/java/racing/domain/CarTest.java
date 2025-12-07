@@ -29,4 +29,13 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    void 자동차는_현재_상태의_CarResult를_생성한다() {
+        Car car = new Car(carName);
+        CarResult carResult = car.createCarResult();
+
+        assertThat(carResult.getCarName().value()).isEqualTo("자동차");
+        assertThat(carResult.getPosition().value()).isEqualTo(0);
+    }
 }

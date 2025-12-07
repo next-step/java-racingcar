@@ -4,7 +4,7 @@ public class Car {
 
     private static final int DEFAULT_POSITION = 0;
 
-    private CarName carName;
+    private final CarName carName;
     private Position position;
 
     public Car(CarName carName) {
@@ -20,5 +20,9 @@ public class Car {
 
     public int getPosition() {
         return position.value();
+    }
+
+    public CarResult createCarResult() {
+        return new CarResult(carName, position);
     }
 }
