@@ -53,13 +53,4 @@ public class Cars {
         }
         return new RoundResult(carResults);
     }
-
-    private List<Integer> positions() {
-        List<Integer> positions = new ArrayList<>();
-
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
-    }
 }
