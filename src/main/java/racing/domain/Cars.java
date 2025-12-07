@@ -11,9 +11,9 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(int carCount) {
-        validateCount(carCount);
-        this.cars = createCars(carCount);
+    public Cars(List<CarName> carNames) {
+        validateCount(carNames.size());
+        this.cars = createCars(carNames);
     }
 
     private void validateCount(int carCount) {
@@ -22,11 +22,11 @@ public class Cars {
         }
     }
 
-    private List<Car> createCars(int carCount) {
+    private List<Car> createCars(List<CarName> carNames) {
         List<Car> created = new ArrayList<>();
 
-        for (int i = 0; i < carCount; i++) {
-            created.add(new Car());
+        for (CarName carName : carNames) {
+            created.add(new Car(carName));
         }
         return created;
     }
