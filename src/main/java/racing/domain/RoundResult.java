@@ -1,5 +1,6 @@
 package racing.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,7 +16,19 @@ public class RoundResult {
         return Collections.unmodifiableList(roundResult);
     }
 
-    public Position maxPosition() {
+    public List<CarResult> winners() {
+        Position max = maxPosition();
+        List<CarResult> winners = new ArrayList<>();
+
+        for (CarResult carResult : roundResult) {
+            if (carResult.isMaxPosition(max)) {
+                winners.add(carResult);
+            }
+        }
+        return winners;
+    }
+
+    private Position maxPosition() {
         Position max = new Position(0);
 
         for (CarResult carResult : roundResult) {

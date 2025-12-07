@@ -28,12 +28,14 @@ public class RoundResultTest {
     }
 
     @Test
-    void 한_라운드_내에서_가장_멀리_이동한_Position을_반환한다() {
+    void 한_라운드의_우승자를_반환한다() {
         Cars cars = new Cars(carNames);
         cars.moveCars(() -> true);
 
         RoundResult roundResult = cars.roundResult();
 
-        assertThat(roundResult.maxPosition()).isEqualTo(new Position(1));
+        assertThat(roundResult.winners())
+                .extracting(carResult -> carResult.getCarName().value())
+                .containsExactly("자동차1", "자동차2", "자동차3");
     }
 }
