@@ -1,5 +1,7 @@
 package racing.controller;
 
+import java.util.List;
+import racing.domain.CarName;
 import racing.domain.Cars;
 import racing.domain.MoveStrategy;
 import racing.domain.RaceResult;
@@ -13,8 +15,8 @@ public class Game {
     private final Cars cars;
     private final int tryCount;
 
-    public Game(int carCount, int tryCount) {
-        this.cars = new Cars(carCount);
+    public Game(List<CarName> carNames, int tryCount) {
+        this.cars = new Cars(carNames);
         this.tryCount = tryCount;
     }
 
