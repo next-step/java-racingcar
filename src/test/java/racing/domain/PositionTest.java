@@ -16,6 +16,7 @@ public class PositionTest {
     void 이동하면_증가한_Position을_반환한다() {
         Position position = new Position(0);
         Position movedPosition = position.move();
+
         assertThat(movedPosition).isEqualTo(new Position(1));
     }
 
@@ -23,6 +24,15 @@ public class PositionTest {
     void 여러번_이동하면_누적된_Position을_반환한다() {
         Position position = new Position(0);
         Position movedPosition = position.move().move();
+
         assertThat(movedPosition).isEqualTo(new Position(2));
+    }
+
+    @Test
+    void 더_많이_이동한_Position을_반환한다() {
+        Position position = new Position(10);
+        Position other = new Position(1);
+
+        assertThat(position.biggerPosition(other)).isEqualTo(position);
     }
 }

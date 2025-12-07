@@ -20,6 +20,13 @@ public class Position {
         return value;
     }
 
+    public Position biggerPosition(Position other) {
+        if (this.value > other.value) {
+            return this;
+        }
+        return other;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
