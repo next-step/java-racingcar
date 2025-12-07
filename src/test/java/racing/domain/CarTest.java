@@ -44,13 +44,13 @@ public class CarTest {
         Car car = new Car(carName);
         car.move(() -> true);
 
-        assertThat(car.maxPosition(new Position(1))).isTrue();
+        assertThat(car.isMaxPosition(new Position(1))).isTrue();
     }
 
     @Test
     void 자동차가_최대_위치와_다르면_false를_반환한다() {
         Car car = new Car(carName);
 
-        assertThat(car.maxPosition(new Position(1))).isFalse();
+        assertThat(car.isMaxPosition(new Position(1))).isFalse();
     }
 }
