@@ -8,8 +8,12 @@ public class Car {
     private Position position;
 
     public Car(CarName carName) {
+        this(carName, new Position(DEFAULT_POSITION));
+    }
+
+    public Car(CarName carName, Position position) {
         this.carName = carName;
-        this.position = new Position(DEFAULT_POSITION);
+        this.position = position;
     }
 
     public void move(MoveStrategy moveStrategy) {
