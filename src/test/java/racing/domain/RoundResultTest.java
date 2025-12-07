@@ -11,7 +11,6 @@ public class RoundResultTest {
             new CarName("자동차1"), new CarName("자동차2"), new CarName("자동차3")
     );
 
-
     @Test
     void 한_라운드의_결과를_저장한다() {
         Cars cars = new Cars(carNames);
@@ -26,5 +25,15 @@ public class RoundResultTest {
         assertThat(roundResult.getRoundResult())
                 .extracting(carResult -> carResult.getPosition().value())
                 .containsExactly(1, 1, 1);
+    }
+
+    @Test
+    void 한_라운드_내에서_가장_멀리_이동한_Position을_반환한다() {
+        Cars cars = new Cars(carNames);
+        cars.moveCars(() -> true);
+
+        RoundResult roundResult = cars.roundResult();
+
+        assertThat(roundResult.maxPosition()).isEqualTo(new Position(1));
     }
 }
