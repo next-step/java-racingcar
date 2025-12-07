@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import racing.controller.Game;
 import racing.domain.CarName;
+import racing.domain.TryCount;
 import racing.view.InputView;
 
 public class Application {
@@ -13,7 +14,7 @@ public class Application {
 
     public static void main(String[] args) {
         List<CarName> carNames = repeatUntilReadValidInput(Application::readCarNames);
-        int tryCount = repeatUntilReadValidInput(InputView::readTryCount);
+        TryCount tryCount = repeatUntilReadValidInput(Application::readTryCount);
 
         Game game = new Game(carNames, tryCount);
         game.race();
@@ -25,6 +26,11 @@ public class Application {
         return Arrays.stream(inputNames.split(CAR_NAME_DELIMITER))
                 .map(CarName::new)
                 .toList();
+    }
+
+    private static TryCount readTryCount() {
+        int tryCount = InputView.readTryCount();
+        return new TryCount(tryCount);
     }
 
     private static <T> T repeatUntilReadValidInput(Supplier<T> supplier) {
