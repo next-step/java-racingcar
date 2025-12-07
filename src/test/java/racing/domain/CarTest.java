@@ -6,15 +6,17 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
+    private final CarName carName = new CarName("자동차");
+
     @Test
     void 자동차를_생성하면_첫_위치가_0이_된다() {
-        Car car = new Car();
+        Car car = new Car(carName);
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     void 이동_전략이_false이면_전진하지_않는다() {
-        Car car = new Car();
+        Car car = new Car(carName);
         car.move(() -> false);
 
         assertThat(car.getPosition()).isEqualTo(0);
@@ -22,7 +24,7 @@ public class CarTest {
 
     @Test
     void 이동_전략이_true이면_전진한다() {
-        Car car = new Car();
+        Car car = new Car(carName);
         car.move(() -> true);
 
         assertThat(car.getPosition()).isEqualTo(1);

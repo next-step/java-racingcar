@@ -4,9 +4,11 @@ public class Car {
 
     private static final int DEFAULT_POSITION = 0;
 
+    private CarName carName;
     private Position position;
 
-    public Car() {
+    public Car(CarName carName) {
+        this.carName = carName;
         this.position = new Position(DEFAULT_POSITION);
     }
 
