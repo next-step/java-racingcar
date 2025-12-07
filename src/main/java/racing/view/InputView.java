@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 
 public class InputView {
 
-    private static final String CAR_COUNT_INPUT_MESSAGE = "자동차 대수는 몇 대인가요?";
+    private static final String CAR_NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String TRY_COUNT_INPUT_MESSAGE = "시도할 회수는 몇 회인가요?";
     private static final String EMPTY_INPUT_MESSAGE = "값을 입력해야 합니다.";
     private static final String INVALID_NUMBER_MESSAGE = "숫자를 입력해야 합니다.";
@@ -13,14 +13,15 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int readCarCount() {
-        System.out.println(CAR_COUNT_INPUT_MESSAGE);
-        return repeatUntilReadValidInput(InputView::readPositiveNumber);
+
+    public static String readCarNames() {
+        System.out.println(CAR_NAME_INPUT_MESSAGE);
+        return readLine();
     }
 
     public static int readTryCount() {
         System.out.println(TRY_COUNT_INPUT_MESSAGE);
-        return repeatUntilReadValidInput(InputView::readPositiveNumber);
+        return readPositiveNumber();
     }
 
     private static int readPositiveNumber() {
@@ -29,14 +30,15 @@ public class InputView {
     }
 
     private static String readLine() {
-        return scanner.nextLine();
-    }
+        String input = scanner.nextLine();
 
-    private static int parsePositiveNumber(String input) {
         if (isBlank(input)) {
             throw new RuntimeException(EMPTY_INPUT_MESSAGE);
         }
+        return input;
+    }
 
+    private static int parsePositiveNumber(String input) {
         try {
             int number = Integer.parseInt(input);
             validatePositive(number);
@@ -54,15 +56,5 @@ public class InputView {
 
     private static boolean isBlank(String input) {
         return input == null || input.isEmpty();
-    }
-
-    private static <T> T repeatUntilReadValidInput(Supplier<T> supplier) {
-        while (true) {
-            try {
-                return supplier.get();
-            } catch (RuntimeException exception) {
-                System.out.println(exception.getMessage());;
-            }
-        }
     }
 }
