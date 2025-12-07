@@ -18,6 +18,13 @@ public class RoundResultTest {
         cars.moveCars(() -> true);
 
         RoundResult roundResult = cars.roundResult();
-        assertThat(roundResult.getRoundResult()).containsExactly(1, 1, 1);
+
+        assertThat(roundResult.getRoundResult()).hasSize(3);
+        assertThat(roundResult.getRoundResult())
+                .extracting(carResult -> carResult.getCarName().value())
+                .containsExactly("자동차1", "자동차2", "자동차3");
+        assertThat(roundResult.getRoundResult())
+                .extracting(carResult -> carResult.getPosition().value())
+                .containsExactly(1, 1, 1);
     }
 }

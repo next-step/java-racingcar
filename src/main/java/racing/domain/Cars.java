@@ -46,7 +46,12 @@ public class Cars {
     }
 
     public RoundResult roundResult() {
-        return new RoundResult(positions());
+        List<CarResult> carResults = new ArrayList<>();
+
+        for (Car car : cars) {
+            carResults.add(car.createCarResult());
+        }
+        return new RoundResult(carResults);
     }
 
     private List<Integer> positions() {

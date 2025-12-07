@@ -5,13 +5,13 @@ import java.util.List;
 
 public class RoundResult {
 
-    private final List<Integer> roundResult;
+    private final List<CarResult> roundResult;
 
-    public RoundResult(List<Integer> roundResult) {
+    public RoundResult(List<CarResult> roundResult) {
         this.roundResult = roundResult;
     }
 
-    public List<Integer> getRoundResult() {
+    public List<CarResult> getRoundResult() {
         return Collections.unmodifiableList(roundResult);
     }
 }

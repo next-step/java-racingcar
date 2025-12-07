@@ -45,7 +45,8 @@ public class CarsTest {
         cars.moveCars(() -> true);
         cars.moveCars(() -> true);
 
-        RoundResult result = cars.roundResult();
-        assertThat(result.getRoundResult()).containsExactly(2, 2, 2);
+        for (Car car : cars.getCars()) {
+            assertThat(car.getPosition()).isEqualTo(2);
+        }
     }
 }
