@@ -1,6 +1,7 @@
 package racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,12 @@ public class PositionTest {
     void 값이_잘_저장된다() {
         Position position = new Position(3);
         assertThat(position).isEqualTo(new Position(3));
+    }
+
+    @Test
+    void 위치로_음수를_입력하면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Position(-1))
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test

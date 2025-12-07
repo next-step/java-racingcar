@@ -4,12 +4,21 @@ import java.util.Objects;
 
 public class Position {
 
+    private static final String INVALID_POSITION_MESSAGE = "위치는 0 이상이어야 합니다.";
+    private static final int MINIMUM_POSITION = 0;
     private static final int MOVE_UNIT = 1;
 
     private final int value;
 
     public Position(int value) {
+        validate(value);
         this.value = value;
+    }
+
+    private void validate(int value) {
+        if (value < MINIMUM_POSITION) {
+            throw new RuntimeException(INVALID_POSITION_MESSAGE);
+        }
     }
 
     public Position move() {
