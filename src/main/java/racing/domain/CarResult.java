@@ -17,4 +17,8 @@ public class CarResult {
     public Position getPosition() {
         return position;
     }
+
+    public boolean isMaxPosition(Position maxPosition) {
+        return this.position.equals(maxPosition);
+    }
 }

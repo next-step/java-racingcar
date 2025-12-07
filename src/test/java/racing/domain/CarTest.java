@@ -38,19 +38,4 @@ public class CarTest {
         assertThat(carResult.getCarName().value()).isEqualTo("자동차");
         assertThat(carResult.getPosition().value()).isEqualTo(0);
     }
-
-    @Test
-    void 자동차가_최대_위치와_같으면_true를_반환한다() {
-        Car car = new Car(carName);
-        car.move(() -> true);
-
-        assertThat(car.isMaxPosition(new Position(1))).isTrue();
-    }
-
-    @Test
-    void 자동차가_최대_위치와_다르면_false를_반환한다() {
-        Car car = new Car(carName);
-
-        assertThat(car.isMaxPosition(new Position(1))).isFalse();
-    }
 }
