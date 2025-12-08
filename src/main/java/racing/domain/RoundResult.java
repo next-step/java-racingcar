@@ -6,26 +6,34 @@ import java.util.List;
 
 public class RoundResult {
 
-    private final List<Integer> roundResult;
+    private final List<CarResult> roundResult;
 
-    public RoundResult(Cars cars) {
-        this(toList(cars));
-    }
-
-    public RoundResult(List<Integer> roundResult) {
+    public RoundResult(List<CarResult> roundResult) {
         this.roundResult = roundResult;
     }
 
-    private static List<Integer> toList(Cars cars) {
-        List<Integer> roundResult = new ArrayList<>();
-
-        for (Car car : cars.getCars()) {
-            roundResult.add(car.getPosition());
-        }
-        return roundResult;
+    public List<CarResult> getRoundResult() {
+        return Collections.unmodifiableList(roundResult);
     }
 
-    public List<Integer> getRoundResult() {
-        return Collections.unmodifiableList(roundResult);
+    public List<CarResult> winners() {
+        Position max = maxPosition();
+        List<CarResult> winners = new ArrayList<>();
+
+        for (CarResult carResult : roundResult) {
+            if (carResult.isMaxPosition(max)) {
+                winners.add(carResult);
+            }
+        }
+        return winners;
+    }
+
+    private Position maxPosition() {
+        Position max = new Position(0);
+
+        for (CarResult carResult : roundResult) {
+            max = carResult.getPosition().biggerPosition(max);
+        }
+        return max;
     }
 }

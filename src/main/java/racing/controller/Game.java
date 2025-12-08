@@ -1,20 +1,23 @@
 package racing.controller;
 
+import java.util.List;
+import racing.domain.CarName;
 import racing.domain.Cars;
 import racing.domain.MoveStrategy;
 import racing.domain.RaceResult;
 import racing.domain.RandomMoveStrategy;
 import racing.domain.RandomNumberGenerator;
 import racing.domain.RoundResult;
+import racing.domain.TryCount;
 import racing.view.OutputView;
 
 public class Game {
 
     private final Cars cars;
-    private final int tryCount;
+    private TryCount tryCount;
 
-    public Game(int carCount, int tryCount) {
-        this.cars = new Cars(carCount);
+    public Game(List<CarName> carNames, TryCount tryCount) {
+        this.cars = new Cars(carNames);
         this.tryCount = tryCount;
     }
 
@@ -22,7 +25,8 @@ public class Game {
         MoveStrategy moveStrategy = createMoveStrategy();
         RaceResult raceResult = new RaceResult();
 
-        for (int i = 0; i < tryCount; i++) {
+        while (!tryCount.isEnd()) {
+            tryCount = tryCount.decrease();
             playSingleRound(moveStrategy, raceResult);
         }
 
@@ -35,7 +39,7 @@ public class Game {
 
     private void playSingleRound(MoveStrategy moveStrategy, RaceResult raceResult) {
         cars.moveCars(moveStrategy);
-        RoundResult roundResult = new RoundResult(cars);
+        RoundResult roundResult = cars.roundResult();
         raceResult.addResult(roundResult);
     }
 }

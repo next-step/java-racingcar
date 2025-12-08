@@ -19,4 +19,18 @@ public class RaceResult {
     public List<RoundResult> getRaceResult() {
         return Collections.unmodifiableList(raceResult);
     }
+
+    public List<CarName> winners() {
+        List<CarName> winners = new ArrayList<>();
+        RoundResult lastRound = getLastRoundResult();
+
+        for (CarResult carResult : lastRound.winners()) {
+            winners.add(carResult.getCarName());
+        }
+        return winners;
+    }
+
+    private RoundResult getLastRoundResult() {
+        return raceResult.getLast();
+    }
 }
