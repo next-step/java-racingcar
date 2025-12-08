@@ -12,9 +12,9 @@ public class RaceResultTest {
         RaceResult raceResult = new RaceResult();
 
         RoundResult roundResult = new RoundResult(List.of(
-                new CarResult(new CarName("자동차1"), new Position(1)),
-                new CarResult(new CarName("자동차2"), new Position(2)),
-                new CarResult(new CarName("자동차3"), new Position(3))
+                new CarResult("자동차1", 1),
+                new CarResult("자동차2", 2),
+                new CarResult("자동차3", 3)
         ));
 
         raceResult.addResult(roundResult);
@@ -26,12 +26,10 @@ public class RaceResultTest {
         RaceResult raceResult = new RaceResult();
 
         RoundResult round1 = new RoundResult(List.of(
-                new CarResult(new CarName("자동차1"), new Position(1)),
-                new CarResult(new CarName("자동차2"), new Position(0))
+                new CarResult("자동차1", 1), new CarResult("자동차2", 0)
         ));
         RoundResult round2 = new RoundResult(List.of(
-                new CarResult(new CarName("자동차1"), new Position(2)),
-                new CarResult(new CarName("자동차2"), new Position(1))
+                new CarResult("자동차1", 2), new CarResult("자동차2", 1)
         ));
 
         raceResult.addResult(round1);
@@ -49,9 +47,9 @@ public class RaceResultTest {
         RaceResult raceResult = new RaceResult();
 
         RoundResult onlyRound = new RoundResult(List.of(
-                new CarResult(new CarName("자동차1"), new Position(1)),
-                new CarResult(new CarName("자동차2"), new Position(1)),
-                new CarResult(new CarName("자동차3"), new Position(0))
+                new CarResult("자동차1", 1),
+                new CarResult("자동차2", 1),
+                new CarResult("자동차3", 0)
         ));
 
         raceResult.addResult(onlyRound);
