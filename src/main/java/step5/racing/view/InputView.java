@@ -26,7 +26,7 @@ public class InputView {
     private static String readLine() {
         String input = scanner.nextLine();
 
-        if (!isBlank(input)) {
+        if (isBlank(input)) {
             throw new IllegalArgumentException(EMPTY_INPUT_MESSAGE);
         }
         return input;
