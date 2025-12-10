@@ -13,4 +13,20 @@ public class CarTest {
         assertThat(car.position()).isEqualTo(new Position(0));
         assertThat(car.name().value()).isEqualTo("자동차");
     }
+
+    @Test
+    void 이동전략이_true일_때_자동차가_이동한다() {
+        Car car = new Car("자동차");
+        car.move(() -> true);
+
+        assertThat(car.position()).isEqualTo(new Position(1));
+    }
+
+    @Test
+    void 이동전략이_false일_때_자동차가_이동하지_않는다() {
+        Car car = new Car("자동차");
+        car.move(() -> false);
+
+        assertThat(car.position()).isEqualTo(new Position(0));
+    }
 }
