@@ -1,6 +1,7 @@
 package step5.racing.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -32,6 +33,16 @@ public class Cars {
         if (carCount < MIN_CAR_COUNT) {
             throw new IllegalArgumentException(INVALID_CAR_COUNT_MESSAGE);
         }
+    }
+
+    public void move(MoveStrategy moveStrategy) {
+        for (Car car : cars) {
+            car.move(moveStrategy);
+        }
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     public int size() {

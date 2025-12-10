@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 public class CarsTest {
 
+    private final List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
+
     @Test
     void 자동차가_한_대만_존재하면_예외가_발생한다() {
         List<String> carNames = List.of("자동차1");
@@ -18,9 +20,29 @@ public class CarsTest {
 
     @Test
     void 입력한_자동차의_대수만큼_자동차가_생성된다() {
-        List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
         Cars cars = new Cars(new CarNames(carNames));
 
         assertThat(cars.size()).isEqualTo(carNames.size());
+    }
+
+    @Test
+    void 자동차들이_이동한다() {
+        Cars cars = new Cars(new CarNames(carNames));
+        cars.move(() -> true);
+
+        for (Car car : cars.getCars()) {
+            assertThat(car.position()).isEqualTo(new Position(1));
+        }
+    }
+
+    @Test
+    void 자동차들이_여러번_이동한다() {
+        Cars cars = new Cars(new CarNames(carNames));
+        cars.move(() -> true);
+        cars.move(() -> true);
+
+        for (Car car : cars.getCars()) {
+            assertThat(car.position()).isEqualTo(new Position(2));
+        }
     }
 }
