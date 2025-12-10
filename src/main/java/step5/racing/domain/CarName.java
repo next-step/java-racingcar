@@ -1,5 +1,7 @@
 package step5.racing.domain;
 
+import java.util.Objects;
+
 public class CarName {
 
     private static final String INVALID_CAR_NAME_MESSAGE= "자동차 이름은 5자를 초과할 수 없습니다.";
@@ -20,5 +22,22 @@ public class CarName {
 
     public String value() {
         return carName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarName other = (CarName) o;
+        return Objects.equals(carName, other.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
     }
 }

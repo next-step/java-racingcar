@@ -9,6 +9,10 @@ public class Car {
         this(new CarName(name), new Position(0));
     }
 
+    public Car(CarName carName) {
+        this(carName, new Position(0));
+    }
+
     public Car(CarName name, Position position) {
         this.name = name;
         this.position = position;
