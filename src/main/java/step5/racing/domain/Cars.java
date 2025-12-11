@@ -41,6 +41,15 @@ public class Cars {
         }
     }
 
+    public RoundResult roundResult() {
+        List<CarResult> carResults = new ArrayList<>();
+
+        for (Car car : cars) {
+            carResults.add(car.createResult());
+        }
+        return new RoundResult(carResults);
+    }
+
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
