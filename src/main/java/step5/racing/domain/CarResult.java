@@ -22,4 +22,8 @@ public class CarResult {
     public Position position() {
         return position;
     }
+
+    public boolean isMaxPosition(Position maxPosition) {
+        return this.position.equals(maxPosition);
+    }
 }
