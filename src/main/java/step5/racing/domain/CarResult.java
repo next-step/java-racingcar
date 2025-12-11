@@ -1,24 +1,25 @@
-package racing.domain;
+package step5.racing.domain;
+
 
 public class CarResult {
 
-    private final CarName carName;
+    private final CarName name;
     private final Position position;
 
     public CarResult(String name, int position) {
         this(new CarName(name), new Position(position));
     }
 
-    public CarResult(CarName carName, Position position) {
-        this.carName = carName;
+    public CarResult(CarName name, Position position) {
+        this.name = name;
         this.position = position;
     }
 
-    public CarName getCarName() {
-        return carName;
+    public CarName name() {
+        return name;
     }
 
-    public Position getPosition() {
+    public Position position() {
         return position;
     }
 
