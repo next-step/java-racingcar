@@ -32,6 +32,17 @@ public class Position {
         return this.position;
     }
 
+    public Position biggerPosition(Position other) {
+        if (isGreaterThan(other)) {
+            return this;
+        }
+        return other;
+    }
+
+    public boolean isGreaterThan(Position other) {
+        return this.position > other.position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

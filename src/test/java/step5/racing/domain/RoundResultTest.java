@@ -20,5 +20,37 @@ public class RoundResultTest {
         RoundResult roundResult = cars.roundResult();
 
         assertThat(roundResult.getRoundResult()).hasSize(3);
+        assertThat(roundResult.getRoundResult())
+                .extracting(carResult -> carResult.name().value())
+                .containsExactly("자동차1", "자동차2", "자동차3");
+        assertThat(roundResult.getRoundResult())
+                .extracting(carResult -> carResult.position().value())
+                .containsExactly(1, 1, 1);
+    }
+
+    @Test
+    void 라운드_내의_우승자를_반환한다() {
+        RoundResult roundResult = new RoundResult(List.of(
+                new CarResult("자동차1", 5),
+                new CarResult("자동차2", 3)
+        ));
+
+        assertThat(roundResult.winners()).hasSize(1);
+        assertThat(roundResult.winners())
+                .extracting(carResult -> carResult.name().value())
+                .containsExactly("자동차1");
+    }
+
+    @Test
+    void 라운드_내의_여러_우승자를_반환한다() {
+        RoundResult roundResult = new RoundResult(List.of(
+                new CarResult("자동차1", 5),
+                new CarResult("자동차2", 5)
+        ));
+
+        assertThat(roundResult.winners()).hasSize(2);
+        assertThat(roundResult.winners())
+                .extracting(carResult -> carResult.name().value())
+                .containsExactly("자동차1", "자동차2");
     }
 }
