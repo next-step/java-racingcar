@@ -24,6 +24,10 @@ public class Car {
         }
     }
 
+    public CarResult createResult() {
+        return new CarResult(name, position);
+    }
+
     public Position position() {
         return this.position;
     }
