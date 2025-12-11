@@ -8,17 +8,8 @@ public class CarNames {
 
     private final List<CarName> carNames;
 
-    public CarNames(List<String> carNames) {
-        this.carNames = createCarNames(carNames);
-    }
-
-    private List<CarName> createCarNames(List<String> carNames) {
-        List<CarName> names = new ArrayList<>();
-
-        for (String name : carNames) {
-            names.add(new CarName(name));
-        }
-        return names;
+    public CarNames(List<CarName> carNames) {
+        this.carNames = carNames;
     }
 
     public List<CarName> getCarNames() {

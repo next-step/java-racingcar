@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test;
 
 public class CarsTest {
 
-    private final List<String> carNames = List.of("자동차1", "자동차2", "자동차3");
+    private final List<CarName> carNames = List.of(
+            new CarName("자동차1"), new CarName("자동차2"), new CarName("자동차3")
+    );
 
     @Test
     void 자동차가_한_대만_존재하면_예외가_발생한다() {
-        List<String> carNames = List.of("자동차1");
+        List<CarName> carNames = List.of(new CarName("자동차1"));
 
         assertThatThrownBy(() -> new Cars(new CarNames(carNames)))
                 .isInstanceOf(IllegalArgumentException.class);
