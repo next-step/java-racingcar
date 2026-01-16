@@ -14,9 +14,7 @@ public class ResultView {
     }
 
     private static void printPosition(Position position) {
-        for (int i = 0; i < position.value(); i++) {
-            System.out.print("-");
-        }
+        System.out.print("-".repeat(position.value()));
         System.out.println();
     }
 
