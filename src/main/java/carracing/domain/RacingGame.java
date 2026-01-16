@@ -5,7 +5,7 @@ import carracing.util.RandomUtil;
 import java.util.List;
 
 public class RacingGame {
-    private RacingCars racingCars;
+    private final RacingCars racingCars;
     private TryCount tryCount;
 
     public RacingGame(String name, int tryCount) {
