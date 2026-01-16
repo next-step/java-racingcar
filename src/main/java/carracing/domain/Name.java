@@ -6,11 +6,11 @@ public class Name {
     private final String value;
 
     public Name(String value) {
-        vaildation(value);
+        validate(value);
         this.value = value;
     }
 
-    private void vaildation(String value) {
+    private void validate(String value) {
         if (value.length() > 5) {
             throw new RuntimeException();
         }
