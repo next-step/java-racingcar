@@ -9,7 +9,7 @@ public class RacingResult {
     public RacingResult(List<RacingCar> racingCars) {
         this.racingCars = racingCars;
     }
-d
+
     public List<RacingCar> getRacingCars() {
         return racingCars;
     }
