@@ -2,6 +2,7 @@ package carracing;
 
 import carracing.domain.RacingGame;
 import carracing.domain.RacingResult;
+import carracing.domain.RandomNumberGenerator;
 import carracing.view.InputView;
 import carracing.view.ResultView;
 
@@ -13,7 +14,7 @@ public class Main {
 
         RacingResult result = null;
         while (racingGame.isEnd()) {
-            result = racingGame.play();
+            result = racingGame.play(new RandomNumberGenerator());
             ResultView.printResult(result);
         }
 

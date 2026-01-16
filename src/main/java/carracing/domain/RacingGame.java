@@ -5,7 +5,7 @@ import carracing.util.RandomUtil;
 import java.util.List;
 
 public class RacingGame {
-    private List<RacingCar> racingCars;
+    private RacingCars racingCars;
     private TryCount tryCount;
 
     public RacingGame(String name, int tryCount) {
@@ -13,21 +13,19 @@ public class RacingGame {
     }
 
     public RacingGame(List<RacingCar> racingCars, TryCount tryCount) {
+        this(new RacingCars(racingCars), tryCount);
+    }
+
+    public RacingGame(RacingCars racingCars, TryCount tryCount) {
         this.racingCars = racingCars;
         this.tryCount = tryCount;
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
-    }
-
-    public RacingResult play() {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.move(RandomUtil.getRandomValue());
-        }
+    public RacingResult play(NumberGenerator generator) {
+        racingCars.moveAll(generator);
         tryCount = tryCount.consume();
 
-        return new RacingResult(racingCars);
+        return new RacingResult(racingCars.racingCars());
     }
 
     public boolean isEnd() {

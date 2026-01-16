@@ -12,19 +12,8 @@ class RacingGameTest {
     @Test
     @DisplayName("게임결과")
     void play() {
-        RacingGame racingGame = new RacingGame("kim,lee", 3);
-        racingGame.play();
-        List<RacingCar> racingCars = racingGame.getRacingCars();
-        for (RacingCar racingCar : racingCars) {
-            assertThat(racingCar.getPosition().value()).isBetween(0, 1);
-        }
-    }
-
-    @Test
-    @DisplayName("횟수가 남아있다")
-    void playIsEnd() {
-        RacingGame racingGame = new RacingGame("kim,lee", 3);
-        racingGame.play();
-        assertThat(racingGame.isEnd()).isTrue();
+        RacingGame racingGame = new RacingGame("kim,lee", 1);
+        racingGame.play(() -> 4);
+        assertThat(racingGame.isEnd()).isFalse();
     }
 }
