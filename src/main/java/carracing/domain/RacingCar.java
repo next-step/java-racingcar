@@ -35,4 +35,11 @@ public class RacingCar {
     public boolean isGreaterThanPosition(Position other) {
         return position.isGreaterThanOther(other);
     }
+
+    public Position max(Position maxPosition) {
+        if (isGreaterThanPosition(maxPosition)) {
+            return position;
+        }
+        return maxPosition;
+    }
 }
