@@ -1,18 +1,16 @@
-package carRacing;
+package carracing.domain;
 
 import java.util.Objects;
 
 public class Position {
-    private int value;
+    public static final int DEFAULT_POSITION = 0;
+    private final int value;
 
     public Position() {
-        this(0);
+        this(DEFAULT_POSITION);
     }
 
     public Position(int value) {
-        if (value < 0) {
-            throw new RuntimeException();
-        }
         this.value = value;
     }
 
@@ -20,15 +18,8 @@ public class Position {
         return value;
     }
 
-    public void plus() {
-        value++;
-    }
-
-    @Override
-    public String toString() {
-        return "Position{" +
-                "value=" + value +
-                '}';
+    public Position increase() {
+        return new Position(value + 1);
     }
 
     @Override
@@ -44,7 +35,7 @@ public class Position {
         return Objects.hashCode(value);
     }
 
-    public boolean isGreaterThan(Position other) {
-        return value >= other.value;
+    public boolean isGreaterThanOther(Position other) {
+        return value >= other.value();
     }
 }
