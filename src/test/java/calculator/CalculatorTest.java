@@ -12,7 +12,10 @@ public class CalculatorTest {
     }
 
 
-
+    @Test
+    void 문자열이_콜론을_구분자로_가질경우_각_숫자의_합을_반환한다() {
+        Assertions.assertThat(Calculator.sum("1:2:3")).isEqualTo(6);
+    }
 
 
 }
