@@ -35,4 +35,20 @@ public class StringSumCalculatorTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("콜론으로 구분된 숫자의 합을 반환한다")
+    void defaultColonSeparator() {
+        final int result = StringSumCalculator.calculate("1:2:3");
+
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("쉼표와 콜론으로 구분된 숫자의 합을 반환한다")
+    void defaultSeparator() {
+        final int result = StringSumCalculator.calculate("1,2:3");
+
+        assertThat(result).isEqualTo(6);
+    }
 }
