@@ -1,6 +1,7 @@
 package calculator;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -25,5 +26,13 @@ public class StringSumCalculatorTest {
         final int result = StringSumCalculator.calculate(input);
 
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("쉼표로 구분된 숫자의 합을 반환한다")
+    void commaSeparator() {
+        final int result = StringSumCalculator.calculate("1,2,3");
+
+        assertThat(result).isEqualTo(6);
     }
 }
