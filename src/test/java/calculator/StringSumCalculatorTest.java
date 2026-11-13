@@ -30,7 +30,7 @@ public class StringSumCalculatorTest {
 
     @Test
     @DisplayName("쉼표로 구분된 숫자의 합을 반환한다")
-    void commaSeparator() {
+    void defaultCommaSeparator() {
         final int result = StringSumCalculator.calculate("1,2,3");
 
         assertThat(result).isEqualTo(6);

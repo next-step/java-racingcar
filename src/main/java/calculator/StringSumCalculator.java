@@ -6,11 +6,9 @@ public class StringSumCalculator {
             return 0;
         }
 
-
-        String[] split = input.split(",");
         int result = 0;
-        for(int i = 0; i < split.length; i++) {
-            result += Integer.parseInt(split[i]);
+        for (String s : input.split(",")) {
+            result += Integer.parseInt(s);
         }
         return result;
     }
