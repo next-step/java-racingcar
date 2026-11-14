@@ -13,9 +13,16 @@ public class CarTest {
 	}
 
 	@Test
-	void 전진하면_1증가한다() {
+	void 랜덤숫자가_4미만이면_멈춘다() {
 		Car car = new Car();
-		car.go();
+		car.go(3);
+		assertThat(car.getPosition()).isEqualTo(0);
+	}
+
+	@Test
+	void 랜덤숫자가_4이상이면_전진한다() {
+		Car car = new Car();
+		car.go(4);
 		assertThat(car.getPosition()).isEqualTo(1);
 	}
 }
