@@ -6,20 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {
-
-
-    @Test
-    void 문자열이_쉼표를_구분자로_가질경우_각_숫자의_합을_반홚한다() {
-        Assertions.assertThat(Calculator.sum("1,2,3")).isEqualTo(6);
-    }
-
-
-    @Test
-    void 문자열이_콜론을_구분자로_가질경우_각_숫자의_합을_반환한다() {
-        Assertions.assertThat(Calculator.sum("1:2:3")).isEqualTo(6);
-    }
 
 
     @ParameterizedTest
@@ -29,7 +18,6 @@ public class CalculatorTest {
     }
 
 
-
     @ParameterizedTest
     @NullAndEmptySource
     void 빈_문자열_또는_null일_경우_0을_반환한다(String input) {
@@ -37,12 +25,17 @@ public class CalculatorTest {
     }
 
 
-    @Test
-    void 음수가_포함될_경우_런타임_예외가_발생한다() {
-        Assertions.assertThatThrownBy(() -> Calculator.sum("-1,2,3"))
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "-1,2,3",
+            "1:-2:3",
+            "//;\n-1;2;3",
+            "//;\n1;2;-3"
+    })
+    void 음수가_포함될_경우_런타임_예외가_발생한다(String input) {
+        Assertions.assertThatThrownBy(() -> Calculator.sum(input))
                 .isInstanceOf(RuntimeException.class);
     }
-
 
 
     @Test
@@ -54,8 +47,13 @@ public class CalculatorTest {
 
     @Test
     void 커스텀_구분자를_가지는_문자열의_합을_반환한다() {
-        Assertions.assertThat(Calculator.sum("//;\\n1;2;3")).isEqualTo(6);
+        Assertions.assertThat(Calculator.sum("//;\n1;2;3")).isEqualTo(6);
     }
+
+
+
+
+
 
 
 }
