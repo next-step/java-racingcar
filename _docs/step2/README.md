@@ -11,7 +11,7 @@
 ### 리팩토링 TODO LIST
 
 #### PositiveNumber
-* [ ] "3"으로 생성하면 값이 3이다 ("3" → 3)
-* [ ] "0"도 허용한다 ("0" → 0)
-* [ ] 음수이면 RuntimeException ("-1")
-* [ ] 숫자 이외의 값이면 RuntimeException ("a")
+* [x] "3"으로 생성하면 값이 3이다 ("3" → 3)
+* [x] "0"도 허용한다 ("0" → 0)
+* [x] 음수이면 RuntimeException ("-1")
+* [x] 숫자 이외의 값이면 RuntimeException ("a")

@@ -12,17 +12,14 @@ public class StringCalculator {
         if (isBlank(input)) {
             return 0;
         }
-
         return parseAndSum(tokenizeInput(input));
     }
 
     private static String[] tokenizeInput(String input) {
         Matcher matcher = CUSTOM_SPLIT_PATTERN.matcher(input);
-
         if (matcher.find()) {
             return splitByCustomPattern(matcher);
         }
-
         return input.split(SPLIT_REGEX);
     }
 
@@ -33,25 +30,9 @@ public class StringCalculator {
     private static int parseAndSum(String[] tokens) {
         int sum = 0;
         for (String token : tokens) {
-            sum += toNumber(token);
+            sum += new PositiveNumber(token).getValue();
         }
         return sum;
-    }
-
-    private static int toNumber(String token) {
-        int number = parseInt(token);
-        if (number < 0) {
-            throw new RuntimeException("음수는 입력할 수 없습니다.");
-        }
-        return number;
-    }
-
-    private static int parseInt(String token) {
-        try {
-            return Integer.parseInt(token);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
-        }
     }
 
     private static boolean isBlank(String input) {
