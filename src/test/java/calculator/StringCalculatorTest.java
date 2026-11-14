@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
@@ -41,4 +42,14 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
         assertThat(StringCalculator.calculate("//?\n1?2?3")).isEqualTo(6);
     }
+
+    @DisplayName("음수가 포함되면 RuntimeException (\"-1,2\")")
+    @Test
+    void test_6() {
+        assertThatThrownBy(() -> StringCalculator.calculate("-1,2"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("음수");
+    }
+
+
 }

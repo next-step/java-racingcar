@@ -29,9 +29,17 @@ public class StringCalculator {
     private static int parseAndSum(String[] tokens) {
         int sum = 0;
         for (String token : tokens) {
-            sum += Integer.parseInt(token);
+            sum += toNumber(token);
         }
         return sum;
+    }
+
+    private static int toNumber(String token) {
+        int number = Integer.parseInt(token);
+        if (number < 0) {
+            throw new RuntimeException("음수는 입력할 수 없습니다.");
+        }
+        return number;
     }
 
     private static boolean isBlank(String input) {
