@@ -7,7 +7,13 @@ public class StringCalculator {
             return 0;
         }
 
-        return 0;
+        String[] tokens = input.split(",");
+        int sum = 0;
+        for (String token : tokens) {
+            sum += Integer.parseInt(token);
+        }
+
+        return sum;
     }
 
     private static boolean isBlank(String input) {

@@ -12,4 +12,21 @@ public class StringCalculatorTest {
         Assertions.assertThat(StringCalculator.calculate("")).isEqualTo(0);
         Assertions.assertThat(StringCalculator.calculate(null)).isEqualTo(0);
     }
+
+    @DisplayName("쉼표로 구분된 숫자의 합을 반환한다  (\"1,2\" → 3)")
+    @Test
+    void test_2() {
+        Assertions.assertThat(StringCalculator.calculate("1,2")).isEqualTo(3);
+        Assertions.assertThat(StringCalculator.calculate("1,2,3")).isEqualTo(6);
+    }
+
+    @DisplayName("숫자 하나만 입력하면 그 숫자를 반환한다 (\"1\" → 1)")
+    @Test
+    void test_3() {
+        Assertions.assertThat(StringCalculator.calculate("1")).isEqualTo(1);
+        Assertions.assertThat(StringCalculator.calculate("5")).isEqualTo(5);
+    }
+
+
+
 }
