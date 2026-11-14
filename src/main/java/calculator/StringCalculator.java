@@ -35,16 +35,19 @@ public class StringCalculator {
     }
 
     private static int toNumber(String token) {
-        int number = 0;
-        try {
-            number = Integer.parseInt(token);
-        } catch (RuntimeException e) {
-            throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
-        }
+        int number = parseInt(token);
         if (number < 0) {
             throw new RuntimeException("음수는 입력할 수 없습니다.");
         }
         return number;
+    }
+
+    private static int parseInt(String token) {
+        try {
+            return Integer.parseInt(token);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
     }
 
     private static boolean isBlank(String input) {
