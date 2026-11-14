@@ -28,6 +28,13 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("5")).isEqualTo(5);
     }
 
+    @DisplayName("쉼표 또는 콜론으로 구분된 숫자의 합을 반환한다 (\"1,2:3\" → 6)")
+    @Test
+    void test_4() {
+        assertThat(StringCalculator.calculate("1,2:3")).isEqualTo(6);
+        assertThat(StringCalculator.calculate("1,2:3,4")).isEqualTo(10);
+    }
+
 
 
 }

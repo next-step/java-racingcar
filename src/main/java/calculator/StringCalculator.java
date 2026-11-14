@@ -6,7 +6,7 @@ public class StringCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        String[] tokens = input.split(",");
+        String[] tokens = input.split(",|:");
         return parseAndSum(tokens);
     }
 
