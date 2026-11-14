@@ -8,15 +8,16 @@ public class Calculator {
 
     public static final String REGEX = "[,:]";
     public static final String CUSTOM_REGEX = "//(.)\n(.*)";
+    public static final int ZERO = 0;
 
     public static int sum(String input) {
 
-        if (isBlankOrNull(input)) return 0;
+        if (isBlankOrNull(input)) return ZERO;
         return sumOf(toNumbers(getSplit(input)));
     }
 
     private static int sumOf(int[] numbers) {
-        int sum = 0;
+        int sum = ZERO;
         for (int num : numbers) {
             if (isNegative(num)) throw new RuntimeException();
             sum += num;
@@ -38,15 +39,17 @@ public class Calculator {
 
     private static int[] toNumbers(String[] tokens) {
         int[] numbers = new int[tokens.length];
-        for (int i = 0; i < tokens.length; i++) {
+        for (int i = ZERO; i < tokens.length; i++) {
             numbers[i] = Integer.parseInt(tokens[i]);
         }
         return numbers;
     }
 
     private static boolean isNegative(int num) {
-        return num < 0;
+        return num < ZERO;
     }
+
+
 
     private static boolean isBlankOrNull(String input) {
         return input == null || input.isBlank();
