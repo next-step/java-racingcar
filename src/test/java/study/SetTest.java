@@ -30,6 +30,7 @@ public class SetTest {
     void set_size() {
         int result = numbers.size();
         assertThat(result).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @DisplayName("Set.contains(): (1) Set에 값이 존재하는지 확인한다.")
@@ -37,6 +38,7 @@ public class SetTest {
     @ValueSource(ints  = {1,2,3})
     void set_parameterized_1(int number) {
         assertThat(numbers.contains(number)).isTrue();
+        assertThat(numbers).contains(number);
     }
 
     @DisplayName("Set.contains(): (2) Set에 값이 존재하는지 확인한다.")
