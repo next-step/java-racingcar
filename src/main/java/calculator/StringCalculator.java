@@ -2,11 +2,14 @@ package calculator;
 
 public class StringCalculator {
 
+    private static final String SPLIT_REGEX = ",|:";
+
     public static int calculate(String input) {
         if (isBlank(input)) {
             return 0;
         }
-        String[] tokens = input.split(",|:");
+
+        String[] tokens = input.split(SPLIT_REGEX);
         return parseAndSum(tokens);
     }
 
