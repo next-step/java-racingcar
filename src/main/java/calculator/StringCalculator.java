@@ -28,9 +28,9 @@ public class StringCalculator {
     }
 
     private static PositiveNumber parseAndSum(String[] tokens) {
-        PositiveNumber sum = new PositiveNumber();
+        PositiveNumber sum = PositiveNumber.valueOf(0);
         for (String token : tokens) {
-            sum = sum.plus(new PositiveNumber(token));
+            sum = sum.plus(PositiveNumber.valueOf(token));
         }
         return sum;
     }

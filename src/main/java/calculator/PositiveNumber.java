@@ -6,17 +6,21 @@ public class PositiveNumber {
 
     private final int value;
 
-    public PositiveNumber(String token) {
+    public static PositiveNumber valueOf(int value) {
+        return new PositiveNumber(value);
+    }
+
+    public static PositiveNumber valueOf(String token) {
+        return new PositiveNumber(token);
+    }
+
+    private PositiveNumber(String token) {
         this(parseInt(token));
     }
 
-    public PositiveNumber(int value) {
+    private PositiveNumber(int value) {
         validate(value);
         this.value = value;
-    }
-
-    public PositiveNumber() {
-        this(0);
     }
 
     private static void validate(int number) {
