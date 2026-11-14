@@ -6,3 +6,12 @@
 * [x] "//"와 "\n" 사이의 커스텀 구분자로 구분된 숫자의 합을 반환한다 ("//;\n1;2;3" → 6)
 * [x] 음수가 포함되면 RuntimeException ("-1,2")
 * [x] 숫자 이외의 값이 포함되면 RuntimeException ("a,1")
+
+
+### 리팩토링 TODO LIST
+
+#### PositiveNumber
+* [ ] "3"으로 생성하면 값이 3이다 ("3" → 3)
+* [ ] "0"도 허용한다 ("0" → 0)
+* [ ] 음수이면 RuntimeException ("-1")
+* [ ] 숫자 이외의 값이면 RuntimeException ("a")
