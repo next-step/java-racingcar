@@ -51,5 +51,12 @@ public class StringCalculatorTest {
                 .hasMessageContaining("음수");
     }
 
+    @DisplayName("숫자 이외의 값이 포함되면 RuntimeException (\"a,1\")")
+    @Test
+    void test_7() {
+        assertThatThrownBy(() -> StringCalculator.calculate("a,1"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("숫자 이외의 값");
+    }
 
 }

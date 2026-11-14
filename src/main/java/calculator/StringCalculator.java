@@ -35,7 +35,12 @@ public class StringCalculator {
     }
 
     private static int toNumber(String token) {
-        int number = Integer.parseInt(token);
+        int number = 0;
+        try {
+            number = Integer.parseInt(token);
+        } catch (RuntimeException e) {
+            throw new RuntimeException("숫자 이외의 값은 입력할 수 없습니다.");
+        }
         if (number < 0) {
             throw new RuntimeException("음수는 입력할 수 없습니다.");
         }
