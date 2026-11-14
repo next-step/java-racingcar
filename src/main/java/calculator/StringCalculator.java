@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    private static final String SPLIT_REGEX = ",|:";
+    private static final String SPLIT_REGEX = "[,:]";
     private static final Pattern CUSTOM_SPLIT_PATTERN = Pattern.compile("//(.)\n(.*)");
 
     public static int calculate(String input) {
@@ -13,16 +13,14 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] tokens = tokenizeInput(input);
-        return parseAndSum(tokens);
+        return parseAndSum(tokenizeInput(input));
     }
 
     private static String[] tokenizeInput(String input) {
         Matcher matcher = CUSTOM_SPLIT_PATTERN.matcher(input);
+
         if (matcher.find()) {
-            String delimiter = matcher.group(1);
-            String body = matcher.group(2);
-            return body.split(Pattern.quote(delimiter));
+            return matcher.group(2).split(Pattern.quote(matcher.group(1)));
         }
 
         return input.split(SPLIT_REGEX);
