@@ -35,6 +35,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.calculate("1,2:3,4")).isEqualTo(10);
     }
 
-
-
+    @DisplayName("\"//\"와 \"\\n\" 사이의 커스텀 구분자로 구분된 숫자의 합을 반환한다 (\"//;\\n1;2;3\" → 6)")
+    @Test
+    void test_5() {
+        assertThat(StringCalculator.calculate("//;\n1;2;3")).isEqualTo(6);
+        assertThat(StringCalculator.calculate("//?\n1?2?3")).isEqualTo(6);
+    }
 }
