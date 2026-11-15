@@ -91,4 +91,12 @@ public class StringSumCalculatorTest {
 
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자를 지정해도 쉼표와 콜론 또한 구분자로 사용한다")
+    void customSeparatorWithDefaultSeparators() {
+        final int result = StringSumCalculator.calculate("//;\n1,2:3;4");
+
+        assertThat(result).isEqualTo(10);
+    }
 }
