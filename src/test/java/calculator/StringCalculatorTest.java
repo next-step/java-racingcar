@@ -48,4 +48,11 @@ public class StringCalculatorTest {
         int result = StringCalculator.add("1,2:3");
         assertThat(result).isEqualTo(6);
     }
+
+    @DisplayName("\"//;\\n1;2;3\" 을 입력하면 6을 반환한다")
+    @Test
+    void multipleNumbersWithCustomDelimiter() {
+        int result = StringCalculator.add("//;\n1;2;3");
+        assertThat(result).isEqualTo(6);
+    }
 }
