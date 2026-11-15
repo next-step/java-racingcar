@@ -11,30 +11,10 @@ public class StringSumCalculator {
 
         int result = 0;
         for (String s : input.split(DEFAULT_SEPARATOR)) {
-            NonNegativeNumber p = new NonNegativeNumber(s);
-            result += p.getValue();
+            NonNegativeNumber number = new NonNegativeNumber(s);
+            result += number.getValue();
         }
         return result;
     }
 }
 
-class NonNegativeNumber {
-    private final int value;
-
-    public NonNegativeNumber(String input) {
-        if (input.isEmpty()) {
-            value = 0;
-            return;
-        }
-
-        value = Integer.parseInt(input);
-
-        if (value < 0) {
-            throw new RuntimeException("value can not be negative.");
-        }
-    }
-
-    public int getValue() {
-        return value;
-    }
-}
