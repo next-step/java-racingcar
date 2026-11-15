@@ -83,4 +83,12 @@ public class StringSumCalculatorTest {
             StringSumCalculator.calculate(input);
         }).withMessage("only numeric expressions are allowed.");
     }
+
+    @Test
+    @DisplayName("//와 \\n 사이의 커스텀 구분자로 구분된 숫자의 합을 반환한다")
+    void customSeparator() {
+        final int result = StringSumCalculator.calculate("//;\n1;2;3;4");
+
+        assertThat(result).isEqualTo(10);
+    }
 }
