@@ -14,4 +14,10 @@ public class StringCalculatorTest {
         assertThat(result).isEqualTo(0);
     }
 
+    @DisplayName("null 을 입력하면 0을 반환한다")
+    @Test
+    void nullInput() {
+        int result = StringCalculator.cal(null);
+        assertThat(result).isEqualTo(0);
+    }
 }
