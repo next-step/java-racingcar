@@ -59,8 +59,16 @@ public class StringCalculatorTest {
     @DisplayName("\"-1,2\" 를 입력하면 RuntimeException 이 발생한다")
     @Test
     void negativeNumber() {
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             StringCalculator.add("-1,2");
+        }).isInstanceOf(RuntimeException.class);
+    }
+
+    @DisplayName("\"a,1\" 을 입력하면 RuntimeException 이 발생한다")
+    @Test
+    void nonNumeric() {
+        assertThatThrownBy(() -> {
+            StringCalculator.add("a,1");
         }).isInstanceOf(RuntimeException.class);
     }
 }
