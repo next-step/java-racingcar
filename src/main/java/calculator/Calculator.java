@@ -6,33 +6,31 @@ import java.util.regex.Pattern;
 public class Calculator {
 
 	private static final String DELIMITER = ",|:";
-	private static String CUSTOM_DELIMITER = "";
+	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 	public static int calc(String input) {
 		if (input.isEmpty()) {
 			return 0;
 		}
 
-		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
+		Matcher m = findCustomDelimiter(input);
 		if (m.find()) {
-			CUSTOM_DELIMITER = m.group(1);
-
-			int sum = 0;
-			String[] values = m.group(2).split(CUSTOM_DELIMITER);
-			for (String value : values) {
-				sum += Integer.parseInt(value);
-			}
-			return sum;
+			return sum(m.group(2).split(m.group(1)));
 		}
 
-		String[] values = input.split(DELIMITER);
-		int sum = 0;
+		return sum(input.split(DELIMITER));
+	}
 
+	private static int sum(String[] values) {
+		int sum = 0;
 		for (String value : values) {
 			sum += Integer.parseInt(value);
 		}
-
 		return sum;
+	}
+
+	private static Matcher findCustomDelimiter(String input) {
+		return CUSTOM_DELIMITER_PATTERN.matcher(input);
 	}
 
 }
