@@ -5,7 +5,7 @@ public class StringCalculator {
     private static final String DEFAULT_DELIMITER = ",|:";
 
     public static int add(String input) {
-        if (input == null || input.isEmpty()) {
+        if (isNullOrEmpty(input)) {
             return 0;
         }
 
@@ -16,5 +16,9 @@ public class StringCalculator {
         }
 
         return result;
+    }
+
+    private static boolean isNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
     }
 }

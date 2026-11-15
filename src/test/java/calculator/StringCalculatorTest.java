@@ -41,4 +41,11 @@ public class StringCalculatorTest {
         int result = StringCalculator.add("1:2");
         assertThat(result).isEqualTo(3);
     }
+
+    @DisplayName("\"1,2:3\" 을 입력하면 6을 반환한다")
+    @Test
+    void multipleNumbers() {
+        int result = StringCalculator.add("1,2:3");
+        assertThat(result).isEqualTo(6);
+    }
 }
