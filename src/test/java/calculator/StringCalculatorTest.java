@@ -20,4 +20,11 @@ public class StringCalculatorTest {
         int result = StringCalculator.cal(null);
         assertThat(result).isEqualTo(0);
     }
+
+    @DisplayName("\"1\" 을 입력하면 1을 반환한다")
+    @Test
+    void oneInput() {
+        int result = StringCalculator.cal("1");
+        assertThat(result).isEqualTo(1);
+    }
 }
