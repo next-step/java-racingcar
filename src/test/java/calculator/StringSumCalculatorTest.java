@@ -128,4 +128,20 @@ public class StringSumCalculatorTest {
 
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자로 여러 문자가 들어있는 경우 RuntimeException")
+    void customSeparatorWithMultipleCharacterInput() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("//;|\n1;2|3");
+        }).withMessage("only numeric expressions are allowed.");
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자 지정이 빈 경우 RuntimeException")
+    void customSeparatorWithEmptyInput() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("//\n1:2:3");
+        }).withMessage("only numeric expressions are allowed.");
+    }
 }
