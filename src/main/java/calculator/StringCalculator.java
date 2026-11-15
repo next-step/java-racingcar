@@ -14,11 +14,9 @@ public class StringCalculator {
         }
 
         int result = 0;
-
         for (String token : splitByDelimiter(input)) {
             result += positiveNumber(token);
         }
-
         return result;
     }
 
@@ -36,8 +34,8 @@ public class StringCalculator {
         return input.split(DEFAULT_DELIMITER);
     }
 
-    private static int positiveNumber(String input) {
-        int number = Integer.parseInt(input);
+    private static int positiveNumber(String token) {
+        int number = Integer.parseInt(token);
         if (number < 0) {
             throw new RuntimeException("음수는 입력할 수 없습니다: " + number);
         }
