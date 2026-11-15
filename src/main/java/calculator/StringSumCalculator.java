@@ -13,9 +13,7 @@ public class StringSumCalculator {
         }
 
         int result = 0;
-        final String[] tokens = separate(input);
-
-        for (String s : tokens) {
+        for (String s : separate(input)) {
             NonNegativeNumber number = new NonNegativeNumber(s);
             result += number.getValue();
         }
@@ -28,26 +26,11 @@ public class StringSumCalculator {
         String separator = DEFAULT_SEPARATOR;
         Matcher m = CUSTOM_SEPARATOR_PATTERN.matcher(target);
         if (m.matches()) {
-            validateCustomSeparator(m.group(1));
-            separator = separator + "|" + Pattern.quote(m.group(1));
+            CustomSeparator customSeparator = new CustomSeparator(m.group(1));
+            separator = separator + "|" + customSeparator.toRegex();
             target = m.group(2);
         }
 
         return target.split(separator);
-    }
-
-    private static void validateCustomSeparator(String customSeparator) {
-        if (customSeparator.isEmpty()) {
-            throw new RuntimeException("custom separator is empty.");
-        }
-        if (customSeparator.length() > 1) {
-            throw new RuntimeException("custom separator must be a single character.");
-        }
-        if (Character.isDigit(customSeparator.charAt(0))) {
-            throw new RuntimeException("custom separator can not be a number.");
-        }
-        if (customSeparator.equals("-")) {
-            throw new RuntimeException("custom separator can not be '-'.");
-        }
     }
 }
