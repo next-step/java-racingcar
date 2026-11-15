@@ -36,4 +36,10 @@ public class SplitSumTest {
 	void 커스텀구분자로_나눈_숫자의합을_반환한다() {
 		assertThat(calc("//;\n1;2;3")).isEqualTo(6);
 	}
+
+	@Test
+	void 음수면_RuntimeException을_던진다() {
+		assertThatThrownBy(() -> calc("-2"))
+			.isInstanceOf(RuntimeException.class);
+	}
 }

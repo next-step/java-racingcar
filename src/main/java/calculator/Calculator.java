@@ -24,9 +24,21 @@ public class Calculator {
 	private static int sum(String[] values) {
 		int sum = 0;
 		for (String value : values) {
-			sum += Integer.parseInt(value);
+			sum += toPositiveNumber(value);
 		}
 		return sum;
+	}
+
+	private static int toPositiveNumber(String value) {
+		int num = Integer.parseInt(value);
+		if (isNegative(num)) {
+			throw new RuntimeException();
+		}
+		return num;
+	}
+
+	private static boolean isNegative(int num) {
+		return num < 0;
 	}
 
 	private static Matcher findCustomDelimiter(String input) {
