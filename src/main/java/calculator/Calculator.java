@@ -13,13 +13,18 @@ public class Calculator {
 		if (input.isEmpty()) {
 			return ZERO;
 		}
+		return sum(split(input));
+	}
 
+	private static String[] split(String input) {
 		Matcher m = findCustomDelimiter(input);
 		if (m.find()) {
-			return sum(m.group(2).split(m.group(1)));
+			String customDelimiter = m.group(1);
+			String numbers = m.group(2);
+			return numbers.split(customDelimiter);
 		}
-
-		return sum(input.split(DELIMITER));
+		
+		return input.split(DELIMITER);
 	}
 
 	private static int sum(String[] values) {
