@@ -18,6 +18,11 @@ public class CalculatorTest {
 	}
 
 	@Test
+	void null이면_0을_반환한다() {
+		assertThat(calc(null)).isEqualTo(0);
+	}
+
+	@Test
 	void 커스텀구분자로_나눈_숫자의합을_반환한다() {
 		assertThat(calc("//;\n1;2;3")).isEqualTo(6);
 	}

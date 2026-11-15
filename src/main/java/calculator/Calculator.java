@@ -10,10 +10,14 @@ public class Calculator {
 	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 	public static int calc(String input) {
-		if (input.isEmpty()) {
+		if (isNullOrEmpty(input)) {
 			return ZERO;
 		}
 		return sum(split(input));
+	}
+
+	private static boolean isNullOrEmpty(String input) {
+		return isNull(input) || input.isEmpty();
 	}
 
 	private static String[] split(String input) {
@@ -41,6 +45,10 @@ public class Calculator {
 			throw new RuntimeException();
 		}
 		return num;
+	}
+
+	private static boolean isNull(String value) {
+		return value == null;
 	}
 
 	private static boolean isNegative(int num) {
