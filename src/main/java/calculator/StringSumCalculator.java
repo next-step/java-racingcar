@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,15 +13,10 @@ public class StringSumCalculator {
             return 0;
         }
 
-        int result = 0;
-        for (String s : separate(input)) {
-            NonNegativeNumber number = new NonNegativeNumber(s);
-            result += number.getValue();
-        }
-        return result;
+        return sum(toNonNegativeNumbers(separate(input)));
     }
 
-    private static String[] separate(String input) {
+    private static List<String> separate(String input) {
         String target = input;
 
         String separator = DEFAULT_SEPARATOR;
@@ -31,6 +27,14 @@ public class StringSumCalculator {
             target = m.group(2);
         }
 
-        return target.split(separator);
+        return List.of(target.split(separator));
+    }
+
+    private static List<NonNegativeNumber> toNonNegativeNumbers(List<String> tokens) {
+        return tokens.stream().map(NonNegativeNumber::new).toList();
+    }
+
+    private static int sum(List<NonNegativeNumber> numbers) {
+        return numbers.stream().mapToInt(NonNegativeNumber::getValue).sum();
     }
 }
