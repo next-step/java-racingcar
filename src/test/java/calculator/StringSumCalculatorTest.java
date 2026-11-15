@@ -134,7 +134,7 @@ public class StringSumCalculatorTest {
     void customSeparatorWithMultipleCharacterInput() {
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             StringSumCalculator.calculate("//;|\n1;2|3");
-        }).withMessage("only numeric expressions are allowed.");
+        }).withMessage("custom separator must be a single character.");
     }
 
     @Test
@@ -142,6 +142,22 @@ public class StringSumCalculatorTest {
     void customSeparatorWithEmptyInput() {
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             StringSumCalculator.calculate("//\n1:2:3");
-        }).withMessage("only numeric expressions are allowed.");
+        }).withMessage("custom separator is empty.");
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자로 숫자가 들어온 경우 RuntimeException")
+    void customSeparatorWithNumericInput() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("//1\n213");
+        }).withMessage("custom separator can not be a number.");
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자로 - 기호가 들어온 경우 RuntimeException")
+    void customSeparatorWithMinusSign() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("//-\n-1-3");
+        }).withMessage("custom separator can not be '-'.");
     }
 }
