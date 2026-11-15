@@ -55,4 +55,12 @@ public class StringCalculatorTest {
         int result = StringCalculator.add("//;\n1;2;3");
         assertThat(result).isEqualTo(6);
     }
+
+    @DisplayName("\"-1,2\" 를 입력하면 RuntimeException 이 발생한다")
+    @Test
+    void negativeNumber() {
+        assertThatThrownBy(()->{
+            StringCalculator.add("-1,2");
+        }).isInstanceOf(RuntimeException.class);
+    }
 }
