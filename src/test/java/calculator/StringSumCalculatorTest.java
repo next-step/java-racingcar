@@ -51,4 +51,17 @@ public class StringSumCalculatorTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1,:2:3 | 6",
+            ",1     | 1",
+            "1,     | 1"
+    }, delimiter = '|')
+    @DisplayName("쉼표와 콜론으로 구분할 때 그 사이 빈 문자열은 0으로 본다")
+    void blankBetweenDefaultSeparator(String input, int expected) {
+        final int result = StringSumCalculator.calculate(input);
+
+        assertThat(result).isEqualTo(expected);
+    }
 }
