@@ -5,12 +5,13 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
+	private static final int ZERO = 0;
 	private static final String DELIMITER = ",|:";
 	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 	public static int calc(String input) {
 		if (input.isEmpty()) {
-			return 0;
+			return ZERO;
 		}
 
 		Matcher m = findCustomDelimiter(input);
@@ -38,7 +39,7 @@ public class Calculator {
 	}
 
 	private static boolean isNegative(int num) {
-		return num < 0;
+		return num < ZERO;
 	}
 
 	private static Matcher findCustomDelimiter(String input) {
