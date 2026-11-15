@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class StringAddCalculator {
 	
 	public static final int ZERO=0;
-	public static final String DEFAULT_DELIMITER=",";
+	public static final String DEFAULT_DELIMITER=",|:";
 	
 
-	public static int cal(String input) {
+	public static int calculate(String input) {
 		
 		if(isBlank(input)) {
 			return ZERO;
