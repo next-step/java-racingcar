@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -72,5 +73,14 @@ public class StringSumCalculatorTest {
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             StringSumCalculator.calculate("-1,2:3");
         }).withMessage("value can not be negative.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2:3)", "a", " ", "1, 2"})
+    @DisplayName("숫자와 구분자 외 문자가 들어있는 경우 RuntimeException")
+    void acceptNumericExpressionsOnly(String input) {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate(input);
+        }).withMessage("only numeric expressions are allowed.");
     }
 }

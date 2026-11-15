@@ -9,7 +9,11 @@ public class NonNegativeNumber {
             return;
         }
 
-        value = Integer.parseInt(input);
+        try {
+            value = Integer.parseInt(input);
+        } catch (NumberFormatException ne) {
+            throw new RuntimeException("only numeric expressions are allowed.", ne);
+        }
 
         if (value < 0) {
             throw new RuntimeException("value can not be negative.");
