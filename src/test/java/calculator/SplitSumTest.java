@@ -42,4 +42,10 @@ public class SplitSumTest {
 		assertThatThrownBy(() -> calc("-2"))
 			.isInstanceOf(RuntimeException.class);
 	}
+
+	@Test
+	void 숫자가_아닌_값이_입력되면_RuntimeException을_던진다() {
+		assertThatThrownBy(() -> calc("h"))
+			.isInstanceOf(RuntimeException.class);
+	}
 }
