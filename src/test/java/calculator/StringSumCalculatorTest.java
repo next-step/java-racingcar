@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringSumCalculatorTest {
 
@@ -63,5 +64,13 @@ public class StringSumCalculatorTest {
         final int result = StringSumCalculator.calculate(input);
 
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("음수가 들어있는 경우 RuntimeException")
+    void acceptNonNegativeNumbersOnly() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("-1,2:3");
+        }).withMessage("value can not be negative.");
     }
 }

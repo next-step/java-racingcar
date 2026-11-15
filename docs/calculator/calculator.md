@@ -10,5 +10,5 @@
   - [ ] (추가규칙) “//“와 “\n” 사이 빈 경우 RuntimeException
   - [ ] (추가규칙) “//“와 “\n” 사이 숫자가 들어온 경우 RuntimeException
   - [ ] (추가규칙) “//“와 “\n” 사이 -가 들어온 경우 RuntimeException
-- [ ] 음수가 들어있는 경우 RuntimeException
+- [X] 음수가 들어있는 경우 RuntimeException
 - [ ] 숫자와 구분자 외 문자가 들어있는 경우 RuntimeException
