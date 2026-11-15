@@ -28,14 +28,14 @@ public class SetTest {
 	@Test
 	@DisplayName("set에 같은 값을 추가해도 set의 size는 늘어나지 않는다")
 	void size() {
-		assertThat(members.size()).isEqualTo(3);
+		assertThat(members).hasSize(3);
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {1, 2, 3})
-	@DisplayName("set에 추가한 1, 2, 3은 contains가 true를 반환한다")
+	@DisplayName("set에 추가한 1, 2, 3은 포함되어있다")
 	void contains(int input) {
-		assertThat(members.contains(input)).isTrue();
+		assertThat(members).contains(input);
 	}
 
 	@ParameterizedTest

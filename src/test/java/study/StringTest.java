@@ -19,8 +19,7 @@ public class StringTest {
 	@Test
 	@DisplayName("구분자가 없는 문자열을 split하면 문자만 담긴 배열을 반환한다")
 	void splitWithoutDelimiter() {
-		String[] result = "1".split(",");
-		assertThat(result).containsExactly("1");
+		assertThat("1".split(",")).containsExactly("1");
 	}
 
 	@Test
@@ -35,8 +34,7 @@ public class StringTest {
 	@Test
 	@DisplayName("charAt은 인덱스에 위치한 문자를 반환한다")
 	void charAt() {
-		char result = "abc".charAt(2);
-		assertThat(result).isEqualTo('c');
+		assertThat("abc".charAt(2)).isEqualTo('c');
 	}
 
 	@Test
