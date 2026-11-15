@@ -11,7 +11,13 @@ public class StringAddCalculatorTest {
 	
 
 	@Test
+	void 쉼표_구분자() {
+		assertThat(cal("1,2")).isEqualTo(3);
+	}
+	
+	@Test
 	void null_또는_빈문자열() {
 		assertThat(cal("")).isEqualTo(0);
+		assertThat(cal(null)).isEqualTo(0);	
 	}
 }
