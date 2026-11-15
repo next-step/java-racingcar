@@ -34,4 +34,11 @@ public class StringCalculatorTest {
         int result = StringCalculator.add("1,2");
         assertThat(result).isEqualTo(3);
     }
+
+    @DisplayName("\"1:2\" 를 입력하면 3을 반환한다")
+    @Test
+    void colonDelimiter() {
+        int result = StringCalculator.add("1:2");
+        assertThat(result).isEqualTo(3);
+    }
 }
