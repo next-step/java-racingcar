@@ -99,4 +99,33 @@ public class StringSumCalculatorTest {
 
         assertThat(result).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("커스텀 구분자 지정은 문자열 맨 앞에서만 인식한다")
+    void customSeparatorAmongInput() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("1,//;\n2");
+        }).withMessage("only numeric expressions are allowed.");
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자 지정 뒤 본문에 줄바꿈이 있으면 예외")
+    void customSeparatorWithNewLineInput() {
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            StringSumCalculator.calculate("//;\n1;2\n3");
+        }).withMessage("only numeric expressions are allowed.");
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "'//.\n1.2'   ; 3",
+            "'//|\n1|2'   ; 3",
+            "'//|\n1|2:3' ; 6"
+    }, delimiter = ';')
+    @DisplayName("정규식 특수문자도 커스텀 구분자로 쓸 수 있다")
+    void regexCustomSeparator(String input, int expected) {
+        final int result = StringSumCalculator.calculate(input);
+
+        assertThat(result).isEqualTo(expected);
+    }
 }

@@ -27,8 +27,8 @@ public class StringSumCalculator {
 
         String separator = DEFAULT_SEPARATOR;
         Matcher m = CUSTOM_SEPARATOR_PATTERN.matcher(target);
-        if (m.find()) {
-            separator = separator + "|" + m.group(1);
+        if (m.matches()) {
+            separator = separator + "|" + Pattern.quote(m.group(1));
             target = m.group(2);
         }
 
