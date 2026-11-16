@@ -27,27 +27,22 @@ public class Cars {
     }
 
 
-    private void validate(int carCount) {
-        if (carCount <= 0) {
-            throw new IllegalArgumentException("자동차 대수는 음수가 불가능합니다.");
-        }
-    }
-
     public void moveCars(RandomMoveStrategy strategy) {
-        for (int j = 0; j < cars.size(); j++) {
-            tryMove(strategy, cars.get(j));
+        for (Car car : cars) {
+            car.moveForward(strategy);
         }
     }
-
-    private void tryMove(RandomMoveStrategy strategy, Car car) {
-        car.moveForward(strategy);
-    }
-
 
     public List<Integer> getPositions() {
         return cars.stream()
                 .map(car -> car.getPosition().getValue())
                 .toList();
+    }
+
+    private void validate(int carCount) {
+        if (carCount <= 0) {
+            throw new IllegalArgumentException("자동차 대수는 음수가 불가능합니다.");
+        }
     }
 
 
