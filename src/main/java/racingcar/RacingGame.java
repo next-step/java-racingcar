@@ -33,7 +33,4 @@ public class RacingGame {
         return cars.size();
     }
 
-    public int getTryCount() {
-        return tryCount;
-    }
 }
