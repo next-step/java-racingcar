@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RandomMoveStrategy;

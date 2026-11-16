@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import racingcar.util.RandomGenerator;
 
-import java.util.Random;
-
 public class RandomMoveStrategy {
 
 

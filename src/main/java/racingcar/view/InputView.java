@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
+
 
 import static racingcar.view.InputValidator.validate;
 
