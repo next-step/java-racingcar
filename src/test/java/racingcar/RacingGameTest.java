@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static java.util.Collections.max;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -31,6 +32,14 @@ public class RacingGameTest {
         assertThatThrownBy(() -> new RacingGame(3, -1))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("시도 횟수");
+    }
+
+    @DisplayName("N회 시도하면 어떤 자동차도 N칸을 넘어 전진하지 않는다. (5회 → 위치 ≤ 5)")
+    @Test
+    void test_4() {
+        RacingGame game = new RacingGame(3, 5);
+        game.race();
+        assertThat(max(game.getPositions())).isLessThanOrEqualTo(5);
     }
 
 }

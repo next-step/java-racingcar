@@ -17,6 +17,16 @@ public class RacingGame {
         }
     }
 
+    public void race() {
+        RandomNumberGenerator generator = new RandomNumberGenerator(10);
+
+        for (int i = 0; i < tryCount; i++) {
+            for (Car car : cars) {
+                car.tryMove(generator.create());
+            }
+        }
+    }
+
     private static void validateCarCount(int carCount) {
         if (carCount < 1) {
             throw new RuntimeException("자동차 대수는 1 이상이어야 합니다.");
@@ -31,6 +41,14 @@ public class RacingGame {
 
     public int getCarCount() {
         return cars.size();
+    }
+
+    public List<Integer> getPositions() {
+        List<Integer> positions = new ArrayList<>();
+        for (Car car : cars) {
+            positions.add(car.getPosition());
+        }
+        return positions;
     }
 
 }
