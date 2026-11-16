@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RoundResult {
 
-    List<Integer> position;
+    private List<Integer> position;
 
     private RoundResult(List<Integer> position) {
         this.position = position;
