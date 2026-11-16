@@ -21,4 +21,12 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("자동차에 4 이상의 값 명령을 내리면 자동차는 전진한다. : 4 명령 시 전진한다. (경계값)")
+    @Test
+    public void test_3() {
+        Car car = new Car();
+        car.tryMove(4);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
 }
