@@ -12,7 +12,7 @@ public class StringCalculator {
         if (isBlank(input)) {
             return 0;
         }
-        return parseAndSum(tokenizeInput(input));
+        return parseAndSum(tokenizeInput(input)).getValue();
     }
 
     private static String[] tokenizeInput(String input) {
@@ -27,10 +27,10 @@ public class StringCalculator {
         return matcher.group(2).split(Pattern.quote(matcher.group(1)));
     }
 
-    private static int parseAndSum(String[] tokens) {
-        int sum = 0;
+    private static PositiveNumber parseAndSum(String[] tokens) {
+        PositiveNumber sum = PositiveNumber.valueOf(0);
         for (String token : tokens) {
-            sum += new PositiveNumber(token).getValue();
+            sum = sum.plus(PositiveNumber.valueOf(token));
         }
         return sum;
     }

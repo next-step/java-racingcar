@@ -15,3 +15,11 @@
 * [x] "0"도 허용한다 ("0" → 0)
 * [x] 음수이면 RuntimeException ("-1")
 * [x] 숫자 이외의 값이면 RuntimeException ("a")
+* [x] int로 생성하면 그 값과 같다 (3 → 3)
+* [x] int로 생성해도 음수이면 RuntimeException (-1)
+* [x] plus하면 두 값의 합과 같다 (3 + 4 → 7)
+
+#### 리뷰 피드백 반영하여 객체지향적 리팩토링 TODO LIST
+* [x] 값을 꺼내지 않고 객체에 메시지를 보낸다 (parseAndSum에서 plus 사용)
+* [x] 추가: 불변 객체로 만든다 (plus는 새 객체를 반환)
+* [x] 추가: 생성은 정적 팩토리 valueOf로 한다 (생성자는 private)

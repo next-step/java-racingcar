@@ -1,13 +1,26 @@
 package calculator;
 
+import java.util.Objects;
+
 public class PositiveNumber {
 
     private final int value;
 
-    public PositiveNumber(String token) {
-        int number = parseInt(token);
-        validate(number);
-        this.value = number;
+    public static PositiveNumber valueOf(int value) {
+        return new PositiveNumber(value);
+    }
+
+    public static PositiveNumber valueOf(String token) {
+        return new PositiveNumber(token);
+    }
+
+    private PositiveNumber(String token) {
+        this(parseInt(token));
+    }
+
+    private PositiveNumber(int value) {
+        validate(value);
+        this.value = value;
     }
 
     private static void validate(int number) {
@@ -26,5 +39,21 @@ public class PositiveNumber {
 
     public int getValue() {
         return value;
+    }
+
+    public PositiveNumber plus(PositiveNumber positiveNumber) {
+        return new PositiveNumber(this.value + positiveNumber.value);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PositiveNumber that = (PositiveNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
