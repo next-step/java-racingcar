@@ -26,4 +26,12 @@ public class RacingGameTest {
                 .hasMessageContaining("자동차 대수");
     }
 
+    @DisplayName("시도 횟수가 음수이면 RuntimeException (-1)")
+    @Test
+    void test_3() {
+        assertThatThrownBy(() -> new RacingGame(3, -1))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("시도 횟수");
+    }
+
 }
