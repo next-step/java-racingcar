@@ -29,4 +29,12 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
+    @DisplayName("자동차에 4 미만의 값 명령을 내리면 자동차는 멈춘다. : 2 명령 시 멈춘다. ")
+    @Test
+    public void test_4() {
+        Car car = new Car();
+        car.tryMove(2);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
 }
