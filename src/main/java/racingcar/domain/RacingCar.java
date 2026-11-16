@@ -1,5 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class RacingCar {
@@ -13,7 +15,7 @@ public class RacingCar {
     }
 
     public void race() {
-        System.out.println("실행 결과");
+
         for (int i = 0; i < attemptCount; i++) {
             moveCar();
             printCurrentPosition();
@@ -31,15 +33,26 @@ public class RacingCar {
     }
 
     private void moveCar() {
-        Random random = new Random();
-
         for (int j = 0; j < cars.length; j++) {
-            int value = random.nextInt(10);
-            Car car = cars[j];
-            if (value >= 4) {
-                car.moveForward();
+            if (moveStrategy()) {
+                cars[j].moveForward();
             }
         }
+    }
+
+    public List<Integer> getPositions() {
+        return Arrays.stream(cars).map(Car::getPosition).toList();
+    }
+
+
+    private boolean moveStrategy() {
+        Random random = new Random();
+
+        int randomNumber = random.nextInt(10);
+        if (randomNumber >= 4) {
+            return true;
+        }
+        return false;
     }
 
 
