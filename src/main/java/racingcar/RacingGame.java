@@ -21,9 +21,13 @@ public class RacingGame {
         RandomNumberGenerator generator = new RandomNumberGenerator(10);
 
         for (int i = 0; i < tryCount; i++) {
-            for (Car car : cars) {
-                car.tryMove(generator.create());
-            }
+            playRound(generator);
+        }
+    }
+
+    private void playRound(RandomNumberGenerator generator) {
+        for (Car car : cars) {
+            car.tryMove(generator.create());
         }
     }
 
