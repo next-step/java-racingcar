@@ -2,7 +2,9 @@ package racingcar;
 
 import racingcar.domain.Car;
 import racingcar.domain.RacingCar;
+import racingcar.domain.RandomMoveStrategy;
 import racingcar.dto.RoundResult;
+import racingcar.util.RandomGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -14,7 +16,7 @@ public class RacingCarApplication {
 
     public static void main(String[] args) {
         RacingCar racingCar = new RacingCar(createCars(InputView.readCarCount()), InputView.readAttemptCount());
-        racingCar.race();
+        racingCar.race(new RandomMoveStrategy(new RandomGenerator()));
         OutputView.printResultMessage();
         OutputView.printCurrentPosition(RoundResult.from(racingCar));
     }

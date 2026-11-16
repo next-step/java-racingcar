@@ -14,27 +14,15 @@ public class RacingCar {
         this.attemptCount = attemptCount;
     }
 
-    public void race() {
-
+    public void race(RandomMoveStrategy strategy) {
         for (int i = 0; i < attemptCount; i++) {
-            moveCar();
-            printCurrentPosition();
+            moveCar(strategy);
         }
     }
 
-    private void printCurrentPosition() {
+    private void moveCar(RandomMoveStrategy strategy) {
         for (int j = 0; j < cars.length; j++) {
-            int dis = cars[j].getPosition();
-            for (int k = 0; k < dis; k++) {
-                System.out.print("-");
-            }
-            System.out.println();
-        }
-    }
-
-    private void moveCar() {
-        for (int j = 0; j < cars.length; j++) {
-            if (moveStrategy()) {
+            if (strategy.movable()) {
                 cars[j].moveForward();
             }
         }
@@ -43,16 +31,5 @@ public class RacingCar {
     public List<Integer> getPositions() {
         return Arrays.stream(cars).map(Car::getPosition).toList();
     }
-
-
-    private boolean moveStrategy() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(10);
-        if (randomNumber >= 4) {
-            return true;
-        }
-        return false;
-    }
-
 
 }
