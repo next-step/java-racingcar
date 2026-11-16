@@ -28,8 +28,10 @@ public class RacingCar {
         }
     }
 
-    public List<Integer> getPositions() {
-        return Arrays.stream(cars).map(Car::getPosition).toList();
+    public List<Position> getPositions() {
+        return Arrays.stream(cars)
+                .map(Car::getPosition)
+                .toList();
     }
 
 }
