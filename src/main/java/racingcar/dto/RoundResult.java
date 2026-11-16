@@ -16,4 +16,7 @@ public class RoundResult {
         return new RoundResult(racingCar.getPositions());
     }
 
+    public List<Integer> getPosition() {
+        return position;
+    }
 }

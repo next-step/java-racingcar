@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.dto.RoundResult;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public static void printCurrentPosition(List<Integer> positions) {
-        for (int position : positions) {
+    public static void printCurrentPosition(RoundResult roundResult) {
+        for (int position : roundResult.getPosition()) {
             System.out.println("-".repeat(position));
         }
         System.out.println();
