@@ -42,4 +42,14 @@ public class RacingGameTest {
         assertThat(max(game.getPositions())).isLessThanOrEqualTo(5);
     }
 
+    @DisplayName("이미 진행한 레이싱 게임을 다시 진행하면 RuntimeException")
+    @Test
+    public void test_5() {
+        RacingGame game = new RacingGame(3, 5, new RandomNumberGenerator(10));
+        game.race();
+        assertThatThrownBy(() -> game.race())
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("이미 완료");
+    }
+
 }

@@ -8,6 +8,7 @@ public class RacingGame {
     private final int tryCount;
     private final List<Car> cars = new ArrayList<>();
     private final NumberGenerator generator;
+    private boolean finished;
 
     public RacingGame(int carCount, int tryCount, NumberGenerator generator) {
         validateCarCount(carCount);
@@ -20,9 +21,13 @@ public class RacingGame {
     }
 
     public void race() {
+        if (finished) {
+            throw new RuntimeException("이미 완료된 게임입니다.");
+        }
         for (int i = 0; i < tryCount; i++) {
             playRound();
         }
+        finished = true;
     }
 
     private void playRound() {
