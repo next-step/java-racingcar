@@ -1,8 +1,8 @@
 package step3;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -41,11 +41,19 @@ public class CarRacingTest {
         CarRacing sut = new CarRacing(2, tryCount);
 
         for (int i = 0; i < tryCount; i++) {
-            assertThatCode(sut::tryRace)
+            assertThatCode(sut::racingCars)
                 .doesNotThrowAnyException();
         }
 
-        assertThatThrownBy(sut::tryRace)
+        assertThatThrownBy(sut::racingCars)
             .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("입력받은 자동차 대수만큼 생성한 자동차를 식별 번호와 함께 리스트로 반환한다.")
+    public void 현재_전체_자동차의_상태() {
+        List<Car> sut = new CarRacing(2, 1).currentCars();
+
+        assertThat(sut).hasSize(2);
     }
 }
