@@ -6,8 +6,6 @@ public class Car {
     public static final int DEFAULT_INIT_POSITION = 0;
     private int position;
 
-
-
     public Car(int initPosition) {
         this.position = initPosition;
     }
@@ -19,7 +17,6 @@ public class Car {
     public void moveForward() {
         position++;
     }
-
 
     public int getPosition() {
         return position;
