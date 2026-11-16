@@ -4,12 +4,8 @@ public class Car {
 
     private Position position;
 
-    public Car(int initPosition) {
-        this.position = new Position(initPosition);
-    }
-
     public Car() {
-        this.position = new Position();
+        this.position = Position.start();
     }
 
     public void moveForward(RandomMoveStrategy strategy) {

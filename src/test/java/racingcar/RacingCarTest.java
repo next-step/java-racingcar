@@ -12,30 +12,32 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingCarTest {
 
+    public static final int MOVE_THRESHOLD = 4;
+
     @Test
     void 랜덤_값이_4이상이면_자동차의_위치가_1_증가한다() {
         // given: 항상 4를 반환하는 테스트용 RandomGenerator
         Car car = new Car();
-        RandomMoveStrategy strategy = new RandomMoveStrategy(new FixedRandomGenerator(RandomMoveStrategy.MOVE_THRESHOLD));
+        RandomMoveStrategy strategy = new RandomMoveStrategy(new FixedRandomGenerator(MOVE_THRESHOLD));
 
         // when
         car.moveForward(strategy);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(new Position(1));
+        assertThat(car.getPosition()).isEqualTo(Position.of(1));
     }
 
     @Test
     void 랜덤_값이_4미만이면_자동차가_움직이지_않는다() {
         // given: 항상 3을 반환하는 테스트용 RandomGenerator
         Car car = new Car();
-        RandomMoveStrategy strategy = new RandomMoveStrategy(new FixedRandomGenerator(RandomMoveStrategy.MOVE_THRESHOLD - 1));
+        RandomMoveStrategy strategy = new RandomMoveStrategy(new FixedRandomGenerator(MOVE_THRESHOLD - 1));
 
         // when
         car.moveForward(strategy);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(new Position(0));
+        assertThat(car.getPosition()).isEqualTo(Position.start());
     }
 
 
