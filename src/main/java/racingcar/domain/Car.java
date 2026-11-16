@@ -12,8 +12,10 @@ public class Car {
         this.position = new Position();
     }
 
-    public void moveForward() {
-        position.move();
+    public void moveForward(RandomMoveStrategy strategy) {
+        if (strategy.movable()) {
+            position = position.move();
+        }
     }
 
     public Position getPosition() {
