@@ -20,14 +20,17 @@ public class RacingGame {
         }
     }
 
-    public void race() {
+    public List<List<Integer>> race() {
         if (finished) {
             throw new RuntimeException("이미 완료된 게임입니다.");
         }
+        List<List<Integer>> history = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
             playRound();
+            history.add(getPositions());
         }
         finished = true;
+        return history;
     }
 
     private void playRound() {
