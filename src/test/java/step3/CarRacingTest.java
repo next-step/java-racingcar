@@ -56,4 +56,16 @@ public class CarRacingTest {
 
         assertThat(sut).hasSize(2);
     }
+
+    @Test
+    @DisplayName("시도할 때마다 전체 자동차(식별번호, 전진한 거리)를 리스트로 반환한다.")
+    public void 시도할_때마다_전체_자동차의_상태() {
+        int tryCount = 2;
+        CarRacing sut = new CarRacing(2, tryCount);
+
+        for (int i = 0; i < tryCount; i++) {
+            assertThat(sut.racingCars())
+                .hasSize(2);
+        }
+    }
 }

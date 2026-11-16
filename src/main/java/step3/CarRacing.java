@@ -27,11 +27,12 @@ public class CarRacing {
         return cars;
     }
 
-    public void racingCars() {
+    public List<Car> racingCars() {
         if (tryCount < 1) {
             throw new RuntimeException();
         }
 
         tryCount--;
+        return currentCars();
     }
 }
