@@ -5,8 +5,8 @@ import racingcar.util.RandomGenerator;
 public class RandomMoveStrategy {
 
 
-    public static final int MOVE_THRESHOLD = 4;
-    public static final int BOUND = 10;
+    private static final int MOVE_THRESHOLD = 4;
+    private static final int BOUND = 10;
     private final RandomGenerator randomGenerator;
 
 
