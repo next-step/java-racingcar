@@ -10,6 +10,8 @@ public class Calculator {
     public static final String CUSTOM_REGEX = "//(.)\n(.*)";
     public static final int ZERO = 0;
 
+    private static final Pattern CUSTOM_PATTERN = Pattern.compile(CUSTOM_REGEX);
+
     public static int sum(String input) {
 
         if (isBlankOrNull(input)) return ZERO;
@@ -27,7 +29,7 @@ public class Calculator {
 
     private static String[] getSplit(String input) {
 
-        Matcher m = Pattern.compile(CUSTOM_REGEX).matcher(input);
+        Matcher m = CUSTOM_PATTERN.matcher(input);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens= m.group(2).split(customDelimiter);// 덧셈 구현
