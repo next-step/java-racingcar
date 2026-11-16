@@ -47,7 +47,6 @@ public class RacingCar {
 
     private boolean moveStrategy() {
         Random random = new Random();
-
         int randomNumber = random.nextInt(10);
         if (randomNumber >= 4) {
             return true;
