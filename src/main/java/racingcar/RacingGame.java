@@ -7,25 +7,25 @@ public class RacingGame {
 
     private final int tryCount;
     private final List<Car> cars = new ArrayList<>();
+    private final NumberGenerator generator;
 
-    public RacingGame(int carCount, int tryCount) {
+    public RacingGame(int carCount, int tryCount, NumberGenerator generator) {
         validateCarCount(carCount);
         validateTryCount(tryCount);
         this.tryCount = tryCount;
+        this.generator = generator;
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
         }
     }
 
     public void race() {
-        RandomNumberGenerator generator = new RandomNumberGenerator(10);
-
         for (int i = 0; i < tryCount; i++) {
-            playRound(generator);
+            playRound();
         }
     }
 
-    private void playRound(RandomNumberGenerator generator) {
+    private void playRound() {
         for (Car car : cars) {
             car.tryMove(generator.create());
         }

@@ -14,14 +14,14 @@ public class RacingGameTest {
     @DisplayName("자동차 대수만큼 자동차가 만들어진다. (3 → 3대)")
     @Test
     public void test_1() {
-        assertThat(new RacingGame(3, 0).getCarCount()).isEqualTo(3);
+        assertThat(new RacingGame(3, 0, new RandomNumberGenerator(10)).getCarCount()).isEqualTo(3);
     }
 
     @DisplayName("자동차 대수가 0이거나 음수이면 RuntimeException (0, -1)")
     @ParameterizedTest
     @ValueSource(ints = {0, -1})
     void test_2(int carCount) {
-        assertThatThrownBy(() -> new RacingGame(carCount, 1))
+        assertThatThrownBy(() -> new RacingGame(carCount, 1, new RandomNumberGenerator(10)))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("자동차 대수");
     }
@@ -29,7 +29,7 @@ public class RacingGameTest {
     @DisplayName("시도 횟수가 음수이면 RuntimeException (-1)")
     @Test
     void test_3() {
-        assertThatThrownBy(() -> new RacingGame(3, -1))
+        assertThatThrownBy(() -> new RacingGame(3, -1, new RandomNumberGenerator(10)))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("시도 횟수");
     }
@@ -37,7 +37,7 @@ public class RacingGameTest {
     @DisplayName("N회 시도하면 어떤 자동차도 N칸을 넘어 전진하지 않는다. (5회 → 위치 ≤ 5)")
     @Test
     void test_4() {
-        RacingGame game = new RacingGame(3, 5);
+        RacingGame game = new RacingGame(3, 5, new RandomNumberGenerator(10));
         game.race();
         assertThat(max(game.getPositions())).isLessThanOrEqualTo(5);
     }
