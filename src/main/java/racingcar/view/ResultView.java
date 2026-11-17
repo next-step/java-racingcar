@@ -4,11 +4,11 @@ import java.util.List;
 
 public class ResultView {
 
-	public void printResult() {
+	public void printResultTitle() {
 		System.out.println("실행결과");
 	}
 
-	public void view(List<Integer> positions) {
+	public void printPositions(List<Integer> positions) {
 		for (Integer position : positions) {
 			drawCarPosition(position);
 		}

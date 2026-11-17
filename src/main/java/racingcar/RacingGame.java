@@ -14,11 +14,11 @@ public class RacingGame {
 		int racingRound = inputView.inputRacingRound();
 
 		Cars cars = new Cars(carNumber);
-		resultView.printResult();
+		resultView.printResultTitle();
 
 		for (int i = 0; i < racingRound; i++) {
 			cars.play(new RandomNumberGenerator());
-			resultView.view(cars.getPositions());
+			resultView.printPositions(cars.getPositions());
 		}
 
 	}
