@@ -9,6 +9,7 @@ public class RacingGame {
 	public static void main(String[] args) {
 		InputView inputView = new InputView();
 		ResultView resultView = new ResultView();
+		RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
 
 		int carNumber = inputView.inputCarNumber();
 		int racingRound = inputView.inputRacingRound();
@@ -17,7 +18,7 @@ public class RacingGame {
 		resultView.printResultTitle();
 
 		for (int i = 0; i < racingRound; i++) {
-			cars.play(new RandomNumberGenerator());
+			cars.play(numberGenerator);
 			resultView.printPositions(cars.getPositions());
 		}
 
