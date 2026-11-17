@@ -8,6 +8,9 @@ public class Race {
     private final int rounds;
 
     public Race(List<Car> cars, int rounds) {
+        if (rounds < 0) {
+            throw new IllegalArgumentException("rounds can not be negative value");
+        }
         this.cars = cars;
         this.rounds = rounds;
     }

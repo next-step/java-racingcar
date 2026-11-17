@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RaceTest {
     @ParameterizedTest
@@ -20,6 +21,16 @@ public class RaceTest {
         List<List<Integer>> results = race.play();
 
         assertThat(results).hasSize(rounds);
+    }
+
+    @Test
+    @DisplayName("입력한 횟수가 음수면 IllegalArgumentException")
+    void canNotHaveNegativeRound() {
+        Car car = new Car(() -> true);
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Race(List.of(car), -1))
+                .withMessage("rounds can not be negative value");
     }
 
     @Test
