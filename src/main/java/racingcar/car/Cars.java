@@ -16,15 +16,15 @@ public class Cars {
 	}
 
 	public void play(NumberGenerator numberGenerator) {
-		for (int i = 0; i < cars.size(); i++) {
-			cars.get(i).go(numberGenerator.generate());
+		for (Car car : cars) {
+			car.go(numberGenerator.generate());
 		}
 	}
 
 	public List<Integer> getPositions() {
 		List<Integer> positions = new ArrayList<>();
-		for (int i = 0; i < cars.size(); i++) {
-			positions.add(cars.get(i).getPosition());
+		for (Car car : cars) {
+			positions.add(car.getPosition());
 		}
 		return positions;
 	}
