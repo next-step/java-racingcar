@@ -10,16 +10,25 @@ public class Calculator {
 	private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.)\n(.*)");
 
 	public static int calc(String input) {
-		if (input.isEmpty()) {
+		if (isNullOrEmpty(input)) {
 			return ZERO;
 		}
+		return sum(split(input));
+	}
 
+	private static boolean isNullOrEmpty(String input) {
+		return isNull(input) || input.isEmpty();
+	}
+
+	private static String[] split(String input) {
 		Matcher m = findCustomDelimiter(input);
 		if (m.find()) {
-			return sum(m.group(2).split(m.group(1)));
+			String customDelimiter = m.group(1);
+			String numbers = m.group(2);
+			return numbers.split(customDelimiter);
 		}
-
-		return sum(input.split(DELIMITER));
+		
+		return input.split(DELIMITER);
 	}
 
 	private static int sum(String[] values) {
@@ -36,6 +45,10 @@ public class Calculator {
 			throw new RuntimeException();
 		}
 		return num;
+	}
+
+	private static boolean isNull(String value) {
+		return value == null;
 	}
 
 	private static boolean isNegative(int num) {
