@@ -14,7 +14,7 @@ public class RacingGame {
 		int racingRound = inputView.inputRacingRound();
 
 		Cars cars = new Cars(carNumber);
-		System.out.println("실행결과");
+		resultView.printResult();
 
 		for (int i = 0; i < racingRound; i++) {
 			cars.play(new RandomNumberGenerator());
