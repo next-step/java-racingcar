@@ -11,9 +11,7 @@ public class PositionFormatterTest {
     @CsvSource(value = {"0, ''", "1, '-'", "3, '---'"})
     @DisplayName("각 차의 위치를 - 기호로 변환한다")
     void formatPositionToDash(int position, String expected) {
-        PositionFormatter positionFormatter = new PositionFormatter();
-
-        String result = positionFormatter.format(position);
+        String result = PositionFormatter.format(position);
 
         assertThat(result).isEqualTo(expected);
     }

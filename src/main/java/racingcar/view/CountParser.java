@@ -2,7 +2,10 @@ package racingcar.view;
 
 public class CountParser {
 
-    public int parse(String input) {
+    private CountParser() {
+    }
+
+    public static int parse(String input) {
         int count = toInt(input);
         if (count < 0) {
             throw new IllegalArgumentException("negative integer inputs are not allowed here [" + count + "]");
@@ -10,7 +13,7 @@ public class CountParser {
         return count;
     }
 
-    private int toInt(String input) {
+    private static int toInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException ne) {

@@ -13,16 +13,14 @@ public class RacingCarApplication {
     private static final int RANDOM_NUMBER_BOUND = 10;
 
     public static void main(String[] args) {
-        final InputView inputView = new InputView();
-        final int carCount = inputView.getCarCount();
-        final int roundCount = inputView.getRoundCount();
+        final int carCount = InputView.getCarCount();
+        final int roundCount = InputView.getRoundCount();
 
         final RandomNumberGenerator numberGenerator = new RandomNumberGenerator(RANDOM_NUMBER_BOUND);
         final ThresholdMoveStrategy moveStrategy = new ThresholdMoveStrategy(MOVE_THRESHOLD, numberGenerator);
         final Race race = Race.of(carCount, roundCount, moveStrategy);
         final List<List<Integer>> roundResults = race.play();
 
-        final ResultView resultView = new ResultView();
-        resultView.showResult(roundResults);
+        ResultView.showResult(roundResults);
     }
 }

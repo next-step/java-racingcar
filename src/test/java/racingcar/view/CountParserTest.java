@@ -12,9 +12,7 @@ public class CountParserTest {
     @Test
     @DisplayName("숫자 문자열을 정수로 변환한다")
     void parseCount() {
-        CountParser countParser = new CountParser();
-
-        int result = countParser.parse("3");
+        int result = CountParser.parse("3");
 
         assertThat(result).isEqualTo(3);
     }
@@ -23,10 +21,8 @@ public class CountParserTest {
     @ValueSource(strings = {"", "a"})
     @DisplayName("숫자가 아닌 입력은 IllegalArgumentException")
     void throwIllegalArgumentExceptionWithNonNumericInput(String input) {
-        CountParser countParser = new CountParser();
-
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> countParser.parse(input))
+                .isThrownBy(() -> CountParser.parse(input))
                 .withMessage("only numeric inputs are allowed here");
     }
 
@@ -34,10 +30,8 @@ public class CountParserTest {
     @ValueSource(strings = {"-1", "-2"})
     @DisplayName("음수인 입력은 IllegalArgumentException")
     void throwIllegalArgumentExceptionWithNegativeInput(String input) {
-        CountParser countParser = new CountParser();
-
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> countParser.parse(input))
+                .isThrownBy(() -> CountParser.parse(input))
                 .withMessage("negative integer inputs are not allowed here [" + input + "]");
     }
 }
