@@ -2,15 +2,19 @@ package racingcar;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class CarsTest {
 
-	@Test
-	void 차3대_횟수1번일때_모두4이상나온경우() {
+	@ParameterizedTest
+	@CsvSource(
+		value = {"4,1", "3,0"}
+	)
+	void 차3대_횟수1번일때_전진하거나_멈춘다(int number, int expected) {
 		Cars cars = new Cars(3);
-		cars.play(() -> 4);
-		assertThat(cars.getPositions()).containsExactly(1, 1, 1);
+		cars.play(() -> number);
+		assertThat(cars.getPositions()).containsOnly(expected);
 	}
 
 }
