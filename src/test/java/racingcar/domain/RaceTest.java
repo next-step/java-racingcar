@@ -33,6 +33,27 @@ public class RaceTest {
                 .withMessage("rounds can not be negative value");
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {0, 3, 4})
+    @DisplayName("입력한 자동차 대수만큼 자동차를 생성한다")
+    void hasCars(int carCount) {
+        Race race = Race.of(carCount, 1, () -> true);
+
+        List<List<Integer>> results = race.play();
+
+        assertThat(results.getFirst())
+                .hasSize(carCount)
+                .allMatch(position -> position == 1);
+    }
+
+    @Test
+    @DisplayName("입력한 대수가 음수면 IllegalArgumentException")
+    void canNotHaveNegativeCars() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Race.of(-1, 1, () -> true))
+                .withMessage("car count can not be negative value");
+    }
+
     @Test
     @DisplayName("회차마다 각 차들은 전진할지 판단한다")
     void eachCarCanMoveByRound() {
