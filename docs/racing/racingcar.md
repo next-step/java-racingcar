@@ -1,8 +1,8 @@
 # Racing Car todos
 ## 입력
-- [ ] 자동차 대수와 횟수를 숫자로 입력받는다
-  - [ ] 숫자가 아닌 입력은 IllegalArgumentException
-  - [ ] 음수인 입력은 IllegalArgumentException
+- [X] 자동차 대수와 횟수를 숫자로 입력받는다
+  - [X] 숫자가 아닌 입력은 IllegalArgumentException
+  - [X] 음수인 입력은 IllegalArgumentException
 ## 차
 - [X] 처음 위치는 0이다
 - [X] 이동 규칙이 허용하면 위치가 1 증가한다
