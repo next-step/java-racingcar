@@ -1,10 +1,8 @@
 # Racing Car todos
 ## 입력
-- [ ] 자동차 대수를 숫자로 입력받는다
-  - [ ] 숫자가 아닌 입력은 RuntimeException
-  - [ ] 양의 정수가 아닌 입력은 RuntimeException
-- [ ] 횟수를 숫자로 입력받는다
-  - [ ] 숫자가 아닌 입력은 RuntimeException
+- [ ] 자동차 대수와 횟수를 숫자로 입력받는다
+  - [ ] 숫자가 아닌 입력은 IllegalArgumentException
+  - [ ] 음수인 입력은 IllegalArgumentException
 ## 차
 - [X] 처음 위치는 0이다
 - [X] 이동 규칙이 허용하면 위치가 1 증가한다
@@ -18,6 +16,8 @@
 - [X] 입력한 횟수만큼 회차를 진행한다
   - [X] 입력한 횟수가 음수면 IllegalArgumentException
 - [X] 회차마다 각 차들은 전진할지 판단한다
+- [ ] 입력한 자동차 대수만큼 자동차를 생성한다
+  - [ ] 입력한 대수가 음수면 IllegalArgumentException
 ## 출력
 - [ ] 각 회차가 진행된 후, 각 차들의 누적 전진 거리를 - 기호로 출력한다
 - [ ] 회차 사이를 빈 줄로 구분한다
