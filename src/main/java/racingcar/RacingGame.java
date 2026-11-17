@@ -16,12 +16,14 @@ public class RacingGame {
 		int racingRound = inputView.inputRacingRound();
 
 		Cars cars = new Cars(carNumber);
-		resultView.printResultTitle();
+		race(resultView, racingRound, cars, numberGenerator);
+	}
 
+	private static void race(ResultView resultView, int racingRound, Cars cars, NumberGenerator numberGenerator) {
+		resultView.printResultTitle();
 		for (int i = 0; i < racingRound; i++) {
 			cars.play(numberGenerator);
 			resultView.printPositions(cars.getPositions());
 		}
-
 	}
 }
