@@ -13,8 +13,8 @@ public class PositionFormatterTest {
     void formatPositionToDash(int position, String expected) {
         PositionFormatter positionFormatter = new PositionFormatter();
 
-        String output = positionFormatter.format(position);
+        String result = positionFormatter.format(position);
 
-        assertThat(output).isEqualTo(expected);
+        assertThat(result).isEqualTo(expected);
     }
 }
