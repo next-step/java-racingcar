@@ -1,11 +1,10 @@
-package racingcar;
+package racingcar.view;
 
 import java.util.List;
 
 public class ResultView {
 
 	public void view(List<Integer> positions) {
-
 		for (Integer position : positions) {
 			drawCarPosition(position);
 		}
