@@ -11,4 +11,10 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public void move() {
+        if (moveStrategy.canMove()) {
+            position++;
+        }
+    }
 }
