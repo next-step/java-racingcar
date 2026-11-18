@@ -9,3 +9,4 @@
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 ## 미션 요구사항
 * [🚀 2단계 - 문자열 덧셈 계산기](docs/step2.md)
+* [🚀 3단계 - 자동차 경주](docs/step3.md)
