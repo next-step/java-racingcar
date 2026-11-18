@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 public class RaceTest {
     @ParameterizedTest
@@ -75,5 +76,15 @@ public class RaceTest {
                         new RoundResult(List.of(1, 0)),
                         new RoundResult(List.of(2, 0)),
                         new RoundResult(List.of(3, 0))));
+    }
+
+    @Test
+    @DisplayName("경주는 한 번만 진행할 수 있다")
+    void canNotPlayMoreThanOnce() {
+        Race race = new Race(3, 1, () -> true);
+
+        race.play();
+
+        assertThatIllegalStateException().isThrownBy(race::play).withMessage("cannot play again");
     }
 }

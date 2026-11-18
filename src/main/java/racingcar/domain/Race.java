@@ -7,7 +7,8 @@ import java.util.List;
 public class Race {
     private final List<Car> cars;
     private final int rounds;
-    private List<RoundResult> roundResults;
+    private final List<RoundResult> roundResults;
+    private boolean played;
 
     public Race(List<Car> cars, int rounds) {
         if (rounds < 0) {
@@ -16,6 +17,7 @@ public class Race {
         this.cars = cars;
         this.rounds = rounds;
         this.roundResults = new ArrayList<>();
+        this.played = false;
     }
 
     public Race(int carCount, int rounds, MoveStrategy moveStrategy) {
@@ -38,10 +40,13 @@ public class Race {
     }
 
     public void play() {
-        roundResults = new ArrayList<>();
+        if (played) {
+            throw new IllegalStateException("cannot play again");
+        }
         for (int i = 0; i < rounds; i++) {
             roundResults.add(playRound());
         }
+        played = true;
     }
 
     private RoundResult playRound() {
