@@ -24,4 +24,10 @@ public class CarTest {
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
 
+	@Test
+	void 자동차는_이름을_가진다() {
+		Car car = new Car("pobi");
+		assertThat(car.getName()).isEqualTo("pobi");
+	}
+
 }
