@@ -16,8 +16,7 @@ public class RaceTest {
     @ValueSource(ints = {0, 3, 4})
     @DisplayName("입력한 횟수만큼 회차를 진행한다")
     void hasRoundResults(int rounds) {
-        Car car = new Car(() -> true);
-        Race race = new Race(List.of(car), rounds);
+        Race race = new Race(1, rounds, () -> 4);
 
         race.play();
         List<RoundResult> results = race.getRoundResults();
@@ -28,10 +27,8 @@ public class RaceTest {
     @Test
     @DisplayName("입력한 횟수가 음수면 IllegalArgumentException")
     void canNotHaveNegativeRound() {
-        Car car = new Car(() -> true);
-
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Race(List.of(car), -1))
+                .isThrownBy(() -> new Race(1, -1, () -> 4))
                 .withMessage("rounds can not be negative value");
     }
 
@@ -39,7 +36,7 @@ public class RaceTest {
     @ValueSource(ints = {0, 3, 4})
     @DisplayName("입력한 자동차 대수만큼 자동차를 생성한다")
     void hasCars(int carCount) {
-        Race race = new Race(carCount, 1, () -> true);
+        Race race = new Race(carCount, 1, () -> 4);
 
         race.play();
         List<RoundResult> results = race.getRoundResults();
@@ -53,17 +50,28 @@ public class RaceTest {
     @DisplayName("입력한 대수가 음수면 IllegalArgumentException")
     void canNotHaveNegativeCars() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Race(-1, 1, () -> true))
+                .isThrownBy(() -> new Race(-1, 1, () -> 4))
                 .withMessage("car count can not be negative value");
     }
 
     @Test
     @DisplayName("회차마다 각 차들은 전진할지 판단한다")
     void eachCarCanMoveByRound() {
-        Car car1 = new Car(() -> true);
-        Car car2 = new Car(() -> false);
+        NumberGenerator alternating = new NumberGenerator() {
+            private int count = 0;
 
-        Race race = new Race(List.of(car1, car2), 3);
+            @Override
+            public int generate() {
+                if (count % 2 == 0) {
+                    count++;
+                    return 4;
+                }
+                count++;
+                return 3;
+            }
+        };
+
+        Race race = new Race(2, 3, alternating);
 
         race.play();
         List<RoundResult> results = race.getRoundResults();
@@ -78,7 +86,7 @@ public class RaceTest {
     @Test
     @DisplayName("경주는 한 번만 진행할 수 있다")
     void canNotPlayMoreThanOnce() {
-        Race race = new Race(3, 1, () -> true);
+        Race race = new Race(3, 1, () -> 4);
 
         race.play();
 
