@@ -58,18 +58,6 @@ public class CarRacingTest {
     }
 
     @Test
-    @DisplayName("시도할 때마다 전체 자동차(식별번호, 전진한 거리)를 리스트로 반환한다.")
-    public void 시도할_때마다_전체_자동차의_상태() {
-        int tryCount = 2;
-        CarRacing sut = new CarRacing(2, tryCount, () -> true);
-
-        for (int i = 0; i < tryCount; i++) {
-            assertThat(sut.racingCars())
-                .hasSize(2);
-        }
-    }
-
-    @Test
     @DisplayName("특정 조건은 외부에서 주입받을 수 있다.")
     public void 자동차가_전진할_조건_외부_주입() {
         assertThatCode(() -> new CarRacing(2, 1, new RandomMoveStrategy()))
@@ -78,5 +66,19 @@ public class CarRacingTest {
             .doesNotThrowAnyException();
         assertThatThrownBy(() -> new CarRacing(2, 1, null))
             .isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    @DisplayName("시도할 때마다 전체 자동차(식별번호, 전진한 거리)를 리스트로 반환한다.")
+    public void 시도할_때마다_전체_자동차의_상태() {
+        int tryCount = 2;
+        CarRacing sut = new CarRacing(2, tryCount, () -> true);
+
+        for (int i = 0; i < tryCount; i++) {
+            int distance = 1 + i;
+            assertThat(sut.racingCars())
+                .hasSize(2)
+                .allSatisfy(car -> assertThat(car.getDistance()).isEqualTo(distance));
+        }
     }
 }

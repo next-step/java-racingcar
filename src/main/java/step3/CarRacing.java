@@ -31,11 +31,19 @@ public class CarRacing {
     }
 
     public List<Car> racingCars() {
-        if (tryCount < 1) {
+        if (tryCount-- < 1) {
             throw new RuntimeException();
         }
 
-        tryCount--;
-        return currentCars();
+        return cars.stream()
+            .map(car -> {
+                if (strategy.isMovable()) {
+                    car.move();
+                    return car;
+                }
+
+                return car;
+            })
+            .toList();
     }
 }

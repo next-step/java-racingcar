@@ -14,7 +14,7 @@ public class Car {
         return ++distance;
     }
 
-    public long getId() {
-        return id;
+    public int getDistance() {
+        return distance;
     }
 }
