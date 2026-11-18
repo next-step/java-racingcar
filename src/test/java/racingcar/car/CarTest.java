@@ -30,4 +30,10 @@ public class CarTest {
 		assertThat(car.getName()).isEqualTo("pobi");
 	}
 
+	@Test
+	void 이름이_5자초과면_예외를_발생한다() {
+		assertThatThrownBy(() -> new Car("pobiii"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+
 }
