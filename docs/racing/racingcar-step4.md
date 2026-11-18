@@ -3,8 +3,9 @@
 - [X] 처음 위치는 0이다
 - [X] 값이 4 이상이면 위치가 1 증가한다
 - [X] 값이 3 이하면 위치가 그대로다
-- [ ] 차는 이름을 가진다
-  - [ ] 차의 이름은 5자를 초과할 수 없다, 초과하면 IllegalArgumentException
+- [X] 차는 이름을 가진다
+  - [X] 차의 이름은 5자를 초과할 수 없다, 초과하면 IllegalArgumentException
+  - [X] 차의 이름은 null 이거나 비어있거나 공란으로만 이루어져 있으면 IllegalArgumentException
 ## 경주
 - [X] 입력한 횟수만큼 회차를 진행한다
   - [X] 입력한 횟수가 음수면 IllegalArgumentException
