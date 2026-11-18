@@ -8,9 +8,6 @@ public class Car {
 	private int position = 0;
 	private String carName;
 
-	public Car() {
-	}
-
 	public Car(String carName) {
 		if (isTooLong(carName)) {
 			throw new IllegalArgumentException("이름은 5자이하로 작성해야합니다.");

@@ -15,12 +15,6 @@ public class Cars {
 		}
 	}
 
-	public Cars(int carCount) {
-		for (int i = 0; i < carCount; i++) {
-			cars.add(new Car());
-		}
-	}
-
 	public void play(NumberGenerator numberGenerator) {
 		for (Car car : cars) {
 			car.go(numberGenerator.generate());
