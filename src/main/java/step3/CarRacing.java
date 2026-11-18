@@ -36,14 +36,20 @@ public class CarRacing {
         }
 
         return cars.stream()
-            .map(car -> {
-                if (strategy.isMovable()) {
-                    car.move();
-                    return car;
-                }
-
-                return car;
-            })
+            .map(this::moveCar)
             .toList();
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
+    private Car moveCar(Car car) {
+        if (strategy.isMovable()) {
+            car.move();
+            return car;
+        }
+
+        return car;
     }
 }
