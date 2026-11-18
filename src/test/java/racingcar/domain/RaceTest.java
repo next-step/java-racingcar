@@ -37,7 +37,7 @@ public class RaceTest {
     @ValueSource(ints = {0, 3, 4})
     @DisplayName("입력한 자동차 대수만큼 자동차를 생성한다")
     void hasCars(int carCount) {
-        Race race = Race.of(carCount, 1, () -> true);
+        Race race = new Race(carCount, 1, () -> true);
 
         List<List<Integer>> results = race.play();
 
@@ -50,7 +50,7 @@ public class RaceTest {
     @DisplayName("입력한 대수가 음수면 IllegalArgumentException")
     void canNotHaveNegativeCars() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Race.of(-1, 1, () -> true))
+                .isThrownBy(() -> new Race(-1, 1, () -> true))
                 .withMessage("car count can not be negative value");
     }
 

@@ -15,7 +15,7 @@ public class RacingCarApplication {
 
         final RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
         final ThresholdMoveStrategy moveStrategy = new ThresholdMoveStrategy(numberGenerator);
-        final Race race = Race.of(carCount, roundCount, moveStrategy);
+        final Race race = new Race(carCount, roundCount, moveStrategy);
         final List<List<Integer>> roundResults = race.play();
 
         ResultView.showResult(roundResults);

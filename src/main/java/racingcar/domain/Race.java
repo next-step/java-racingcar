@@ -15,7 +15,11 @@ public class Race {
         this.rounds = rounds;
     }
 
-    public static Race of(int carCount, int rounds, MoveStrategy moveStrategy) {
+    public Race(int carCount, int rounds, MoveStrategy moveStrategy) {
+        this(createCars(carCount, moveStrategy), rounds);
+    }
+
+    private static List<Car> createCars(int carCount, MoveStrategy moveStrategy) {
         if (carCount < 0) {
             throw new IllegalArgumentException("car count can not be negative value");
         }
@@ -23,7 +27,7 @@ public class Race {
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car(moveStrategy));
         }
-        return new Race(cars, rounds);
+        return cars;
     }
 
     public List<List<Integer>> play() {
