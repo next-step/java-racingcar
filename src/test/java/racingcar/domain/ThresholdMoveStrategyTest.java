@@ -7,14 +7,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ThresholdMoveStrategyTest {
-
-    private static final int THRESHOLD = 4;
-
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
     @DisplayName("값이 4 이상이면 전진한다")
     void canMoveIfNumberIsFourOrMore(int value) {
-        MoveStrategy moveStrategy = new ThresholdMoveStrategy(THRESHOLD, () -> value);
+        MoveStrategy moveStrategy = new ThresholdMoveStrategy(() -> value);
 
         assertThat(moveStrategy.canMove()).isTrue();
     }
@@ -23,7 +20,7 @@ public class ThresholdMoveStrategyTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("값이 3 이하면 이동하지 않는다")
     void canNotMoveIfNumberIsThreeOrLess(int value) {
-        MoveStrategy moveStrategy = new ThresholdMoveStrategy(THRESHOLD, () -> value);
+        MoveStrategy moveStrategy = new ThresholdMoveStrategy(() -> value);
 
         assertThat(moveStrategy.canMove()).isFalse();
     }

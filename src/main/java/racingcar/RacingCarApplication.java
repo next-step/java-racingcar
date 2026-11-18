@@ -9,15 +9,12 @@ import racingcar.view.ResultView;
 import java.util.List;
 
 public class RacingCarApplication {
-    private static final int MOVE_THRESHOLD = 4;
-    private static final int RANDOM_NUMBER_BOUND = 10;
-
     public static void main(String[] args) {
         final int carCount = InputView.getCarCount();
         final int roundCount = InputView.getRoundCount();
 
-        final RandomNumberGenerator numberGenerator = new RandomNumberGenerator(RANDOM_NUMBER_BOUND);
-        final ThresholdMoveStrategy moveStrategy = new ThresholdMoveStrategy(MOVE_THRESHOLD, numberGenerator);
+        final RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
+        final ThresholdMoveStrategy moveStrategy = new ThresholdMoveStrategy(numberGenerator);
         final Race race = Race.of(carCount, roundCount, moveStrategy);
         final List<List<Integer>> roundResults = race.play();
 

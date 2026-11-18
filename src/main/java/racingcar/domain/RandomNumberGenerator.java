@@ -3,16 +3,15 @@ package racingcar.domain;
 import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
-    private final int bound;
+    private static final int BOUND = 10;
     private final Random random;
 
-    public RandomNumberGenerator(int bound) {
-        this.bound = bound;
+    public RandomNumberGenerator() {
         random = new Random();
     }
 
     @Override
     public int generate() {
-        return random.nextInt(bound);
+        return random.nextInt(BOUND);
     }
 }

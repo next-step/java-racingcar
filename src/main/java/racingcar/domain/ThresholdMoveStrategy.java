@@ -2,16 +2,16 @@ package racingcar.domain;
 
 public class ThresholdMoveStrategy implements MoveStrategy {
 
-    private final int threshold;
+    private static final int THRESHOLD = 4;
+
     private final NumberGenerator numberGenerator;
 
-    public ThresholdMoveStrategy(int threshold, NumberGenerator numberGenerator) {
-        this.threshold = threshold;
+    public ThresholdMoveStrategy(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
 
     @Override
     public boolean canMove() {
-        return numberGenerator.generate() >= threshold;
+        return numberGenerator.generate() >= THRESHOLD;
     }
 }
