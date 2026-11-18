@@ -2,6 +2,9 @@ package racingcar.car;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,4 +20,10 @@ public class CarsTest {
 		assertThat(cars.getPositions()).containsOnly(expected);
 	}
 
+	@Test
+	void 이름수만큼_자동차를_만든다() {
+		List<String> carNames= List.of("pobi", "crong", "honux");
+		Cars cars = new Cars(carNames);
+		assertThat(cars.getPositions()).hasSize(3);
+	}
 }
