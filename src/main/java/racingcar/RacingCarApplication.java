@@ -6,8 +6,6 @@ import racingcar.domain.ThresholdMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-import java.util.List;
-
 public class RacingCarApplication {
     public static void main(String[] args) {
         final int carCount = InputView.getCarCount();
@@ -16,8 +14,8 @@ public class RacingCarApplication {
         final RandomNumberGenerator numberGenerator = new RandomNumberGenerator();
         final ThresholdMoveStrategy moveStrategy = new ThresholdMoveStrategy(numberGenerator);
         final Race race = new Race(carCount, roundCount, moveStrategy);
-        final List<List<Integer>> roundResults = race.play();
+        race.play();
 
-        ResultView.showResult(roundResults);
+        ResultView.showResult(race.getRoundResults());
     }
 }

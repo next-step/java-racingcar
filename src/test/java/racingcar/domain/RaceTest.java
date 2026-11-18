@@ -18,7 +18,9 @@ public class RaceTest {
         Car car = new Car(() -> true);
         Race race = new Race(List.of(car), rounds);
 
-        List<List<Integer>> results = race.play();
+        race.play();
+
+        List<RoundResult> results = race.getRoundResults();
 
         assertThat(results).hasSize(rounds);
     }
@@ -39,9 +41,11 @@ public class RaceTest {
     void hasCars(int carCount) {
         Race race = new Race(carCount, 1, () -> true);
 
-        List<List<Integer>> results = race.play();
+        race.play();
 
-        assertThat(results.getFirst())
+        List<RoundResult> results = race.getRoundResults();
+
+        assertThat(results.getFirst().positions())
                 .hasSize(carCount)
                 .allMatch(position -> position == 1);
     }
@@ -62,8 +66,14 @@ public class RaceTest {
 
         Race race = new Race(List.of(car1, car2), 3);
 
-        List<List<Integer>> results = race.play();
+        race.play();
 
-        assertThat(results).containsExactly(List.of(1, 0), List.of(2, 0), List.of(3, 0));
+        List<RoundResult> results = race.getRoundResults();
+
+        assertThat(results)
+                .isEqualTo(List.of(
+                        new RoundResult(List.of(1, 0)),
+                        new RoundResult(List.of(2, 0)),
+                        new RoundResult(List.of(3, 0))));
     }
 }

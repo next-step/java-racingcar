@@ -1,11 +1,13 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Race {
     private final List<Car> cars;
     private final int rounds;
+    private List<RoundResult> roundResults;
 
     public Race(List<Car> cars, int rounds) {
         if (rounds < 0) {
@@ -13,10 +15,15 @@ public class Race {
         }
         this.cars = cars;
         this.rounds = rounds;
+        this.roundResults = new ArrayList<>();
     }
 
     public Race(int carCount, int rounds, MoveStrategy moveStrategy) {
         this(createCars(carCount, moveStrategy), rounds);
+    }
+
+    public List<RoundResult> getRoundResults() {
+        return roundResults;
     }
 
     private static List<Car> createCars(int carCount, MoveStrategy moveStrategy) {
@@ -30,20 +37,19 @@ public class Race {
         return cars;
     }
 
-    public List<List<Integer>> play() {
-        List<List<Integer>> results = new ArrayList<>();
+    public void play() {
+        roundResults = new ArrayList<>();
         for (int i = 0; i < rounds; i++) {
-            results.add(playRound());
+            roundResults.add(playRound());
         }
-        return results;
     }
 
-    private List<Integer> playRound() {
+    private RoundResult playRound() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
             car.move();
             positions.add(car.getPosition());
         }
-        return positions;
+        return new RoundResult(positions);
     }
 }
