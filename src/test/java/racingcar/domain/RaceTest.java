@@ -20,7 +20,6 @@ public class RaceTest {
         Race race = new Race(List.of(car), rounds);
 
         race.play();
-
         List<RoundResult> results = race.getRoundResults();
 
         assertThat(results).hasSize(rounds);
@@ -43,7 +42,6 @@ public class RaceTest {
         Race race = new Race(carCount, 1, () -> true);
 
         race.play();
-
         List<RoundResult> results = race.getRoundResults();
 
         assertThat(results.getFirst().positions())
@@ -68,7 +66,6 @@ public class RaceTest {
         Race race = new Race(List.of(car1, car2), 3);
 
         race.play();
-
         List<RoundResult> results = race.getRoundResults();
 
         assertThat(results)
