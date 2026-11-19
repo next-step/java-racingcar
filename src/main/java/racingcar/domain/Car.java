@@ -4,10 +4,7 @@ public class Car {
     private static final int MAX_NAME_LENGTH = 5;
     private static final int THRESHOLD = 4;
     private int position = 0;
-    private String name;
-
-    public Car() {
-    }
+    private final String name;
 
     public Car(String name) {
         if (name == null || name.isBlank()) {

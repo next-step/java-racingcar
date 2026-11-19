@@ -16,7 +16,7 @@ public class RaceTest {
     @ValueSource(ints = {0, 3, 4})
     @DisplayName("입력한 횟수만큼 회차를 진행한다")
     void hasRoundResults(int rounds) {
-        Race race = new Race(1, rounds, () -> 4);
+        Race race = new Race(List.of("pobi", "conan"), rounds, () -> 4);
 
         race.play();
         List<RoundResult> results = race.getRoundResults();
@@ -28,30 +28,21 @@ public class RaceTest {
     @DisplayName("입력한 횟수가 음수면 IllegalArgumentException")
     void canNotHaveNegativeRound() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Race(1, -1, () -> 4))
+                .isThrownBy(() -> new Race(List.of("pobi", "conan"), -1, () -> 4))
                 .withMessage("rounds can not be negative value");
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3, 4})
-    @DisplayName("입력한 자동차 대수만큼 자동차를 생성한다")
-    void hasCars(int carCount) {
-        Race race = new Race(carCount, 1, () -> 4);
+    @Test
+    @DisplayName("입력한 자동차 이름으로 자동차를 생성한다")
+    void hasCars() {
+        Race race = new Race(List.of("pobi", "conan"), 1, () -> 4);
 
         race.play();
         List<RoundResult> results = race.getRoundResults();
 
         assertThat(results.getFirst().positions())
-                .hasSize(carCount)
+                .hasSize(2)
                 .allMatch(position -> position == 1);
-    }
-
-    @Test
-    @DisplayName("입력한 대수가 음수면 IllegalArgumentException")
-    void canNotHaveNegativeCars() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Race(-1, 1, () -> 4))
-                .withMessage("car count can not be negative value");
     }
 
     @Test
@@ -71,7 +62,7 @@ public class RaceTest {
             }
         };
 
-        Race race = new Race(2, 3, alternating);
+        Race race = new Race(List.of("pobi", "conan"), 3, alternating);
 
         race.play();
         List<RoundResult> results = race.getRoundResults();
@@ -86,7 +77,7 @@ public class RaceTest {
     @Test
     @DisplayName("경주는 한 번만 진행할 수 있다")
     void canNotPlayMoreThanOnce() {
-        Race race = new Race(3, 1, () -> 4);
+        Race race = new Race(List.of("pobi", "conan"), 1, () -> 4);
 
         race.play();
 

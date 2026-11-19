@@ -10,24 +10,21 @@ public class Race {
     private final List<RoundResult> roundResults;
     private boolean played;
 
-    public Race(int carCount, int rounds, NumberGenerator numberGenerator) {
+    public Race(List<String> carNames, int rounds, NumberGenerator numberGenerator) {
         if (rounds < 0) {
             throw new IllegalArgumentException("rounds can not be negative value");
         }
-        this.cars = createCars(carCount);
+        this.cars = createCars(carNames);
         this.rounds = rounds;
         this.numberGenerator = numberGenerator;
         this.roundResults = new ArrayList<>();
         this.played = false;
     }
 
-    private static List<Car> createCars(int carCount) {
-        if (carCount < 0) {
-            throw new IllegalArgumentException("car count can not be negative value");
-        }
+    private static List<Car> createCars(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return cars;
     }

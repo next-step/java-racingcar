@@ -13,7 +13,7 @@ public class CarTest {
     @Test
     @DisplayName("처음 위치는 0이다")
     void initialPositionIsZero() {
-        Car car = new Car();
+        Car car = new Car("pobi");
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
@@ -22,7 +22,7 @@ public class CarTest {
     @ValueSource(ints = {4, 9})
     @DisplayName("값이 4 이상이면 위치가 1 증가한다")
     void moveForwardIfNumberIsFourOrMore(int number) {
-        Car car = new Car();
+        Car car = new Car("pobi");
 
         car.move(number);
 
@@ -33,7 +33,7 @@ public class CarTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("값이 3 이하면 위치가 그대로다")
     void stayIfNumberIsThreeOrLess(int number) {
-        Car car = new Car();
+        Car car = new Car("pobi");
 
         car.move(number);
 
