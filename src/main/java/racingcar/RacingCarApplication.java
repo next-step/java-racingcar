@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RandomMoveStrategy;
@@ -7,6 +8,8 @@ import racingcar.dto.RacingGameDto;
 import racingcar.util.RandomGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 public class RacingCarApplication {
 
@@ -24,5 +27,10 @@ public class RacingCarApplication {
             Cars result = racingGame.playRound(strategy);
             OutputView.printRoundResult(RacingGameDto.from(result));
         }
+
+        List<String> winnerNames = racingGame.findWinners().stream()
+                .map(car -> car.getName().getValue())
+                .toList();
+        OutputView.printWinners(winnerNames);
     }
 }
