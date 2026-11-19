@@ -10,21 +10,20 @@ import racingcar.view.InputValidator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarTest {
+public class RacingGameTest {
 
     public static final int MOVE_THRESHOLD = 4;
 
     @Test
     void 랜덤_값이_4이상이면_자동차의_위치가_1_증가한다() {
-        // given: 항상 4를 반환하는 테스트용 RandomGenerator
-        Car car = new Car();
+        Car car = new Car("dumy");
         RandomMoveStrategy strategy = new RandomMoveStrategy(new FixedRandomGenerator(MOVE_THRESHOLD));
 
         // when
-        car.moveForward(strategy);
+        car.move(strategy);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(Position.of(1));
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -34,10 +33,10 @@ public class RacingCarTest {
         RandomMoveStrategy strategy = new RandomMoveStrategy(new FixedRandomGenerator(MOVE_THRESHOLD - 1));
 
         // when
-        car.moveForward(strategy);
+        car.move(strategy);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(Position.start());
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 
@@ -46,7 +45,7 @@ public class RacingCarTest {
     @ValueSource(ints = {1, 3, 5, 10})
     void 자동차_개수를_입력하면_개수에_맞는_자동차가_생성된다(int carCount) {
         Cars cars = Cars.create(carCount);
-        assertThat(cars.getPositions()).hasSize(carCount);
+        assertThat(cars.getCars()).hasSize(carCount);
     }
 
 
@@ -55,7 +54,7 @@ public class RacingCarTest {
     @ValueSource(ints = {-1, 0})
     void 시도_횟수가_0_또는_음수이면_IllegalArgumentException_예외가_발생한다(int attemptCount) {
         assertThatThrownBy(() ->
-                RacingCar.from(Cars.create(1), attemptCount))
+                RacingGame.from(Cars.create(1), attemptCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -64,7 +63,7 @@ public class RacingCarTest {
     @ParameterizedTest
     @ValueSource(strings = {";", ":"})
     void 시도_횟수가_문자이면_IllegalArgumentException_예외가_발생한다(String attemptCount) {
-        assertThatThrownBy(() -> InputValidator.validate(attemptCount))
+        assertThatThrownBy(() -> InputValidator.validateNumber(attemptCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -75,7 +74,7 @@ public class RacingCarTest {
     @ValueSource(strings = {";", ":"})
     void 자동차_개수가_문자이면_IllegalArgumentException_예외가_발생한다(String carCount) {
         assertThatThrownBy(() ->
-                InputValidator.validate(carCount))
+                InputValidator.validateNumber(carCount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
