@@ -11,6 +11,10 @@ public class Car {
         this(new Name(name), DEFAULT_INIT_POSITION);
     }
 
+    public Car(String name, int position) {
+        this(new Name(name), position);
+    }
+
     public Car(Name name, int position) {
         this.name = name;
         this.position = position;
@@ -29,6 +33,5 @@ public class Car {
     public Name getName() {
         return name;
     }
-
 }
 

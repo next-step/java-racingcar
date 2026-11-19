@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 
 public class RacingGame {
 
@@ -23,5 +24,9 @@ public class RacingGame {
 
     public boolean isFinished() {
         return !attemptCount.hasRemaining();
+    }
+
+    public List<Car> findWinners() {
+        return cars.findWinners();
     }
 }

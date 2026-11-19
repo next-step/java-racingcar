@@ -8,7 +8,7 @@ public class Cars {
 
     private final List<Car> cars;
 
-    private Cars(List<Car> cars) {
+    public Cars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
 
@@ -28,9 +28,22 @@ public class Cars {
         }
     }
 
+    public List<Car> findWinners() {
+        int maxPosition = maxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .toList();
+    }
+
+    private int maxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
     public List<Car> getCars() {
         return List.copyOf(cars);
     }
-
 
 }
