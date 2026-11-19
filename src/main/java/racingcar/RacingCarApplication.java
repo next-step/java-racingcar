@@ -23,14 +23,19 @@ public class RacingCarApplication {
         RandomMoveStrategy strategy = new RandomMoveStrategy(new RandomGenerator());
 
         OutputView.printResultMessage();
+
         while (!racingGame.isFinished()) {
             Cars result = racingGame.playRound(strategy);
             OutputView.printRoundResult(RacingGameDto.from(result));
         }
 
-        List<String> winnerNames = racingGame.findWinners().stream()
+        List<String> winnerNames = getWinnerNames(racingGame);
+        OutputView.printWinners(winnerNames);
+    }
+
+    private static List<String> getWinnerNames(RacingGame racingGame) {
+        return racingGame.findWinners().stream()
                 .map(car -> car.getName().getValue())
                 .toList();
-        OutputView.printWinners(winnerNames);
     }
 }

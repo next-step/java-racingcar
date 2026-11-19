@@ -12,6 +12,7 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
+    // 주 생성자와 타입이 같아서 컴파일 오류 발생 : private 생성자로 만들기 위해서 정적 팩토리 메서드
     public static Cars fromNames(List<String> names) {
         return createCars(names.stream()
                 .map(Car::new)

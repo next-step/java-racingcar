@@ -46,14 +46,12 @@ class OutputViewTest {
     @Test
     void 우승자가_한_명이면_이름을_출력한다() {
         OutputView.printWinners(List.of("pobi"));
-
         assertThat(captured.toString()).contains("pobi 가 최종 우승했습니다.");
     }
 
     @Test
     void 우승자가_여러_명이면_쉼표로_구분해_출력한다() {
         OutputView.printWinners(List.of("pobi", "honux"));
-
         assertThat(captured.toString()).contains("pobi, honux 가 최종 우승했습니다.");
     }
 }
