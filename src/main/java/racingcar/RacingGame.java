@@ -28,20 +28,20 @@ public class RacingGame {
         }
     }
 
-    public List<List<Integer>> race(IntSupplier numbers) {
-        List<List<Integer>> history = new ArrayList<>();
+    public List<TurnResult> race(IntSupplier numbers) {
+        List<TurnResult> history = new ArrayList<>();
         for (int turn = 0; turn < tryCount; turn++) {
             moveAll(numbers);
-            history.add(positions());
+            history.add(currentTurnResult());
         }
         return history;
     }
 
-    private List<Integer> positions() {
+    private TurnResult currentTurnResult() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
             positions.add(car.getPosition());
         }
-        return positions;
+        return new TurnResult(positions);
     }
 }

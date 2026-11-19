@@ -35,12 +35,12 @@ class RacingGameTest {
     void raceRecordsEachTurn() {
         RacingGame game = new RacingGame(2, 3);
 
-        List<List<Integer>> history = game.race(() -> 4);
+        List<TurnResult> history = game.race(() -> 4);
 
         assertThat(history).containsExactly(
-                List.of(1, 1),
-                List.of(2, 2),
-                List.of(3, 3));
+                new TurnResult(List.of(1, 1)),
+                new TurnResult(List.of(2, 2)),
+                new TurnResult(List.of(3, 3)));
     }
 
     @DisplayName("값이 3 이하면 턴을 반복해도 위치가 그대로다")
@@ -48,11 +48,11 @@ class RacingGameTest {
     void raceWithoutMoving() {
         RacingGame game = new RacingGame(2, 3);
 
-        List<List<Integer>> history = game.race(() -> 3);
+        List<TurnResult> history = game.race(() -> 3);
 
         assertThat(history).containsExactly(
-                List.of(0, 0),
-                List.of(0, 0),
-                List.of(0, 0));
+                new TurnResult(List.of(0, 0)),
+                new TurnResult(List.of(0, 0)),
+                new TurnResult(List.of(0, 0)));
     }
 }

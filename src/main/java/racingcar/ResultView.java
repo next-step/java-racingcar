@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class ResultView {
 
     public void printHeader() {
@@ -9,8 +7,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void printTurn(List<Integer> positions) {
-        for (int position : positions) {
+    public void printTurn(TurnResult turnResult) {
+        for (int position : turnResult.positions()) {
             System.out.println(toDashes(position));
         }
         System.out.println();

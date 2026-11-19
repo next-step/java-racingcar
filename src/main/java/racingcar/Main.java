@@ -10,13 +10,13 @@ public class Main {
 
         RacingGame racingGame = new RacingGame(carCount, tryCount);
 
-        List<List<Integer>> history = racingGame.race(new RandomNumberGenerator());
+        List<TurnResult> history = racingGame.race(new RandomNumberGenerator());
 
         ResultView resultView = new ResultView();
 
         resultView.printHeader();
-        for (List<Integer> positions : history) {
-            resultView.printTurn(positions);
+        for (TurnResult turnResult : history) {
+            resultView.printTurn(turnResult);
         }
     }
 }
