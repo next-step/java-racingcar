@@ -2,22 +2,33 @@ package racingcar.domain;
 
 public class Car {
 
-    private Position position;
+    private static final int DEFAULT_INIT_POSITION = 0;
 
-    public Car() {
-        this.position = Position.start();
+    private final Name name;
+    private int position;
+
+    public Car(String name) {
+        this(new Name(name), DEFAULT_INIT_POSITION);
     }
 
-    public void moveForward(RandomMoveStrategy strategy) {
+    public Car(Name name, int position) {
+        this.name = name;
+        this.position = position;
+    }
+
+    public void move(RandomMoveStrategy strategy) {
         if (strategy.movable()) {
-            position = position.move();
+            position++;
         }
     }
 
-    public Position getPosition() {
+    public int getPosition() {
         return position;
     }
 
+    public Name getName() {
+        return name;
+    }
 
 }
 
