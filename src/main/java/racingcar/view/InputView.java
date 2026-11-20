@@ -1,27 +1,30 @@
 package racingcar.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-import static racingcar.view.InputValidator.validate;
+import static racingcar.view.InputValidator.validateNames;
+import static racingcar.view.InputValidator.validateNumber;
 
 public class InputView {
 
-    private static final String CAR_COUNT_PROMPT = "자동차 대수는 몇 대 인가요?";
+    private static final String CAR_NAMES_PROMPT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String ATTEMPT_COUNT_PROMPT = "시도할 회수는 몇 회 인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static int readCarCount() {
-        System.out.println((CAR_COUNT_PROMPT));
-        String carCount = readLine();
-        validate(carCount);
+    public static List<String> readCarNames() {
+        System.out.println((CAR_NAMES_PROMPT));
+        String carNames = readLine();
+        validateNames(carNames);
 
-        return Integer.parseInt(carCount);
+        return Arrays.asList(carNames.split(","));
     }
 
     public static int readAttemptCount() {
         System.out.println((ATTEMPT_COUNT_PROMPT));
         String attemptCount = readLine();
-        validate(attemptCount);
+        validateNumber(attemptCount);
 
         return Integer.parseInt(attemptCount);
     }
