@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import racingcar.util.RandomGenerator;
 
-public class RandomMoveStrategy {
+public class RandomMoveStrategy implements MoveStrategy{
 
 
     private static final int MOVE_THRESHOLD = 4;
@@ -14,10 +14,9 @@ public class RandomMoveStrategy {
         this.randomGenerator = randomGenerator;
     }
 
+
+    @Override
     public boolean movable() {
-        if (randomGenerator.generateNumber(BOUND) >= MOVE_THRESHOLD) {
-            return true;
-        }
-        return false;
+        return randomGenerator.generateNumber(BOUND) >= MOVE_THRESHOLD;
     }
 }

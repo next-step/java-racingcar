@@ -16,7 +16,7 @@ public class RacingGame {
         this.attemptCount = attemptCount;
     }
 
-    public Cars playRound(RandomMoveStrategy strategy) {
+    public Cars playRound(MoveStrategy strategy) {
         cars.moveCars(strategy);
         attemptCount.decrease();
         return cars;

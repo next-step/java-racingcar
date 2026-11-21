@@ -20,7 +20,7 @@ public class Car {
         this.position = position;
     }
 
-    public void move(RandomMoveStrategy strategy) {
+    public void move(MoveStrategy strategy) {
         if (strategy.movable()) {
             position++;
         }
