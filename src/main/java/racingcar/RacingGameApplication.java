@@ -27,5 +27,6 @@ public class RacingGameApplication {
 			racingGame.play(numberGenerator);
 			resultView.printCars(cars.getCars());
 		}
+		resultView.printWinners(cars.findWinners());
 	}
 }
