@@ -9,14 +9,26 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> carNames) {
-        validateNoDuplicateNames(carNames);
-        this.cars = createCars(carNames);
+        this(createCars(carNames));
     }
 
-    private static void validateNoDuplicateNames(List<String> carNames) {
-        Set<String> uniqueNames = new HashSet<>();
+    public Cars(Car... cars) {
+        validateNoDuplicateNames(cars);
+        this.cars = List.of(cars);
+    }
+
+    private static Car[] createCars(List<String> carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
-            addUniqueName(uniqueNames, carName);
+            cars.add(new Car(carName));
+        }
+        return cars.toArray(new Car[0]);
+    }
+
+    private static void validateNoDuplicateNames(Car... cars) {
+        Set<String> uniqueNames = new HashSet<>();
+        for (Car car : cars) {
+            addUniqueName(uniqueNames, car.getName());
         }
     }
 
@@ -24,14 +36,6 @@ public class Cars {
         if (!uniqueNames.add(carName)) {
             throw new IllegalArgumentException("duplicate name is not allowed [" + carName + "]");
         }
-    }
-
-    private static List<Car> createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
     }
 
     public void move(NumberGenerator numberGenerator) {

@@ -40,21 +40,7 @@ public class CarsTest {
     @Test
     @DisplayName("가장 멀리 간 자동차가 우승자다")
     void findWinner() {
-        Cars cars = new Cars(List.of("pobi", "conan", "crong"));
-        NumberGenerator onlySecondMoves = new NumberGenerator() {
-            private int count = 0;
-
-            @Override
-            public int generate() {
-                count++;
-                if (count == 2) {
-                    return 4;
-                }
-                return 3;
-            }
-        };
-
-        cars.move(onlySecondMoves);
+        Cars cars = new Cars(new Car("pobi", 1), new Car("conan", 3), new Car("crong", 2));
 
         assertThat(cars.getWinners()).containsExactly("conan");
     }
@@ -62,21 +48,7 @@ public class CarsTest {
     @Test
     @DisplayName("가장 멀리 간 자동차가 여럿이면 모두 우승자다")
     void findMultipleWinners() {
-        Cars cars = new Cars(List.of("pobi", "conan", "crong"));
-        NumberGenerator exceptSecondMoves = new NumberGenerator() {
-            private int count = 0;
-
-            @Override
-            public int generate() {
-                count++;
-                if (count == 2) {
-                    return 3;
-                }
-                return 4;
-            }
-        };
-
-        cars.move(exceptSecondMoves);
+        Cars cars = new Cars(new Car("pobi", 3), new Car("conan", 1), new Car("crong", 3));
 
         assertThat(cars.getWinners()).containsExactly("pobi", "crong");
     }

@@ -19,6 +19,22 @@ public class CarTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {0, 3})
+    @DisplayName("이름과 위치를 지정해 생성할 수 있다")
+    void createWithPosition(int position) {
+        Car car = new Car("pobi", position);
+
+        assertThat(car.toCarStatus()).isEqualTo(new CarStatus("pobi", position));
+    }
+
+    @Test
+    @DisplayName("위치가 음수면 IllegalArgumentException")
+    void throwsExceptionWhenPositionIsNegative() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("pobi", -1))
+                .withMessage("position can not be negative value [-1]");
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {4, 9})
     @DisplayName("값이 4 이상이면 위치가 1 증가한다")
     void moveForwardIfNumberIsFourOrMore(int number) {
