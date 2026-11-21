@@ -2,17 +2,23 @@ package racingcar.car;
 
 public class Car {
 
+	private static final int START_POSITION = 0;
 	private static final int MIN_MOVE_VALUE = 4;
 	private static final int MAX_NAME_LENGTH = 5;
 
-	private int position = 0;
+	private int position;
 	private String carName;
 
 	public Car(String carName) {
+		this(carName, START_POSITION);
+	}
+
+	public Car(String carName, int position) {
 		if (isTooLong(carName)) {
 			throw new IllegalArgumentException("이름은 5자이하로 작성해야합니다.");
 		}
 		this.carName = carName;
+		this.position = position;
 	}
 
 	public void go(int number) {
