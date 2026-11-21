@@ -18,7 +18,6 @@ public class Race {
         this.rounds = rounds;
         this.numberGenerator = numberGenerator;
         this.roundResults = new ArrayList<>();
-        this.played = false;
     }
 
     public List<RoundResult> getRoundResults() {
