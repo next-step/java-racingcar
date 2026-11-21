@@ -27,4 +27,48 @@ public class CarsTest {
         assertThat(cars.getStatuses())
                 .containsExactly(new CarStatus("pobi", 1), new CarStatus("conan", 1));
     }
+
+    @Test
+    @DisplayName("가장 멀리 간 자동차가 우승자다")
+    void findWinner() {
+        Cars cars = new Cars(List.of("pobi", "conan", "crong"));
+        NumberGenerator onlySecondMoves = new NumberGenerator() {
+            private int count = 0;
+
+            @Override
+            public int generate() {
+                count++;
+                if (count == 2) {
+                    return 4;
+                }
+                return 3;
+            }
+        };
+
+        cars.move(onlySecondMoves);
+
+        assertThat(cars.getWinners()).containsExactly("conan");
+    }
+
+    @Test
+    @DisplayName("가장 멀리 간 자동차가 여럿이면 모두 우승자다")
+    void findMultipleWinners() {
+        Cars cars = new Cars(List.of("pobi", "conan", "crong"));
+        NumberGenerator exceptSecondMoves = new NumberGenerator() {
+            private int count = 0;
+
+            @Override
+            public int generate() {
+                count++;
+                if (count == 2) {
+                    return 3;
+                }
+                return 4;
+            }
+        };
+
+        cars.move(exceptSecondMoves);
+
+        assertThat(cars.getWinners()).containsExactly("pobi", "crong");
+    }
 }

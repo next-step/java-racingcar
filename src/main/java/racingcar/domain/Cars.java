@@ -31,4 +31,24 @@ public class Cars {
         }
         return carStatuses;
     }
+
+    public List<String> getWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = collectWinner(winners, car, maxPosition);
+        }
+        return winners;
+    }
+
+    private static int collectWinner(List<String> winners, Car car, int maxPosition) {
+        int position = car.getPosition();
+        if (position > maxPosition) {
+            winners.clear();
+        }
+        if (position >= maxPosition) {
+            winners.add(car.getName());
+        }
+        return Math.max(position, maxPosition);
+    }
 }
