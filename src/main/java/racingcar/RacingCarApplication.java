@@ -16,7 +16,7 @@ public class RacingCarApplication {
     public static void main(String[] args) {
 
         RacingGame racingGame = new RacingGame(
-                Cars.fromNames(InputView.readCarNames()),
+                new Cars(InputView.readCarNames()),
                 InputView.readAttemptCount()
         );
 
