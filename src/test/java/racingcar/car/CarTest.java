@@ -48,4 +48,10 @@ public class CarTest {
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@Test
+	void 자동차의_위치가_같으면_true를_반환한다() {
+		Car car = new Car("pobi", 3);
+		assertThat(car.isSamePosition(3)).isTrue();
+	}
+
 }

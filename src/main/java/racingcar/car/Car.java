@@ -39,4 +39,8 @@ public class Car {
 	public String getName() {
 		return carName;
 	}
+
+	public boolean isSamePosition(int position) {
+		return this.position == position;
+	}
 }
