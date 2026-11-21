@@ -1,13 +1,29 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cars {
     private final List<Car> cars;
 
     public Cars(List<String> carNames) {
+        validateNoDuplicateNames(carNames);
         this.cars = createCars(carNames);
+    }
+
+    private static void validateNoDuplicateNames(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>();
+        for (String carName : carNames) {
+            addUniqueName(uniqueNames, carName);
+        }
+    }
+
+    private static void addUniqueName(Set<String> uniqueNames, String carName) {
+        if (!uniqueNames.add(carName)) {
+            throw new IllegalArgumentException("duplicate name is not allowed [" + carName + "]");
+        }
     }
 
     private static List<Car> createCars(List<String> carNames) {

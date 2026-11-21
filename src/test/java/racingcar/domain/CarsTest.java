@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarsTest {
     @Test
@@ -15,6 +16,14 @@ public class CarsTest {
 
         assertThat(cars.getStatuses())
                 .containsExactly(new CarStatus("pobi", 0), new CarStatus("conan", 0));
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 중복되면 IllegalArgumentException")
+    void canNotHaveDuplicateNames() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Cars(List.of("pobi", "conan", "pobi")))
+                .withMessage("duplicate name is not allowed [pobi]");
     }
 
     @Test
