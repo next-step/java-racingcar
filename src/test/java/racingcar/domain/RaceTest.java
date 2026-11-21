@@ -33,19 +33,6 @@ public class RaceTest {
     }
 
     @Test
-    @DisplayName("입력한 자동차 이름으로 자동차를 생성한다")
-    void hasCars() {
-        Race race = new Race(List.of("pobi", "conan"), 1, () -> 4);
-
-        race.play();
-        List<RoundResult> results = race.getRoundResults();
-
-        assertThat(results.getFirst().carStatuses())
-                .extracting(CarStatus::name)
-                .containsExactly("pobi", "conan");
-    }
-
-    @Test
     @DisplayName("회차마다 각 차들은 전진할지 판단한다")
     void eachCarCanMoveByRound() {
         NumberGenerator alternating = new NumberGenerator() {

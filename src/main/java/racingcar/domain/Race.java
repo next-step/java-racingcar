@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private final List<Car> cars;
+    private final Cars cars;
     private final int rounds;
     private final NumberGenerator numberGenerator;
     private final List<RoundResult> roundResults;
@@ -14,19 +14,11 @@ public class Race {
         if (rounds < 0) {
             throw new IllegalArgumentException("rounds can not be negative value");
         }
-        this.cars = createCars(carNames);
+        this.cars = new Cars(carNames);
         this.rounds = rounds;
         this.numberGenerator = numberGenerator;
         this.roundResults = new ArrayList<>();
         this.played = false;
-    }
-
-    private static List<Car> createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
     }
 
     public List<RoundResult> getRoundResults() {
@@ -44,11 +36,7 @@ public class Race {
     }
 
     private RoundResult playRound() {
-        List<CarStatus> carStatuses = new ArrayList<>();
-        for (Car car : cars) {
-            car.move(numberGenerator.generate());
-            carStatuses.add(car.toCarStatus());
-        }
-        return new RoundResult(carStatuses);
+        cars.move(numberGenerator);
+        return new RoundResult(cars.getStatuses());
     }
 }
