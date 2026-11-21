@@ -31,6 +31,12 @@ public class CarTest {
 	}
 
 	@Test
+	void 자동차_이름이_빈문자열이_입력되면_예외를발생시킨다() {
+		assertThatThrownBy(() -> new Car("", 3))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
 	void 자동차는_이름과_위치를_생성자로_받는다() {
 		Car car = new Car("pobi", 3);
 		assertThat(car.getPosition()).isEqualTo(3);

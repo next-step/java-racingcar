@@ -14,8 +14,8 @@ public class Car {
 	}
 
 	public Car(String carName, int position) {
-		if (isTooLong(carName)) {
-			throw new IllegalArgumentException("이름은 5자이하로 작성해야합니다.");
+		if (carName.isEmpty() || isTooLong(carName)) {
+			throw new IllegalArgumentException("이름은 1자 이상 5자 이하로 작성해야합니다.");
 		}
 		this.carName = carName;
 		this.position = position;
