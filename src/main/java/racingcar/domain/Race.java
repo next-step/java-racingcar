@@ -4,42 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private final List<Car> cars;
+    private final Cars cars;
     private final int rounds;
+    private final NumberGenerator numberGenerator;
+    private final List<RoundResult> roundResults;
+    private boolean played;
 
-    public Race(List<Car> cars, int rounds) {
+    public Race(List<String> carNames, int rounds, NumberGenerator numberGenerator) {
         if (rounds < 0) {
             throw new IllegalArgumentException("rounds can not be negative value");
         }
-        this.cars = cars;
+        this.cars = new Cars(carNames);
         this.rounds = rounds;
+        this.numberGenerator = numberGenerator;
+        this.roundResults = new ArrayList<>();
     }
 
-    public static Race of(int carCount, int rounds, MoveStrategy moveStrategy) {
-        if (carCount < 0) {
-            throw new IllegalArgumentException("car count can not be negative value");
-        }
-        List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(moveStrategy));
-        }
-        return new Race(cars, rounds);
+    public List<RoundResult> getRoundResults() {
+        return roundResults;
     }
 
-    public List<List<Integer>> play() {
-        List<List<Integer>> results = new ArrayList<>();
+    public List<String> getWinners() {
+        if (!played) {
+            throw new IllegalStateException("cannot get winners before play");
+        }
+        return cars.getWinners();
+    }
+
+    public void play() {
+        if (played) {
+            throw new IllegalStateException("cannot play again");
+        }
         for (int i = 0; i < rounds; i++) {
-            results.add(playRound());
+            roundResults.add(playRound());
         }
-        return results;
+        played = true;
     }
 
-    private List<Integer> playRound() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            car.move();
-            positions.add(car.getPosition());
-        }
-        return positions;
+    private RoundResult playRound() {
+        cars.move(numberGenerator);
+        return new RoundResult(cars.getStatuses());
     }
 }

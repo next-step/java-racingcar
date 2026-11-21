@@ -1,4 +1,4 @@
-# Racing Car todos
+# Racing Car todos (step3)
 ## 입력
 - [X] 자동차 대수와 횟수를 숫자로 입력받는다
   - [X] 숫자가 아닌 입력은 IllegalArgumentException

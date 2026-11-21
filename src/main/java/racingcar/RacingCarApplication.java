@@ -2,25 +2,20 @@ package racingcar;
 
 import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
-import racingcar.domain.ThresholdMoveStrategy;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.List;
 
 public class RacingCarApplication {
-    private static final int MOVE_THRESHOLD = 4;
-    private static final int RANDOM_NUMBER_BOUND = 10;
-
     public static void main(String[] args) {
-        final int carCount = InputView.getCarCount();
+        final List<String> carNames = InputView.getCarNames();
         final int roundCount = InputView.getRoundCount();
 
-        final RandomNumberGenerator numberGenerator = new RandomNumberGenerator(RANDOM_NUMBER_BOUND);
-        final ThresholdMoveStrategy moveStrategy = new ThresholdMoveStrategy(MOVE_THRESHOLD, numberGenerator);
-        final Race race = Race.of(carCount, roundCount, moveStrategy);
-        final List<List<Integer>> roundResults = race.play();
+        final Race race = new Race(carNames, roundCount, new RandomNumberGenerator());
+        race.play();
 
-        ResultView.showResult(roundResults);
+        ResultView.showResult(race.getRoundResults());
+        ResultView.showWinners(race.getWinners());
     }
 }
