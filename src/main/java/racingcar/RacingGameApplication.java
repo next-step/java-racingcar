@@ -25,7 +25,7 @@ public class RacingGameApplication {
 		RacingGame racingGame = new RacingGame(cars, racingRound);
 		while (!racingGame.isFinished()) {
 			racingGame.play(numberGenerator);
-			resultView.printPositions(cars.getPositions());
+			resultView.printCars(cars.getCars());
 		}
 	}
 }

@@ -64,4 +64,8 @@ public class Cars {
 		}
 		return maxPosition;
 	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
 }
