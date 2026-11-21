@@ -25,6 +25,10 @@ public class Race {
         return roundResults;
     }
 
+    public List<String> getWinners() {
+        return cars.getWinners();
+    }
+
     public void play() {
         if (played) {
             throw new IllegalStateException("cannot play again");

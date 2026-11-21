@@ -71,4 +71,26 @@ public class RaceTest {
 
         assertThatIllegalStateException().isThrownBy(race::play).withMessage("cannot play again");
     }
+
+    @Test
+    @DisplayName("경주가 끝나면 우승자를 조회할 수 있다")
+    void hasWinners() {
+        NumberGenerator onlyFirstMoves = new NumberGenerator() {
+            private int count = 0;
+
+            @Override
+            public int generate() {
+                count++;
+                if (count == 1) {
+                    return 4;
+                }
+                return 3;
+            }
+        };
+        Race race = new Race(List.of("pobi", "conan"), 1, onlyFirstMoves);
+
+        race.play();
+
+        assertThat(race.getWinners()).containsExactly("pobi");
+    }
 }
