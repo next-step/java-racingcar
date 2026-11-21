@@ -13,10 +13,10 @@ public class RacingGameApplication {
 		ResultView resultView = new ResultView();
 		NumberGenerator numberGenerator = new RandomNumberGenerator();
 
-		String carList = inputView.inputCarNames();
+		String carNames = inputView.inputCarNames();
 		int racingRound = inputView.inputRacingRound();
 
-		Cars cars = new Cars(carList);
+		Cars cars = new Cars(carNames);
 		race(resultView, racingRound, cars, numberGenerator);
 	}
 
