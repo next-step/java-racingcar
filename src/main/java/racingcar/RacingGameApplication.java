@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 import racingcar.car.Cars;
 import racingcar.game.RacingGame;
 import racingcar.generator.NumberGenerator;
@@ -15,7 +13,7 @@ public class RacingGameApplication {
 		ResultView resultView = new ResultView();
 		NumberGenerator numberGenerator = new RandomNumberGenerator();
 
-		List<String> carList = inputView.inputCarNames();
+		String carList = inputView.inputCarNames();
 		int racingRound = inputView.inputRacingRound();
 
 		Cars cars = new Cars(carList);

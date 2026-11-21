@@ -9,10 +9,21 @@ public class Cars {
 
 	private List<Car> cars = new ArrayList<>();
 
-	public Cars(List<String> carNames) {
-		for (String carName : carNames) {
-			cars.add(new Car(carName));
+	public Cars(String carNames) {
+		this(createCars(carNames));
+	}
+
+	private static List<Car> createCars(String carNames) {
+		List<Car> newCars = new ArrayList<>();
+		String[] carSplitNames = carNames.split(",");
+		for (String carName : carSplitNames) {
+			newCars.add(new Car(carName));
 		}
+		return newCars;
+	}
+
+	public Cars(List<Car> cars) {
+		this.cars = cars;
 	}
 
 	public void play(NumberGenerator numberGenerator) {
