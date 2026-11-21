@@ -44,11 +44,11 @@ public class Race {
     }
 
     private RoundResult playRound() {
-        List<Integer> positions = new ArrayList<>();
+        List<CarStatus> carStatuses = new ArrayList<>();
         for (Car car : cars) {
             car.move(numberGenerator.generate());
-            positions.add(car.getPosition());
+            carStatuses.add(car.toCarStatus());
         }
-        return new RoundResult(positions);
+        return new RoundResult(carStatuses);
     }
 }

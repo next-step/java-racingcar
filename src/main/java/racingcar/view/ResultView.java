@@ -1,10 +1,13 @@
 package racingcar.view;
 
+import racingcar.domain.CarStatus;
 import racingcar.domain.RoundResult;
 
 import java.util.List;
 
 public class ResultView {
+    private static final String NAME_POSITION_DELIMETER = ":";
+
     private ResultView() {
     }
 
@@ -17,14 +20,14 @@ public class ResultView {
 
     private static void showRoundResults(List<RoundResult> roundResults) {
         for (RoundResult roundResult : roundResults) {
-            showCarPositions(roundResult.positions());
+            showCarPositions(roundResult.carStatuses());
             System.out.println();
         }
     }
 
-    private static void showCarPositions(List<Integer> roundResult) {
-        for (int position : roundResult) {
-            System.out.println(PositionFormatter.format(position));
+    private static void showCarPositions(List<CarStatus> carStatuses) {
+        for (CarStatus carStatus : carStatuses) {
+            System.out.println(carStatus.name() + NAME_POSITION_DELIMETER + PositionFormatter.format(carStatus.position()));
         }
     }
 }

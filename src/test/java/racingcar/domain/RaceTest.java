@@ -40,9 +40,9 @@ public class RaceTest {
         race.play();
         List<RoundResult> results = race.getRoundResults();
 
-        assertThat(results.getFirst().positions())
-                .hasSize(2)
-                .allMatch(position -> position == 1);
+        assertThat(results.getFirst().carStatuses())
+                .extracting(CarStatus::name)
+                .containsExactly("pobi", "conan");
     }
 
     @Test
@@ -69,9 +69,10 @@ public class RaceTest {
 
         assertThat(results)
                 .isEqualTo(List.of(
-                        new RoundResult(List.of(1, 0)),
-                        new RoundResult(List.of(2, 0)),
-                        new RoundResult(List.of(3, 0))));
+                        new RoundResult(List.of(new CarStatus("pobi", 1), new CarStatus("conan", 0))),
+                        new RoundResult(List.of(new CarStatus("pobi", 2), new CarStatus("conan", 0))),
+                        new RoundResult(List.of(new CarStatus("pobi", 3), new CarStatus("conan", 0)))
+                ));
     }
 
     @Test

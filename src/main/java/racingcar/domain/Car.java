@@ -29,4 +29,8 @@ public class Car {
             position++;
         }
     }
+
+    public CarStatus toCarStatus() {
+        return new CarStatus(name, position);
+    }
 }
