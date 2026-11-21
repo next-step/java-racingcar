@@ -93,4 +93,12 @@ public class RaceTest {
 
         assertThat(race.getWinners()).containsExactly("pobi");
     }
+
+    @Test
+    @DisplayName("경주 전에 우승자를 조회하면 IllegalStateException")
+    void canNotGetWinnersBeforePlay() {
+        Race race = new Race(List.of("pobi", "conan"), 1, () -> 4);
+
+        assertThatIllegalStateException().isThrownBy(race::getWinners).withMessage("cannot get winners before play");
+    }
 }

@@ -26,6 +26,9 @@ public class Race {
     }
 
     public List<String> getWinners() {
+        if (!played) {
+            throw new IllegalStateException("cannot get winners before play");
+        }
         return cars.getWinners();
     }
 
