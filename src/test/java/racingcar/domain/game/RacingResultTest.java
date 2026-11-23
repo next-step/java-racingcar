@@ -31,4 +31,17 @@ public class RacingResultTest {
 
 		assertThat(result.getCarResults().get(0).getPosition()).isEqualTo(3);
 	}
+
+	@Test
+	void 가장_먼_위치의_자동차가_우승한다() {
+		RacingResult result = new RacingResult(List.of(new Car("pobi", 3), new Car("crong", 2)));
+		assertThat(result.findWinners()).containsExactly("pobi");
+	}
+
+	@Test
+	void 가장_먼_위치의_자동차가_여러대면_공동우승한다() {
+		RacingResult result = new RacingResult(List.of(new Car("pobi", 3), new Car("crong", 3),
+			new Car("honux", 2)));
+		assertThat(result.findWinners()).containsExactly("pobi", "crong");
+	}
 }

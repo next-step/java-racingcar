@@ -1,7 +1,5 @@
 package racingcar.domain.game;
 
-import java.util.List;
-
 import racingcar.domain.car.Cars;
 import racingcar.domain.generator.NumberGenerator;
 
@@ -27,10 +25,6 @@ public class RacingGame {
 
 	public boolean isFinished() {
 		return round <= 0;
-	}
-
-	public List<String> findWinners() {
-		return cars.findWinners();
 	}
 
 }

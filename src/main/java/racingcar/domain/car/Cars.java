@@ -40,31 +40,6 @@ public class Cars {
 		return positions;
 	}
 
-	public List<String> findWinners() {
-		List<String> winners = new ArrayList<>();
-		int maxPosition = getMaxPosition();
-
-		for (Car car : cars) {
-			addIfWinner(car, maxPosition, winners);
-		}
-
-		return winners;
-	}
-
-	private static void addIfWinner(Car car, int maxPosition, List<String> winners) {
-		if (car.isSamePosition(maxPosition)) {
-			winners.add(car.getName());
-		}
-	}
-
-	private int getMaxPosition() {
-		int maxPosition = 0;
-		for (Car car : cars) {
-			maxPosition = Math.max(car.getPosition(), maxPosition);
-		}
-		return maxPosition;
-	}
-
 	public List<Car> getCars() {
 		return cars;
 	}

@@ -21,11 +21,12 @@ public class RacingGameApplication {
 
 	private static void race(ResultView resultView, String carNames, int racingRound, NumberGenerator numberGenerator) {
 		resultView.printResultTitle();
+		RacingResult racingResult = null;
 		RacingGame racingGame = new RacingGame(carNames, racingRound);
 		while (!racingGame.isFinished()) {
-			RacingResult result = racingGame.play(numberGenerator);
-			resultView.printResult(result);
+			racingResult = racingGame.play(numberGenerator);
+			resultView.printResult(racingResult);
 		}
-		resultView.printWinners(racingGame.findWinners());
+		resultView.printWinners(racingResult.findWinners());
 	}
 }
