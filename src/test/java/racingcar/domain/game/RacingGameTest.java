@@ -25,4 +25,10 @@ public class RacingGameTest {
 
 		assertThat(racingGame.isFinished()).isFalse();
 	}
+
+	@Test
+	void 이름_문자열로_게임을_만들면_이름수만큼_자동차가_생긴다() {
+		RacingGame racingGame = new RacingGame("crong,pobi", 3);
+		assertThat(racingGame.getCars()).hasSize(2);
+	}
 }

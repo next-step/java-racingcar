@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.domain.car.Cars;
 import racingcar.domain.game.RacingGame;
 import racingcar.domain.generator.NumberGenerator;
 import racingcar.domain.generator.RandomNumberGenerator;
@@ -16,17 +15,16 @@ public class RacingGameApplication {
 		String carNames = inputView.inputCarNames();
 		int racingRound = inputView.inputRacingRound();
 
-		Cars cars = new Cars(carNames);
-		race(resultView, racingRound, cars, numberGenerator);
+		race(resultView, carNames, racingRound, numberGenerator);
 	}
 
-	private static void race(ResultView resultView, int racingRound, Cars cars, NumberGenerator numberGenerator) {
+	private static void race(ResultView resultView, String carNames, int racingRound, NumberGenerator numberGenerator) {
 		resultView.printResultTitle();
-		RacingGame racingGame = new RacingGame(cars, racingRound);
+		RacingGame racingGame = new RacingGame(carNames, racingRound);
 		while (!racingGame.isFinished()) {
 			racingGame.play(numberGenerator);
-			resultView.printCars(cars.getCars());
+			resultView.printCars(racingGame.getCars());
 		}
-		resultView.printWinners(cars.findWinners());
+		resultView.printWinners(racingGame.findWinners());
 	}
 }
