@@ -13,7 +13,6 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-
     public Cars(String names) {
         this(createCars(names));
     }
