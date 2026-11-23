@@ -1,9 +1,9 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.generator.NumberGenerator;
+import racingcar.domain.generator.NumberGenerator;
 
 public class Cars {
 

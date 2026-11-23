@@ -1,7 +1,7 @@
-package racingcar.game;
+package racingcar.domain.game;
 
-import racingcar.car.Cars;
-import racingcar.generator.NumberGenerator;
+import racingcar.domain.car.Cars;
+import racingcar.domain.generator.NumberGenerator;
 
 public class RacingGame {
 

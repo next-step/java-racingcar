@@ -1,10 +1,10 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import racingcar.car.Cars;
+import racingcar.domain.car.Cars;
 
 public class RacingGameTest {
 
