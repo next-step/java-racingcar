@@ -11,7 +11,7 @@ class CarTest {
     void 움직일_수_있으면_위치가_1_증가한다() {
         Car car = new Car("pobi");
 
-        car.move(new FakeMoveStrategy(true));
+        car.move(() -> true);
 
         assertThat(car.getPosition()).isEqualTo(1);
     }
@@ -20,20 +20,9 @@ class CarTest {
     void 움직일_수_없으면_위치가_그대로다() {
         Car car = new Car("pobi");
 
-        car.move(new FakeMoveStrategy(false));
+        car.move(() -> false);
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-
-    private static class FakeMoveStrategy implements MoveStrategy {
-        private boolean canMove;
-        public FakeMoveStrategy(boolean canMove) {
-            this.canMove = canMove;
-        }
-        @Override
-        public boolean movable() {
-            return canMove;
-        }
-    }
 }
