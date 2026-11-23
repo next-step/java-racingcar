@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.game.RacingGame;
+import racingcar.domain.game.RacingResult;
 import racingcar.domain.generator.NumberGenerator;
 import racingcar.domain.generator.RandomNumberGenerator;
 import racingcar.view.InputView;
@@ -22,8 +23,8 @@ public class RacingGameApplication {
 		resultView.printResultTitle();
 		RacingGame racingGame = new RacingGame(carNames, racingRound);
 		while (!racingGame.isFinished()) {
-			racingGame.play(numberGenerator);
-			resultView.printCars(racingGame.getCars());
+			RacingResult result = racingGame.play(numberGenerator);
+			resultView.printResult(result);
 		}
 		resultView.printWinners(racingGame.findWinners());
 	}

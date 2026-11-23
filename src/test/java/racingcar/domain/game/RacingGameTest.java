@@ -27,8 +27,12 @@ public class RacingGameTest {
 	}
 
 	@Test
-	void 이름_문자열로_게임을_만들면_이름수만큼_자동차가_생긴다() {
-		RacingGame racingGame = new RacingGame("crong,pobi", 3);
-		assertThat(racingGame.getCars()).hasSize(2);
+	void 한_라운드를_진행하면_결과를_돌려준다() {
+		RacingGame racingGame = new RacingGame("pobi,crong", 3);
+
+		RacingResult result = racingGame.play(() -> 4);
+
+		assertThat(result.getCarResults()).hasSize(2);
+		assertThat(result.getCarResults().get(0).getPosition()).isEqualTo(1);
 	}
 }

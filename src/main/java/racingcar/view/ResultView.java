@@ -2,7 +2,8 @@ package racingcar.view;
 
 import java.util.List;
 
-import racingcar.domain.car.Car;
+import racingcar.domain.game.CarResult;
+import racingcar.domain.game.RacingResult;
 
 public class ResultView {
 
@@ -10,10 +11,10 @@ public class ResultView {
 		System.out.println("실행결과");
 	}
 
-	public void printCars(List<Car> cars) {
-		for (Car car : cars) {
-			System.out.print(car.getName() + " : ");
-			drawPosition(car.getPosition());
+	public void printResult(RacingResult result) {
+		for (CarResult carResult : result.getCarResults()) {
+			System.out.print(carResult.getName() + " : ");
+			drawPosition(carResult.getPosition());
 		}
 		System.out.println();
 	}

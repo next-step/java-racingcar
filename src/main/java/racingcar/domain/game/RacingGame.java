@@ -1,9 +1,7 @@
 package racingcar.domain.game;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.domain.car.Car;
 import racingcar.domain.car.Cars;
 import racingcar.domain.generator.NumberGenerator;
 
@@ -21,17 +19,14 @@ public class RacingGame {
 		this(new Cars(carNames), round);
 	}
 
-	public void play(NumberGenerator numberGenerator) {
+	public RacingResult play(NumberGenerator numberGenerator) {
 		cars.play(numberGenerator);
 		round--;
+		return new RacingResult(cars.getCars());
 	}
 
 	public boolean isFinished() {
 		return round <= 0;
-	}
-
-	public List<Car> getCars() {
-		return cars.getCars();
 	}
 
 	public List<String> findWinners() {
