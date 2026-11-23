@@ -1,10 +1,10 @@
-package racingcar.game;
+package racingcar.domain.game;
 
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import racingcar.car.Cars;
+import racingcar.domain.car.Cars;
 
 public class RacingGameTest {
 
@@ -24,5 +24,15 @@ public class RacingGameTest {
 		racingGame.play(() -> 3);
 
 		assertThat(racingGame.isFinished()).isFalse();
+	}
+
+	@Test
+	void 한_라운드를_진행하면_결과를_돌려준다() {
+		RacingGame racingGame = new RacingGame("pobi,crong", 3);
+
+		RacingResult result = racingGame.play(() -> 4);
+
+		assertThat(result.getCarResults()).hasSize(2);
+		assertThat(result.getCarResults().get(0).getPosition()).isEqualTo(1);
 	}
 }

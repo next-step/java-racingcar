@@ -1,9 +1,9 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import racingcar.generator.NumberGenerator;
+import racingcar.domain.generator.NumberGenerator;
 
 public class Cars {
 
@@ -38,31 +38,6 @@ public class Cars {
 			positions.add(car.getPosition());
 		}
 		return positions;
-	}
-
-	public List<String> findWinners() {
-		List<String> winners = new ArrayList<>();
-		int maxPosition = getMaxPosition();
-
-		for (Car car : cars) {
-			addIfWinner(car, maxPosition, winners);
-		}
-
-		return winners;
-	}
-
-	private static void addIfWinner(Car car, int maxPosition, List<String> winners) {
-		if (car.isSamePosition(maxPosition)) {
-			winners.add(car.getName());
-		}
-	}
-
-	private int getMaxPosition() {
-		int maxPosition = 0;
-		for (Car car : cars) {
-			maxPosition = Math.max(car.getPosition(), maxPosition);
-		}
-		return maxPosition;
 	}
 
 	public List<Car> getCars() {

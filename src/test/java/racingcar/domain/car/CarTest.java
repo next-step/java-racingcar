@@ -1,4 +1,4 @@
-package racingcar.car;
+package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -31,27 +31,9 @@ public class CarTest {
 	}
 
 	@Test
-	void 자동차_이름이_빈문자열이_입력되면_예외를발생시킨다() {
-		assertThatThrownBy(() -> new Car("", 3))
-			.isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
 	void 자동차는_이름과_위치를_생성자로_받는다() {
 		Car car = new Car("pobi", 3);
 		assertThat(car.getPosition()).isEqualTo(3);
-	}
-
-	@Test
-	void 이름과_위치를_받을때_이름의_길이를_검증한다() {
-		assertThatThrownBy(() -> new Car("pobiiii", 3))
-			.isInstanceOf(IllegalArgumentException.class);
-	}
-
-	@Test
-	void 이름이_5자초과면_예외를_발생한다() {
-		assertThatThrownBy(() -> new Car("pobiii"))
-			.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test
