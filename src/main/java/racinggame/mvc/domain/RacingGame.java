@@ -29,7 +29,13 @@ public class RacingGame {
         cars.move(numberSupplier);
         remainingRounds.decrease();
 
-        List<Car> winners = isEnd() ? cars.farthestCars() : List.of();
-        return new RacingResult(cars.getCars(), winners);
+        return new RacingResult(cars.getCars(), findWinners());
+    }
+
+    private List<Car> findWinners() {
+        if (!isEnd()) {
+            return List.of();
+        }
+        return cars.farthestCars();
     }
 }

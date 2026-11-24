@@ -6,6 +6,9 @@ import java.util.function.IntSupplier;
 
 public final class Cars {
 
+    private static final String NAME_DELIMITER = ",";
+    private static final int KEEP_EMPTY_NAMES = -1;
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -18,7 +21,7 @@ public final class Cars {
 
     private static List<Car> parseCars(String carNames) {
         List<Car> cars = new ArrayList<>();
-        for (String name : carNames.split(",", -1)) {
+        for (String name : carNames.split(NAME_DELIMITER, KEEP_EMPTY_NAMES)) {
             cars.add(new Car(name.trim()));
         }
         return cars;
@@ -35,18 +38,17 @@ public final class Cars {
     }
 
     public List<Car> farthestCars() {
-        List<Car> farthestCars = new ArrayList<>();
+        int farthestPosition = findFarthestPosition();
+        return cars.stream()
+            .filter(car -> car.getPosition() == farthestPosition)
+            .toList();
+    }
+
+    private int findFarthestPosition() {
         int farthestPosition = Integer.MIN_VALUE;
         for (Car car : cars) {
-            int position = car.getPosition();
-            if (position > farthestPosition) {
-                farthestPosition = position;
-                farthestCars.clear();
-            }
-            if (position == farthestPosition) {
-                farthestCars.add(car);
-            }
+            farthestPosition = Math.max(farthestPosition, car.getPosition());
         }
-        return List.copyOf(farthestCars);
+        return farthestPosition;
     }
 }

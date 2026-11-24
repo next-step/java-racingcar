@@ -2,13 +2,19 @@ package racinggame.mvc.domain;
 
 public final class RemainingRounds {
 
+    private static final int MIN_ROUNDS = 1;
+
     private int rounds;
 
     public RemainingRounds(int rounds) {
-        if (rounds < 1) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
-        }
+        validateInitialRounds(rounds);
         this.rounds = rounds;
+    }
+
+    private void validateInitialRounds(int rounds) {
+        if (rounds < MIN_ROUNDS) {
+            throw new IllegalArgumentException("시도 횟수는 " + MIN_ROUNDS + " 이상이어야 합니다.");
+        }
     }
 
     public boolean isExhausted() {

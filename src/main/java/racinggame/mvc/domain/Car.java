@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class Car {
 
+    private static final int INITIAL_POSITION = 0;
+    private static final int FORWARD_THRESHOLD = 4;
+
     private final CarName name;
     private final Position position;
 
@@ -21,15 +24,17 @@ public class Car {
     }
 
     public Car(String name) {
-        this(name, 0);
+        this(name, INITIAL_POSITION);
     }
 
-    public void move(int threshold) {
-        if (threshold < 4) {
-            return;
+    public void move(int number) {
+        if (canMove(number)) {
+            position.advance();
         }
+    }
 
-        position.advance();
+    private boolean canMove(int number) {
+        return number >= FORWARD_THRESHOLD;
     }
 
     public String getName() {
