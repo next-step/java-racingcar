@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.dto.RoundResult;
-
 public class ResultView {
     private ResultView() {
     }

@@ -3,9 +3,9 @@ package racingcar;
 import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.TryCount;
-import racingcar.dto.RoundResult;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
+import racingcar.view.RoundResult;
 
 import java.util.List;
 
