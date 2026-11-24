@@ -42,8 +42,4 @@ public class Car {
     public CarName getName() {
         return name;
     }
-
-    public int getPosition() {
-        return position;
-    }
 }

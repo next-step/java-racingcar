@@ -12,16 +12,7 @@ public class CarTest {
     private static final CarName POBI = new CarName("pobi");
 
     @Test
-    @DisplayName("이름과 위치를 가진다")
-    void hasNameAndPosition() {
-        Car car = new Car(POBI, 3);
-
-        assertThat(car.getName()).isEqualTo(POBI);
-        assertThat(car.getPosition()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("현재 이름과 위치를 차 결과로 반환한다")
+    @DisplayName("이름과 위치를 가지고, 현재 상태를 차 결과로 반환한다")
     void toResult() {
         Car car = new Car(POBI, 3);
 
@@ -33,7 +24,7 @@ public class CarTest {
     void initialPositionIsZero() {
         Car car = new Car(POBI);
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toResult().position()).isEqualTo(0);
     }
 
     @Test
@@ -58,7 +49,7 @@ public class CarTest {
 
         car.move(number);
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.toResult().position()).isEqualTo(1);
     }
 
     @ParameterizedTest
@@ -69,6 +60,6 @@ public class CarTest {
 
         car.move(number);
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toResult().position()).isEqualTo(0);
     }
 }
