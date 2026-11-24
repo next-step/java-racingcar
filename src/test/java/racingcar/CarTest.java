@@ -21,4 +21,11 @@ class CarTest {
         car.move();
         assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @DisplayName("자동차는 이름을 가진다")
+    @Test
+    void hasName() {
+        Car car = new Car("pobi");
+        assertThat(car.getName()).isEqualTo("pobi");
+    }
 }
