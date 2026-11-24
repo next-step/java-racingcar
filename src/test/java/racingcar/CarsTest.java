@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
 
@@ -28,5 +29,28 @@ public class CarsTest {
     public void test_3() {
         Cars cars = new Cars(List.of(new Car(3, "john"), new Car(3, "tom")));
         assertThat(cars.getWinners()).containsExactly("john", "tom");
+    }
+
+    @DisplayName("이름 개수만큼 자동차가 만들어진다. (이름 3개 → 3대)")
+    @Test
+    public void test_5() {
+        Cars cars = Cars.fromNames(List.of("john", "tom", "jin"));
+        assertThat(cars.getWinners()).containsExactly("john", "tom", "jin");
+    }
+
+    @DisplayName("이름이 중복되면 RuntimeException (john,john → 실패)")
+    @Test
+    public void test_4() {
+        assertThatThrownBy(() -> new Cars(List.of(new Car("john"), new Car("john"))))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("중복");
+    }
+
+    @DisplayName("이름 목록이 비어있으면 RuntimeException (직접 정한 부분)")
+    @Test
+    public void test_6() {
+        assertThatThrownBy(() -> new Cars(List.of()))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("비어");
     }
 }
