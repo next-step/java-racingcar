@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Objects;
+
 public class Car {
 
     private static final int MOVE_THRESHOLD = 4;
@@ -23,5 +25,17 @@ public class Car {
 
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 }
