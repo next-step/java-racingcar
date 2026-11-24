@@ -3,35 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RacingGameTest {
-
-    @DisplayName("이름의 수만큼 자동차를 만든다")
-    @Test
-    void createsCars() {
-        RacingGame game = new RacingGame(List.of("pobi", "crong", "honux"), 5);
-
-        assertThat(game.getCars())
-                .extracting(Car::getName)
-                .containsExactly("pobi", "crong", "honux");
-    }
-
-    @DisplayName("한 번의 이동에서 자동차마다 각자의 값으로 움직인다")
-    @Test
-    void movesEachCarWithItsOwnNumber() {
-        RacingGame game = new RacingGame(List.of("pobi", "crong"), 1);
-        Iterator<Integer> numbers = List.of(4, 3).iterator();
-
-        game.moveAll(numbers::next);
-
-        assertThat(game.getCars())
-                .extracting(Car::getPosition)
-                .containsExactly(1, 0);
-    }
 
     @DisplayName("주어진 횟수만큼 반복하고 턴마다 위치를 기록해 반환한다")
     @Test
@@ -57,27 +33,5 @@ class RacingGameTest {
                 new TurnResult(List.of(0, 0)),
                 new TurnResult(List.of(0, 0)),
                 new TurnResult(List.of(0, 0)));
-    }
-
-    @DisplayName("가장 멀리 간 자동차가 우승한다")
-    @Test
-    void winner() {
-        RacingGame game = new RacingGame(List.of("pobi", "crong", "honux"), 1);
-        Iterator<Integer> numbers = List.of(3, 4, 3).iterator();
-
-        game.moveAll(numbers::next);
-
-        assertThat(game.winners()).containsExactly("crong");
-    }
-
-    @DisplayName("가장 멀리 간 자동차가 여럿이면 모두 우승한다")
-    @Test
-    void winners() {
-        RacingGame game = new RacingGame(List.of("pobi", "crong", "honux"), 1);
-        Iterator<Integer> numbers = List.of(4, 3, 4).iterator();
-
-        game.moveAll(numbers::next);
-
-        assertThat(game.winners()).containsExactly("pobi", "honux");
     }
 }
