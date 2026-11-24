@@ -1,8 +1,8 @@
 package racinggame.mvc;
 
 import racinggame.mvc.domain.RacingGame;
-import racinggame.mvc.view.InputView;
 import racinggame.mvc.domain.RacingResult;
+import racinggame.mvc.view.InputView;
 import racinggame.mvc.view.ResultView;
 
 public class RacingGameApplication {
@@ -10,7 +10,7 @@ public class RacingGameApplication {
         String carNames = InputView.getCarNames();
         int tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNames, tryNo);
+        RacingGame racingGame = new RacingGame(carNames, tryNo, new RandomNumberSupplier());
         RacingResult result = null;
         while (racingGame.isEnd()) {
             result = racingGame.race();
