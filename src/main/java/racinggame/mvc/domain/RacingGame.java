@@ -7,25 +7,21 @@ import java.util.function.IntSupplier;
 
 public class RacingGame {
 
-    private final List<Car> racer;
+    private final Cars cars;
     private final IntSupplier numberSupplier;
     private final RemainingRounds remainingRounds;
 
-    public RacingGame(String carNames, RemainingRounds remainingRounds, IntSupplier numberSupplier) {
-        this(parseCars(carNames), remainingRounds, numberSupplier);
-    }
-
-    public RacingGame(List<Car> cars, RemainingRounds remainingRounds, IntSupplier numberSupplier) {
-        if (cars.isEmpty()) {
-            throw new IllegalArgumentException("경주에 참가할 자동차가 필요합니다.");
-        }
-
-        this.racer = List.copyOf(cars);
+    public RacingGame(Cars cars, RemainingRounds remainingRounds, IntSupplier numberSupplier) {
+        this.cars = Objects.requireNonNull(cars);
         this.remainingRounds = Objects.requireNonNull(remainingRounds);
         this.numberSupplier = Objects.requireNonNull(numberSupplier);
     }
 
-    private static List<Car> parseCars(String carNames) {
+    public RacingGame(String carNames, int tryCount, IntSupplier numberSupplier) {
+        this(parseCars(carNames), new RemainingRounds(tryCount), numberSupplier);
+    }
+
+    private static Cars parseCars(String carNames) {
         List<Car> cars = new ArrayList<>();
         for (String name : carNames.split(",", -1)) {
             String trimmedName = name.trim();
@@ -34,7 +30,7 @@ public class RacingGame {
             }
             cars.add(new Car(trimmedName));
         }
-        return cars;
+        return new Cars(cars);
     }
 
     public boolean isEnd() {
@@ -43,25 +39,12 @@ public class RacingGame {
 
     public RacingResult race() {
         remainingRounds.ensureAvailable();
-        for (Car car : racer) {
+        for (Car car : cars.getCars()) {
             car.move(numberSupplier.getAsInt());
         }
         remainingRounds.decrease();
 
-        List<Car> racers = racer.stream()
-            .map(car -> new Car(car.getName(), car.getPosition()))
-            .toList();
-        List<Car> winners = isEnd() ? findWinners(racers) : List.of();
-        return new RacingResult(racers, winners);
-    }
-
-    private List<Car> findWinners(List<Car> racers) {
-        int farthestPosition = racers.stream()
-            .mapToInt(Car::getPosition)
-            .max()
-            .orElseThrow();
-        return racers.stream()
-            .filter(car -> car.getPosition() == farthestPosition)
-            .toList();
+        List<Car> winners = isEnd() ? cars.farthestCars() : List.of();
+        return new RacingResult(cars.getCars(), winners);
     }
 }
