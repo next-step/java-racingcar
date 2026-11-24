@@ -18,5 +18,6 @@ public class Main {
         for (TurnResult turnResult : history) {
             resultView.printTurn(turnResult);
         }
+        resultView.printWinners(racingGame.winners());
     }
 }

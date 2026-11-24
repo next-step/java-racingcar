@@ -1,8 +1,12 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
 
     private static final String NAME_POSITION_DELIMITER = " : ";
+    private static final String WINNER_POSITION_DELIMITER = ", ";
+
 
     public void printHeader() {
         System.out.println();
@@ -14,6 +18,14 @@ public class ResultView {
             System.out.println(toLine(status));
         }
         System.out.println();
+    }
+
+    public void printWinners(List<String> winners) {
+        System.out.println(toWinnerMessage(winners));
+    }
+
+    static String toWinnerMessage(List<String> names) {
+        return String.join(WINNER_POSITION_DELIMITER, names) + "가 최종 우승했습니다.";
     }
 
     static String toLine(CarStatus status) {
