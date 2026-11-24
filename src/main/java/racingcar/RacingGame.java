@@ -10,10 +10,10 @@ public class RacingGame {
     private final int tryCount;
     private final CarMover carMover = new CarMover();
 
-    public RacingGame(int carCount, int tryCount) {
+    public RacingGame(List<String> names, int tryCount) {
         this.cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+        for (String name : names) {
+            this.cars.add(new Car(name));
         }
         this.tryCount = tryCount;
     }
