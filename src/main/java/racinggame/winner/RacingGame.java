@@ -4,23 +4,30 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<Car> cars;
+    private final Cars cars;
     private final RacingCount count;
+    private final NumberGenerator numberGenerator;
 
-    public RacingGame(List<Car> cars, RacingCount count) {
-        this.cars = cars;
-        this.count = count;
+    public RacingGame(Cars cars, RacingCount count) {
+        this(cars, count, new RandomNumberGenerator());
     }
 
-    public void race(int randomNo) {
-        count.decrease();
+    public RacingGame(Cars cars, RacingCount count, NumberGenerator numberGenerator) {
+        this.cars = cars;
+        this.count = count;
+        this.numberGenerator = numberGenerator;
+    }
 
-        for (Car car : cars) {
-            car.move(randomNo);
-        }
+    public void race() {
+        count.decrease();
+        cars.move(numberGenerator);
     }
 
     public boolean isFinish() {
         return count.isZero();
+    }
+
+    public List<Car> getWinners() {
+        return cars.getFarthestCars();
     }
 }
