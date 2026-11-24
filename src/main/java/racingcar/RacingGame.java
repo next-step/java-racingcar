@@ -5,62 +5,57 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final int tryCount;
-    private final List<Car> cars = new ArrayList<>();
+    private int remainingTryCount;
+    private final Cars cars;
     private final NumberGenerator generator;
-    private boolean finished;
+    private final List<RoundResult> history = new ArrayList<>();
 
-    public RacingGame(int carCount, int tryCount, NumberGenerator generator) {
-        validateCarCount(carCount);
+    public RacingGame(Cars cars, int tryCount, NumberGenerator generator) {
         validateTryCount(tryCount);
-        this.tryCount = tryCount;
+        this.remainingTryCount = tryCount;
+        this.cars = cars;
         this.generator = generator;
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+    }
+
+    public void race() {
+        if (isFinished()) {
+            throw new RuntimeException("이미 완료된 게임입니다.");
+        }
+        while (!isFinished()) {
+            playRound();
+            recordRound();
         }
     }
 
-    public List<List<Integer>> race() {
-        if (finished) {
-            throw new RuntimeException("이미 완료된 게임입니다.");
-        }
-        List<List<Integer>> history = new ArrayList<>();
-        for (int i = 0; i < tryCount; i++) {
-            playRound();
-            history.add(getPositions());
-        }
-        finished = true;
-        return history;
+    public List<RoundResult> getRaceResult() {
+        return new ArrayList<>(history);
+    }
+
+    private boolean isFinished() {
+        return remainingTryCount == 0;
     }
 
     private void playRound() {
-        for (Car car : cars) {
-            car.tryMove(generator.create());
-        }
+        cars.move(generator);
+        remainingTryCount--;
     }
 
-    private static void validateCarCount(int carCount) {
-        if (carCount < 1) {
-            throw new RuntimeException("자동차 대수는 1 이상이어야 합니다.");
-        }
+    private void recordRound() {
+        history.add(new RoundResult(cars.getPositionsByName()));
     }
 
     private static void validateTryCount(int tryCount) {
-        if (tryCount < 0) {
-            throw new RuntimeException("시도 횟수는 0 이상이어야 합니다.");
+        if (tryCount < 1) {
+            throw new RuntimeException("시도 횟수는 1 이상이어야 합니다.");
         }
-    }
-
-    public int getCarCount() {
-        return cars.size();
     }
 
     public List<Integer> getPositions() {
-        List<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
+        return cars.getPositions();
+    }
+
+    public List<String> getWinners() {
+        return cars.getWinners();
     }
 
 }

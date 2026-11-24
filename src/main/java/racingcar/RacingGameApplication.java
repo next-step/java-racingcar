@@ -6,10 +6,12 @@ public class RacingGameApplication {
 
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int carCount = inputView.readCarCount();
+        Cars cars = Cars.fromNames(inputView.readCarNames());
         int tryCount = inputView.readTryCount();
 
-        RacingGame game = new RacingGame(carCount, tryCount, new RandomNumberGenerator(RANDOM_RANGE));
-        ResultView.viewResult(game.race());
+        RacingGame game = new RacingGame(cars, tryCount, new RandomNumberGenerator(RANDOM_RANGE));
+        game.race();
+        ResultView.viewResult(game.getRaceResult());
+        ResultView.viewWinners(game.getWinners());
     }
 }
