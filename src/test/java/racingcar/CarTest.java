@@ -61,4 +61,16 @@ public class CarTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("비어");
     }
+
+    @DisplayName("이름이 같으면 위치가 달라도 같은 자동차다. (john 0, john 3 → 같음)")
+    @Test
+    public void test_8() {
+        assertThat(new Car(0, "john")).isEqualTo(new Car(3, "john"));
+    }
+
+    @DisplayName("이름이 다르면 위치가 같아도 다른 자동차다. (john 0, tom 0 → 다름)")
+    @Test
+    public void test_9() {
+        assertThat(new Car(0, "john")).isNotEqualTo(new Car(0, "tom"));
+    }
 }
