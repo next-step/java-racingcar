@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.view.RoundResult;
+
 import java.util.List;
 
 public class Race {

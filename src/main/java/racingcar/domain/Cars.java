@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.view.RoundResult;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

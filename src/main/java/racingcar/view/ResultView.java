@@ -1,10 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.CarName;
-import racingcar.domain.RoundResult;
-
-import java.util.List;
-
 public class ResultView {
     private ResultView() {
     }
@@ -15,11 +10,11 @@ public class ResultView {
     }
 
     public static void showRound(RoundResult roundResult) {
-        System.out.println(ResultFormatter.formatRound(roundResult));
+        System.out.println(roundResult.formatProgress());
         System.out.println();
     }
 
-    public static void showWinners(List<CarName> winners) {
-        System.out.println(ResultFormatter.formatWinners(winners));
+    public static void showWinners(RoundResult roundResult) {
+        System.out.println(roundResult.formatWinners());
     }
 }
