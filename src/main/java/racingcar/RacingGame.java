@@ -41,7 +41,7 @@ public class RacingGame {
     }
 
     private void recordRound() {
-        history.add(new RoundResult(getPositions()));
+        history.add(new RoundResult(cars.getPositionsByName()));
     }
 
     private static void validateTryCount(int tryCount) {

@@ -12,5 +12,6 @@ public class RacingGameApplication {
         RacingGame game = new RacingGame(cars, tryCount, new RandomNumberGenerator(RANDOM_RANGE));
         game.race();
         ResultView.viewResult(game.getRaceResult());
+        ResultView.viewWinners(game.getWinners());
     }
 }

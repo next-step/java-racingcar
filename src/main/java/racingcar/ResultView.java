@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Map;
 
 public class ResultView {
 
@@ -14,9 +15,13 @@ public class ResultView {
         }
     }
 
-    private static void printRound(List<Integer> positions) {
-        for (int position : positions) {
-            System.out.println(POSITION_MARK.repeat(position));
+    public static void viewWinners(List<String> winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
+    }
+
+    private static void printRound(Map<String, Integer> positions) {
+        for (Map.Entry<String, Integer> entry : positions.entrySet()) {
+            System.out.println(entry.getKey() + " : " + POSITION_MARK.repeat(entry.getValue()));
         }
         System.out.println();
     }

@@ -3,7 +3,9 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Cars {
 
@@ -63,6 +65,14 @@ public class Cars {
         for (Car car : cars) {
             car.tryMove(generator.create());
         }
+    }
+
+    public Map<String, Integer> getPositionsByName() {
+        Map<String, Integer> positions = new LinkedHashMap<>();
+        for (Car car : cars) {
+            positions.put(car.getName(), car.getPosition());
+        }
+        return positions;
     }
 
     public List<Integer> getPositions() {

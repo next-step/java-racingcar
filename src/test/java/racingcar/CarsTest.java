@@ -7,6 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.entry;
 
 public class CarsTest {
 
@@ -61,9 +62,16 @@ public class CarsTest {
         assertThat(cars.getPositions()).containsExactly(3, 1);
     }
 
-    @DisplayName("4 이상의 값 명령을 내리면 모든 자동차가 전진한다. (4 → 위치 1, 1)")
+    @DisplayName("자동차들의 이름별 위치를 순서대로 알 수 있다. (john 3, tom 1)")
     @Test
     public void test_8() {
+        Cars cars = new Cars(List.of(new Car(3, "john"), new Car(1, "tom")));
+        assertThat(cars.getPositionsByName()).containsExactly(entry("john", 3), entry("tom", 1));
+    }
+
+    @DisplayName("4 이상의 값 명령을 내리면 모든 자동차가 전진한다. (4 → 위치 1, 1)")
+    @Test
+    public void test_9() {
         Cars cars = Cars.fromNames(List.of("john", "tom"));
         cars.move(() -> 4);
         assertThat(cars.getPositions()).containsExactly(1, 1);
@@ -71,7 +79,7 @@ public class CarsTest {
 
     @DisplayName("4 미만의 값 명령을 내리면 모든 자동차가 멈춘다. (3 → 위치 0, 0)")
     @Test
-    public void test_9() {
+    public void test_10() {
         Cars cars = Cars.fromNames(List.of("john", "tom"));
         cars.move(() -> 3);
         assertThat(cars.getPositions()).containsExactly(0, 0);

@@ -1,19 +1,19 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class RoundResult {
 
-    private final List<Integer> positions;
+    private final Map<String, Integer> positions;
 
-    public RoundResult(List<Integer> positions) {
-        this.positions = new ArrayList<>(positions);
+    public RoundResult(Map<String, Integer> positions) {
+        this.positions = new LinkedHashMap<>(positions);
     }
 
-    public List<Integer> getPositions() {
-        return new ArrayList<>(positions);
+    public Map<String, Integer> getPositions() {
+        return new LinkedHashMap<>(positions);
     }
 
     @Override
