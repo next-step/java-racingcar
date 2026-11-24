@@ -2,9 +2,9 @@ package racingcar;
 
 import java.util.List;
 
-public record TurnResult(List<Integer> positions) {
+public record TurnResult(List<CarStatus> statuses) {
 
     public TurnResult {
-        positions = List.copyOf(positions);
+        statuses = List.copyOf(statuses);
     }
 }

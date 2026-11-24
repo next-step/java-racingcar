@@ -5,10 +5,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
-        int carCount = inputView.readCarCount();
+        List<String> carNames = inputView.readCarNames();
         int tryCount = inputView.readTryCount();
 
-        RacingGame racingGame = new RacingGame(carCount, tryCount);
+        RacingGame racingGame = new RacingGame(carNames, tryCount);
 
         List<TurnResult> history = racingGame.race(new RandomNumberGenerator());
 
@@ -18,5 +18,6 @@ public class Main {
         for (TurnResult turnResult : history) {
             resultView.printTurn(turnResult);
         }
+        resultView.printWinners(racingGame.winners());
     }
 }
