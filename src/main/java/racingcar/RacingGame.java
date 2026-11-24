@@ -5,16 +5,15 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final int tryCount;
+    private int remainingTryCount;
     private final List<Car> cars = new ArrayList<>();
     private final NumberGenerator generator;
     private final List<RoundResult> history = new ArrayList<>();
-    private boolean finished;
 
     public RacingGame(int carCount, int tryCount, NumberGenerator generator) {
         validateCarCount(carCount);
         validateTryCount(tryCount);
-        this.tryCount = tryCount;
+        this.remainingTryCount = tryCount;
         this.generator = generator;
         for (int i = 0; i < carCount; i++) {
             cars.add(new Car());
@@ -22,24 +21,28 @@ public class RacingGame {
     }
 
     public void race() {
-        if (finished) {
+        if (isFinished()) {
             throw new RuntimeException("이미 완료된 게임입니다.");
         }
-        for (int i = 0; i < tryCount; i++) {
+        while (!isFinished()) {
             playRound();
             recordRound();
         }
-        finished = true;
     }
 
     public List<RoundResult> getRaceResult() {
         return new ArrayList<>(history);
     }
 
+    private boolean isFinished() {
+        return remainingTryCount == 0;
+    }
+
     private void playRound() {
         for (Car car : cars) {
             car.tryMove(generator.create());
         }
+        remainingTryCount--;
     }
 
     private void recordRound() {
@@ -53,8 +56,8 @@ public class RacingGame {
     }
 
     private static void validateTryCount(int tryCount) {
-        if (tryCount < 0) {
-            throw new RuntimeException("시도 횟수는 0 이상이어야 합니다.");
+        if (tryCount < 1) {
+            throw new RuntimeException("시도 횟수는 1 이상이어야 합니다.");
         }
     }
 
