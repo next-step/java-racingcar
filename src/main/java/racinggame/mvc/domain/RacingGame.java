@@ -1,7 +1,5 @@
 package racinggame.mvc.domain;
 
-import racinggame.mvc.view.RacingResult;
-
 public class RacingGame {
 
     public RacingGame(String carNames, int tryNo) {
