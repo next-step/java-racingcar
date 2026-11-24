@@ -14,12 +14,11 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 public class CarsTest {
     private static final CarName POBI = new CarName("pobi");
     private static final CarName CRONG = new CarName("crong");
-    private static final CarName HONUX = new CarName("honux");
 
     @Test
     @DisplayName("차 이름이 중복되면 IllegalArgumentException")
     void throwsExceptionWhenNameIsDuplicated() {
-        List<Car> duplicated = List.of(new Car("pobi"), new Car("crong"), new Car("pobi"));
+        List<String> duplicated = List.of("pobi", "crong", "pobi");
 
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(duplicated))
                 .withMessage("duplicate name is not allowed [pobi]");
@@ -27,16 +26,24 @@ public class CarsTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @DisplayName("차 목록이 null이거나 비어 있으면 IllegalArgumentException")
-    void throwsExceptionWhenCarsAreEmpty(List<Car> cars) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(cars))
+    @DisplayName("이름 목록이 null이거나 비어 있으면 IllegalArgumentException")
+    void throwsExceptionWhenNamesAreEmpty(List<String> names) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(names))
                 .withMessage("at least one car is required");
+    }
+
+    @Test
+    @DisplayName("이름 목록으로 위치가 0인 차들을 생성한다")
+    void createWithNames() {
+        Cars cars = new Cars(List.of("pobi", "crong"));
+
+        assertThat(cars.toResult()).isEqualTo(new RoundResult(List.of(new CarResult(POBI, 0), new CarResult(CRONG, 0))));
     }
 
     @Test
     @DisplayName("생성된 숫자에 따라 각 차가 움직인다")
     void move() {
-        Cars cars = new Cars(List.of(new Car("pobi"), new Car("crong"), new Car("honux")));
+        Cars cars = new Cars(List.of("pobi", "crong", "honux"));
         Iterator<Integer> numbers = List.of(4, 3, 9).iterator();
 
         cars.move(numbers::next);
@@ -47,7 +54,7 @@ public class CarsTest {
     @Test
     @DisplayName("현재 차들의 상태를 회차 결과로 반환한다")
     void toResult() {
-        Cars cars = new Cars(List.of(new Car("pobi", 2), new Car("crong", 0)));
+        Cars cars = new Cars(new Car("pobi", 2), new Car("crong", 0));
 
         assertThat(cars.toResult()).isEqualTo(new RoundResult(List.of(new CarResult(POBI, 2), new CarResult(CRONG, 0))));
     }

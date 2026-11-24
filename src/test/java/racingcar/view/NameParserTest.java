@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.CarName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -15,20 +14,20 @@ public class NameParserTest {
     @DisplayName("쉼표를 기준으로 이름을 구분한다")
     void splitByComma() {
         assertThat(NameParser.parse("pobi,crong,honux"))
-                .containsExactly(new CarName("pobi"), new CarName("crong"), new CarName("honux"));
+                .containsExactly("pobi", "crong", "honux");
     }
 
     @Test
     @DisplayName("이름이 하나면 하나만 반환한다")
     void singleName() {
-        assertThat(NameParser.parse("pobi")).containsExactly(new CarName("pobi"));
+        assertThat(NameParser.parse("pobi")).containsExactly("pobi");
     }
 
     @Test
     @DisplayName("쉼표 전후의 공백은 잘라낸다")
     void trimAroundComma() {
         assertThat(NameParser.parse(" pobi , crong ,honux "))
-                .containsExactly(new CarName("pobi"), new CarName("crong"), new CarName("honux"));
+                .containsExactly("pobi", "crong", "honux");
     }
 
     @ParameterizedTest
@@ -44,6 +43,7 @@ public class NameParserTest {
     @ValueSource(strings = {"pobi,,crong", "pobi,", ",pobi", "pobi, ,crong"})
     @DisplayName("쉼표 사이에 이름이 없으면 IllegalArgumentException")
     void throwsExceptionWhenNameBetweenCommasIsEmpty(String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> NameParser.parse(input));
+        assertThatIllegalArgumentException().isThrownBy(() -> NameParser.parse(input))
+                .withMessage("empty name is not allowed [" + input + "]");
     }
 }

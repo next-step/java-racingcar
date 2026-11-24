@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 public class RaceTest {
     private static final CarName POBI = new CarName("pobi");
     private static final CarName CRONG = new CarName("crong");
-    private static final List<CarName> NAMES = List.of(POBI, CRONG);
+    private static final List<String> NAMES = List.of("pobi", "crong");
 
     @Test
     @DisplayName("한 회차를 진행하면 차들이 움직이고 회차 결과를 반환한다")

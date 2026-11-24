@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.CarName;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,12 +10,19 @@ public class NameParser {
     private NameParser() {
     }
 
-    public static List<CarName> parse(String input) {
+    public static List<String> parse(String input) {
         validateNotBlank(input);
-        return Arrays.stream(input.split(DELIMITER, KEEP_TRAILING_EMPTY))
+        List<String> names = Arrays.stream(input.split(DELIMITER, KEEP_TRAILING_EMPTY))
                 .map(String::trim)
-                .map(CarName::new)
                 .toList();
+        validateNoEmptyName(names, input);
+        return names;
+    }
+
+    private static void validateNoEmptyName(List<String> names, String input) {
+        if (names.contains("")) {
+            throw new IllegalArgumentException("empty name is not allowed [" + input + "]");
+        }
     }
 
     private static void validateNotBlank(String input) {

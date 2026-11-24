@@ -7,19 +7,32 @@ import java.util.Set;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        validateNotEmpty(cars);
-        validateUniqueNames(cars);
-        this.cars = List.copyOf(cars);
+    public Cars(List<String> names) {
+        this(createCars(names));
     }
 
-    private static void validateNotEmpty(List<Car> cars) {
-        if (cars == null || cars.isEmpty()) {
+    public Cars(Car... cars) {
+        validateNotEmpty(cars);
+        validateUniqueNames(cars);
+        this.cars = List.of(cars);
+    }
+
+    private static Car[] createCars(List<String> names) {
+        if (names == null) {
+            return new Car[0];
+        }
+        return names.stream()
+                .map(Car::new)
+                .toArray(Car[]::new);
+    }
+
+    private static void validateNotEmpty(Car[] cars) {
+        if (cars == null || cars.length == 0) {
             throw new IllegalArgumentException("at least one car is required");
         }
     }
 
-    private static void validateUniqueNames(List<Car> cars) {
+    private static void validateUniqueNames(Car[] cars) {
         Set<CarName> names = new HashSet<>();
         for (Car car : cars) {
             addUniqueName(names, car.getName());

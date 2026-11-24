@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.domain.CarName;
 import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
 import racingcar.domain.RoundResult;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        final List<CarName> carNames = InputView.getCarNames();
+        final List<String> carNames = InputView.getCarNames();
         final TryCount tryCount = InputView.getTryCount();
         final Race race = new Race(carNames, tryCount, new RandomNumberGenerator());
 
