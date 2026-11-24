@@ -4,16 +4,16 @@ import java.util.List;
 
 public class RacingResult {
 
-    private final List<Car> racers;
+    private final List<Car> cars;
     private final List<Car> winners;
 
-    public RacingResult(List<Car> racers, List<Car> winners) {
-        this.racers = racers;
+    public RacingResult(List<Car> cars, List<Car> winners) {
+        this.cars = cars;
         this.winners = winners;
     }
 
-    public List<Car> getRacers() {
-        return racers;
+    public List<Car> getCars() {
+        return cars;
     }
 
     public List<Car> getWinners() {

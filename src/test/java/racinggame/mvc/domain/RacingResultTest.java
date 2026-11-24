@@ -15,7 +15,7 @@ class RacingResultTest {
         Car second = new Car("car2");
         RacingResult sut = new RacingResult(List.of(first, second), List.of(second));
 
-        assertThat(sut.getRacers()).containsExactly(first, second);
+        assertThat(sut.getCars()).containsExactly(first, second);
     }
 
     @Test

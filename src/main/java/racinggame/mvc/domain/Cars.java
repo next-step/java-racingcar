@@ -2,6 +2,7 @@ package racinggame.mvc.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntSupplier;
 
 public final class Cars {
 
@@ -33,6 +34,12 @@ public final class Cars {
 
     public List<Car> getCars() {
         return cars;
+    }
+
+    public void move(IntSupplier numberSupplier) {
+        for (Car car : cars) {
+            car.move(numberSupplier.getAsInt());
+        }
     }
 
     public List<Car> farthestCars() {

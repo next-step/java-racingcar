@@ -3,6 +3,7 @@ package racinggame.mvc.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.Iterator;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -45,5 +46,18 @@ class CarsTest {
         Cars sut = new Cars(List.of(pobi, crong, honux));
 
         assertThat(sut.farthestCars()).containsExactly(crong, honux);
+    }
+
+    @Test
+    @DisplayName("자동차마다 숫자를 하나씩 받아 이동을 시도한다.")
+    void 자동차마다_이동을_시도한다() {
+        Cars sut = new Cars("pobi,crong,honux");
+        Iterator<Integer> numbers = List.of(4, 3, 5).iterator();
+
+        sut.move(numbers::next);
+
+        assertThat(sut.getCars())
+            .extracting(Car::getPosition)
+            .containsExactly(1, 0, 1);
     }
 }

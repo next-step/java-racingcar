@@ -26,9 +26,7 @@ public class RacingGame {
 
     public RacingResult race() {
         remainingRounds.ensureAvailable();
-        for (Car car : cars.getCars()) {
-            car.move(numberSupplier.getAsInt());
-        }
+        cars.move(numberSupplier);
         remainingRounds.decrease();
 
         List<Car> winners = isEnd() ? cars.farthestCars() : List.of();
