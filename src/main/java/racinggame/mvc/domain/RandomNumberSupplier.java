@@ -1,4 +1,4 @@
-package racinggame.mvc;
+package racinggame.mvc.domain;
 
 import java.util.Random;
 import java.util.function.IntSupplier;

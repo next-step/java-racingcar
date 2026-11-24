@@ -1,6 +1,7 @@
 package racinggame.mvc.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +17,23 @@ class CarsTest {
         Cars sut = new Cars(List.of(pobi, crong));
 
         assertThat(sut.getCars()).containsExactly(pobi, crong);
+    }
+
+    @Test
+    @DisplayName("쉼표로 이름을 구분하고 입력한 이름마다 자동차를 생성한다.")
+    void 이름_문자열로_자동차_목록을_만든다() {
+        Cars sut = new Cars(" pobi, crong ,honux ");
+
+        assertThat(sut.getCars())
+            .extracting(Car::getName)
+            .containsExactly("pobi", "crong", "honux");
+    }
+
+    @Test
+    @DisplayName("끝에 쉼표가 붙으면 빈 이름으로 처리한다.")
+    void 빈_이름을_거절한다() {
+        assertThatThrownBy(() -> new Cars("pobi,"))
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

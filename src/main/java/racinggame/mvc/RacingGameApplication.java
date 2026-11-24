@@ -10,7 +10,7 @@ public class RacingGameApplication {
         String carNames = InputView.getCarNames();
         int tryCount = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNames, tryCount, new RandomNumberSupplier());
+        RacingGame racingGame = new RacingGame(carNames, tryCount);
         RacingResult result = null;
         while (racingGame.isEnd()) {
             result = racingGame.race();

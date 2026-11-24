@@ -13,16 +13,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 class RacingGameTest {
 
     @Test
-    @DisplayName("쉼표로 구분한 자동차들이 경주 결과에 포함된다.")
-    void 경주_결과에_참가_자동차가_포함된다() {
-        RacingGame sut = new RacingGame("pobi,crong,honux", 2, () -> 0);
+    @DisplayName("라운드를 진행하면 경주 결과를 반환하고, 경주 중에는 우승자가 없다.")
+    void 라운드를_진행하면_경주_결과를_반환한다() {
+        Cars cars = new Cars(List.of(new Car("pobi")));
+        RacingGame sut = new RacingGame(cars, new RemainingRounds(2), () -> 0);
 
         RacingResult result = sut.race();
 
         assertThat(result).isNotNull();
-        assertThat(result.getRacers())
-            .extracting(Car::getName)
-            .containsExactlyInAnyOrder("pobi", "crong", "honux");
         assertThat(result.getWinners()).isEmpty();
     }
 
@@ -30,7 +28,7 @@ class RacingGameTest {
     @ValueSource(ints = {1, 3})
     @DisplayName("입력한 횟수만큼 경주를 진행하면 종료된다.")
     void 정해진_횟수만큼_진행하면_종료된다(int tryCount) {
-        RacingGame sut = new RacingGame("pobi,crong", tryCount, () -> 0);
+        RacingGame sut = new RacingGame("pobi,crong", tryCount);
 
         for (int round = 0; round < tryCount; round++) {
             assertThat(sut.isEnd()).isFalse();
@@ -44,7 +42,8 @@ class RacingGameTest {
     @DisplayName("경주가 끝나면 가장 멀리 간 자동차를 모두 우승자로 반환한다.")
     void 경주가_끝나면_우승자를_반환한다() {
         Iterator<Integer> numbers = List.of(4, 3, 4).iterator();
-        RacingGame sut = new RacingGame("pobi,crong,honux", 1, numbers::next);
+        Cars cars = new Cars(List.of(new Car("pobi"), new Car("crong"), new Car("honux")));
+        RacingGame sut = new RacingGame(cars, new RemainingRounds(1), numbers::next);
 
         RacingResult result = sut.race();
 
