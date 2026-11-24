@@ -52,4 +52,12 @@ public class RacingGameTest {
                 .hasMessageContaining("이미 완료");
     }
 
+    @DisplayName("N회 시도한 뒤 결과를 꺼내면 라운드별 기록이 N개다. (5회 → 5개)")
+    @Test
+    public void test_6() {
+        RacingGame game = new RacingGame(3, 5, new RandomNumberGenerator(10));
+        game.race();
+        assertThat(game.getRaceResult()).hasSize(5);
+    }
+
 }

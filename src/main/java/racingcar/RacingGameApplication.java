@@ -10,6 +10,7 @@ public class RacingGameApplication {
         int tryCount = inputView.readTryCount();
 
         RacingGame game = new RacingGame(carCount, tryCount, new RandomNumberGenerator(RANDOM_RANGE));
-        ResultView.viewResult(game.race());
+        game.race();
+        ResultView.viewResult(game.getRaceResult());
     }
 }

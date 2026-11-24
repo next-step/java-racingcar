@@ -8,6 +8,7 @@ public class RacingGame {
     private final int tryCount;
     private final List<Car> cars = new ArrayList<>();
     private final NumberGenerator generator;
+    private final List<RoundResult> history = new ArrayList<>();
     private boolean finished;
 
     public RacingGame(int carCount, int tryCount, NumberGenerator generator) {
@@ -20,23 +21,29 @@ public class RacingGame {
         }
     }
 
-    public List<RoundResult> race() {
+    public void race() {
         if (finished) {
             throw new RuntimeException("이미 완료된 게임입니다.");
         }
-        List<RoundResult> history = new ArrayList<>();
         for (int i = 0; i < tryCount; i++) {
             playRound();
-            history.add(new RoundResult(getPositions()));
+            recordRound();
         }
         finished = true;
-        return history;
+    }
+
+    public List<RoundResult> getRaceResult() {
+        return new ArrayList<>(history);
     }
 
     private void playRound() {
         for (Car car : cars) {
             car.tryMove(generator.create());
         }
+    }
+
+    private void recordRound() {
+        history.add(new RoundResult(getPositions()));
     }
 
     private static void validateCarCount(int carCount) {
