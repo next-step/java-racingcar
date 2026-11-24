@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.TryCount;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,8 +16,8 @@ public class InputView {
         return NameParser.parse(SCANNER.nextLine());
     }
 
-    public static int getRoundCount() {
+    public static TryCount getTryCount() {
         System.out.println("시도할 회수는 몇 회 인가요?");
-        return CountParser.parse(SCANNER.nextLine());
+        return TryCountParser.parse(SCANNER.nextLine());
     }
 }

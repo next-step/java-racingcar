@@ -1,9 +1,9 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int MAX_NAME_LENGTH = 5;
-    private static final int THRESHOLD = 4;
-    private final String name;
+    private static final int MOVE_THRESHOLD = 4;
+
+    private final CarName name;
     private int position;
 
     public Car(String name) {
@@ -11,34 +11,39 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("valid name is required [" + name + "]");
-        }
-        if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("too long for name [" + name + "]");
-        }
-        if (position < 0) {
-            throw new IllegalArgumentException("position can not be negative value [" + position + "]");
-        }
+        this(new CarName(name), position);
+    }
+
+    public Car(CarName name, int position) {
+        validateName(name);
+        validatePosition(position);
         this.name = name;
         this.position = position;
     }
 
-    public int getPosition() {
-        return position;
+    private static void validateName(CarName name) {
+        if (name == null) {
+            throw new IllegalArgumentException("car name is required");
+        }
     }
 
-    public String getName() {
-        return name;
+    private static void validatePosition(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("position can not be negative value [" + position + "]");
+        }
     }
 
     public void move(int number) {
-        if (number >= THRESHOLD) {
+        if (number >= MOVE_THRESHOLD) {
             position++;
         }
     }
 
-    public CarStatus toCarStatus() {
-        return new CarStatus(name, position);
+    public CarResult toResult() {
+        return new CarResult(name, position);
+    }
+
+    public CarName getName() {
+        return name;
     }
 }

@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,33 +7,41 @@ import java.util.Set;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<String> carNames) {
-        this(createCars(carNames));
+    public Cars(List<String> names) {
+        this(createCars(names));
     }
 
     public Cars(Car... cars) {
-        validateNoDuplicateNames(cars);
+        validateNotEmpty(cars);
+        validateUniqueNames(cars);
         this.cars = List.of(cars);
     }
 
-    private static Car[] createCars(List<String> carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
+    private static Car[] createCars(List<String> names) {
+        if (names == null) {
+            return new Car[0];
         }
-        return cars.toArray(new Car[0]);
+        return names.stream()
+                .map(Car::new)
+                .toArray(Car[]::new);
     }
 
-    private static void validateNoDuplicateNames(Car... cars) {
-        Set<String> uniqueNames = new HashSet<>();
+    private static void validateNotEmpty(Car[] cars) {
+        if (cars == null || cars.length == 0) {
+            throw new IllegalArgumentException("at least one car is required");
+        }
+    }
+
+    private static void validateUniqueNames(Car[] cars) {
+        Set<CarName> names = new HashSet<>();
         for (Car car : cars) {
-            addUniqueName(uniqueNames, car.getName());
+            addUniqueName(names, car.getName());
         }
     }
 
-    private static void addUniqueName(Set<String> uniqueNames, String carName) {
-        if (!uniqueNames.add(carName)) {
-            throw new IllegalArgumentException("duplicate name is not allowed [" + carName + "]");
+    private static void addUniqueName(Set<CarName> names, CarName name) {
+        if (!names.add(name)) {
+            throw new IllegalArgumentException("duplicate name is not allowed [" + name.value() + "]");
         }
     }
 
@@ -44,31 +51,9 @@ public class Cars {
         }
     }
 
-    public List<CarStatus> getStatuses() {
-        List<CarStatus> carStatuses = new ArrayList<>();
-        for (Car car : cars) {
-            carStatuses.add(car.toCarStatus());
-        }
-        return carStatuses;
-    }
-
-    public List<String> getWinners() {
-        List<String> winners = new ArrayList<>();
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = collectWinner(winners, car, maxPosition);
-        }
-        return winners;
-    }
-
-    private static int collectWinner(List<String> winners, Car car, int maxPosition) {
-        int position = car.getPosition();
-        if (position > maxPosition) {
-            winners.clear();
-        }
-        if (position >= maxPosition) {
-            winners.add(car.getName());
-        }
-        return Math.max(position, maxPosition);
+    public List<CarResult> toResults() {
+        return cars.stream()
+                .map(Car::toResult)
+                .toList();
     }
 }

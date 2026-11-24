@@ -2,54 +2,60 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import java.util.Iterator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarsTest {
-    @Test
-    @DisplayName("입력한 이름으로 자동차들을 생성한다")
-    void createCarsByNames() {
-        Cars cars = new Cars(List.of("pobi", "conan"));
-
-        assertThat(cars.getStatuses())
-                .containsExactly(new CarStatus("pobi", 0), new CarStatus("conan", 0));
-    }
+    private static final CarName POBI = new CarName("pobi");
+    private static final CarName CRONG = new CarName("crong");
 
     @Test
-    @DisplayName("자동차 이름이 중복되면 IllegalArgumentException")
-    void canNotHaveDuplicateNames() {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Cars(List.of("pobi", "conan", "pobi")))
+    @DisplayName("차 이름이 중복되면 IllegalArgumentException")
+    void throwsExceptionWhenNameIsDuplicated() {
+        List<String> duplicated = List.of("pobi", "crong", "pobi");
+
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(duplicated))
                 .withMessage("duplicate name is not allowed [pobi]");
     }
 
-    @Test
-    @DisplayName("모든 자동차가 생성된 숫자로 한 번씩 전진을 판단한다")
-    void moveAllCars() {
-        Cars cars = new Cars(List.of("pobi", "conan"));
-
-        cars.move(() -> 4);
-
-        assertThat(cars.getStatuses())
-                .containsExactly(new CarStatus("pobi", 1), new CarStatus("conan", 1));
+    @ParameterizedTest
+    @NullAndEmptySource
+    @DisplayName("이름 목록이 null이거나 비어 있으면 IllegalArgumentException")
+    void throwsExceptionWhenNamesAreEmpty(List<String> names) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cars(names))
+                .withMessage("at least one car is required");
     }
 
     @Test
-    @DisplayName("가장 멀리 간 자동차가 우승자다")
-    void findWinner() {
-        Cars cars = new Cars(new Car("pobi", 1), new Car("conan", 3), new Car("crong", 2));
+    @DisplayName("이름 목록으로 위치가 0인 차들을 생성한다")
+    void createWithNames() {
+        Cars cars = new Cars(List.of("pobi", "crong"));
 
-        assertThat(cars.getWinners()).containsExactly("conan");
+        assertThat(cars.toResults()).containsExactly(new CarResult(POBI, 0), new CarResult(CRONG, 0));
     }
 
     @Test
-    @DisplayName("가장 멀리 간 자동차가 여럿이면 모두 우승자다")
-    void findMultipleWinners() {
-        Cars cars = new Cars(new Car("pobi", 3), new Car("conan", 1), new Car("crong", 3));
+    @DisplayName("생성된 숫자에 따라 각 차가 움직인다")
+    void move() {
+        Cars cars = new Cars(List.of("pobi", "crong", "honux"));
+        Iterator<Integer> numbers = List.of(4, 3, 9).iterator();
 
-        assertThat(cars.getWinners()).containsExactly("pobi", "crong");
+        cars.move(numbers::next);
+
+        assertThat(cars.toResults()).extracting(CarResult::position).containsExactly(1, 0, 1);
+    }
+
+    @Test
+    @DisplayName("현재 차들의 상태를 차 결과 목록으로 반환한다")
+    void toResults() {
+        Cars cars = new Cars(new Car("pobi", 2), new Car("crong", 0));
+
+        assertThat(cars.toResults()).containsExactly(new CarResult(POBI, 2), new CarResult(CRONG, 0));
     }
 }

@@ -1,27 +1,33 @@
 package racingcar.view;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NameParser {
     private static final String DELIMITER = ",";
+    private static final int KEEP_TRAILING_EMPTY = -1;
 
     private NameParser() {
     }
 
     public static List<String> parse(String input) {
-        List<String> names = new ArrayList<>();
-        for (String token : input.split(DELIMITER, -1)) {
-            names.add(toName(token, input));
-        }
+        validateNotBlank(input);
+        List<String> names = Arrays.stream(input.split(DELIMITER, KEEP_TRAILING_EMPTY))
+                .map(String::trim)
+                .toList();
+        validateNoEmptyName(names, input);
         return names;
     }
 
-    private static String toName(String token, String input) {
-        String name = token.trim();
-        if (name.isEmpty()) {
+    private static void validateNoEmptyName(List<String> names, String input) {
+        if (names.contains("")) {
             throw new IllegalArgumentException("empty name is not allowed [" + input + "]");
         }
-        return name;
+    }
+
+    private static void validateNotBlank(String input) {
+        if (input == null || input.isBlank()) {
+            throw new IllegalArgumentException("car names are required");
+        }
     }
 }

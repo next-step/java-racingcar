@@ -2,20 +2,26 @@ package racingcar;
 
 import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
+import racingcar.domain.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
+import racingcar.view.RoundResult;
 
 import java.util.List;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
         final List<String> carNames = InputView.getCarNames();
-        final int roundCount = InputView.getRoundCount();
+        final TryCount tryCount = InputView.getTryCount();
+        final Race race = new Race(carNames, tryCount, new RandomNumberGenerator());
 
-        final Race race = new Race(carNames, roundCount, new RandomNumberGenerator());
-        race.play();
+        ResultView.showResultTitle();
+        RoundResult result;
+        do {
+            result = new RoundResult(race.playRound());
+            ResultView.showRound(result);
+        } while (race.isInProgress());
 
-        ResultView.showResult(race.getRoundResults());
-        ResultView.showWinners(race.getWinners());
+        ResultView.showWinners(result);
     }
 }

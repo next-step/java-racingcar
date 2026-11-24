@@ -3,28 +3,50 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
+    private static final CarName POBI = new CarName("pobi");
+
     @Test
-    @DisplayName("처음 위치는 0이다")
+    @DisplayName("이름과 위치를 가지고, 현재 상태를 차 결과로 반환한다")
+    void toResult() {
+        Car car = new Car(POBI, 3);
+
+        assertThat(car.toResult()).isEqualTo(new CarResult(POBI, 3));
+    }
+
+    @Test
+    @DisplayName("문자열 이름과 위치로 생성할 수 있다")
+    void createWithStringNameAndPosition() {
+        Car car = new Car("pobi", 3);
+
+        assertThat(car.toResult()).isEqualTo(new CarResult(POBI, 3));
+    }
+
+    @Test
+    @DisplayName("문자열 이름만으로 생성하면 위치는 0이다")
     void initialPositionIsZero() {
         Car car = new Car("pobi");
 
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.toResult()).isEqualTo(new CarResult(POBI, 0));
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    @DisplayName("이름과 위치를 지정해 생성할 수 있다")
-    void createWithPosition(int position) {
-        Car car = new Car("pobi", position);
+    @Test
+    @DisplayName("문자열 이름이 유효하지 않으면 IllegalArgumentException")
+    void throwsExceptionWhenStringNameIsInvalid() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("abcdef"))
+                .withMessage("too long for name [abcdef]");
+    }
 
-        assertThat(car.toCarStatus()).isEqualTo(new CarStatus("pobi", position));
+    @Test
+    @DisplayName("이름이 null이면 IllegalArgumentException")
+    void throwsExceptionWhenNameIsNull() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car((CarName) null, 0))
+                .withMessage("car name is required");
     }
 
     @Test
@@ -36,50 +58,23 @@ public class CarTest {
 
     @ParameterizedTest
     @ValueSource(ints = {4, 9})
-    @DisplayName("값이 4 이상이면 위치가 1 증가한다")
+    @DisplayName("숫자가 4 이상이면 위치가 1 증가한다")
     void moveForwardIfNumberIsFourOrMore(int number) {
         Car car = new Car("pobi");
 
         car.move(number);
 
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.toResult().position()).isEqualTo(1);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 3})
-    @DisplayName("값이 3 이하면 위치가 그대로다")
+    @DisplayName("숫자가 3 이하면 위치가 그대로다")
     void stayIfNumberIsThreeOrLess(int number) {
         Car car = new Car("pobi");
 
         car.move(number);
 
-        assertThat(car.getPosition()).isEqualTo(0);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"pobi", "crong"})
-    @DisplayName("차는 이름을 가진다")
-    void containsName(String name) {
-        Car car = new Car(name);
-
-        assertThat(car.getName()).isEqualTo(name);
-    }
-
-    @ParameterizedTest
-    @NullSource
-    @ValueSource(strings = {" ", ""})
-    @DisplayName("차의 이름은 null 이거나 비어있거나 공란으로만 이루어져 있으면 IllegalArgumentException")
-    void throwsExceptionWhenEmptyOrBlank(String name) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name))
-                .withMessage("valid name is required [" + name + "]");
-    }
-
-    @Test
-    @DisplayName("차의 이름은 5자를 초과할 수 없다, 초과하면 IllegalArgumentException")
-    void throwsExceptionWhenExceeds5Characters() {
-        String name = "abcdef";
-
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(name))
-                .withMessage("too long for name [" + name + "]");
+        assertThat(car.toResult().position()).isEqualTo(0);
     }
 }
