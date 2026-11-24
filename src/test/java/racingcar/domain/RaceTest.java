@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.view.RoundResult;
 
 import java.util.Iterator;
 import java.util.List;
@@ -21,9 +20,9 @@ public class RaceTest {
         Iterator<Integer> numbers = List.of(4, 3).iterator();
         Race race = new Race(NAMES, new TryCount(1), numbers::next);
 
-        RoundResult result = race.playRound();
+        List<CarResult> results = race.playRound();
 
-        assertThat(result.carResults()).containsExactly(new CarResult(POBI, 1), new CarResult(CRONG, 0));
+        assertThat(results).containsExactly(new CarResult(POBI, 1), new CarResult(CRONG, 0));
     }
 
     @Test
@@ -33,9 +32,9 @@ public class RaceTest {
         Race race = new Race(NAMES, new TryCount(2), numbers::next);
 
         race.playRound();
-        RoundResult result = race.playRound();
+        List<CarResult> results = race.playRound();
 
-        assertThat(result.carResults()).extracting(CarResult::position).containsExactly(2, 1);
+        assertThat(results).extracting(CarResult::position).containsExactly(2, 1);
     }
 
     @Test
@@ -44,10 +43,10 @@ public class RaceTest {
         Iterator<Integer> numbers = List.of(4, 3, 4, 4).iterator();
         Race race = new Race(NAMES, new TryCount(2), numbers::next);
 
-        RoundResult first = race.playRound();
+        List<CarResult> first = race.playRound();
         race.playRound();
 
-        assertThat(first.carResults()).extracting(CarResult::position).containsExactly(1, 0);
+        assertThat(first).extracting(CarResult::position).containsExactly(1, 0);
     }
 
     @Test

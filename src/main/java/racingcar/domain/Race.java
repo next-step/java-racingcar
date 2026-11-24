@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.RoundResult;
-
 import java.util.List;
 
 public class Race {
@@ -15,10 +13,10 @@ public class Race {
         this.numberGenerator = numberGenerator;
     }
 
-    public RoundResult playRound() {
+    public List<CarResult> playRound() {
         tryCount.decrease();
         cars.move(numberGenerator);
-        return cars.toResult();
+        return cars.toResults();
     }
 
     public boolean isInProgress() {

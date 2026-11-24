@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.RoundResult;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,9 +51,9 @@ public class Cars {
         }
     }
 
-    public RoundResult toResult() {
-        return new RoundResult(cars.stream()
+    public List<CarResult> toResults() {
+        return cars.stream()
                 .map(Car::toResult)
-                .toList());
+                .toList();
     }
 }

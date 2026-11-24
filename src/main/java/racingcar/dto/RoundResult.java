@@ -1,4 +1,4 @@
-package racingcar.view;
+package racingcar.dto;
 
 import racingcar.domain.CarName;
 import racingcar.domain.CarResult;

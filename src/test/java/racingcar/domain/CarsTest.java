@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.view.RoundResult;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
@@ -38,7 +37,7 @@ public class CarsTest {
     void createWithNames() {
         Cars cars = new Cars(List.of("pobi", "crong"));
 
-        assertThat(cars.toResult()).isEqualTo(new RoundResult(List.of(new CarResult(POBI, 0), new CarResult(CRONG, 0))));
+        assertThat(cars.toResults()).containsExactly(new CarResult(POBI, 0), new CarResult(CRONG, 0));
     }
 
     @Test
@@ -49,14 +48,14 @@ public class CarsTest {
 
         cars.move(numbers::next);
 
-        assertThat(cars.toResult().carResults()).extracting(CarResult::position).containsExactly(1, 0, 1);
+        assertThat(cars.toResults()).extracting(CarResult::position).containsExactly(1, 0, 1);
     }
 
     @Test
-    @DisplayName("현재 차들의 상태를 회차 결과로 반환한다")
-    void toResult() {
+    @DisplayName("현재 차들의 상태를 차 결과 목록으로 반환한다")
+    void toResults() {
         Cars cars = new Cars(new Car("pobi", 2), new Car("crong", 0));
 
-        assertThat(cars.toResult()).isEqualTo(new RoundResult(List.of(new CarResult(POBI, 2), new CarResult(CRONG, 0))));
+        assertThat(cars.toResults()).containsExactly(new CarResult(POBI, 2), new CarResult(CRONG, 0));
     }
 }
