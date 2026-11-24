@@ -58,4 +58,15 @@ class RacingGameTest {
                 new TurnResult(List.of(0, 0)),
                 new TurnResult(List.of(0, 0)));
     }
+
+    @DisplayName("가장 멀리 간 자동차가 우승한다")
+    @Test
+    void winner() {
+        RacingGame game = new RacingGame(List.of("pobi", "crong", "honux"), 1);
+        Iterator<Integer> numbers = List.of(3, 4, 3).iterator();
+
+        game.moveAll(numbers::next);
+
+        assertThat(game.winner()).isEqualTo("crong");
+    }
 }

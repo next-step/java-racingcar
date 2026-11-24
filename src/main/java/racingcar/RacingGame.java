@@ -1,6 +1,8 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.IntSupplier;
 
@@ -35,6 +37,10 @@ public class RacingGame {
             history.add(currentTurnResult());
         }
         return history;
+    }
+
+    public String winner() {
+        return Collections.max(cars, Comparator.comparingInt(Car::getPosition)).getName();
     }
 
     private TurnResult currentTurnResult() {
