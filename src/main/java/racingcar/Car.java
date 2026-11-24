@@ -39,6 +39,14 @@ public class Car {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isAt(int position) {
+        return this.position == position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
