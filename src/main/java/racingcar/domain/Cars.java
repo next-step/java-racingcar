@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Cars {
@@ -12,18 +13,19 @@ public class Cars {
         this.cars = new ArrayList<>(cars);
     }
 
-    // 주 생성자와 타입이 같아서 컴파일 오류 발생 : private 생성자로 만들기 위해서 정적 팩토리 메서드
-    public static Cars fromNames(List<String> names) {
-        return createCars(names.stream()
+    public Cars(String names) {
+        this(createCars(names));
+    }
+
+    private static List<Car> createCars(String names) {
+        return Arrays.stream(names.split(",", -1))
+                .map(String::trim)
                 .map(Car::new)
-                .toList());
+                .toList();
     }
 
-    private static Cars createCars(List<Car> names) {
-        return new Cars(names);
-    }
 
-    public void moveCars(RandomMoveStrategy strategy) {
+    public void moveCars(MoveStrategy strategy) {
         for (Car car : cars) {
             car.move(strategy);
         }

@@ -1,10 +1,7 @@
 package racingcar.view;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-import static racingcar.view.InputValidator.validateNames;
 import static racingcar.view.InputValidator.validateNumber;
 
 public class InputView {
@@ -13,12 +10,9 @@ public class InputView {
     private static final String ATTEMPT_COUNT_PROMPT = "시도할 회수는 몇 회 인가요?";
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static List<String> readCarNames() {
+    public static String readCarNames() {
         System.out.println((CAR_NAMES_PROMPT));
-        String carNames = readLine();
-        validateNames(carNames);
-
-        return Arrays.asList(carNames.split(","));
+        return readLine();
     }
 
     public static int readAttemptCount() {

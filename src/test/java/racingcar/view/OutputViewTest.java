@@ -33,7 +33,7 @@ class OutputViewTest {
 
     @Test
     void 자동차_이름과_위치를_함께_출력한다() {
-        Cars cars = Cars.fromNames(List.of("pobi"));
+        Cars cars = new Cars("pobi");
         RandomMoveStrategy alwaysMove = new RandomMoveStrategy(new FixedRandomGenerator(ALWAYS_MOVE));
         cars.moveCars(alwaysMove);
         cars.moveCars(alwaysMove);

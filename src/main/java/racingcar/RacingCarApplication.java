@@ -1,6 +1,5 @@
 package racingcar;
 
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.RandomMoveStrategy;
@@ -16,7 +15,7 @@ public class RacingCarApplication {
     public static void main(String[] args) {
 
         RacingGame racingGame = new RacingGame(
-                Cars.fromNames(InputView.readCarNames()),
+                InputView.readCarNames(),
                 InputView.readAttemptCount()
         );
 
