@@ -6,8 +6,12 @@ public class Car {
     private final CarName name;
     private int position;
 
-    public Car(CarName name) {
+    public Car(String name) {
         this(name, 0);
+    }
+
+    public Car(String name, int position) {
+        this(new CarName(name), position);
     }
 
     public Car(CarName name, int position) {

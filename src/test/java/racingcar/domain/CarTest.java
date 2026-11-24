@@ -20,24 +20,39 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("이름만으로 생성하면 위치는 0이다")
-    void initialPositionIsZero() {
-        Car car = new Car(POBI);
+    @DisplayName("문자열 이름과 위치로 생성할 수 있다")
+    void createWithStringNameAndPosition() {
+        Car car = new Car("pobi", 3);
 
-        assertThat(car.toResult().position()).isEqualTo(0);
+        assertThat(car.toResult()).isEqualTo(new CarResult(POBI, 3));
+    }
+
+    @Test
+    @DisplayName("문자열 이름만으로 생성하면 위치는 0이다")
+    void initialPositionIsZero() {
+        Car car = new Car("pobi");
+
+        assertThat(car.toResult()).isEqualTo(new CarResult(POBI, 0));
+    }
+
+    @Test
+    @DisplayName("문자열 이름이 유효하지 않으면 IllegalArgumentException")
+    void throwsExceptionWhenStringNameIsInvalid() {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("abcdef"))
+                .withMessage("too long for name [abcdef]");
     }
 
     @Test
     @DisplayName("이름이 null이면 IllegalArgumentException")
     void throwsExceptionWhenNameIsNull() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(null))
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car((CarName) null, 0))
                 .withMessage("car name is required");
     }
 
     @Test
     @DisplayName("위치가 음수면 IllegalArgumentException")
     void throwsExceptionWhenPositionIsNegative() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(POBI, -1))
+        assertThatIllegalArgumentException().isThrownBy(() -> new Car("pobi", -1))
                 .withMessage("position can not be negative value [-1]");
     }
 
@@ -45,7 +60,7 @@ public class CarTest {
     @ValueSource(ints = {4, 9})
     @DisplayName("숫자가 4 이상이면 위치가 1 증가한다")
     void moveForwardIfNumberIsFourOrMore(int number) {
-        Car car = new Car(POBI);
+        Car car = new Car("pobi");
 
         car.move(number);
 
@@ -56,7 +71,7 @@ public class CarTest {
     @ValueSource(ints = {0, 3})
     @DisplayName("숫자가 3 이하면 위치가 그대로다")
     void stayIfNumberIsThreeOrLess(int number) {
-        Car car = new Car(POBI);
+        Car car = new Car("pobi");
 
         car.move(number);
 

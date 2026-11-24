@@ -8,7 +8,7 @@ public class Race {
     private final NumberGenerator numberGenerator;
 
     public Race(List<CarName> names, TryCount tryCount, NumberGenerator numberGenerator) {
-        this.cars = new Cars(names.stream().map(Car::new).toList());
+        this.cars = new Cars(names.stream().map(name -> new Car(name, 0)).toList());
         this.tryCount = tryCount;
         this.numberGenerator = numberGenerator;
     }

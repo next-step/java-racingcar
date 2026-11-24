@@ -19,7 +19,7 @@ public class CarsTest {
     @Test
     @DisplayName("차 이름이 중복되면 IllegalArgumentException")
     void throwsExceptionWhenNameIsDuplicated() {
-        List<Car> duplicated = List.of(new Car(POBI), new Car(CRONG), new Car(new CarName("pobi")));
+        List<Car> duplicated = List.of(new Car("pobi"), new Car("crong"), new Car("pobi"));
 
         assertThatIllegalArgumentException().isThrownBy(() -> new Cars(duplicated))
                 .withMessage("duplicate name is not allowed [pobi]");
@@ -36,7 +36,7 @@ public class CarsTest {
     @Test
     @DisplayName("생성된 숫자에 따라 각 차가 움직인다")
     void move() {
-        Cars cars = new Cars(List.of(new Car(POBI), new Car(CRONG), new Car(HONUX)));
+        Cars cars = new Cars(List.of(new Car("pobi"), new Car("crong"), new Car("honux")));
         Iterator<Integer> numbers = List.of(4, 3, 9).iterator();
 
         cars.move(numbers::next);
@@ -47,7 +47,7 @@ public class CarsTest {
     @Test
     @DisplayName("현재 차들의 상태를 회차 결과로 반환한다")
     void toResult() {
-        Cars cars = new Cars(List.of(new Car(POBI, 2), new Car(CRONG, 0)));
+        Cars cars = new Cars(List.of(new Car("pobi", 2), new Car("crong", 0)));
 
         assertThat(cars.toResult()).isEqualTo(new RoundResult(List.of(new CarResult(POBI, 2), new CarResult(CRONG, 0))));
     }
