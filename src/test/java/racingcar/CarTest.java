@@ -13,7 +13,7 @@ class CarTest {
     @DisplayName("자동차의 초기 위치는 0이다")
     @Test
     void initialPosition() {
-        Car car = new Car();
+        Car car = new Car("pobi");
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
