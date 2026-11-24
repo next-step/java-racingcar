@@ -56,10 +56,20 @@ public class Cars {
     }
 
     private int findMaxPosition() {
+        return Collections.max(getPositions());
+    }
+
+    public void move(NumberGenerator generator) {
+        for (Car car : cars) {
+            car.tryMove(generator.create());
+        }
+    }
+
+    public List<Integer> getPositions() {
         List<Integer> positions = new ArrayList<>();
         for (Car car : cars) {
             positions.add(car.getPosition());
         }
-        return Collections.max(positions);
+        return positions;
     }
 }

@@ -53,4 +53,27 @@ public class CarsTest {
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("비어");
     }
+
+    @DisplayName("자동차들의 위치를 목록으로 알 수 있다. (위치 3, 1 → [3, 1])")
+    @Test
+    public void test_7() {
+        Cars cars = new Cars(List.of(new Car(3, "john"), new Car(1, "tom")));
+        assertThat(cars.getPositions()).containsExactly(3, 1);
+    }
+
+    @DisplayName("4 이상의 값 명령을 내리면 모든 자동차가 전진한다. (4 → 위치 1, 1)")
+    @Test
+    public void test_8() {
+        Cars cars = Cars.fromNames(List.of("john", "tom"));
+        cars.move(() -> 4);
+        assertThat(cars.getPositions()).containsExactly(1, 1);
+    }
+
+    @DisplayName("4 미만의 값 명령을 내리면 모든 자동차가 멈춘다. (3 → 위치 0, 0)")
+    @Test
+    public void test_9() {
+        Cars cars = Cars.fromNames(List.of("john", "tom"));
+        cars.move(() -> 3);
+        assertThat(cars.getPositions()).containsExactly(0, 0);
+    }
 }
