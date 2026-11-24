@@ -29,11 +29,11 @@ public class Cars {
     }
 
     public TurnResult toTurnResult() {
-        List<Integer> positions = new ArrayList<>();
+        List<CarStatus> statuses = new ArrayList<>();
         for (Car car : cars) {
-            positions.add(car.getPosition());
+            statuses.add(new CarStatus(car.getName(), car.getPosition()));
         }
-        return new TurnResult(positions);
+        return new TurnResult(statuses);
     }
 
     public List<String> winners() {

@@ -17,9 +17,9 @@ class RacingGameTest {
         List<TurnResult> history = game.race(() -> 4);
 
         assertThat(history).containsExactly(
-                new TurnResult(List.of(1, 1)),
-                new TurnResult(List.of(2, 2)),
-                new TurnResult(List.of(3, 3)));
+                new TurnResult(List.of(new CarStatus("pobi", 1), new CarStatus("crong", 1))),
+                new TurnResult(List.of(new CarStatus("pobi", 2), new CarStatus("crong", 2))),
+                new TurnResult(List.of(new CarStatus("pobi", 3), new CarStatus("crong", 3))));
     }
 
     @DisplayName("값이 3 이하면 턴을 반복해도 위치가 그대로다")
@@ -30,8 +30,8 @@ class RacingGameTest {
         List<TurnResult> history = game.race(() -> 3);
 
         assertThat(history).containsExactly(
-                new TurnResult(List.of(0, 0)),
-                new TurnResult(List.of(0, 0)),
-                new TurnResult(List.of(0, 0)));
+                new TurnResult(List.of(new CarStatus("pobi", 0), new CarStatus("crong", 0))),
+                new TurnResult(List.of(new CarStatus("pobi", 0), new CarStatus("crong", 0))),
+                new TurnResult(List.of(new CarStatus("pobi", 0), new CarStatus("crong", 0))));
     }
 }
