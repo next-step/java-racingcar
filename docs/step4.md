@@ -13,5 +13,5 @@
 
 ## 리팩토링
 
-- [ ] `CarMover`의 이동 조건 판단을 `Car.move(int)`로 옮긴다
+- [x] `CarMover`의 이동 조건 판단을 `Car.move(int)`로 옮긴다
 - [ ] `race()`가 경주만 담당하고 결과 조회를 분리한다

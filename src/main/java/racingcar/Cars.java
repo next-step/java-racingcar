@@ -9,7 +9,6 @@ import java.util.function.IntSupplier;
 public class Cars {
 
     private final List<Car> cars;
-    private final CarMover carMover = new CarMover();
 
     public Cars(List<String> names) {
         this.cars = new ArrayList<>();
@@ -24,7 +23,7 @@ public class Cars {
 
     public void moveAll(IntSupplier numbers) {
         for (Car car : cars) {
-            carMover.move(car, numbers.getAsInt());
+            car.move(numbers.getAsInt());
         }
     }
 
