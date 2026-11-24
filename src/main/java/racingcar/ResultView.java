@@ -6,11 +6,11 @@ public class ResultView {
 
     private static final String POSITION_MARK = "-";
 
-    public static void viewResult(List<List<Integer>> history) {
+    public static void viewResult(List<RoundResult> history) {
         System.out.println();
         System.out.println("실행 결과");
-        for (List<Integer> positions : history) {
-            printRound(positions);
+        for (RoundResult roundResult : history) {
+            printRound(roundResult.getPositions());
         }
     }
 
