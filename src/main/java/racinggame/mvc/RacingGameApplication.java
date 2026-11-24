@@ -2,15 +2,16 @@ package racinggame.mvc;
 
 import racinggame.mvc.domain.RacingGame;
 import racinggame.mvc.domain.RacingResult;
+import racinggame.mvc.domain.RemainingRounds;
 import racinggame.mvc.view.InputView;
 import racinggame.mvc.view.ResultView;
 
 public class RacingGameApplication {
     public static void main(String[] args) {
         String carNames = InputView.getCarNames();
-        int tryNo = InputView.getTryNo();
+        RemainingRounds rounds = new RemainingRounds(InputView.getTryNo());
 
-        RacingGame racingGame = new RacingGame(carNames, tryNo, new RandomNumberSupplier());
+        RacingGame racingGame = new RacingGame(carNames, rounds, new RandomNumberSupplier());
         RacingResult result = null;
         while (racingGame.isEnd()) {
             result = racingGame.race();
