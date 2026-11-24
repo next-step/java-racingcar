@@ -18,7 +18,7 @@ class CarTest {
     @Test
     @DisplayName("생성할 때 지정한 위치를 반환한다.")
     void 자동차_위치_조회() {
-        Car car = new Car(new CarName("pobi"), 3);
+        Car car = new Car(new CarName("pobi"), new Position(3));
 
         assertThat(car.getPosition()).isEqualTo(3);
     }
@@ -37,7 +37,8 @@ class CarTest {
     @Test
     @DisplayName("입력값이 4 이상이면 자동차가 한 칸 전진한다.")
     void 이동_조건을_충족하면_전진한다() {
-        Car car = new Car("pobi");
+        Position position = new Position(0);
+        Car car = new Car(new CarName("pobi"), position);
         int initialPosition = car.getPosition();
 
         car.move(4);
@@ -45,5 +46,6 @@ class CarTest {
 
         car.move(9);
         assertThat(car.getPosition()).isEqualTo(initialPosition + 2);
+        assertThat(position.getValue()).isEqualTo(initialPosition + 2);
     }
 }

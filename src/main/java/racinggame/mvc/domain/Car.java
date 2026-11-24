@@ -5,15 +5,15 @@ import java.util.Objects;
 public class Car {
 
     private final CarName name;
-    private int position;
+    private final Position position;
+
+    public Car(CarName name, Position position) {
+        this.name = Objects.requireNonNull(name);
+        this.position = Objects.requireNonNull(position);
+    }
 
     public Car(CarName name, int position) {
-        this.name = Objects.requireNonNull(name);
-        if (position < 0) {
-            throw new IllegalArgumentException("자동차 위치는 음수일 수 없습니다.");
-        }
-
-        this.position = position;
+        this(name, new Position(position));
     }
 
     public Car(String name, int position) {
@@ -29,14 +29,14 @@ public class Car {
             return;
         }
 
-        position++;
+        position.advance();
     }
 
     public String getName() {
-        return name.value();
+        return name.getValue();
     }
 
     public int getPosition() {
-        return position;
+        return position.getValue();
     }
 }

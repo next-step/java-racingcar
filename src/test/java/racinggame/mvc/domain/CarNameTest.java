@@ -13,7 +13,7 @@ class CarNameTest {
     @Test
     @DisplayName("5자인 자동차 이름을 허용한다.")
     void 다섯_자인_이름을_허용한다() {
-        assertThat(new CarName("crong").value()).isEqualTo("crong");
+        assertThat(new CarName("crong").getValue()).isEqualTo("crong");
     }
 
     @Test
