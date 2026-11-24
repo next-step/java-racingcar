@@ -6,6 +6,9 @@ public class Car {
     private int position;
 
     public Car(String name, int position) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름을 입력해야 합니다.");
+        }
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다.");
         }

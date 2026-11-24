@@ -9,6 +9,13 @@ import org.junit.jupiter.api.Test;
 class CarTest {
 
     @Test
+    @DisplayName("공백만 있는 자동차 이름은 허용하지 않는다.")
+    void 공백뿐인_이름을_거절한다() {
+        assertThatThrownBy(() -> new Car(" "))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("자동차 이름은 5자를 초과할 수 없다.")
     void 이름_길이_제한() {
         assertThatThrownBy(() -> new Car("abcdef"))
