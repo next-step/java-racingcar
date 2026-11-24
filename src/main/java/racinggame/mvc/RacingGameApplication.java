@@ -11,11 +11,12 @@ public class RacingGameApplication {
         int tryCount = InputView.getTryNo();
 
         RacingGame racingGame = new RacingGame(carNames, tryCount);
-        RacingResult result = null;
-        while (racingGame.isEnd()) {
+        ResultView.printHeader();
+        RacingResult result;
+        do {
             result = racingGame.race();
             ResultView.printResult(result);
-        }
-        ResultView.printWinners(result); // RacingResult에서 우승자를 구해 출력
+        } while (!racingGame.isEnd());
+        ResultView.printWinners(result);
     }
 }
