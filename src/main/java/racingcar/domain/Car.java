@@ -35,6 +35,10 @@ public class Car {
         }
     }
 
+    public CarResult toResult() {
+        return new CarResult(name, position);
+    }
+
     public CarName getName() {
         return name;
     }

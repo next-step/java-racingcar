@@ -21,6 +21,14 @@ public class CarTest {
     }
 
     @Test
+    @DisplayName("현재 이름과 위치를 차 결과로 반환한다")
+    void toResult() {
+        Car car = new Car(POBI, 3);
+
+        assertThat(car.toResult()).isEqualTo(new CarResult(POBI, 3));
+    }
+
+    @Test
     @DisplayName("이름만으로 생성하면 위치는 0이다")
     void initialPositionIsZero() {
         Car car = new Car(POBI);
