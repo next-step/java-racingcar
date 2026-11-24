@@ -16,7 +16,7 @@ public class RacingGame {
         this.remainingTryCount = tryCount;
         this.generator = generator;
         for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
+            cars.add(new Car("A"));
         }
     }
 
