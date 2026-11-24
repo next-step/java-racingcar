@@ -13,10 +13,10 @@ public class Race {
         this.numberGenerator = numberGenerator;
     }
 
-    public Cars playRound() {
+    public RoundResult playRound() {
         tryCount.decrease();
         cars.move(numberGenerator);
-        return cars;
+        return cars.toResult();
     }
 
     public boolean isInProgress() {

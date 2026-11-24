@@ -43,19 +43,4 @@ public class Cars {
                 .map(Car::toResult)
                 .toList());
     }
-
-    public List<CarName> getWinners() {
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow();
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .toList();
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
 }

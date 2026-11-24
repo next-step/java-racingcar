@@ -15,15 +15,14 @@ public class RaceTest {
     private static final List<CarName> NAMES = List.of(POBI, CRONG);
 
     @Test
-    @DisplayName("한 회차를 진행하면 차들이 움직이고 차 목록을 반환한다")
+    @DisplayName("한 회차를 진행하면 차들이 움직이고 회차 결과를 반환한다")
     void playRound() {
         Iterator<Integer> numbers = List.of(4, 3).iterator();
         Race race = new Race(NAMES, new TryCount(1), numbers::next);
 
-        Cars cars = race.playRound();
+        RoundResult result = race.playRound();
 
-        assertThat(cars.getCars()).extracting(Car::getName).containsExactly(POBI, CRONG);
-        assertThat(cars.getCars()).extracting(Car::getPosition).containsExactly(1, 0);
+        assertThat(result.carResults()).containsExactly(new CarResult(POBI, 1), new CarResult(CRONG, 0));
     }
 
     @Test
@@ -33,9 +32,21 @@ public class RaceTest {
         Race race = new Race(NAMES, new TryCount(2), numbers::next);
 
         race.playRound();
-        Cars cars = race.playRound();
+        RoundResult result = race.playRound();
 
-        assertThat(cars.getCars()).extracting(Car::getPosition).containsExactly(2, 1);
+        assertThat(result.carResults()).extracting(CarResult::position).containsExactly(2, 1);
+    }
+
+    @Test
+    @DisplayName("반환된 회차 결과는 이후 경기가 진행돼도 바뀌지 않는다")
+    void resultNotAffectedByLaterRounds() {
+        Iterator<Integer> numbers = List.of(4, 3, 4, 4).iterator();
+        Race race = new Race(NAMES, new TryCount(2), numbers::next);
+
+        RoundResult first = race.playRound();
+        race.playRound();
+
+        assertThat(first.carResults()).extracting(CarResult::position).containsExactly(1, 0);
     }
 
     @Test
@@ -75,9 +86,9 @@ public class RaceTest {
     void carsDoNotMoveAfterFinished() {
         Iterator<Integer> numbers = List.of(4, 3, 4, 4).iterator();
         Race race = new Race(NAMES, new TryCount(1), numbers::next);
-        Cars cars = race.playRound();
+        race.playRound();
 
         assertThatIllegalStateException().isThrownBy(race::playRound);
-        assertThat(cars.getCars()).extracting(Car::getPosition).containsExactly(1, 0);
+        assertThat(numbers.hasNext()).isTrue();
     }
 }

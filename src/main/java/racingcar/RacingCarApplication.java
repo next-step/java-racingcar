@@ -1,9 +1,9 @@
 package racingcar;
 
 import racingcar.domain.CarName;
-import racingcar.domain.Cars;
 import racingcar.domain.Race;
 import racingcar.domain.RandomNumberGenerator;
+import racingcar.domain.RoundResult;
 import racingcar.domain.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -17,12 +17,12 @@ public class RacingCarApplication {
         final Race race = new Race(carNames, tryCount, new RandomNumberGenerator());
 
         ResultView.showResultTitle();
-        Cars cars;
+        RoundResult result;
         do {
-            cars = race.playRound();
-            ResultView.showRound(cars);
+            result = race.playRound();
+            ResultView.showRound(result);
         } while (race.isInProgress());
 
-        ResultView.showWinners(cars.getWinners());
+        ResultView.showWinners(result.getWinners());
     }
 }

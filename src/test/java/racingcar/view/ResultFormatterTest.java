@@ -4,9 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.domain.Car;
 import racingcar.domain.CarName;
-import racingcar.domain.Cars;
+import racingcar.domain.CarResult;
+import racingcar.domain.RoundResult;
 
 import java.util.List;
 
@@ -21,15 +21,16 @@ public class ResultFormatterTest {
     @CsvSource(value = {"0:'pobi : '", "1:'pobi : -'", "3:'pobi : ---'"}, delimiter = ':')
     @DisplayName("차 하나의 진행상태를 이름과 위치만큼의 '-'로 표시한다")
     void formatCar(int position, String expected) {
-        assertThat(ResultFormatter.formatCar(new Car(POBI, position))).isEqualTo(expected);
+        assertThat(ResultFormatter.formatCar(new CarResult(POBI, position))).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("한 회차의 진행상태를 차마다 한 줄씩 표시한다")
     void formatRound() {
-        Cars cars = new Cars(List.of(new Car(POBI, 2), new Car(CRONG, 0), new Car(HONUX, 1)));
+        RoundResult result = new RoundResult(List.of(
+                new CarResult(POBI, 2), new CarResult(CRONG, 0), new CarResult(HONUX, 1)));
 
-        assertThat(ResultFormatter.formatRound(cars))
+        assertThat(ResultFormatter.formatRound(result))
                 .isEqualTo("pobi : --" + System.lineSeparator()
                         + "crong : " + System.lineSeparator()
                         + "honux : -");

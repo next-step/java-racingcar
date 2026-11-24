@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.CarName;
-import racingcar.domain.Cars;
+import racingcar.domain.RoundResult;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public static void showRound(Cars cars) {
-        System.out.println(ResultFormatter.formatRound(cars));
+    public static void showRound(RoundResult roundResult) {
+        System.out.println(ResultFormatter.formatRound(roundResult));
         System.out.println();
     }
 

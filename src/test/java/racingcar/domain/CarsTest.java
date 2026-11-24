@@ -17,22 +17,6 @@ public class CarsTest {
     private static final CarName HONUX = new CarName("honux");
 
     @Test
-    @DisplayName("가장 멀리 간 차가 우승한다")
-    void singleWinner() {
-        Cars cars = new Cars(List.of(new Car(POBI, 3), new Car(CRONG, 1), new Car(HONUX, 2)));
-
-        assertThat(cars.getWinners()).containsExactly(POBI);
-    }
-
-    @Test
-    @DisplayName("가장 멀리 간 차가 여럿이면 모두 우승한다")
-    void multipleWinners() {
-        Cars cars = new Cars(List.of(new Car(POBI, 3), new Car(CRONG, 1), new Car(HONUX, 3)));
-
-        assertThat(cars.getWinners()).containsExactly(POBI, HONUX);
-    }
-
-    @Test
     @DisplayName("차 이름이 중복되면 IllegalArgumentException")
     void throwsExceptionWhenNameIsDuplicated() {
         List<Car> duplicated = List.of(new Car(POBI), new Car(CRONG), new Car(new CarName("pobi")));

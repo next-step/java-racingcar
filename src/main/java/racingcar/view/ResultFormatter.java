@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.domain.CarName;
-import racingcar.domain.Cars;
+import racingcar.domain.CarResult;
+import racingcar.domain.RoundResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,12 +16,12 @@ public class ResultFormatter {
     private ResultFormatter() {
     }
 
-    public static String formatCar(Car car) {
-        return car.getName().value() + NAME_POSITION_DELIMITER + POSITION_MARK.repeat(car.getPosition());
+    public static String formatCar(CarResult carResult) {
+        return carResult.name().value() + NAME_POSITION_DELIMITER + POSITION_MARK.repeat(carResult.position());
     }
 
-    public static String formatRound(Cars cars) {
-        return cars.getCars().stream()
+    public static String formatRound(RoundResult roundResult) {
+        return roundResult.carResults().stream()
                 .map(ResultFormatter::formatCar)
                 .collect(Collectors.joining(System.lineSeparator()));
     }
