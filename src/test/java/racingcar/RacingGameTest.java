@@ -67,6 +67,17 @@ class RacingGameTest {
 
         game.moveAll(numbers::next);
 
-        assertThat(game.winner()).isEqualTo("crong");
+        assertThat(game.winners()).containsExactly("crong");
+    }
+
+    @DisplayName("가장 멀리 간 자동차가 여럿이면 모두 우승한다")
+    @Test
+    void winners() {
+        RacingGame game = new RacingGame(List.of("pobi", "crong", "honux"), 1);
+        Iterator<Integer> numbers = List.of(4, 3, 4).iterator();
+
+        game.moveAll(numbers::next);
+
+        assertThat(game.winners()).containsExactly("pobi", "honux");
     }
 }

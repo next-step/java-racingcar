@@ -39,8 +39,19 @@ public class RacingGame {
         return history;
     }
 
-    public String winner() {
-        return Collections.max(cars, Comparator.comparingInt(Car::getPosition)).getName();
+    public List<String> winners() {
+        int maxPosition = Collections.max(cars, Comparator.comparingInt(Car::getPosition)).getPosition();
+        List<String> winners = new ArrayList<>();
+        for (Car car : cars) {
+            addIfWinner(winners, car, maxPosition);
+        }
+        return winners;
+    }
+
+    private void addIfWinner(List<String> winners, Car car, int maxPosition) {
+        if (car.getPosition() == maxPosition) {
+            winners.add(car.getName());
+        }
     }
 
     private TurnResult currentTurnResult() {
