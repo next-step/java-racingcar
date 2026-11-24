@@ -52,4 +52,12 @@ public class RacingGameTest {
         assertThat(game.getRaceResult()).hasSize(5);
     }
 
+    @DisplayName("레이싱 게임이 끝나면 우승자 이름을 알 수 있다. (이름 1개 → 그 이름)")
+    @Test
+    public void test_5() {
+        RacingGame game = new RacingGame(Cars.fromNames(List.of("john")), 5, new RandomNumberGenerator(10));
+        game.race();
+        assertThat(game.getWinners()).containsExactly("john");
+    }
+
 }

@@ -54,4 +54,8 @@ public class RacingGame {
         return cars.getPositions();
     }
 
+    public List<String> getWinners() {
+        return cars.getWinners();
+    }
+
 }
