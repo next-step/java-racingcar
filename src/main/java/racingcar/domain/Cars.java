@@ -38,6 +38,12 @@ public class Cars {
         }
     }
 
+    public RoundResult toResult() {
+        return new RoundResult(cars.stream()
+                .map(Car::toResult)
+                .toList());
+    }
+
     public List<CarName> getWinners() {
         int maxPosition = cars.stream()
                 .mapToInt(Car::getPosition)

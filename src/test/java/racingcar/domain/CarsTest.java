@@ -57,6 +57,14 @@ public class CarsTest {
 
         cars.move(numbers::next);
 
-        assertThat(cars.getCars()).extracting(Car::getPosition).containsExactly(1, 0, 1);
+        assertThat(cars.toResult().carResults()).extracting(CarResult::position).containsExactly(1, 0, 1);
+    }
+
+    @Test
+    @DisplayName("현재 차들의 상태를 회차 결과로 반환한다")
+    void toResult() {
+        Cars cars = new Cars(List.of(new Car(POBI, 2), new Car(CRONG, 0)));
+
+        assertThat(cars.toResult()).isEqualTo(new RoundResult(List.of(new CarResult(POBI, 2), new CarResult(CRONG, 0))));
     }
 }
