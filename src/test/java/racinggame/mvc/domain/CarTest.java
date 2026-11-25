@@ -48,8 +48,8 @@ class CarTest {
     @Test
     @DisplayName("입력값이 4 미만이면 자동차의 위치가 바뀌지 않는다.")
     void 이동_조건_미만이면_정지한다() {
-        Car car = new Car("pobi");
-        int initialPosition = car.getPosition();
+        int initialPosition = 2;
+        Car car = new Car("pobi", initialPosition);
 
         car.move(3);
 
