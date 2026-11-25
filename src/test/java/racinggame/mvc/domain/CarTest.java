@@ -24,6 +24,28 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("상대보다 더 멀리 간 자동차를 확인한다.")
+    void 상대보다_멀리_갔는지_확인한다() {
+        Car ahead = new Car("pobi", 4);
+        Car behind = new Car("crong", 2);
+
+        assertThat(ahead.isFartherThan(behind)).isTrue();
+        assertThat(behind.isFartherThan(ahead)).isFalse();
+    }
+
+    @Test
+    @DisplayName("서로 다른 자동차가 같은 위치에 있는지 확인한다.")
+    void 같은_위치인지_확인한다() {
+        Car pobi = new Car("pobi", 4);
+        Car crong = new Car("crong", 4);
+        Car honux = new Car("honux", 2);
+
+        assertThat(pobi.hasSamePositionAs(crong)).isTrue();
+        assertThat(pobi.hasSamePositionAs(honux)).isFalse();
+        assertThat(pobi.isFartherThan(crong)).isFalse();
+    }
+
+    @Test
     @DisplayName("입력값이 4 미만이면 자동차의 위치가 바뀌지 않는다.")
     void 이동_조건_미만이면_정지한다() {
         Car car = new Car("pobi");

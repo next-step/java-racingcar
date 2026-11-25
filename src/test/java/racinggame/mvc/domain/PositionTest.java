@@ -32,4 +32,14 @@ class PositionTest {
 
         assertThat(position.getValue()).isEqualTo(4);
     }
+
+    @Test
+    @DisplayName("다른 위치보다 작으면 음수, 같으면 0, 크면 양수를 반환한다.")
+    void 다른_위치와_비교한다() {
+        Position position = new Position(3);
+
+        assertThat(position.compareWith(new Position(4))).isNegative();
+        assertThat(position.compareWith(new Position(3))).isZero();
+        assertThat(position.compareWith(new Position(2))).isPositive();
+    }
 }

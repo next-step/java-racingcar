@@ -21,6 +21,10 @@ public final class Position {
         value = Math.incrementExact(value);
     }
 
+    public int compareWith(Position other) {
+        return Integer.compare(value, other.value);
+    }
+
     public int getValue() {
         return value;
     }

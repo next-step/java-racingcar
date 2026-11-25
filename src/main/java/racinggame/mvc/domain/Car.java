@@ -37,6 +37,14 @@ public class Car {
         return number >= FORWARD_THRESHOLD;
     }
 
+    public boolean isFartherThan(Car other) {
+        return position.compareWith(other.position) > 0;
+    }
+
+    public boolean hasSamePositionAs(Car other) {
+        return position.compareWith(other.position) == 0;
+    }
+
     public String getName() {
         return name.getValue();
     }

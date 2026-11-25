@@ -38,17 +38,21 @@ public final class Cars {
     }
 
     public List<Car> farthestCars() {
-        int farthestPosition = findFarthestPosition();
+        if (cars.isEmpty()) {
+            return List.of();
+        }
+
+        Car farthestCar = findFarthestCar();
         return cars.stream()
-            .filter(car -> car.getPosition() == farthestPosition)
+            .filter(farthestCar::hasSamePositionAs)
             .toList();
     }
 
-    private int findFarthestPosition() {
-        int farthestPosition = Integer.MIN_VALUE;
+    private Car findFarthestCar() {
+        Car farthestCar = cars.getFirst();
         for (Car car : cars) {
-            farthestPosition = Math.max(farthestPosition, car.getPosition());
+            farthestCar = car.isFartherThan(farthestCar) ? car : farthestCar;
         }
-        return farthestPosition;
+        return farthestCar;
     }
 }
