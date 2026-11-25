@@ -21,7 +21,7 @@ public class ResultView {
     }
 
     public static void printResult(RacingResult result) {
-        for (Car car : result.getCars()) {
+        for (Car car : result.cars()) {
             System.out.println(car.getName() + POSITION_SEPARATOR + POSITION_MARK.repeat(car.getPosition()));
         }
         System.out.println();
@@ -29,7 +29,7 @@ public class ResultView {
 
     public static void printWinners(RacingResult result) {
         StringJoiner names = new StringJoiner(WINNER_SEPARATOR);
-        for (Car winner : result.getWinners()) {
+        for (Car winner : result.winners()) {
             names.add(winner.getName());
         }
         System.out.println(names + WINNER_MESSAGE);

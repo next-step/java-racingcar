@@ -21,7 +21,7 @@ class RacingGameTest {
         RacingResult result = sut.race();
 
         assertThat(result).isNotNull();
-        assertThat(result.getWinners()).isEmpty();
+        assertThat(result.winners()).isEmpty();
     }
 
     @ParameterizedTest
@@ -49,7 +49,7 @@ class RacingGameTest {
 
         assertThat(sut.isEnd()).isTrue();
         assertThat(result).isNotNull();
-        assertThat(result.getWinners())
+        assertThat(result.winners())
             .extracting(Car::getName)
             .containsExactly("pobi", "honux");
     }
