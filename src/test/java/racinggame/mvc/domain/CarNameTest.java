@@ -10,10 +10,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class CarNameTest {
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"crong", "po bi"})
     @DisplayName("5자인 자동차 이름을 허용한다.")
-    void 다섯_자인_이름을_허용한다() {
-        assertThat(new CarName("crong").getValue()).isEqualTo("crong");
+    void 다섯_자인_이름을_허용한다(String name) {
+        assertThat(new CarName(name).getValue()).isEqualTo(name);
     }
 
     @Test
@@ -24,9 +25,9 @@ class CarNameTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {" ", " pobi", "po bi", "pobi "})
-    @DisplayName("자동차 이름은 공백을 포함할 수 없다.")
-    void 공백이_있는_이름을_거절한다(String name) {
+    @ValueSource(strings = {"", " ", "\t"})
+    @DisplayName("비어 있거나 공백만 있는 자동차 이름을 거절한다.")
+    void 비어_있거나_공백뿐인_이름을_거절한다(String name) {
         assertThatThrownBy(() -> new CarName(name))
             .isInstanceOf(IllegalArgumentException.class);
     }

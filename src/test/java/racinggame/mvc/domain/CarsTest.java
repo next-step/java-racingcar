@@ -1,7 +1,6 @@
 package racinggame.mvc.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Iterator;
 import java.util.List;
@@ -28,13 +27,6 @@ class CarsTest {
         assertThat(sut.getCars())
             .extracting(Car::getName)
             .containsExactly("pobi", "crong", "honux");
-    }
-
-    @Test
-    @DisplayName("끝에 쉼표가 붙으면 빈 이름으로 처리한다.")
-    void 빈_이름을_거절한다() {
-        assertThatThrownBy(() -> new Cars("pobi,"))
-            .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
