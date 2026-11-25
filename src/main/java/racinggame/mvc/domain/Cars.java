@@ -11,12 +11,12 @@ public final class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = List.copyOf(cars);
-    }
-
     public Cars(String carNames) {
         this(parseCars(carNames));
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = List.copyOf(cars);
     }
 
     private static List<Car> parseCars(String carNames) {

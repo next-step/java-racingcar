@@ -10,11 +10,6 @@ public class Car {
     private final CarName name;
     private final Position position;
 
-    public Car(CarName name, Position position) {
-        this.name = Objects.requireNonNull(name);
-        this.position = Objects.requireNonNull(position);
-    }
-
     public Car(CarName name, int position) {
         this(name, new Position(position));
     }
@@ -25,6 +20,11 @@ public class Car {
 
     public Car(String name) {
         this(name, INITIAL_POSITION);
+    }
+
+    public Car(CarName name, Position position) {
+        this.name = Objects.requireNonNull(name);
+        this.position = Objects.requireNonNull(position);
     }
 
     public void move(int number) {

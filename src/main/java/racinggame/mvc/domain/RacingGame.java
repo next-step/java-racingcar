@@ -10,14 +10,14 @@ public class RacingGame {
     private final IntSupplier numberSupplier;
     private final RemainingRounds remainingRounds;
 
+    public RacingGame(String carNames, int tryCount) {
+        this(new Cars(carNames), new RemainingRounds(tryCount), new RandomNumberSupplier());
+    }
+
     public RacingGame(Cars cars, RemainingRounds remainingRounds, IntSupplier numberSupplier) {
         this.cars = Objects.requireNonNull(cars);
         this.remainingRounds = Objects.requireNonNull(remainingRounds);
         this.numberSupplier = Objects.requireNonNull(numberSupplier);
-    }
-
-    public RacingGame(String carNames, int tryCount) {
-        this(new Cars(carNames), new RemainingRounds(tryCount), new RandomNumberSupplier());
     }
 
     public boolean isEnd() {
